@@ -1,0 +1,194 @@
+* {
+  font-family: "Trebuchet MS", "Lucida Grande", Tahoma, Arial, Helvetica, sans-serif;
+  color: #333;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-size: 14px;
+  background-color: #fff;
+}
+
+#header {
+  margin: 0;
+  padding: 15px;
+  background: #5e729f url("../images/logo.gif") no-repeat 5px 10px;
+  color: #fff;
+  height: 60px;
+}
+
+#header h1, #header h2 {
+  display: none;
+}
+
+div.notice {
+  cursor: pointer;
+  margin: 15px 80px 5px 80px;
+  padding: 10px;
+  border: 2px solid #ffbd5a;
+  background-color: #F0FFBF;
+  font-weight: bold;
+  font-size: 1.2em;
+  text-align: center;
+}
+
+#content {
+  margin: 0;
+  padding: 0;
+}
+
+#content a {
+  color: #4A5EC7;
+  text-decoration: none;
+}
+
+#content .big {
+  width: inherit !important;
+  margin: 8px !important;
+  float: none !important;
+}
+
+#content .big h2 {
+  text-align: left !important;
+}
+
+#content .box {
+  border: 3px solid #000;
+  background-color: #fff;
+  margin: 8px 0 5px 8px;
+  float: left;
+  width: 48%;
+}
+
+#content .box h2 {
+  margin: 0;
+  padding: 2px 15px 2px 5px;
+  background-color: #000;
+  color: #fff;
+  text-align: right;
+}
+
+#content .box h2 a {
+  color: #fff;
+}
+
+#content .box h2 a:hover {
+  color: #333;
+  background-color: #d6cac7;
+}
+
+#content .box thead {
+  display: none;
+}
+
+#content .box td {
+  vertical-align: top;
+  padding: 5px;
+  text-align: left;
+}
+
+#content .box td.date {
+  width: 60px;
+}
+
+#content .box td.content {
+  font-size: 0.9em;
+  padding: 0 20px 5px 20px;
+  background: #fff url("../images/lquote.gif") no-repeat 5px top;
+}
+
+#content .articles {
+  border-color: #8aa7c5;
+  float: right;
+  margin: 8px 8px 5px 0px;
+}
+
+#content .articles h2 {
+  background-color: #8aa7c5;
+}
+
+#content .posts {
+  float: right;
+  margin: 8px 8px 5px 0px;
+}
+
+#content .news {
+  border-color: #e06363;
+}
+
+#content .news h2 {
+  background-color: #e06363;
+}
+
+#content .jobs {
+  border-color: #ffbd5a;
+}
+
+#content .jobs h2 {
+  background-color: #ffbd5a;
+}
+
+#content .forum {
+  border-color: #48cd9c;
+}
+
+#content .forum h2 {
+  background-color: #48cd9c;
+}
+
+.fieldWithErrors {
+  padding: 2px;
+  background-color: red;
+  display: table;
+}
+
+#errorExplanation {
+  width: 400px;
+  border: 2px solid red;
+  padding: 7px;
+  padding-bottom: 12px;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+}
+
+#errorExplanation h2 {
+  text-align: left;
+  font-weight: bold;
+  padding: 5px 5px 5px 15px;
+  font-size: 12px;
+  margin: -7px;
+  background-color: #c00;
+  color: #fff;
+}
+
+#errorExplanation p {
+  color: #333;
+  margin-bottom: 0;
+  padding: 5px;
+}
+
+#errorExplanation ul li {
+  font-size: 12px;
+  list-style: square;
+}
+
+div.uploadStatus {
+  margin: 5px;
+}
+
+div.progressBar {
+  margin: 5px;
+}
+
+div.progressBar div.border {
+  background-color: #fff;
+  border: 1px solid gray;
+  width: 100%;
+}
+
+div.progressBar div.background {
+  background-color: #333;
+  height: 18px;
+  width: 0%;
+}
