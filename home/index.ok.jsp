@@ -14,7 +14,7 @@
 	  		<li>
 	  			<a href="${topic.link}">${topic.title}</a>
 		      	<span class="autor">por ${topic.creator}</span>
-		      	<span class="data">em <fmt:formatDate pattern="dd/MM/yyyy" value="${topic.date}"/></span>
+		      	<span class="data">em <fmt:formatDate pattern="dd/MM/yyyy HH:mm" value="${topic.date}"/></span>
 		    </li>
   		</c:forEach>
 	  </ul>
@@ -29,7 +29,7 @@
 	  		<li>
 	  			<a href="${n.link}">${n.title}</a>
 		      	<span class="autor">por ${n.creator}</span>
-		      	<span class="data">em <fmt:formatDate pattern="dd/MM/yyyy" value="${n.date}"/></span>
+		      	<span class="data">em <fmt:formatDate pattern="dd/MM/yyyy HH:mm" value="${n.date}"/></span>
 		    </li>
   		</c:forEach>
 	  </ul>

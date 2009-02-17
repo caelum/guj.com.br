@@ -64,7 +64,7 @@
       </li>
       -->
     </ul>
-    <form class="busca" method="GET" action="<c:url value="/"/>/jforum.java?module=search&action=search">
+    <form class="busca" method="GET" action="<c:url value="/jforum.java?module=search&action=search"/>">
 		<input type="hidden" name="module" value="search"/>
 		<input type="hidden" name="action" value="search"/>
 		<input type="hidden" name="returnPath" id="returnPath"/>
@@ -85,7 +85,7 @@
 	      		Bem vindo ao GUJ. <a href="<c:url value="/user/insert.java"/>">Crie seu login</a>, 
 	          	ou digite-o para logar no site.
 	          
-	          	<form class="login" action="<c:url value="/"/>/jforum.java?module=user&action=validateLogin" method="POST">
+	          	<form class="login" action="<c:url value="/jforum.java?module=user&action=validateLogin"/>" method="POST">
 	            	<input class="campo rounded" size="8" name="username" tabindex="3" onFocus="if (this.value == 'usu&aacute;rio') { this.value = '';}" onBlur="if (this.value == '') { this.value = 'usu&aacute;rio';}" value="usu&aacute;rio"/>
 					<input class="campo rounded" type="text" size="8" name="password" tabindex="4" onFocus="if (this.value == 'senha') { this.value = ''; this.type='password';}" onBlur="if (this.value == '') { this.value = 'senha'; this.type='text'}" value="senha"/>
 	            	<input type="image" class="botao" src="<c:url value="/images/guj/botao_entrar.gif"/>" tabindex="5" name="login" value="Login">
