@@ -78,7 +78,7 @@
       <div class="container2">
       	<c:choose>
       		<c:when test="${logged}">
-	      		Bem vindo ao GUJ. Autenticado como ${username}
+	      		Bem-vindo ao GUJ. Autenticado como ${username}
 	      		<a href="<c:url value="/user/logout.java"/>">Fazer logout</a> 
       		</c:when>
       		<c:otherwise>
