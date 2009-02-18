@@ -104,8 +104,8 @@ window.onload = function () {
 
 	          <form class="login" action="${contextPath}/jforum.java?module=user&action=validateLogin" method="POST">
 	            <input type="hidden" name="returnPath" id="returnPath" value="" />
-	            <input class="campo rounded" size="8" name="username" tabindex="3" onFocus="if (this.value == 'usu&aacute;rio') { this.value = '';}" onBlur="if (this.value == '') { this.value = 'usu&aacute;rio';}" value="usu&aacute;rio"/>
-				<input class="campo rounded" type="text" size="8" name="password" tabindex="4" onFocus="if (this.value == 'senha') { this.value = ''; this.type='password';}" onBlur="if (this.value == '') { this.value = 'senha'; this.type='text'}" value="senha"/>
+	            Usuário: <input class="campo rounded" size="8" name="username" tabindex="3" />
+				Senha: <input class="campo rounded" type="text" size="8" name="password" tabindex="4" />
 	            <input type="image" class="botao" style="border: 0px;" src="${contextPath}/images/guj/botao_entrar.gif" tabindex="5" name="login" value="Login">
 	          </form>
 			</#if>
