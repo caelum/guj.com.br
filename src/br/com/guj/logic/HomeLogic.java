@@ -14,39 +14,35 @@ import br.com.guj.model.Post;
  */
 @Component("home")
 public class HomeLogic {
-	private List<Post> posts;
-	private List<Article> articles;
+    private List<Post> posts;
+    private List<Article> articles;
 
-	@SuppressWarnings("unchecked")
-	private List<Post> getAllPosts() {
-		return HibernateUtil.getSessionFactory().getCurrentSession()
-			.createQuery("from Post")
-			.setMaxResults(Config.getIntvalue("posts.home.items"))
-			.setCacheable(true)
-			.setCacheRegion("homePosts")
-			.list();
-	}
+    @SuppressWarnings("unchecked")
+    private List<Post> getAllPosts() {
+        return HibernateUtil.getSessionFactory().getCurrentSession().createQuery(
+                "from Post a order by a.date desc").setMaxResults(
+                Config.getIntvalue("posts.home.items")).setCacheable(true).setCacheRegion(
+                "homePosts").list();
+    }
 
-	@SuppressWarnings("unchecked")
-	private List<Article> getAllArticles() {
-		return HibernateUtil.getSessionFactory().getCurrentSession()
-			.createQuery("from Article a order by a.id desc")
-			.setMaxResults(Config.getIntvalue("article.home.items"))
-			.setCacheable(true)
-			.setCacheRegion("homeArticles")
-			.list();
-	}
+    @SuppressWarnings("unchecked")
+    private List<Article> getAllArticles() {
+        return HibernateUtil.getSessionFactory().getCurrentSession().createQuery(
+                "from Article a order by a.id desc").setMaxResults(
+                Config.getIntvalue("article.home.items")).setCacheable(true).setCacheRegion(
+                "homeArticles").list();
+    }
 
-	public void index() {
-		this.posts = this.getAllPosts();
-		this.articles = this.getAllArticles();
-	}
+    public void index() {
+        this.posts = this.getAllPosts();
+        this.articles = this.getAllArticles();
+    }
 
-	public List<Article> getArticles() {
-		return this.articles;
-	}
+    public List<Article> getArticles() {
+        return this.articles;
+    }
 
-	public List<Post> getPosts() {
-		return posts;
-	}
+    public List<Post> getPosts() {
+        return posts;
+    }
 }

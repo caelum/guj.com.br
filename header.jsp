@@ -38,7 +38,7 @@
 			// ]]> --></script>
     	</div>
       <div class="container2">
-        <a href="#"><h1>GUJ</h1></a>
+        <h1>GUJ</h1>
         <h2>Not&iacute;cias, artigos e o maior f&oacute;rum brasileiro sobre Java</h2></a>
       </div>
     </div>

@@ -72,7 +72,6 @@ input.selecionado {
   background: transparent url(../images/guj/logo.gif) no-repeat 15px 10px;
   height: 70px;
   text-indent: -9999px;
-  overflow: visible;
 }
 
 #header h2 {
