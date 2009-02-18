@@ -29,6 +29,10 @@ vertical-align: middle;
   line-height:20px;
 }
 
+input.campo {
+  width: 90px;
+}
+
 #content .box ul li {
   padding-left:10px;
 }
