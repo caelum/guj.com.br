@@ -104,8 +104,8 @@
               
 	          	<form class="login" action="<c:url value="/jforum.java?module=user&action=validateLogin"/>" method="POST">
                     <input type="hidden" name="returnPath" id="returnPath"/>
-	            	<input class="campo rounded" id="username" size="8" name="username" tabindex="3" onFocus="if (document.getElementById('username').value == 'usu&aacute;rio') { document.getElementById('username').value = '';}" onBlur="if (document.getElementById('username').value == '') { document.getElementById('username').value = 'usu&aacute;rio';}" value="usu&aacute;rio"/>
-					<input class="campo rounded" id="password" type="text" size="8" name="password" tabindex="4"  value="senha"/>
+	            	Usuário: <input class="campo rounded" size="8" name="username" tabindex="3" />
+					Senha: <input class="campo rounded" type="password" size="8" name="password" tabindex="4"/>
 	            	<input type="image" class="botao" src="<c:url value="/images/guj/botao_entrar.gif"/>" tabindex="5" name="login" value="Login">
 	          	</form>
       		</c:otherwise>
