@@ -63,17 +63,16 @@
 	  		<li>
 	      		<span class="post"><a href="${post.link}" target="_blank">${post.title}</a></span>
 	      		<span class="data">em <span class="blog">${post.blog.title}</span>, <fmt:formatDate pattern="dd/MM/yyyy" value="${post.date}"/></span>
-			<br/>
 	    	</li>
 	  	</c:forEach>
 	  </ul>
 	</div>
 
 	<div class="infoq box rounded">
-		<h2><a href="http://www.infoq.com/br">Infoq Brasil</h2>
+		<h2><a href="http://www.infoq.com/br">Infoq Brasil</a></h2>
 	  	<ul>
 	  		<c:forEach items="${infoq}" var="item">
-		  		<li class="bullet">
+		  		<li>
 		  			<a href="${item.link}">${item.title}</a>
 			      	<span class="autor">por ${item.creator}</span>
 			      	<span class="data">em <fmt:formatDate pattern="dd/MM/yyyy" value="${item.date}"/></span>

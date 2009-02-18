@@ -141,11 +141,6 @@ input.selecionado {
   background: transparent url(../images/guj/house.gif) no-repeat center left;
 }
 
-.bullet {
-	background: transparent url(../images/bullet_ball_blue.png) no-repeat center left;
-	padding: 0 10px 0 22px;
-}
-
 #menu ul li.forum {
   background: transparent url(../images/guj/comment.gif) no-repeat center left;
 }
@@ -289,6 +284,17 @@ input.selecionado {
   list-style-image: url(../images/guj/comment.gif);
 }
 
+#content #home .forum {
+  width: 33%;
+  float: right;
+  margin-right: 8px;
+  font-size: 12px;
+}
+
+#content .infoq ul li {
+  list-style-image: url(../images/bullet_ball_blue.png);
+}
+
 #content #home .news {
   float: left;
   width: 32%;
@@ -406,7 +412,6 @@ input.selecionado {
 	float: left; 
 	font-size: 12px;
 	width: 49%;
-
 }
 
 #content #home .infoq ul li a {

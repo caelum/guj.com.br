@@ -28,3 +28,7 @@ vertical-align: middle;
     padding-top:20px;
   line-height:20px;
 }
+
+#content .box ul li {
+  padding-left:10px;
+}
