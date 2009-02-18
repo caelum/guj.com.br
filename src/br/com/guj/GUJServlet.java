@@ -22,91 +22,93 @@ import br.com.guj.feeds.FeedReader;
 import de.nava.informa.core.ItemIF;
 
 public class GUJServlet extends VRaptorServlet {
-	private List<ItemIF> infoq = new ArrayList<ItemIF>();
-	private List<ItemIF> news = new ArrayList<ItemIF>();
-	private List<ItemIF> forum = new ArrayList<ItemIF>();
+    private List<ItemIF> infoq = new ArrayList<ItemIF>();
+    private List<ItemIF> news = new ArrayList<ItemIF>();
+    private List<ItemIF> forum = new ArrayList<ItemIF>();
 
-	@Override
-	public void init(ServletConfig config) throws ServletException {
-		super.init(config);
-		Config.loadConfigs();
+    @Override
+    public void init(ServletConfig config) throws ServletException {
+        super.init(config);
+        Config.loadConfigs();
 
-		this.startInfoq();
-		this.startNews();
-		this.startForum();
-	}
+        this.startInfoq();
+        this.startNews();
+        this.startForum();
+    }
 
-	private void startForum() {
-		long interval = Config.getIntvalue("forum.refresh.interval") * 1000 * 60;
+    private void startForum() {
+        long interval = Config.getIntvalue("forum.refresh.interval") * 1000 * 60;
 
-		Timer infoqTimer = new Timer(true);
-		infoqTimer.scheduleAtFixedRate(new TimerTask() {
-			@Override
-			public void run() {
-				forum = new ArrayList<ItemIF>(FeedReader.read(Config.getValue("forum.url")));
+        Timer infoqTimer = new Timer(true);
+        infoqTimer.scheduleAtFixedRate(new TimerTask() {
+            @Override
+            public void run() {
+                forum = new ArrayList<ItemIF>(FeedReader.read(Config.getValue("forum.url")));
 
-				int max = Config.getIntvalue("forum.items");
+                int max = Config.getIntvalue("forum.items");
 
-				if (forum.size() > max) {
-					forum = forum.subList(0, max);
-				}
-			}
-		}, new Date(), interval);
-	}
+                if (forum.size() > max) {
+                    forum = forum.subList(0, max);
+                }
+            }
+        }, new Date(), interval);
+    }
 
-	private void startNews() {
-		long interval = Config.getIntvalue("news.refresh.interval") * 1000 * 60;
+    private void startNews() {
+        long interval = Config.getIntvalue("news.refresh.interval") * 1000 * 60;
 
-		Timer infoqTimer = new Timer(true);
-		infoqTimer.scheduleAtFixedRate(new TimerTask() {
-			@Override
-			public void run() {
-				news = new ArrayList<ItemIF>(FeedReader.read(Config.getValue("news.url")));
+        Timer infoqTimer = new Timer(true);
+        infoqTimer.scheduleAtFixedRate(new TimerTask() {
+            @Override
+            public void run() {
+                news = new ArrayList<ItemIF>(FeedReader.read(Config.getValue("news.url")));
 
-				int max = Config.getIntvalue("news.items");
+                int max = Config.getIntvalue("news.items");
 
-				if (news.size() > max) {
-					news = news.subList(0, max);
-				}
-			}
-		}, new Date(), interval);
-	}
+                if (news.size() > max) {
+                    news = news.subList(0, max);
+                }
+            }
+        }, new Date(), interval);
+    }
 
-	private void startInfoq() {
-		long infoqInterval = Config.getIntvalue("infoq.refresh.interval") * 1000 * 60;
+    private void startInfoq() {
+        long infoqInterval = Config.getIntvalue("infoq.refresh.interval") * 1000 * 60;
 
-		Timer infoqTimer = new Timer(true);
-		infoqTimer.scheduleAtFixedRate(new TimerTask() {
-			@Override
-			public void run() {
-				infoq = new ArrayList<ItemIF>(FeedReader.read(Config.getValue("infoq.url")));
+        Timer infoqTimer = new Timer(true);
+        infoqTimer.scheduleAtFixedRate(new TimerTask() {
+            @Override
+            public void run() {
+                infoq = new ArrayList<ItemIF>(FeedReader.read(Config.getValue("infoq.url")));
 
-				int max = Config.getIntvalue("infoq.items");
+                int max = Config.getIntvalue("infoq.items");
 
-				if (infoq.size() > max) {
-					infoq = infoq.subList(0, max);
-				}
-			}
-		}, new Date(), infoqInterval);
-	}
+                if (infoq.size() > max) {
+                    infoq = infoq.subList(0, max);
+                }
+            }
+        }, new Date(), infoqInterval);
+    }
 
-	/**
-	 * @see org.vraptor.VRaptorServlet#service(javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse)
-	 */
-	@Override
-	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setAttribute("infoq", this.infoq);
-		request.setAttribute("news", this.news);
-		request.setAttribute("forum", this.forum);
+    /**
+     * @see org.vraptor.VRaptorServlet#service(javax.servlet.http.HttpServletRequest,
+     *      javax.servlet.http.HttpServletResponse)
+     */
+    @Override
+    protected void service(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        request.setAttribute("infoq", this.infoq);
+        request.setAttribute("news", this.news);
+        request.setAttribute("forum", this.forum);
 
-		boolean isLogged = "1".equals(request.getSession().getAttribute(ConfigKeys.LOGGED));
-		request.setAttribute("logged", isLogged);
+        boolean isLogged = "1".equals(request.getSession().getAttribute(ConfigKeys.LOGGED));
+        request.setAttribute("logged", isLogged);
 
-		if (isLogged) {
-			UserSession userSession = SessionFacade.getUserSession(request.getSession().getId());
-			request.setAttribute("username", userSession.getUsername());
-		}
+        if (isLogged) {
+            UserSession userSession = SessionFacade.getUserSession(request.getSession().getId());
+            request.setAttribute("userSession", userSession);
+        }
 
-		super.service(request, response);
-	}
+        super.service(request, response);
+    }
 }

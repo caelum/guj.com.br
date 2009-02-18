@@ -1,7 +1,5 @@
 <vraptor>
     <regex-view-manager>/$component/$logic.$result.jsp</regex-view-manager>
 	<plugin>org.vraptor.plugin.hibernate.HibernateValidatorPlugin</plugin>
-	<!--
-    <plugin>org.vraptor.plugin.niceurls.NiceURLPlugin</plugin>
-    -->
+    <!--  <plugin>org.vraptor.plugin.niceurls.NiceURLPlugin</plugin>-->
 </vraptor>

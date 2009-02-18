@@ -26,7 +26,10 @@
 <style type="text/css">@import url( ${contextPath}/templates/${templateName}/styles/${language}.css?${startupTime} );</style>
 <script type="text/javascript" src="${contextPath}/javascripts/jquery-1.3.1.min.js"></script>
 <script type="text/javascript" src="${contextPath}/javascripts/jquery.corners.min.js"></script>
-
+<!--[if IE]>
+  <link href="<c:url value="/stylesheets/guj3-ie.css"/>" media="screen" rel="stylesheet" type="text/css" />
+<![endif]-->
+  
 <script type="text/javascript">
 $().ready(function() {
 	$("#returnPath").val(document.location);
@@ -87,8 +90,7 @@ window.onload = function () {
 	    <form class="busca" method="GET" action="${contextPath}/jforum.java?module=search&action=search">
 			<input type="hidden" name="module" value="search"/>
 			<input type="hidden" name="action" value="search"/>
-			<input type="hidden" name="returnPath" id="returnPath"/>
-	      	<input class="campo rounded" name="search_keywords" value="Pesquisar" onFocus="if (this.value == 'Pesquisar') { this.value = '';}" onBlur="if (this.value == '') { this.value = 'Pesquisar';}" size="10" tabindex="1"/>
+	      	<input class="campo rounded" name="search_keywords" value="Pesquisar" onFocus="if (this.value == 'Pesquisar') { this.value = '';}" onBlur="if (this.value == '') { this.value = 'Pesquisar';}" tabindex="1"/>
 	      	<input type="image" class="botao" style="border: 0px;" src="${contextPath}/images/guj/botao_ok.gif" tabindex="2">
 	    </form>
 	  </div>
@@ -108,17 +110,20 @@ window.onload = function () {
 	          </form>
 			</#if>
 			
-			<img src="${contextPath}/images/guj/comment.gif">
-			<a class="mainmenu" href="${contextPath}/forums/list.java">&Iacute;NDICE DO F&Oacute;RUM</a>&nbsp;
-			
 			<img src="${contextPath}/templates/${templateName}/images/icon_mini_recentTopics.gif" alt="[Recent Topics]" />
 			<a id="latest" class="mainmenu" href="${JForumContext.encodeURL("/recentTopics/list")}">T&Oacute;PICOS RECENTES</a> &nbsp;
 		
 			<#if logged>
-				<a id="myprofile" class="mainmenu" href="${JForumContext.encodeURL("/user/edit/${session.userId}")}"><img src="${contextPath}/templates/${templateName}/images/icon_mini_profile.gif" border="0" alt="[Profile]" /> MEU PERFIL</a>&nbsp; 
+				<a id="myprofile" class="mainmenu" href="${JForumContext.encodeURL("/user/edit/${session.userId}")}"><img src="${contextPath}/templates/${templateName}/images/icon_mini_profile.gif" border="0" alt="[Profile]" /> MEUS DADOS</a>&nbsp; 
 				<a id="privatemessages" class="mainmenu" href="${JForumContext.encodeURL("/pm/inbox")}"><img src="${contextPath}/templates/${templateName}/images/icon_mini_message.gif" border="0" alt="[Message]" />
 					MENSAGENS PRIVADAS (${session.privateMessages})
 				</a>&nbsp;
+                <a id="mymessages" class="mainmenu" href="${JForumContext.encodeURL("/posts/listByUser/${session.userId}")}"><img src="${contextPath}/templates/${templateName}/images/icon_mini_message.gif" border="0" alt="Minhas Mensagens" />
+                   MINHAS MENSAGENS
+                </a>&nbsp;
+                <a id="favorites" class="mainmenu" href="${JForumContext.encodeURL("/bookmarks/list/${session.userId}")}"><img src="${contextPath}/templates/${templateName}/images/icon_mini_message.gif" border="0" alt="Favoritos" />
+                   FAVORITOS
+                </a>&nbsp;
 				</span>
 
 				<#if !sso>

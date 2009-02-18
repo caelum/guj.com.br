@@ -1,0 +1,30 @@
+
+#content #home .forum {
+  width: 32%;
+}
+
+#content #home .news {
+  width: 31%;
+}
+
+#content #home .articles {
+  width: 32%;
+}
+
+#content #home .posts {
+  width: 48%;
+}
+
+#content #home .infoq {
+	width: 48%;
+}
+
+#menu {
+  padding-top:7px;
+}
+
+#submenu {
+vertical-align: middle;
+    padding-top:20px;
+  line-height:20px;
+}

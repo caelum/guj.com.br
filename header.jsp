@@ -8,6 +8,10 @@
   </title>
   <link href="<c:url value="/stylesheets/guj3.css"/>" media="screen" rel="stylesheet" type="text/css" />
   <link href="<c:url value="/stylesheets/SyntaxHighlighter.css"/>" media="screen" rel="stylesheet" type="text/css" />
+  <!--[if IE]>
+  <link href="<c:url value="/stylesheets/guj3-ie.css"/>" media="screen" rel="stylesheet" type="text/css" />
+  <![endif]-->
+
 	<script src="<c:url value="/javascripts/captcha.js"/>" type="text/javascript"></script>
 	<script src="<c:url value="/javascripts/shCore.js"/>" type="text/javascript"></script>
 	<script src="<c:url value="/javascripts/shBrushJava.js"/>" type="text/javascript"></script>
@@ -34,8 +38,8 @@
 			// ]]> --></script>
     	</div>
       <div class="container2">
-        <h1>GUJ</h1>
-        <h2>Not&iacute;cias, artigos e o maior f&oacute;rum brasileiro sobre Java</h2>
+        <a href="#"><h1>GUJ</h1></a>
+        <h2>Not&iacute;cias, artigos e o maior f&oacute;rum brasileiro sobre Java</h2></a>
       </div>
     </div>
   </div>
@@ -43,7 +47,7 @@
   <div id="menu">
     <ul>
       <li class="home">
-        <a href="<c:url value="/home.index.logic"/>">home</a>
+        <a href="<c:url value="/"/>">home</a>
       </li>
       <li class="forum">
         <a href="<c:url value="/forums/list.java"/>">f&oacute;rum</a>
@@ -67,8 +71,7 @@
     <form class="busca" method="GET" action="<c:url value="/jforum.java?module=search&action=search"/>">
 		<input type="hidden" name="module" value="search"/>
 		<input type="hidden" name="action" value="search"/>
-		<input type="hidden" name="returnPath" id="returnPath"/>
-		<input class="campo rounded" name="search_keywords" value="Pesquisar" onFocus="if (this.value == 'Pesquisar') { this.value = '';}" onBlur="if (this.value == '') { this.value = 'Pesquisar';}" size="10" tabindex="1"/>
+		<input class="campo rounded" name="search_keywords" value="Pesquisar" onFocus="if (this.value == 'Pesquisar') { this.value = '';}" onBlur="if (this.value == '') { this.value = 'Pesquisar';}" tabindex="1"/>
       	<input type="image" class="botao" style="border: 0px;" src="<c:url value="/images/guj/botao_ok.gif"/>" tabindex="2">
     </form>
   </div>
@@ -76,18 +79,33 @@
   <div id="submenu">
     <div class="container1">
       <div class="container2">
+          
       	<c:choose>
       		<c:when test="${logged}">
-	      		Bem-vindo ao GUJ. Autenticado como ${username}
-	      		<a href="<c:url value="/user/logout.java"/>">Fazer logout</a> 
+              <a id="latest" class="mainmenu" href="<c:url value="/recentTopics/list"/>"><img src="<c:url value="/templates/default/images/icon_mini_recentTopics.gif"/>" alt="[Recent Topics]" border="0"/>
+                T&Oacute;PICOS RECENTES
+              </a> &nbsp;
+	      	  <a id="myprofile" class="mainmenu" href="<c:url value="/user/edit/${userSession.userId}.java"/>"><img src="<c:url value="/templates/default/images/icon_mini_profile.gif"/>" border="0" alt="[Profile]" /> MEUS DADOS</a>&nbsp; 
+              <a id="privatemessages" class="mainmenu" href="<c:url value="/pm/inbox"/>"><img src="<c:url value="/templates/default/images/icon_mini_message.gif"/>" border="0" alt="[Message]" />
+                MENSAGENS PRIVADAS (${userSession.privateMessages})
+              </a>&nbsp;
+              <a id="mymessages" class="mainmenu" href="<c:url value="/posts/listByUser/${userSession.userId}.java"/>"><img src="<c:url value="/templates/default/images/icon_mini_message.gif"/>" border="0" alt="Minhas Mensagens" />
+                MINHAS MENSAGENS
+              </a>&nbsp;
+              <a id="favorites" class="mainmenu" href="<c:url value="/bookmarks/list/${userSession.userId}.java"/>"><img src="<c:url value="/templates/default/images/icon_mini_message.gif"/>" border="0" alt="Favoritos" />
+                   FAVORITOS
+              </a>&nbsp;
+            
+	      		<a href="<c:url value="/user/logout.java"/>"><img src="<c:url value="/templates/default/images/icon_mini_login.gif"/>" border="0" alt="Logout" /> LOGOUT</a> 
       		</c:when>
       		<c:otherwise>
 	      		Bem vindo ao GUJ. <a href="<c:url value="/user/insert.java"/>">Crie seu login</a>, 
 	          	ou digite-o para logar no site.
-	          
+              
 	          	<form class="login" action="<c:url value="/jforum.java?module=user&action=validateLogin"/>" method="POST">
-	            	<input class="campo rounded" size="8" name="username" tabindex="3" onFocus="if (this.value == 'usu&aacute;rio') { this.value = '';}" onBlur="if (this.value == '') { this.value = 'usu&aacute;rio';}" value="usu&aacute;rio"/>
-					<input class="campo rounded" type="text" size="8" name="password" tabindex="4" onFocus="if (this.value == 'senha') { this.value = ''; this.type='password';}" onBlur="if (this.value == '') { this.value = 'senha'; this.type='text'}" value="senha"/>
+                    <input type="hidden" name="returnPath" id="returnPath"/>
+	            	<input class="campo rounded" id="username" size="8" name="username" tabindex="3" onFocus="if (document.getElementById('username').value == 'usu&aacute;rio') { document.getElementById('username').value = '';}" onBlur="if (document.getElementById('username').value == '') { document.getElementById('username').value = 'usu&aacute;rio';}" value="usu&aacute;rio"/>
+					<input class="campo rounded" id="password" type="text" size="8" name="password" tabindex="4"  value="senha"/>
 	            	<input type="image" class="botao" src="<c:url value="/images/guj/botao_entrar.gif"/>" tabindex="5" name="login" value="Login">
 	          	</form>
       		</c:otherwise>

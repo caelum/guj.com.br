@@ -1,5 +1,5 @@
 # novas paginas
-#/   					   			=>  home.index
+/ 					   			=>  home.index
 #/java.tutorial.artigo.:{id}.1.guj	=> 	article.show.#{id}
 #/article/:{logic}/		   			=>  article.#{logic}
 

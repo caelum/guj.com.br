@@ -175,6 +175,7 @@ input.selecionado {
 #menu form.busca input.campo {
   background: #fff url(../images/guj/zoom.gif) no-repeat 2px 1px;
   padding-left: 19px;
+  width: 120px;
 }
 
 #submenu {
