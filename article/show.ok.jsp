@@ -11,6 +11,8 @@
 
 <div class="box intern rounded">
 
+<%@ include file="../box.jsp" %>
+
   <span class="article">
     <h2><a href="#">${article.title }</a></h2>
   </span>

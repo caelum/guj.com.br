@@ -284,13 +284,6 @@ input.selecionado {
   list-style-image: url(../images/guj/comment.gif);
 }
 
-#content #home .forum {
-  width: 33%;
-  float: right;
-  margin-right: 8px;
-  font-size: 12px;
-}
-
 #content .infoq ul li {
   list-style-image: url(../images/bullet_ball_blue.png);
 }

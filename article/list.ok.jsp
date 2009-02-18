@@ -4,6 +4,7 @@
 <%@ include file="../header.jsp" %>
 
 <div class="articles box rounded intern">
+<%@ include file="../box.jsp" %>
   <h2><a href="#">Artigos</a></h2>
   
   <ul>
@@ -11,7 +12,7 @@
       <li>
         <c:choose>
           <c:when test="${article.exclusive}">
-            <span class="post"><a href="<c:url value="/article/show?id=${article.id}"/>">${article.title}</a></span>
+            <span class="post"><a href="<c:url value="/article.show.logic?id=${article.id}"/>">${article.title}</a></span>
           </c:when>
           <c:otherwise>
             <span class="post"><a href="#">${article.title}</a></span>
@@ -28,6 +29,9 @@
       <br>
     </c:forEach>
   </ul>
+  
 </div>
+
+
 
 <%@ include file="../footer.jsp" %>
