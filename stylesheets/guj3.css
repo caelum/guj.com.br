@@ -66,11 +66,13 @@ input.selecionado {
   background: #fdfefe url(../images/guj/header_background.gif) repeat-x;
 }
 
-#header h1 {
+#logo {
   margin: 0;
-  padding: 0;
+  padding-top: 0;
   background: transparent url(../images/guj/logo.gif) no-repeat 15px 10px;
   height: 70px;
+  width: 270px;
+  display: block;
   text-indent: -9999px;
 }
 
@@ -169,7 +171,7 @@ input.selecionado {
 #menu form.busca input.campo {
   background: #fff url(../images/guj/zoom.gif) no-repeat 2px 1px;
   padding-left: 19px;
-  width: 120px;
+  width: 150px;
 }
 
 #submenu {

@@ -38,7 +38,7 @@
 			// ]]> --></script>
     	</div>
       <div class="container2">
-        <h1>GUJ</h1>
+        <a href="<c:url value="/home.index.logic"/>" id="logo">GUJ</a>
         <h2>Not&iacute;cias, artigos e o maior f&oacute;rum brasileiro sobre Java</h2></a>
       </div>
     </div>
@@ -82,11 +82,11 @@
           
       	<c:choose>
       		<c:when test="${logged}">
-              <a id="latest" class="mainmenu" href="<c:url value="/recentTopics/list"/>"><img src="<c:url value="/templates/default/images/icon_mini_recentTopics.gif"/>" alt="[Recent Topics]" border="0"/>
+              <a id="latest" class="mainmenu" href="<c:url value="/recentTopics/list.java"/>"><img src="<c:url value="/templates/default/images/icon_mini_recentTopics.gif"/>" alt="[Recent Topics]" border="0"/>
                 T&Oacute;PICOS RECENTES
               </a> &nbsp;
 	      	  <a id="myprofile" class="mainmenu" href="<c:url value="/user/edit/${userSession.userId}.java"/>"><img src="<c:url value="/templates/default/images/icon_mini_profile.gif"/>" border="0" alt="[Profile]" /> MEUS DADOS</a>&nbsp; 
-              <a id="privatemessages" class="mainmenu" href="<c:url value="/pm/inbox"/>"><img src="<c:url value="/templates/default/images/icon_mini_message.gif"/>" border="0" alt="[Message]" />
+              <a id="privatemessages" class="mainmenu" href="<c:url value="/pm/inbox.java"/>"><img src="<c:url value="/templates/default/images/icon_mini_message.gif"/>" border="0" alt="[Message]" />
                 MENSAGENS PRIVADAS (${userSession.privateMessages})
               </a>&nbsp;
               <a id="mymessages" class="mainmenu" href="<c:url value="/posts/listByUser/${userSession.userId}.java"/>"><img src="<c:url value="/templates/default/images/icon_mini_message.gif"/>" border="0" alt="Minhas Mensagens" />
@@ -104,7 +104,7 @@
               
 	          	<form class="login" action="<c:url value="/jforum.java?module=user&action=validateLogin"/>" method="POST">
                     <input type="hidden" name="returnPath" id="returnPath"/>
-	            	Usuário: <input class="campo rounded" size="8" name="username" tabindex="3" />
+	            	Usu&aacute;rio: <input class="campo rounded" size="8" name="username" tabindex="3" />
 					Senha: <input class="campo rounded" type="password" size="8" name="password" tabindex="4"/>
 	            	<input type="image" class="botao" src="<c:url value="/images/guj/botao_entrar.gif"/>" tabindex="5" name="login" value="Login">
 	          	</form>
