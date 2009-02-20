@@ -23,7 +23,7 @@
 	});
 
 	window.onload = function () {
-		$("div.rounded").corners("6px");
+		//$("div.rounded").corners("6px");
 	}
   </script>  
   

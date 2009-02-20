@@ -2,7 +2,7 @@
 body {
   margin: 0 auto;
   padding: 0;
-  background: #fdfefe;
+  background: #e5ecf3;
   font-family: "Trebuchet MS", Tahoma, Arial, Serif;
   font-size: 15px;
   color: #333333;
@@ -63,11 +63,11 @@ input.selecionado {
 #header {
   margin: 0;
   padding: 0;
-  background: #fdfefe url(../images/guj/header_background.gif) repeat-x;
+  background-color: #3a77a6;
 }
 
 #logo {
-  margin: 0;
+  margin: 0 20;
   padding-top: 0;
   background: transparent url(../images/guj/logo.gif) no-repeat 15px 10px;
   height: 70px;
@@ -96,7 +96,8 @@ input.selecionado {
 	clear: both;
 	margin: 0;
 	padding: 0;
-	background: #fdfefe url(../images/guj/rodape_background.gif) repeat-x;
+	background-color: #f4f4e6;
+	height: 46px;
 }
 
 #footer p {
@@ -240,7 +241,6 @@ input.selecionado {
 }
 
 #content .box {
-  background: transparent url(../images/guj/box_gradient.gif) repeat-x top;
   margin: 0 0 20px 0;
   font-size: 0.9em;
 }
@@ -506,3 +506,41 @@ input.selecionado {
 	background-color:lightyellow;
 	border:1px solid #DD6900;;
 }
+
+/* Rounded corners */
+.spiffy{display:block}
+.spiffy *{
+  display:block;
+  height:1px;
+  overflow:hidden;
+  font-size:.01em;
+  background:#ffffff}
+.spiffy1{
+  margin-left:3px;
+  margin-right:3px;
+  padding-left:1px;
+  padding-right:1px;
+  border-left:1px solid #f0f4f8;
+  border-right:1px solid #f0f4f8;
+  background:#f8fafc}
+.spiffy2{
+  margin-left:1px;
+  margin-right:1px;
+  padding-right:1px;
+  padding-left:1px;
+  border-left:1px solid #e7edf4;
+  border-right:1px solid #e7edf4;
+  background:#fafbfc}
+.spiffy3{
+  margin-left:1px;
+  margin-right:1px;
+  border-left:1px solid #fafbfc;
+  border-right:1px solid #fafbfc;}
+.spiffy4{
+  border-left:1px solid #f0f4f8;
+  border-right:1px solid #f0f4f8}
+.spiffy5{
+  border-left:1px solid #f8fafc;
+  border-right:1px solid #f8fafc}
+.spiffyfg{
+  background:#ffffff}

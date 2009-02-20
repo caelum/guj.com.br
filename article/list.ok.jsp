@@ -4,7 +4,6 @@
 <%@ include file="../header.jsp" %>
 
 <div class="articles box rounded intern">
-<%@ include file="../box.jsp" %>
   <h2><a href="#">Artigos</a></h2>
   
   <ul>
@@ -31,7 +30,5 @@
   </ul>
   
 </div>
-
-
 
 <%@ include file="../footer.jsp" %>

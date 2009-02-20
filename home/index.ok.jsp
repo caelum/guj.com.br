@@ -5,19 +5,35 @@
 
   <div id="content">
   	<div id="home">
-	<div class="forum box rounded">
-	  <h2>
-	    <a href="<c:url value="/forums/list.java"/>">Forum - &Uacute;ltimas mensagens</a>
-	  </h2>
-	  <ul>
-	  	<c:forEach items="${forum}" var="topic">
-	  		<li>
-	  			<a href="${topic.link}">${topic.title}</a>
-		      	<span class="autor">por ${topic.creator},
-		      	em <fmt:formatDate pattern="dd/MM/yyyy HH:mm" value="${topic.date}"/></span>
-		    </li>
-  		</c:forEach>
-	  </ul>
+	<div class="forum box">
+		<b class="spiffy">
+		<b class="spiffy1"><b></b></b>
+		<b class="spiffy2"><b></b></b>
+		<b class="spiffy3"></b>
+		<b class="spiffy4"></b>
+		<b class="spiffy5"></b></b>
+		
+		<div class="spiffyfg">
+		  <h2>
+		    <a href="<c:url value="/recentTopics/list.java"/>">Forum - &Uacute;ltimas mensagens</a>
+		  </h2>
+		  <ul>
+		  	<c:forEach items="${forum}" var="topic">
+		  		<li>
+		  			<a href="${topic.link}">${topic.title}</a>
+			      	<span class="autor">por ${topic.creator},
+			      	em <fmt:formatDate pattern="dd/MM/yyyy HH:mm" value="${topic.date}"/></span>
+			    </li>
+	  		</c:forEach>
+		  </ul>
+		</div>
+		
+		<b class="spiffy">
+		<b class="spiffy5"></b>
+		<b class="spiffy4"></b>
+		<b class="spiffy3"></b>
+		<b class="spiffy2"><b></b></b>
+		<b class="spiffy1"><b></b></b></b>
 	</div>
 
 	<div class="news box rounded">
