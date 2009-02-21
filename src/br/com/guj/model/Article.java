@@ -6,8 +6,11 @@ import java.util.regex.Pattern;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.Cache;
@@ -34,6 +37,10 @@ public class Article {
 	private String pdf;
 	private String download;
 	private String author;
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "category_id")
+	private Category category;
 
 	@Column(name = "author_email")
 	private String authorEmail;
@@ -171,5 +178,19 @@ public class Article {
 
 	private String handleCreditsTag(String s) {
 		return s.replaceAll("(?m)<credits>(.*?)</credits>", "<p>$1</b></p>");
+	}
+
+	/**
+	 * @param category the category to set
+	 */
+	public void setCategory(Category category) {
+		this.category = category;
+	}
+
+	/**
+	 * @return the category
+	 */
+	public Category getCategory() {
+		return category;
 	}
 }

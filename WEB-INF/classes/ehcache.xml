@@ -19,6 +19,12 @@
 		eternal="true"
 		overflowToDisk="false"/>
 		
+	<!-- Category -->
+	<cache name="br.com.guj.model.Category"
+		maxElementsInMemory="300"
+		eternal="true"
+		overflowToDisk="false"/>
+		
 	<!-- Home Posts -->
 	<cache name="homePosts"
 		maxElementsInMemory="100"
@@ -32,7 +38,13 @@
 		overflowToDisk="false"/>
 		
 	<!-- Articles -->
-	<cache name="Articles"
+	<cache name="br.com.guj.model.Category.articles"
+		maxElementsInMemory="300"
+		eternal="true"
+		overflowToDisk="false"/>
+		
+	<!-- Categories -->
+	<cache name="Categories"
 		maxElementsInMemory="300"
 		eternal="true"
 		overflowToDisk="false"/>

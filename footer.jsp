@@ -1,7 +1,7 @@
 
 
   <div id="footer">
-  	<p>Apoiado e desenvolvido por <a href="http://www.caelum.com.br">Caelum Cursos Java</a> - Copyright &copy; 2001-2009 <a href="mailto:guj@guj.com.br">GUJ</a></p>
+  	<p>Apoiado e desenvolvido por <a href="http://www.caelum.com.br">Caelum Cursos Java</a> - Copyright &copy; 2002-2009 <a href="mailto:guj@guj.com.br">GUJ</a></p>
   </div>
 <script type="text/javascript">
 var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");

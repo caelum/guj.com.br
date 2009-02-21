@@ -48,7 +48,6 @@ input.botao {
 }
 
 input.campo {
-  margin: 0;
   margin-right: 5px;
   padding: 1px;
   border: none;
@@ -234,6 +233,7 @@ input.selecionado {
 
 #submenu form.login .rounded {
   background: url(../images/guj/input.gif) no-repeat left top;
+  widht: 80px;
 }
 
 #content {
@@ -325,6 +325,15 @@ input.selecionado {
   display: inline;
   vertical-align: top;
   font-size: 12px;
+}
+
+#content .articles .categoryHeader {
+	background-color: #E7E1BA;
+	font-size: 16px;
+}
+
+#content .articles .categoryArticles {
+	margin-left: 30px;
 }
 
 #content .articles .content {

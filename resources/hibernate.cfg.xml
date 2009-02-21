@@ -35,5 +35,6 @@
 		<mapping class="br.com.guj.model.Post"/>
 		<mapping class="br.com.guj.model.Blog"/>
 		<mapping class="br.com.guj.model.Article"/>
+		<mapping class="br.com.guj.model.Category"/>
 	</session-factory>
 </hibernate-configuration>
