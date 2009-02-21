@@ -33,11 +33,8 @@
 <script type="text/javascript">
 $().ready(function() {
 	$("#returnPath").val(document.location);
+	$("table, table th").corners("6px");
 });
-
-window.onload = function () {
-	$("div.rounded").corners("6px");
-}
 </script>
 
 <#if hasCodeBlock>
@@ -77,6 +74,10 @@ window.onload = function () {
 	      <li class="noticias">
 	        <a href="${contextPath}/forums/show/17.java">not&iacute;cias</a>
 	      </li>
+	
+		  <li class="topics">
+	        <a href="${contextPath}/recentTopics/list.java">t&oacute;picos recentes</a>
+	      </li>
 
 	      <!--
 	      <li class="empregos">
@@ -110,9 +111,6 @@ window.onload = function () {
 	          </form>
 			</#if>
 			
-			<img src="${contextPath}/templates/${templateName}/images/icon_mini_recentTopics.gif" alt="[Recent Topics]" />
-			<a id="latest" class="mainmenu" href="${JForumContext.encodeURL("/recentTopics/list")}">T&Oacute;PICOS RECENTES</a> &nbsp;
-		
 			<#if logged>
 				<a id="myprofile" class="mainmenu" href="${JForumContext.encodeURL("/user/edit/${session.userId}")}"><img src="${contextPath}/templates/${templateName}/images/icon_mini_profile.gif" border="0" alt="[Profile]" /> MEUS DADOS</a>&nbsp; 
 				<a id="privatemessages" class="mainmenu" href="${JForumContext.encodeURL("/pm/inbox")}"><img src="${contextPath}/templates/${templateName}/images/icon_mini_message.gif" border="0" alt="[Message]" />

@@ -53,11 +53,11 @@ $().ready(function() {
         <a href="<c:url value="/recentTopics/list.java"/>">t&oacute;picos recentes</a>
       </li>
       
-      
+        <!--
       <li class="empregos">
         <a href="${pageContext.request.contextPath}/jobs">empregos</a>
       </li>
-      <!--
+    
       <li class="blogs">
         <a href="${pageContext.request.contextPath}/posts">blogs</a>
       </li>
