@@ -1,53 +1,21 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
 <head>
-  <script type='text/javascript' src='http://d1.openx.org/spcjs.php?id=5184&amp;target=_blank'></script>
-  <meta http-equiv="content-type" content="text/html;charset=ISO-8859-1" />
-  <title>
-    GUJ - Not&iacute;cias, artigos e o maior f&oacute;rum brasileiro sobre Java
-  </title>
-  <link href="<c:url value="/stylesheets/guj3.css"/>" media="screen" rel="stylesheet" type="text/css" />
-  <link href="<c:url value="/stylesheets/SyntaxHighlighter.css"/>" media="screen" rel="stylesheet" type="text/css" />
-  <!--[if IE]>
-  <link href="<c:url value="/stylesheets/guj3-ie.css"/>" media="screen" rel="stylesheet" type="text/css" />
-  <![endif]-->
-
-	<script src="<c:url value="/javascripts/captcha.js"/>" type="text/javascript"></script>
-	<script src="<c:url value="/javascripts/shCore.js"/>" type="text/javascript"></script>
-	<script src="<c:url value="/javascripts/shBrushJava.js"/>" type="text/javascript"></script>
-    <script type="text/javascript" src="<c:url value="/javascripts/jquery-1.3.1.min.js"/>"></script>
-    <script type="text/javascript" src="/guj3/jquery.dimensions.min"></script>
-    <script type="text/javascript">
-    $().ready(function() {
-		$("#returnPath").val(document.location);
-		
-		var boxHeight = $("#home .forum").innerHeight();
-		var newsHeight = $("#home .news").innerHeight();
-		var articlesHeight = $("#home .articles").innerHeight();
-		
-		if (boxHeight < newsHeight) {
-			boxHeight = newsHeight;
-		}
-		
-		if (boxHeight < articlesHeight) {
-			boxHeight = articlesHeight;
-		}
-		
-		$("#home .forum .spiffyfg").css("height", boxHeight);
-		$("#home .news .spiffyfg").css("height", boxHeight);
-		$("#home .articles .spiffyfg").css("height", boxHeight);
-		
-		boxHeight = $("#home .posts").innerHeight();
-		var infoqHeight = $("#home .infoq").innerHeight();
-		
-		if (boxHeight < infoqHeight) {
-			boxHeight = infoqHeight;
-		}
-		
-		$("#home .posts .spiffyfg").css("height", boxHeight);
-		$("#home .infoq .spiffyfg").css("height", boxHeight);
-	});
-  </script>  
+<script type='text/javascript' src='http://d1.openx.org/spcjs.php?id=5184&amp;target=_blank'></script>
+<meta http-equiv="content-type" content="text/html;charset=ISO-8859-1" />
+<title>GUJ - Not&iacute;cias, artigos e o maior f&oacute;rum brasileiro sobre Java</title>
+<link href="<c:url value="/stylesheets/guj3.css"/>" media="screen" rel="stylesheet" type="text/css" />
+<!--[if IE]>
+<link href="<c:url value="/stylesheets/guj3-ie.css"/>" media="screen" rel="stylesheet" type="text/css" />
+<![endif]-->
+  
+<script type="text/javascript" src="<c:url value="/javascripts/jquery-1.3.1.min.js"/>"></script>
+<script type="text/javascript" src="<c:url value="/javascripts/jquery.dimensions.min.js"/>"></script>
+<script type="text/javascript">
+$().ready(function() {
+	$("#returnPath").val(document.location);
+});
+</script>  
   
 </head>
 
@@ -69,7 +37,7 @@
   <div id="menu">
     <ul>
       <li class="home">
-        <a href="<c:url value="/"/>">home</a>
+        <a href="<c:url value="/home.index.logic"/>">home</a>
       </li>
       <li class="forum">
         <a href="<c:url value="/forums/list.java"/>">f&oacute;rum</a>
@@ -81,10 +49,15 @@
         <a href="<c:url value="/forums/show/17.java"/>">not&iacute;cias</a>
       </li>
       
-      <!--
+      <li class="topics">
+        <a href="<c:url value="/recentTopics/list.java"/>">t&oacute;picos recentes</a>
+      </li>
+      
+      
       <li class="empregos">
         <a href="${pageContext.request.contextPath}/jobs">empregos</a>
       </li>
+      <!--
       <li class="blogs">
         <a href="${pageContext.request.contextPath}/posts">blogs</a>
       </li>

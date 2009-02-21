@@ -2,9 +2,16 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <%@ include file="../header.jsp" %>
+<script type="text/javascript" src="<c:url value="/javascripts/guj.js"/>"></script>
 
-  <div id="content">
-  	<div id="home">
+<script type="text/javascript">
+$().ready(function() {
+	alignHomeBoxes();
+});
+</script>
+
+<div id="content">
+	<div id="home">
 	<div class="forum box">
 		<b class="spiffy"><b class="spiffy1"><b></b></b><b class="spiffy2"><b></b></b><b class="spiffy3"></b><b class="spiffy4"></b><b class="spiffy5"></b></b>
 		<div class="spiffyfg">

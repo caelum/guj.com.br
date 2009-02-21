@@ -2,17 +2,20 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <%@ include file="../header.jsp" %>
+<link href="<c:url value="/stylesheets/SyntaxHighlighter.css"/>" media="screen" rel="stylesheet" type="text/css" />
+<script src="<c:url value="/javascripts/shCore.js"/>" type="text/javascript"></script>
+<script src="<c:url value="/javascripts/shBrushJava.js"/>" type="text/javascript"></script>
 
-  <script type="text/javascript" charset="utf-8">
-    window.onload = function () {
-        dp.SyntaxHighlighter.HighlightAll('code');
-    }
-  </script>
+<script type="text/javascript">
+window.onload = function () {
+	dp.SyntaxHighlighter.HighlightAll('code');
+}
+</script>
 
-<div class="box intern rounded">
-
-<%@ include file="../box.jsp" %>
-
+<div id="content">
+<div class="box">
+<b class="spiffy"><b class="spiffy1"><b></b></b><b class="spiffy2"><b></b></b><b class="spiffy3"></b><b class="spiffy4"></b><b class="spiffy5"></b></b>
+	<div class="spiffyfg inner-content">
   <span class="article">
     <h2><a href="#">${article.title }</a></h2>
   </span>
@@ -70,11 +73,14 @@
       <script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"></script>
       </div>
       
-      <h3>Este artigo está em formato PDF</h3>
+      <h3>Este artigo est&aacute; em formato PDF</h3>
       <a href="${article.pdf }">Para baixar, imprimir ou abrir, basta seguir este link!</a>
     </c:if>
     </span>
   </div>
+  </div>
+	<b class="spiffy"><b class="spiffy5"></b><b class="spiffy4"></b><b class="spiffy3"></b><b class="spiffy2"><b></b></b><b class="spiffy1"><b></b></b></b>
+</div>
 </div>
 
 <%@ include file="../footer.jsp" %>
