@@ -19,18 +19,22 @@ public class HomeLogic {
 
     @SuppressWarnings("unchecked")
     private List<Post> getAllPosts() {
-        return HibernateUtil.getSessionFactory().getCurrentSession().createQuery(
-                "from Post a order by a.date desc").setMaxResults(
-                Config.getIntvalue("posts.home.items")).setCacheable(true).setCacheRegion(
-                "homePosts").list();
+        return HibernateUtil.getSessionFactory().getCurrentSession()
+        	.createQuery("from Post p order by p.date desc")
+            .setMaxResults(Config.getIntvalue("posts.home.items"))
+            .setCacheable(true)
+            .setCacheRegion("homePosts")
+            .list();
     }
 
     @SuppressWarnings("unchecked")
     private List<Article> getAllArticles() {
-        return HibernateUtil.getSessionFactory().getCurrentSession().createQuery(
-                "from Article a order by a.id desc").setMaxResults(
-                Config.getIntvalue("article.home.items")).setCacheable(true).setCacheRegion(
-                "homeArticles").list();
+        return HibernateUtil.getSessionFactory().getCurrentSession()
+        	.createQuery("from Article a order by a.id desc")
+        	.setMaxResults(Config.getIntvalue("article.home.items"))
+        	.setCacheable(true)
+        	.setCacheRegion("homeArticles")
+        	.list();
     }
 
     public void index() {

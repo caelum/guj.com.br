@@ -188,6 +188,15 @@ input.selecionado {
   overflow: hidden;
 }
 
+#submenu a:link, #submenu a:visited {
+	color: #333;
+	font-size: 13px;
+}
+
+#submenu a:hover {
+	text-decoration: underline;
+}
+
 #submenu .container1 {
   background: transparent url(../images/guj/submenu_inferior_esquerdo.gif) no-repeat bottom left;
 }
@@ -206,15 +215,16 @@ input.selecionado {
 	background: url('../images/menutopo-separador.png') right no-repeat;
 	display: inline;
 	float: left;
-  list-style-type: none;
+  	list-style-type: none;
 	margin: 0px;
 	padding-right: 7px;
 	padding-left: 5px;
-	}
-	#submenu .container2 li:last-child, #submenu .container2 li.last-child {
-		background: none;
-		padding-right: 0;
-	}
+}
+
+#submenu .container2 li:last-child, #submenu .container2 li.last-child {
+	background: none;
+	padding-right: 0;
+}
 
 #submenu .notice {
   display: block;
@@ -233,7 +243,6 @@ input.selecionado {
 
 #submenu form.login .rounded {
   background: url(../images/guj/input.gif) no-repeat left top;
-  widht: 80px;
 }
 
 #content {

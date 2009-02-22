@@ -4,13 +4,13 @@
 <script type='text/javascript' src='http://d1.openx.org/spcjs.php?id=5184&amp;target=_blank'></script>
 <meta http-equiv="content-type" content="text/html;charset=ISO-8859-1" />
 <title>GUJ - Not&iacute;cias, artigos e o maior f&oacute;rum brasileiro sobre Java</title>
-<link href="<c:url value="/stylesheets/guj3.css"/>" media="screen" rel="stylesheet" type="text/css" />
+<link href="<c:url value="/stylesheets/guj3.css?20090222"/>" media="screen" rel="stylesheet" type="text/css" />
 <!--[if IE]>
-<link href="<c:url value="/stylesheets/guj3-ie.css"/>" media="screen" rel="stylesheet" type="text/css" />
+<link href="<c:url value="/stylesheets/guj3-ie.css?20090222"/>" media="screen" rel="stylesheet" type="text/css" />
 <![endif]-->
   
-<script type="text/javascript" src="<c:url value="/javascripts/jquery-1.3.1.min.js"/>"></script>
-<script type="text/javascript" src="<c:url value="/javascripts/jquery.dimensions.min.js"/>"></script>
+<script type="text/javascript" src="<c:url value="/javascripts/jquery-1.3.1.min.js?20090222"/>"></script>
+<script type="text/javascript" src="<c:url value="/javascripts/jquery.dimensions.min.js?20090222"/>"></script>
 <script type="text/javascript">
 $().ready(function() {
 	$("#returnPath").val(document.location);
@@ -77,9 +77,6 @@ $().ready(function() {
           
       	<c:choose>
       		<c:when test="${logged}">
-              <a id="latest" class="mainmenu" href="<c:url value="/recentTopics/list.java"/>"><img src="<c:url value="/templates/default/images/icon_mini_recentTopics.gif"/>" alt="[Recent Topics]" border="0"/>
-                T&Oacute;PICOS RECENTES
-              </a> &nbsp;
 	      	  <a id="myprofile" class="mainmenu" href="<c:url value="/user/edit/${userSession.userId}.java"/>"><img src="<c:url value="/templates/default/images/icon_mini_profile.gif"/>" border="0" alt="[Profile]" /> MEUS DADOS</a>&nbsp; 
               <a id="privatemessages" class="mainmenu" href="<c:url value="/pm/inbox.java"/>"><img src="<c:url value="/templates/default/images/icon_mini_message.gif"/>" border="0" alt="[Message]" />
                 MENSAGENS PRIVADAS (${userSession.privateMessages})
@@ -94,7 +91,7 @@ $().ready(function() {
 	      		<a href="<c:url value="/user/logout.java"/>"><img src="<c:url value="/templates/default/images/icon_mini_login.gif"/>" border="0" alt="Logout" /> LOGOUT</a> 
       		</c:when>
       		<c:otherwise>
-	      		Bem vindo ao GUJ. <a href="<c:url value="/user/insert.java"/>">Crie seu login</a>, 
+	      		Bem vindo ao GUJ. <a href="<c:url value="/user/insert.java"/>" style="color: #4382B0;">Crie seu login</a>, 
 	          	ou digite-o para logar no site.
               
 	          	<form class="login" action="<c:url value="/jforum.java?module=user&action=validateLogin"/>" method="POST">

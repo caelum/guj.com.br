@@ -21,13 +21,13 @@
 <meta http-equiv="Pragma" content="no-cache" />
 <meta http-equiv="Expires" content="-1" />
 <script type='text/javascript' src='http://d1.openx.org/spcjs.php?id=5184&amp;target=_blank'></script>
-<link href="${contextPath}/stylesheets/guj3.css" media="screen" rel="stylesheet" type="text/css" />
+<link href="${contextPath}/stylesheets/guj3.css?${startupTime}" media="screen" rel="stylesheet" type="text/css" />
 <style type="text/css">@import url( ${contextPath}/templates/${templateName}/styles/style.css?${startupTime} );</style>
 <style type="text/css">@import url( ${contextPath}/templates/${templateName}/styles/${language}.css?${startupTime} );</style>
-<script type="text/javascript" src="${contextPath}/javascripts/jquery-1.3.1.min.js"></script>
-<script type="text/javascript" src="${contextPath}/javascripts/jquery.corners.min.js"></script>
+<script type="text/javascript" src="${contextPath}/javascripts/jquery-1.3.1.min.js?${startupTime}"></script>
+<script type="text/javascript" src="${contextPath}/javascripts/jquery.corners.min.js?${startupTime}"></script>
 <!--[if IE]>
-<link href="${contextPath}/stylesheets/guj3-ie.css" media="screen" rel="stylesheet" type="text/css" />
+<link href="${contextPath}/stylesheets/guj3-ie.css?${startupTime}" media="screen" rel="stylesheet" type="text/css" />
 <![endif]-->
   
 <script type="text/javascript">
@@ -103,7 +103,7 @@ $().ready(function() {
 	<div class="container1">
 		<div class="container2">
 			<#if !logged && !sso>
-			  Bem-vindo ao GUJ. <a href="${JForumContext.encodeURL("/user/insert")}">Crie seu login</a>, 
+			  Bem-vindo ao GUJ. <a href="${JForumContext.encodeURL("/user/insert")}" style="color: #4382B0;">Crie seu login</a>, 
 	          ou digite-o para logar no site.
 
 	          <form class="login" action="${contextPath}/jforum.java?module=user&action=validateLogin" method="POST">

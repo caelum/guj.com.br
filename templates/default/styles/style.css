@@ -116,9 +116,6 @@ a.copyright:hover { color: #000000; text-decoration: underline; }
 input, textarea, select { border: 1px solid #ccc; font: 11px verdana, arial, helvetica, sans-serif; color: #000000; }
 textarea { width: 100%; }
 input { text-indent: 2px; }
-input {
-       border: expression((this.type=="checkbox" || this.type=="radio") ? "none": "1px solid #ccc");
-}
 
 input.button, input.mainoption, input.liteoption, .inlineedit input { 
 	font-size: 11px; 

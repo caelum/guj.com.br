@@ -27,9 +27,8 @@
 }
 
 #submenu {
-vertical-align: middle;
-    padding-top:20px;
-  line-height:20px;
+	vertical-align: middle;
+    padding-top:10px;
 }
 
 #content .box ul li {

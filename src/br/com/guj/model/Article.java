@@ -156,7 +156,7 @@ public class Article {
 	}
 
 	private String nl2br(String s) {
-		s = s.replaceAll("code>", "java>").replaceAll("\n", "<br/>");
+		s = s.replaceAll("code>", "java>");
 		Pattern p = Pattern.compile("(?m)<java>(.*?)<br/>(.*?)</java>");
 		Matcher m = p.matcher(s);
 
