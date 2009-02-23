@@ -43,13 +43,18 @@ public class GUJServlet extends VRaptorServlet {
         infoqTimer.scheduleAtFixedRate(new TimerTask() {
             @Override
             public void run() {
-                forum = new ArrayList<ItemIF>(FeedReader.read(Config.getValue("forum.url")));
+            	try {
+	                forum = new ArrayList<ItemIF>(FeedReader.read(Config.getValue("forum.url")));
 
-                int max = Config.getIntvalue("forum.items");
+	                int max = Config.getIntvalue("forum.items");
 
-                if (forum.size() > max) {
-                    forum = forum.subList(0, max);
-                }
+	                if (forum.size() > max) {
+	                    forum = forum.subList(0, max);
+	                }
+            	}
+            	catch (Exception e) {
+            		e.printStackTrace();
+            	}
             }
         }, new Date(), interval);
     }
@@ -61,13 +66,18 @@ public class GUJServlet extends VRaptorServlet {
         infoqTimer.scheduleAtFixedRate(new TimerTask() {
             @Override
             public void run() {
-                news = new ArrayList<ItemIF>(FeedReader.read(Config.getValue("news.url")));
+            	try {
+	                news = new ArrayList<ItemIF>(FeedReader.read(Config.getValue("news.url")));
 
-                int max = Config.getIntvalue("news.items");
+	                int max = Config.getIntvalue("news.items");
 
-                if (news.size() > max) {
-                    news = news.subList(0, max);
-                }
+	                if (news.size() > max) {
+	                    news = news.subList(0, max);
+	                }
+            	}
+            	catch (Exception e) {
+            		e.printStackTrace();
+            	}
             }
         }, new Date(), interval);
     }
@@ -79,13 +89,18 @@ public class GUJServlet extends VRaptorServlet {
         infoqTimer.scheduleAtFixedRate(new TimerTask() {
             @Override
             public void run() {
-                infoq = new ArrayList<ItemIF>(FeedReader.read(Config.getValue("infoq.url")));
+            	try {
+	                infoq = new ArrayList<ItemIF>(FeedReader.read(Config.getValue("infoq.url")));
 
-                int max = Config.getIntvalue("infoq.items");
+	                int max = Config.getIntvalue("infoq.items");
 
-                if (infoq.size() > max) {
-                    infoq = infoq.subList(0, max);
-                }
+	                if (infoq.size() > max) {
+	                    infoq = infoq.subList(0, max);
+	                }
+            	}
+            	catch (Exception e) {
+            		e.printStackTrace();
+            	}
             }
         }, new Date(), infoqInterval);
     }

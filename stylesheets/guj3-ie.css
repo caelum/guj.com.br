@@ -1,3 +1,6 @@
+#menu ul li {
+	font-size: 17px;
+}
 
 #content #home .forum {
   width: 32%;
@@ -24,13 +27,8 @@
 }
 
 #submenu {
-vertical-align: middle;
-    padding-top:20px;
-  line-height:20px;
-}
-
-input.campo {
-  width: 90px;
+	vertical-align: middle;
+    padding-top:10px;
 }
 
 #content .box ul li {

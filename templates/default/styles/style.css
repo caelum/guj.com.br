@@ -1,11 +1,11 @@
-body { color: #000; }
+body { color: #333333; }
 img { border: 0px; }
 font, th, td, p { font-family: verdana, arial, helvetica, sans-serif; }
 
 /* Links */
-a:link { color: #01336b; text-decoration: none; }
-a:active { color: #01336b }
-a:visited { color: #01336b; text-decoration: none; }
+a:link { color: #4382b0; text-decoration: none; }
+a:active { color: #01336b; }
+a:visited { color: #4382b0; text-decoration: none; }
 a:hover { color: #dd6900; text-decoration: underline; }
 
 hr { border: #dfdfdf 1px solid; height: 0px }
@@ -25,7 +25,7 @@ td.row3announce { background-color: #d1d7dc; }
 td.row3sticky { background-color: #d1d7dc; }
 td.rowpic { background-image:  url(../images/cellpic2.jpg); background-repeat: repeat-y; background-color: #ffffff }
 
-th { font-weight: bold; font-size: 11px; background-image:  url(../images/cellpic3.gif); color: #ffa34f; height: 25px; background-color: #01336b }
+th { font-weight: bold; font-size: 12px; background-image:  url(../images/cellpic3.gif); color: #fff; height: 25px; background-color: #01336b }
 td.cat { border-right: #ffffff solid; border-top: #ffffff solid; background-image:  url(../images/cellpic1.gif); border-left: #ffffff solid; border-bottom: #ffffff solid; height: 28px; background-color: #dfdfdf }
 td.cathead { border-right: #ffffff solid; border-top: #ffffff solid; background-image:  url(../images/cellpic1.gif); border-left: #ffffff solid; border-bottom: #ffffff solid; height: 28px; background-color: #dfdfdf }
 td.catsides { border-right: #ffffff solid; border-top: #ffffff solid; background-image:  url(../images/cellpic1.gif); border-left: #ffffff solid; border-bottom: #ffffff solid; height: 28px; background-color: #dfdfdf }
@@ -116,9 +116,6 @@ a.copyright:hover { color: #000000; text-decoration: underline; }
 input, textarea, select { border: 1px solid #ccc; font: 11px verdana, arial, helvetica, sans-serif; color: #000000; }
 textarea { width: 100%; }
 input { text-indent: 2px; }
-input {
-       border: expression((this.type=="checkbox" || this.type=="radio") ? "none": "1px solid #ccc");
-}
 
 input.button, input.mainoption, input.liteoption, .inlineedit input { 
 	font-size: 11px; 

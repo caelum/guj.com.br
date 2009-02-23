@@ -21,23 +21,23 @@
 <meta http-equiv="Pragma" content="no-cache" />
 <meta http-equiv="Expires" content="-1" />
 <script type='text/javascript' src='http://d1.openx.org/spcjs.php?id=5184&amp;target=_blank'></script>
-<link href="${contextPath}/stylesheets/guj3.css" media="screen" rel="stylesheet" type="text/css" />
+<link href="${contextPath}/stylesheets/guj3.css?${startupTime}" media="screen" rel="stylesheet" type="text/css" />
 <style type="text/css">@import url( ${contextPath}/templates/${templateName}/styles/style.css?${startupTime} );</style>
 <style type="text/css">@import url( ${contextPath}/templates/${templateName}/styles/${language}.css?${startupTime} );</style>
-<script type="text/javascript" src="${contextPath}/javascripts/jquery-1.3.1.min.js"></script>
-<script type="text/javascript" src="${contextPath}/javascripts/jquery.corners.min.js"></script>
+<script type="text/javascript" src="${contextPath}/javascripts/jquery-1.3.1.min.js?${startupTime}"></script>
+<script type="text/javascript" src="${contextPath}/javascripts/jquery.corners.min.js?${startupTime}"></script>
 <!--[if IE]>
-  <link href="<c:url value="/stylesheets/guj3-ie.css"/>" media="screen" rel="stylesheet" type="text/css" />
+<link href="${contextPath}/stylesheets/guj3-ie.css?${startupTime}" media="screen" rel="stylesheet" type="text/css" />
 <![endif]-->
   
 <script type="text/javascript">
 $().ready(function() {
 	$("#returnPath").val(document.location);
+	
+	if (!$.browser.msie) {
+		$("table, table th").corners("6px");
+	}
 });
-
-window.onload = function () {
-	$("div.rounded").corners("6px");
-}
 </script>
 
 <#if hasCodeBlock>
@@ -57,7 +57,7 @@ window.onload = function () {
 				// ]]> --></script>
 	    	</div>
 	      <div class="container2">
-	        <h1>GUJ</h1>
+	        <a href="${contextPath}/home.index.logic" id="logo">GUJ</a>
 	        <h2>Not&iacute;cias, artigos e o maior f&oacute;rum brasileiro sobre Java</h2>
 	      </div>
 	    </div>
@@ -76,6 +76,10 @@ window.onload = function () {
 	      </li>
 	      <li class="noticias">
 	        <a href="${contextPath}/forums/show/17.java">not&iacute;cias</a>
+	      </li>
+	
+		  <li class="topics">
+	        <a href="${contextPath}/recentTopics/list.java">t&oacute;picos recentes</a>
 	      </li>
 
 	      <!--
@@ -99,20 +103,17 @@ window.onload = function () {
 	<div class="container1">
 		<div class="container2">
 			<#if !logged && !sso>
-			  Bem-vindo ao GUJ. <a href="${JForumContext.encodeURL("/user/insert")}">Crie seu login</a>, 
+			  Bem-vindo ao GUJ. <a href="${JForumContext.encodeURL("/user/insert")}" style="color: #4382B0;">Crie seu login</a>, 
 	          ou digite-o para logar no site.
 
 	          <form class="login" action="${contextPath}/jforum.java?module=user&action=validateLogin" method="POST">
 	            <input type="hidden" name="returnPath" id="returnPath" value="" />
-	            Usuário: <input class="campo rounded" size="8" name="username" tabindex="3" />
-				Senha: <input class="campo rounded" type="text" size="8" name="password" tabindex="4" />
+	            Usu&aacute;rio: <input class="campo rounded" name="username" size="8" tabindex="3" />
+				Senha: <input class="campo rounded" style="border: 0px;" type="password" size="8" name="password" tabindex="4" />
 	            <input type="image" class="botao" style="border: 0px;" src="${contextPath}/images/guj/botao_entrar.gif" tabindex="5" name="login" value="Login">
 	          </form>
 			</#if>
 			
-			<img src="${contextPath}/templates/${templateName}/images/icon_mini_recentTopics.gif" alt="[Recent Topics]" />
-			<a id="latest" class="mainmenu" href="${JForumContext.encodeURL("/recentTopics/list")}">T&Oacute;PICOS RECENTES</a> &nbsp;
-		
 			<#if logged>
 				<a id="myprofile" class="mainmenu" href="${JForumContext.encodeURL("/user/edit/${session.userId}")}"><img src="${contextPath}/templates/${templateName}/images/icon_mini_profile.gif" border="0" alt="[Profile]" /> MEUS DADOS</a>&nbsp; 
 				<a id="privatemessages" class="mainmenu" href="${JForumContext.encodeURL("/pm/inbox")}"><img src="${contextPath}/templates/${templateName}/images/icon_mini_message.gif" border="0" alt="[Message]" />

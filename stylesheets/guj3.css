@@ -2,7 +2,7 @@
 body {
   margin: 0 auto;
   padding: 0;
-  background: #fdfefe;
+  background: #e5ecf3;
   font-family: "Trebuchet MS", Tahoma, Arial, Serif;
   font-size: 15px;
   color: #333333;
@@ -48,7 +48,6 @@ input.botao {
 }
 
 input.campo {
-  margin: 0;
   margin-right: 5px;
   padding: 1px;
   border: none;
@@ -63,14 +62,16 @@ input.selecionado {
 #header {
   margin: 0;
   padding: 0;
-  background: #fdfefe url(../images/guj/header_background.gif) repeat-x;
+  background-color: #3a77a6;
 }
 
-#header h1 {
-  margin: 0;
-  padding: 0;
+#logo {
+  margin: 0 20;
+  padding-top: 0;
   background: transparent url(../images/guj/logo.gif) no-repeat 15px 10px;
   height: 70px;
+  width: 270px;
+  display: block;
   text-indent: -9999px;
 }
 
@@ -94,7 +95,8 @@ input.selecionado {
 	clear: both;
 	margin: 0;
 	padding: 0;
-	background: #fdfefe url(../images/guj/rodape_background.gif) repeat-x;
+	background-color: #f4f4e6;
+	height: 46px;
 }
 
 #footer p {
@@ -127,7 +129,7 @@ input.selecionado {
   vertical-align: middle;
   line-height: 38px;
   margin: 0 0 0 25px;
-  padding: 0 10px 0 22px;
+  padding: 0 0 0 20px;
   color: #fff;
   font-variant: small-caps;
   font-size: 18px;
@@ -142,15 +144,19 @@ input.selecionado {
 }
 
 #menu ul li.forum {
-  background: transparent url(../images/guj/comment.gif) no-repeat center left;
+  background: transparent url(../images/guj/comment_menu.gif) no-repeat center left;
 }
 
 #menu ul li.artigos {
-  background: transparent url(../images/guj/layout_edit.gif) no-repeat center left;
+  background: transparent url(../images/guj/layout_edit_header.gif) no-repeat center left;
 }
 
 #menu ul li.noticias {
-  background: transparent url(../images/guj/book_open.gif) no-repeat center left;
+  background: transparent url(../images/guj/book_open_header.gif) no-repeat center left;
+}
+
+#menu ul li.topics {
+  background: transparent url(../images/guj/recent_topics.gif) no-repeat center left;
 }
 
 #menu ul li.empregos {
@@ -169,7 +175,7 @@ input.selecionado {
 #menu form.busca input.campo {
   background: #fff url(../images/guj/zoom.gif) no-repeat 2px 1px;
   padding-left: 19px;
-  width: 120px;
+  width: 150px;
 }
 
 #submenu {
@@ -180,6 +186,15 @@ input.selecionado {
   font-size: 13px;
   line-height: 40px;
   overflow: hidden;
+}
+
+#submenu a:link, #submenu a:visited {
+	color: #333;
+	font-size: 13px;
+}
+
+#submenu a:hover {
+	text-decoration: underline;
 }
 
 #submenu .container1 {
@@ -200,15 +215,16 @@ input.selecionado {
 	background: url('../images/menutopo-separador.png') right no-repeat;
 	display: inline;
 	float: left;
-  list-style-type: none;
+  	list-style-type: none;
 	margin: 0px;
 	padding-right: 7px;
 	padding-left: 5px;
-	}
-	#submenu .container2 li:last-child, #submenu .container2 li.last-child {
-		background: none;
-		padding-right: 0;
-	}
+}
+
+#submenu .container2 li:last-child, #submenu .container2 li.last-child {
+	background: none;
+	padding-right: 0;
+}
 
 #submenu .notice {
   display: block;
@@ -238,7 +254,6 @@ input.selecionado {
 }
 
 #content .box {
-  background: transparent url(../images/guj/box_gradient.gif) repeat-x top;
   margin: 0 0 20px 0;
   font-size: 0.9em;
 }
@@ -285,7 +300,7 @@ input.selecionado {
 }
 
 #content .infoq ul li {
-  list-style-image: url(../images/bullet_ball_blue.png);
+  list-style-image: url(../images/guj/bullet_ball_blue.gif);
 }
 
 #content #home .news {
@@ -319,6 +334,15 @@ input.selecionado {
   display: inline;
   vertical-align: top;
   font-size: 12px;
+}
+
+#content .articles .categoryHeader {
+	background-color: #E7E1BA;
+	font-size: 16px;
+}
+
+#content .articles .categoryArticles {
+	margin-left: 30px;
 }
 
 #content .articles .content {
@@ -504,3 +528,44 @@ input.selecionado {
 	background-color:lightyellow;
 	border:1px solid #DD6900;;
 }
+
+/* Rounded corners */
+.spiffy{display:block}
+.spiffy *{
+  display:block;
+  height:1px;
+  overflow:hidden;
+  font-size:.01em;
+  background:#ffffff}
+.spiffy1{
+  margin-left:3px;
+  margin-right:3px;
+  padding-left:1px;
+  padding-right:1px;
+  border-left:1px solid #f0f4f8;
+  border-right:1px solid #f0f4f8;
+  background:#f8fafc}
+.spiffy2{
+  margin-left:1px;
+  margin-right:1px;
+  padding-right:1px;
+  padding-left:1px;
+  border-left:1px solid #e7edf4;
+  border-right:1px solid #e7edf4;
+  background:#fafbfc}
+.spiffy3{
+  margin-left:1px;
+  margin-right:1px;
+  border-left:1px solid #fafbfc;
+  border-right:1px solid #fafbfc;}
+.spiffy4{
+  border-left:1px solid #f0f4f8;
+  border-right:1px solid #f0f4f8}
+.spiffy5{
+  border-left:1px solid #f8fafc;
+  border-right:1px solid #f8fafc}
+.spiffyfg{
+  background:#ffffff
+ }
+ 
+ .inner-content { padding: 10px; }

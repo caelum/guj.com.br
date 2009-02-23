@@ -1,31 +1,21 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
 <head>
-  <script type='text/javascript' src='http://d1.openx.org/spcjs.php?id=5184&amp;target=_blank'></script>
-  <meta http-equiv="content-type" content="text/html;charset=ISO-8859-1" />
-  <title>
-    GUJ - Not&iacute;cias, artigos e o maior f&oacute;rum brasileiro sobre Java
-  </title>
-  <link href="<c:url value="/stylesheets/guj3.css"/>" media="screen" rel="stylesheet" type="text/css" />
-  <link href="<c:url value="/stylesheets/SyntaxHighlighter.css"/>" media="screen" rel="stylesheet" type="text/css" />
-  <!--[if IE]>
-  <link href="<c:url value="/stylesheets/guj3-ie.css"/>" media="screen" rel="stylesheet" type="text/css" />
-  <![endif]-->
-
-	<script src="<c:url value="/javascripts/captcha.js"/>" type="text/javascript"></script>
-	<script src="<c:url value="/javascripts/shCore.js"/>" type="text/javascript"></script>
-	<script src="<c:url value="/javascripts/shBrushJava.js"/>" type="text/javascript"></script>
-    <script type="text/javascript" src="<c:url value="/javascripts/jquery-1.3.1.min.js"/>"></script>
-	<script type="text/javascript" src="<c:url value="/javascripts/jquery.corners.min.js"/>"></script>
-    <script type="text/javascript">
-    $().ready(function() {
-		$("#returnPath").val(document.location);
-	});
-
-	window.onload = function () {
-		$("div.rounded").corners("6px");
-	}
-  </script>  
+<script type='text/javascript' src='http://d1.openx.org/spcjs.php?id=5184&amp;target=_blank'></script>
+<meta http-equiv="content-type" content="text/html;charset=ISO-8859-1" />
+<title>GUJ - Not&iacute;cias, artigos e o maior f&oacute;rum brasileiro sobre Java</title>
+<link href="<c:url value="/stylesheets/guj3.css?20090222"/>" media="screen" rel="stylesheet" type="text/css" />
+<!--[if IE]>
+<link href="<c:url value="/stylesheets/guj3-ie.css?20090222"/>" media="screen" rel="stylesheet" type="text/css" />
+<![endif]-->
+  
+<script type="text/javascript" src="<c:url value="/javascripts/jquery-1.3.1.min.js?20090222"/>"></script>
+<script type="text/javascript" src="<c:url value="/javascripts/jquery.dimensions.min.js?20090222"/>"></script>
+<script type="text/javascript">
+$().ready(function() {
+	$("#returnPath").val(document.location);
+});
+</script>  
   
 </head>
 
@@ -38,7 +28,7 @@
 			// ]]> --></script>
     	</div>
       <div class="container2">
-        <h1>GUJ</h1>
+        <a href="<c:url value="/home.index.logic"/>" id="logo">GUJ</a>
         <h2>Not&iacute;cias, artigos e o maior f&oacute;rum brasileiro sobre Java</h2></a>
       </div>
     </div>
@@ -47,7 +37,7 @@
   <div id="menu">
     <ul>
       <li class="home">
-        <a href="<c:url value="/"/>">home</a>
+        <a href="<c:url value="/home.index.logic"/>">home</a>
       </li>
       <li class="forum">
         <a href="<c:url value="/forums/list.java"/>">f&oacute;rum</a>
@@ -59,10 +49,15 @@
         <a href="<c:url value="/forums/show/17.java"/>">not&iacute;cias</a>
       </li>
       
-      <!--
+      <li class="topics">
+        <a href="<c:url value="/recentTopics/list.java"/>">t&oacute;picos recentes</a>
+      </li>
+      
+        <!--
       <li class="empregos">
         <a href="${pageContext.request.contextPath}/jobs">empregos</a>
       </li>
+    
       <li class="blogs">
         <a href="${pageContext.request.contextPath}/posts">blogs</a>
       </li>
@@ -82,11 +77,8 @@
           
       	<c:choose>
       		<c:when test="${logged}">
-              <a id="latest" class="mainmenu" href="<c:url value="/recentTopics/list"/>"><img src="<c:url value="/templates/default/images/icon_mini_recentTopics.gif"/>" alt="[Recent Topics]" border="0"/>
-                T&Oacute;PICOS RECENTES
-              </a> &nbsp;
 	      	  <a id="myprofile" class="mainmenu" href="<c:url value="/user/edit/${userSession.userId}.java"/>"><img src="<c:url value="/templates/default/images/icon_mini_profile.gif"/>" border="0" alt="[Profile]" /> MEUS DADOS</a>&nbsp; 
-              <a id="privatemessages" class="mainmenu" href="<c:url value="/pm/inbox"/>"><img src="<c:url value="/templates/default/images/icon_mini_message.gif"/>" border="0" alt="[Message]" />
+              <a id="privatemessages" class="mainmenu" href="<c:url value="/pm/inbox.java"/>"><img src="<c:url value="/templates/default/images/icon_mini_message.gif"/>" border="0" alt="[Message]" />
                 MENSAGENS PRIVADAS (${userSession.privateMessages})
               </a>&nbsp;
               <a id="mymessages" class="mainmenu" href="<c:url value="/posts/listByUser/${userSession.userId}.java"/>"><img src="<c:url value="/templates/default/images/icon_mini_message.gif"/>" border="0" alt="Minhas Mensagens" />
@@ -99,12 +91,12 @@
 	      		<a href="<c:url value="/user/logout.java"/>"><img src="<c:url value="/templates/default/images/icon_mini_login.gif"/>" border="0" alt="Logout" /> LOGOUT</a> 
       		</c:when>
       		<c:otherwise>
-	      		Bem vindo ao GUJ. <a href="<c:url value="/user/insert.java"/>">Crie seu login</a>, 
+	      		Bem vindo ao GUJ. <a href="<c:url value="/user/insert.java"/>" style="color: #4382B0;">Crie seu login</a>, 
 	          	ou digite-o para logar no site.
               
 	          	<form class="login" action="<c:url value="/jforum.java?module=user&action=validateLogin"/>" method="POST">
                     <input type="hidden" name="returnPath" id="returnPath"/>
-	            	Usuário: <input class="campo rounded" size="8" name="username" tabindex="3" />
+	            	Usu&aacute;rio: <input class="campo rounded" size="8" name="username" tabindex="3" />
 					Senha: <input class="campo rounded" type="password" size="8" name="password" tabindex="4"/>
 	            	<input type="image" class="botao" src="<c:url value="/images/guj/botao_entrar.gif"/>" tabindex="5" name="login" value="Login">
 	          	</form>
