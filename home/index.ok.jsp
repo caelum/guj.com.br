@@ -58,7 +58,7 @@ $().ready(function() {
 			  <ul>
 		    	<c:forEach items="${articles}" var="article">
 					<li>
-						<h3><a href="<c:url value="/article/show?id=${article.id}"/>">${article.title}</a></h3>
+						<h3><a href="<c:url value="/article.show.logic?id=${article.id}"/>">${article.title}</a></h3>
 				      	<span class="content">
 				      		<c:choose>
 				      			<c:when test="${article.subtitle.length$0 > 200}">

@@ -8,7 +8,6 @@
 <!--[if IE]>
 <link href="<c:url value="/stylesheets/guj3-ie.css?20090222"/>" media="screen" rel="stylesheet" type="text/css" />
 <![endif]-->
-  
 <script type="text/javascript" src="<c:url value="/javascripts/jquery-1.3.1.min.js?20090222"/>"></script>
 <script type="text/javascript" src="<c:url value="/javascripts/jquery.dimensions.min.js?20090222"/>"></script>
 <script type="text/javascript">
@@ -16,16 +15,13 @@ $().ready(function() {
 	$("#returnPath").val(document.location);
 });
 </script>  
-  
 </head>
 
 <body>
   <div id="header">
     <div class="container1">
     	<div id="banner">
-			<script type='text/javascript'><!--// <![CDATA[
-			    OA_show(18786);
-			// ]]> --></script>
+			<script type='text/javascript'>OA_show(18786);</script>
     	</div>
       <div class="container2">
         <a href="<c:url value="/home.index.logic"/>" id="logo">GUJ</a>
@@ -52,12 +48,12 @@ $().ready(function() {
       <li class="topics">
         <a href="<c:url value="/recentTopics/list.java"/>">t&oacute;picos recentes</a>
       </li>
-      
-        <!--
+        
       <li class="empregos">
-        <a href="${pageContext.request.contextPath}/jobs">empregos</a>
+		<a href="<c:url value="/jobs.list.logic"/>">empregos</a>
       </li>
     
+    	<!--
       <li class="blogs">
         <a href="${pageContext.request.contextPath}/posts">blogs</a>
       </li>
