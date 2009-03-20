@@ -1,7 +1,41 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
 <head>
+<!--
 <script type='text/javascript' src='http://d1.openx.org/spcjs.php?id=5184&amp;target=_blank'></script>
+-->
+<!-- OAS SETUP begin -->
+<SCRIPT LANGUAGE=JavaScript>
+//configuration
+OAS_url = 'http://media.realmedia.com.br/RealMedia/ads/';
+OAS_listpos = 'Top,Right,x01,x04';
+OAS_query = '';
+OAS_sitepage = 'guj/home';
+//end of configuration
+OAS_version = 10;
+OAS_rn = '001234567890'; OAS_rns = '1234567890';
+OAS_rn = new String (Math.random()); OAS_rns = OAS_rn.substring (2, 11);
+function OAS_NORMAL(pos) {
+	document.write('<A HREF="' + OAS_url + 'click_nx.ads/' + OAS_sitepage + '/1' + OAS_rns + '@' + OAS_listpos + '!' + pos + OAS_query + '" TARGET=_top>');
+	document.write('<IMG SRC="' + OAS_url + 'adstream_nx.ads/' + OAS_sitepage + '/1' + OAS_rns + '@' + OAS_listpos + '!' + pos + OAS_query + '" BORDER=0></A>');
+}
+</SCRIPT>
+<SCRIPT LANGUAGE="JavaScript">
+OAS_version = 11;
+if (navigator.userAgent.indexOf('Mozilla/3') != -1)
+OAS_version = 10;
+if (OAS_version >= 11)
+document.write('<SCR'+ 'IPT LANGUAGE=JavaScript1.1 SRC="' + OAS_url + 'adstream_mjx.ads/' + OAS_sitepage + '/1' + OAS_rns + '@' + OAS_listpos + OAS_query + '"></SC'+'RIPT>');
+</SCRIPT><SCRIPT LANGUAGE="JavaScript">
+document.write('')
+function OAS_AD(pos) {
+if (OAS_version >= 11)
+	OAS_RICH(pos);
+else
+	OAS_NORMAL(pos);
+}
+</SCRIPT>
+<!-- OAS SETUP end -->
 <meta http-equiv="content-type" content="text/html;charset=ISO-8859-1" />
 <title>GUJ - Not&iacute;cias, artigos e o maior f&oacute;rum brasileiro sobre Java</title>
 <link href="<c:url value="/stylesheets/guj3.css?20090222"/>" media="screen" rel="stylesheet" type="text/css" />
@@ -21,7 +55,13 @@ $().ready(function() {
   <div id="header">
     <div class="container1">
     	<div id="banner">
-			<script type='text/javascript'>OA_show(18786);</script>
+			<!--<script type='text/javascript'>OA_show(18786);</script>-->
+			
+			<c:if test="${logged && userSession.username == 'Rafael Steil'}">
+				<!-- OAS AD 'Top' begin -->
+				<SCRIPT LANGUAGE="JavaScript">OAS_AD('Top');</SCRIPT>
+				<!-- OAS AD 'Top' end -->
+			</c:if>
     	</div>
       <div class="container2">
         <a href="<c:url value="/home.index.logic"/>" id="logo">GUJ</a>

@@ -2,6 +2,7 @@
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <%@ include file="../header.jsp" %>
+<style type="text/css">@import url(<c:url value="/stylesheets/tagging.css"/>);</style>
 
 <div id="content">
 
@@ -18,8 +19,28 @@
 		</div>
 		
 		<br><br>
+		
+<script type="text/javascript">
+function addTag(articleId) {
+	var tags = prompt('Informe as tags, separando-as por vírgula');
 	
-		<h2><a href="#">Todos artigos</a></h2>
+	if (tags != null && tags.length > 0) {
+		$.get('<c:url value="/article.addTag.logic"/>',
+			{ articleId: articleId, tags: tags },
+			function() {
+				var s = '';
+				var p = tags.split(',');
+				
+				for (var i = 0; i < p.length; i++) {
+					s += '<span class="tagging-list-item tag tag_front"><b><a href="<c:url value="/article.listByTag.logic"/>?tag='+ p[i].replace(/^\s*|\s*$/g, "") +'">' + p[i] + '</a></b></span>';
+				}
+			
+				$("#tags_" + articleId).append(s);
+			}
+		);
+	}
+}
+</script>
 		<ul>
 			<c:forEach items="${categories}" var="category">
 				<c:if test="${category.articles.size$0 > 0}">
@@ -29,7 +50,7 @@
 						<li>
 							<c:choose>
 								<c:when test="${article.exclusive}">
-									<span class="post"><a href="<c:url value="/article.show.logic?id=${article.id}"/>">${article.title}</a></span>
+									<span class="post" style="font-size: 110%; font-weight: bold;"><a href="<c:url value="/article.show.logic?id=${article.id}"/>">${article.title}</a></span>
 								</c:when>
 								<c:otherwise>
 									<span class="post"><a href="#">${article.title}</a></span>
@@ -42,7 +63,22 @@
 							<c:if test = "${not empty article.subtitle}">
 								<span class="content">${article.subtitle}</span>
 							</c:if>
-							<br/>
+							
+							<div class="tagging-container">
+								<div class="tagging">
+									<span class="tagging-image"></span>
+									<span class="tagging-list" id="tags_${article.id}">
+										<c:forEach items="${article.tags}" var="tag">
+											<span class="tagging-list-item tag tag_front">
+												<b><a class="tagging-link"  href="<c:url value="/article.listByTag.logic?tag=${tag.name}"/>">${tag.name}</a>&nbsp;</a></b>
+											</span>
+										</c:forEach>
+									</span>
+								</div>
+								
+								&nbsp;<strong><a href="#tag" onClick="addTag(${article.id});" style="font-size: 75%;">[Adicionar tag]</a></strong>
+							</div>
+							<br/><br>
 						</li>
 					</c:forEach>
 					</div>

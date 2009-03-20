@@ -1,8 +1,8 @@
 
-
   <div id="footer">
-  	<p>Apoiado e desenvolvido por <a href="http://www.caelum.com.br">Caelum Cursos Java</a> - Copyright &copy; 2002-2009 <a href="mailto:guj@guj.com.br">GUJ</a></p>
+  	<p>Apoiado e desenvolvido por <a href="http://www.caelum.com.br">Caelum Cursos Java</a> - Copyright &copy; 2002-2009 <a href="mailto:guj@guj.com.br">GUJ</a> <script type="text/javascript" src="http://widgets.amung.us/small.js"></script><script type="text/javascript">WAU_small('kwnaee1y3d4h')</script></p>
   </div>
+ 
 <script type="text/javascript">
 var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
 document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));

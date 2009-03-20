@@ -1,20 +1,28 @@
 package br.com.guj.model;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
 
 @Entity
 @Table(name = "articles")
@@ -26,8 +34,16 @@ public class Article {
 	private String title;
 	private String link;
 
+	@Enumerated(EnumType.STRING)
+	private ArticleLevel level;
+
 	@Column(name = "created_at")
 	private Date date;
+
+	@ManyToMany
+	@Cascade({CascadeType.ALL, CascadeType.DELETE_ORPHAN})
+	@JoinTable(name = "article_tags")
+	private List<Tag> tags = new ArrayList<Tag>();
 
 	private boolean approved;
 	private String subtitle;
@@ -192,5 +208,33 @@ public class Article {
 	 */
 	public Category getCategory() {
 		return category;
+	}
+
+	/**
+	 * @param level the level to set
+	 */
+	public void setLevel(ArticleLevel level) {
+		this.level = level;
+	}
+
+	/**
+	 * @return the level
+	 */
+	public ArticleLevel getLevel() {
+		return level;
+	}
+
+	/**
+	 * @param tags the tags to set
+	 */
+	public void setTags(List<Tag> tags) {
+		this.tags = tags;
+	}
+
+	/**
+	 * @return the tags
+	 */
+	public List<Tag> getTags() {
+		return tags;
 	}
 }

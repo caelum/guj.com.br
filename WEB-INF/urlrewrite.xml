@@ -7,7 +7,12 @@
 -->
 <urlrewrite>
 	<rule>
-		<from>java.tutorial.artigo.(.*).1.guj</from>
+		<from>java\.tutorial\.artigo\.(.*)\..\.guj</from>
+		<to type="permanent-redirect">article.show.logic?id=$1</to>
+	</rule>
+	
+	<rule>
+		<from>java\.artigo\.(.*)\..\.guj</from>
 		<to type="permanent-redirect">article.show.logic?id=$1</to>
 	</rule>
 </urlrewrite>
