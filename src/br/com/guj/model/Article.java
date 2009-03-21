@@ -43,6 +43,7 @@ public class Article {
 	@ManyToMany
 	@Cascade({CascadeType.ALL, CascadeType.DELETE_ORPHAN})
 	@JoinTable(name = "article_tags")
+	@Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 	private List<Tag> tags = new ArrayList<Tag>();
 
 	private boolean approved;

@@ -27,7 +27,7 @@
 		<property name="hibernate.format_sql">true</property>
 		<property name="hibernate.cache.use_structured_entries">true</property>
 		<property name="hibernate.cache.use_query_cache">true</property>
-		<property name="hibernate.cache.use_second_level_cache">false</property>
+		<property name="hibernate.cache.use_second_level_cache">true</property>
 		<property name="hibernate.cache.provider_class">org.hibernate.cache.EhCacheProvider</property>
 		<property name="hibernate.generate_statistics">false</property>
 

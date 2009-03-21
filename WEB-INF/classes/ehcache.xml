@@ -19,6 +19,12 @@
 		eternal="true"
 		overflowToDisk="false"/>
 		
+	<!-- Article Tags -->
+	<cache name="br.com.guj.model.Article.tags"
+		maxElementsInMemory="5000"
+		eternal="true"
+		overflowToDisk="false"/>
+		
 	<!-- Category -->
 	<cache name="br.com.guj.model.Category"
 		maxElementsInMemory="300"
@@ -37,7 +43,7 @@
 		eternal="true"
 		overflowToDisk="false"/>
 		
-	<!-- Articles -->
+	<!-- Category Articles -->
 	<cache name="br.com.guj.model.Category.articles"
 		maxElementsInMemory="300"
 		eternal="true"

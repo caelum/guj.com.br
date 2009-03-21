@@ -3,6 +3,10 @@ package br.com.guj.logic;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
+import net.jforum.util.preferences.ConfigKeys;
+
 import org.vraptor.annotations.Component;
 import org.vraptor.annotations.Parameter;
 import org.vraptor.annotations.Viewless;
@@ -22,6 +26,11 @@ public class ArticleLogic {
 	private Article article;
 	private List<Article> articles;
 	private Tag tag;
+	private boolean isLogged;
+
+	public ArticleLogic(HttpSession session) {
+		this.isLogged = "1".equals(session.getAttribute(ConfigKeys.LOGGED));
+	}
 
 	@SuppressWarnings("unchecked")
 	private List<Category> getAllCategories() {
@@ -37,24 +46,26 @@ public class ArticleLogic {
 
 	@Viewless
 	public void addTag(@Parameter(key = "articleId") long articleId, @Parameter(key = "tags") String tags) {
-		List<Tag> newTags = new ArrayList<Tag>();
-		String[] p = tags.split(",");
+		if (this.isLogged) {
+			List<Tag> newTags = new ArrayList<Tag>();
+			String[] p = tags.split(",");
 
-		for (String tagName : p) {
-			tagName = tagName.trim();
-			Tag tag = this.findTagByName(tagName);
+			for (String tagName : p) {
+				tagName = tagName.trim();
+				Tag tag = this.findTagByName(tagName);
 
-			if (tag == null) {
-				tag = new Tag();
-				tag.setName(tagName);
+				if (tag == null) {
+					tag = new Tag();
+					tag.setName(tagName);
+				}
+
+				newTags.add(tag);
 			}
 
-			newTags.add(tag);
+			Article article = (Article)HibernateUtil.getSession().get(Article.class, articleId);
+			newTags.removeAll(article.getTags());
+			article.getTags().addAll(newTags);
 		}
-
-		Article article = (Article)HibernateUtil.getSession().get(Article.class, articleId);
-		newTags.removeAll(article.getTags());
-		article.getTags().addAll(newTags);
 	}
 
 	private Tag findTagByName(String tag) {

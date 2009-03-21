@@ -76,7 +76,9 @@ function addTag(articleId) {
 									</span>
 								</div>
 								
-								&nbsp;<strong><a href="#tag" onClick="addTag(${article.id});" style="font-size: 75%;">[Adicionar tag]</a></strong>
+								<c:if test="${logged}">
+									&nbsp;<strong><a href="#tag" onClick="addTag(${article.id});" style="font-size: 75%;">[Adicionar tag]</a></strong>
+								</c:if>
 							</div>
 							<br/><br>
 						</li>
