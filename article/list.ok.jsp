@@ -1,6 +1,8 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
+<c:set var="title">Todos os artigos</c:set>
+
 <%@ include file="../header.jsp" %>
 <style type="text/css">@import url(<c:url value="/stylesheets/tagging.css"/>);</style>
 

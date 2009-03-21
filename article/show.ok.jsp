@@ -1,6 +1,8 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
+<c:set var="title">${article.title}</c:set>
+
 <%@ include file="../header.jsp" %>
 <link href="<c:url value="/stylesheets/SyntaxHighlighter.css"/>" media="screen" rel="stylesheet" type="text/css" />
 <script src="<c:url value="/javascripts/shCore.js"/>" type="text/javascript"></script>
