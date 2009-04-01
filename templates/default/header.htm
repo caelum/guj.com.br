@@ -20,7 +20,46 @@
 <meta http-equiv="Content-Type" content="text/html; charset=${encoding}" />
 <meta http-equiv="Pragma" content="no-cache" />
 <meta http-equiv="Expires" content="-1" />
-<script type='text/javascript' src='http://d1.openx.org/spcjs.php?id=5184&amp;target=_blank'></script>
+
+<!-- OAS SETUP begin -->
+<SCRIPT LANGUAGE=JavaScript>
+<!--
+//configuration
+OAS_url = 'http://media.realmedia.com.br/RealMedia/ads/';
+OAS_listpos = 'Top,x01,x04';
+OAS_query = '';
+OAS_sitepage = 'guj/forum';
+//end of configuration
+OAS_version = 10;
+OAS_rn = '001234567890'; OAS_rns = '1234567890';
+OAS_rn = new String (Math.random()); OAS_rns = OAS_rn.substring (2, 11);
+function OAS_NORMAL(pos) {
+	document.write('<A HREF="' + OAS_url + 'click_nx.ads/' + OAS_sitepage + '/1' + OAS_rns + '@' + OAS_listpos + '!' + pos + OAS_query + '" TARGET=_top>');
+	document.write('<IMG SRC="' + OAS_url + 'adstream_nx.ads/' + OAS_sitepage + '/1' + OAS_rns + '@' + OAS_listpos + '!' + pos + OAS_query + '" BORDER=0></A>');
+}
+//-->
+</SCRIPT>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+OAS_version = 11;
+if (navigator.userAgent.indexOf('Mozilla/3') != -1)
+OAS_version = 10;
+if (OAS_version >= 11)
+document.write('<SCR'+ 'IPT LANGUAGE=JavaScript1.1 SRC="' + OAS_url + 'adstream_mjx.ads/' + OAS_sitepage + '/1' + OAS_rns + '@' + OAS_listpos + OAS_query + '"></SC'+'RIPT>');
+//-->
+</SCRIPT><SCRIPT LANGUAGE="JavaScript">
+<!-- 
+document.write('')
+function OAS_AD(pos) {
+if (OAS_version >= 11)
+	OAS_RICH(pos);
+else
+	OAS_NORMAL(pos);
+}
+//-->
+</SCRIPT>
+<!-- OAS SETUP end -->
+
 <link href="${contextPath}/stylesheets/guj3.css?${startupTime}" media="screen" rel="stylesheet" type="text/css" />
 <style type="text/css">@import url( ${contextPath}/templates/${templateName}/styles/style.css?${startupTime} );</style>
 <style type="text/css">@import url( ${contextPath}/templates/${templateName}/styles/${language}.css?${startupTime} );</style>
@@ -34,7 +73,7 @@
 $().ready(function() {
 	$("#returnPath").val(document.location);
 	
-	if (!$.browser.msie) {
+	if (!$.browser.msie && navigator.userAgent.indexOf("Chrome") == -1) {
 		$("table, table th").corners("6px");
 	}
 });
@@ -52,9 +91,13 @@ $().ready(function() {
 	<div id="header">
 	    <div class="container1">
 	    	<div id="banner">
-				<script type='text/javascript'><!--// <![CDATA[
-				    OA_show(18786);
-				// ]]> --></script>
+				<!-- OAS AD 'Top' begin -->
+				<SCRIPT LANGUAGE="JavaScript">
+				<!--
+				OAS_AD('Top');
+				//-->
+				</SCRIPT>
+				<!-- OAS AD 'Top' end -->
 	    	</div>
 	      <div class="container2">
 	        <a href="${contextPath}/home.index.logic" id="logo">GUJ</a>
@@ -138,5 +181,5 @@ $().ready(function() {
 
 <table width="100%" border="0" style="padding: 15px;">
 	<tr>
-		<td>
+		<td width="100%">
 

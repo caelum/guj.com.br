@@ -28,26 +28,17 @@ window.onload = function () {
     <br/>
     
     <c:if test="${not empty article.content}">
-    <div style="float: left; padding: 10px;">
-      <script type="text/javascript"><!--
-      google_ad_client = "pub-7098584793170190";
-      google_ad_width = 336;
-      google_ad_height = 280;
-      google_ad_format = "336x280_as";
-      google_ad_type = "text_image";
-      //2007-06-12: Artigos - Usuarios (Read)
-      google_ad_channel = "9520052982";
-      google_color_border = "FFFFFF";
-      google_color_bg = "FFFFFF";
-      google_color_link = "0066CC";
-      google_color_text = "000000";
-      google_color_url = "008000";
-      //-->
-      </script>
-      <script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"></script>
-                </div>
-      
-      <span class="content">${article.formatedContent}</span>
+	    <div style="float: left; padding: 10px;">
+			<!-- OAS AD 'Right' begin -->
+			<SCRIPT LANGUAGE="JavaScript">
+			<!--
+			OAS_AD('Right');
+			//-->
+			</SCRIPT>
+			<!-- OAS AD 'Right' end -->
+		</div>
+	      
+	      <span class="content">${article.formatedContent}</span>
     </c:if>
 
     <span class="pdf">
@@ -57,22 +48,13 @@ window.onload = function () {
       <br/><br/>
       
       <div style="border-left: 3px solid #ccc; padding-left: 10px;">
-      <script type="text/javascript"><!--
-      google_ad_client = "pub-7098584793170190";
-      google_ad_width = 336;
-      google_ad_height = 280;
-      google_ad_format = "336x280_as";
-      google_ad_type = "text_image";
-      //2007-03-27: Artigos (PDF)
-      google_ad_channel = "9840549789";
-      google_color_border = "FFFFFF";
-      google_color_bg = "FFFFFF";
-      google_color_link = "3D81EE";
-      google_color_text = "000000";
-      google_color_url = "FFFFFF";
-      //-->
-      </script>
-      <script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"></script>
+			<!-- OAS AD 'Right' begin -->
+			<SCRIPT LANGUAGE="JavaScript">
+			<!--
+			OAS_AD('Right');
+			//-->
+			</SCRIPT>
+			<!-- OAS AD 'Right' end -->
       </div>
       
       <h3>Este artigo est&aacute; em formato PDF</h3>
@@ -83,6 +65,15 @@ window.onload = function () {
   </div>
 	<b class="spiffy"><b class="spiffy5"></b><b class="spiffy4"></b><b class="spiffy3"></b><b class="spiffy2"><b></b></b><b class="spiffy1"><b></b></b></b>
 </div>
+	<div style="float: left; width: 12%; margin-left: 8px;">
+		<!-- OAS AD 'x04' begin -->
+		<SCRIPT LANGUAGE="JavaScript">
+		<!--
+		OAS_AD('x04');
+		//-->
+		</SCRIPT>
+		<!-- OAS AD 'x04' end -->
+	</div>
 </div>
 
 <%@ include file="../footer.jsp" %>

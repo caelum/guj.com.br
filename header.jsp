@@ -3,12 +3,17 @@
 <head>
 <meta http-equiv="content-type" content="text/html;charset=ISO-8859-1" />
 
+<c:if test="${empty rmSection}">
+	<c:set var="rmSection" value="guj/internas"/>
+</c:if>
+
 <c:if test="${empty title}">
 	<c:set var="title">Not&iacute;cias, artigos e o maior f&oacute;rum brasileiro sobre Java - Home</c:set>
 </c:if>
 
 <title>GUJ - ${title}</title>
 <link href="<c:url value="/stylesheets/guj3.css?20090222"/>" media="screen" rel="stylesheet" type="text/css" />
+
 <!-- OAS SETUP begin -->
 <SCRIPT LANGUAGE=JavaScript>
 <!--
@@ -16,7 +21,7 @@
 OAS_url = 'http://media.realmedia.com.br/RealMedia/ads/';
 OAS_listpos = 'Top,Right,x01,x04';
 OAS_query = '';
-OAS_sitepage = 'guj/home';
+OAS_sitepage = '${rmSection}';
 //end of configuration
 OAS_version = 10;
 OAS_rn = '001234567890'; OAS_rns = '1234567890';
@@ -64,7 +69,11 @@ $().ready(function() {
     <div class="container1">
     	<div id="banner">
 			<!-- OAS AD 'Top' begin -->
-			<SCRIPT LANGUAGE="JavaScript">OAS_AD('Top');</SCRIPT>
+			<SCRIPT LANGUAGE="JavaScript">
+			<!--
+			OAS_AD('Top');
+			//-->
+			</SCRIPT>
 			<!-- OAS AD 'Top' end -->
     	</div>
       <div class="container2">

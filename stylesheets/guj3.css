@@ -1,4 +1,4 @@
-/* Copyright (c) 2001-2009 GUJ  */
+/* Copyright (c) 2002-2009 GUJ  */
 body {
   margin: 0 auto;
   padding: 0;
@@ -10,7 +10,7 @@ body {
 
 #header #banner {
 	float: right; 
-	padding: 20px;
+	padding: 5 10 10 10;
 }
 
 h1 {
@@ -66,18 +66,18 @@ input.selecionado {
 }
 
 #logo {
-  margin: 0 20;
+  margin: 0 5px;
   padding-top: 0;
-  background: transparent url(../images/guj/logo.gif) no-repeat 15px 10px;
+  background: transparent url(../images/guj/logo.gif) no-repeat 0 15px;
   height: 70px;
-  width: 270px;
+  width: 230px;
   display: block;
   text-indent: -9999px;
 }
 
 #header h2 {
   margin: 0;
-  padding: 10px 0 15px 40px;
+  padding: 10px 0 15px 15px;
   color: #fff;
   font-size: 12px;
   font-weight: normal;
@@ -179,7 +179,6 @@ input.selecionado {
 }
 
 #submenu {
-  margin: 0 20px;
   padding: 0;
   height: 40px;
   background: transparent url(../images/guj/submenu_background.gif) repeat-x;
@@ -246,7 +245,7 @@ input.selecionado {
 }
 
 #content {
-  padding: 10px 15px 0px 20px;
+  padding: 10px 0px 0px 10px;
 }
 
 #content a:hover {
@@ -256,6 +255,8 @@ input.selecionado {
 #content .box {
   margin: 0 0 20px 0;
   font-size: 0.9em;
+  float: left;
+  width: 85%
 }
 
 #content .box ul {
@@ -275,7 +276,7 @@ input.selecionado {
 }
 
 #content #home .forum {
-  width: 33%;
+  width: 28%;
   float: left;
   margin-right: 8px;
   font-size: 12px;
@@ -326,7 +327,7 @@ input.selecionado {
 
 #content #home .articles {
   float: left;
-  width: 33%;
+  width: 25%;
   font-size: 12px;
 }
 

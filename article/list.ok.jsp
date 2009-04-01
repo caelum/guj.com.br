@@ -91,6 +91,20 @@ function addTag(articleId) {
 		  </ul>
 	</div>
 	<b class="spiffy"><b class="spiffy5"></b><b class="spiffy4"></b><b class="spiffy3"></b><b class="spiffy2"><b></b></b><b class="spiffy1"><b></b></b></b>
+
 </div>
+
+	
+	<div style="float: left; width: 12%; margin-left: 8px;">
+		<!-- OAS AD 'x04' begin -->
+		<SCRIPT LANGUAGE="JavaScript">
+		<!--
+		OAS_AD('x04');
+		//-->
+		</SCRIPT>
+		<!-- OAS AD 'x04' end -->
+	</div>
+
 </div>
+
 <%@ include file="../footer.jsp" %>

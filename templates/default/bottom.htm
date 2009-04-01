@@ -1,13 +1,24 @@
-</td>
-</tr>
+		</td>
+		
+		<td valign="top" style="padding-top: 35px;">
+			<!-- OAS AD 'x04' begin -->
+			<SCRIPT LANGUAGE="JavaScript">
+			<!--
+			OAS_AD('x04');
+			//-->
+			</SCRIPT>
+			<!-- OAS AD 'x04' end -->
+		</td>
+	</tr>
+	
 	<tr>
-		<td align="center">
+		<td align="center" colspan="2">
 			<#if session?exists && session.isAdmin()><span class="gen"><a id="adminpanel" href='${JForumContext.encodeURL("/admBase/login")}'>${I18n.getMessage("ForumBase.admin")}</a></span></#if>
 		</td>
 	</tr>
 
 	<tr>
-		<td align="center">
+		<td align="center" colspan="2">
 			<span class="copyright">Powered by <a class="copyright" href="http://www.jforum.net/" target="_blank">JForum ${version}</a> &copy; <a class="copyright" href="http://www.jforum.net/team.jsp" target="_blank">JForum Team</a></span>
 		</td>
 	</tr>
@@ -16,6 +27,14 @@
 <#if hasCodeBlock>
 	<#include "highlighter_js.htm"/>
 </#if>
+
+<!-- OAS AD 'x01' begin -->
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+OAS_AD('x01');
+//-->
+</SCRIPT>
+<!-- OAS AD 'x01' end -->
 
 <iframe src="${contextPath}/ping_session.jsp" height="0" width="0" frameborder="0" scrolling="no"></iframe>
 <div id="footer">

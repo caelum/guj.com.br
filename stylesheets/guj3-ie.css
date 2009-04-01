@@ -3,15 +3,15 @@
 }
 
 #content #home .forum {
-  width: 32%;
+  width: 28%;
 }
 
 #content #home .news {
-  width: 31%;
+  width: 29%;
 }
 
 #content #home .articles {
-  width: 32%;
+  width: 25%;
 }
 
 #content #home .posts {
@@ -29,6 +29,10 @@
 #submenu {
 	vertical-align: middle;
     padding-top:10px;
+}
+
+#content .box {
+	width: 84%;
 }
 
 #content .box ul li {
