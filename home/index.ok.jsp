@@ -5,6 +5,7 @@
 <c:set var="rmSection" value="guj/home"/>
 
 <%@ include file="../header.jsp" %>
+<style type="text/css">@import url(<c:url value="/stylesheets/opencloud.css"/>);</style>
 <script type="text/javascript" src="<c:url value="/javascripts/guj.js"/>"></script>
 
 <script type="text/javascript">
@@ -69,7 +70,14 @@ $().ready(function() {
 		<b class="spiffy"><b class="spiffy1"><b></b></b><b class="spiffy2"><b></b></b><b class="spiffy3"></b><b class="spiffy4"></b><b class="spiffy5"></b></b>
 		<div class="spiffyfg">
 			  <h2><a href="<c:url value="/article.list.logic"/>">Artigos</a></h2>
-			  <ul>
+			 
+			 <c:forEach items="${tags}" var="tag">
+			 
+			 	<a href="${tag.link}" class="tag_${tag.weightInt}">${tag.name}</a>
+			 
+			 </c:forEach>
+			 
+			 <%-- <ul>
 		    	<c:forEach items="${articles}" var="article">
 					<li>
 						<h3><a href="<c:url value="/article.show.logic?id=${article.id}"/>">${fn:escapeXml(article.title)}</a></h3>
@@ -86,6 +94,8 @@ $().ready(function() {
 					</li>	    	
 		    	</c:forEach>
 			  </ul>
+			  
+			  --%>
 		</div>
 		<b class="spiffy"><b class="spiffy5"></b><b class="spiffy4"></b><b class="spiffy3"></b><b class="spiffy2"><b></b></b><b class="spiffy1"><b></b></b></b>
 	</div>

@@ -41,6 +41,7 @@ public class ArticleLogic {
 	private List<Category> categories;
 	private List<Article> articles;
 	private List<Article> articlesPend;
+
 	private Tag tag;
 	private boolean isLogged;
 	private Article article;
@@ -360,4 +361,5 @@ public class ArticleLogic {
 	public void setArticlesPend(List<Article> articlesPend) {
 		this.articlesPend = articlesPend;
 	}
+
 }

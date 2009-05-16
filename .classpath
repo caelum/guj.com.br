@@ -61,5 +61,6 @@
 	<classpathentry kind="lib" path="WEB-INF/lib/informa.jar"/>
 	<classpathentry kind="lib" path="WEB-INF/lib/jforum-2.1.8.jar"/>
 	<classpathentry kind="lib" path="WEB-INF/lib/vraptor-2.6.0.jar"/>
+	<classpathentry kind="lib" path="WEB-INF/lib/opencloud.jar"/>
 	<classpathentry kind="output" path="WEB-INF/classes"/>
 </classpath>
