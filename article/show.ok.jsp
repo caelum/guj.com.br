@@ -24,8 +24,8 @@ window.onload = function () {
     	<a href="<c:url value="/article.open.logic?id=${article.id}"/>">Editar</a>
     </c:if>
     <c:if test="${isModerator and article.approved eq true}">-
-    	<a href="<c:url value="/approve.desaproove.logic?id=${article.id}"/>"> <img src="<c:url value="/images/guj/thumb_down.gif" />" border="0" name="approveDown" title="Desaprovar" /></a>
-    </c:if>
+    	<a href="<c:url value="/approve.disaproove.logic?id=${article.id}"/>"> <img src="<c:url value="/images/guj/thumb_down.gif" />" border="0" name="approveDown" title="Desaprovar" /></a>
+    </c:if>								 
     </h2>
   </span>
   

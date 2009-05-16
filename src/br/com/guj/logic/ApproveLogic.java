@@ -79,7 +79,7 @@ public class ApproveLogic {
 
 	}
 
-	public void desaproove(@Parameter(key = "id") long articleId) {
+	public void disaproove(@Parameter(key = "id") long articleId) {
 
 		Article article = this.getArticle(articleId);
 
