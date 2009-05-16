@@ -28,11 +28,11 @@
 					<a href="#category_${category.id}">${category.name}</a> |
 				</c:if> 
 			</c:forEach>
+			
 		</div>
 		
-		<br/><br/>
-		
 		<c:if test="${isAuthor}">
+		<br/><br/>
 		<div class="categoryHeader">Artigos pendentes</div>
 			
 			<ul>

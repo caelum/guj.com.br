@@ -5,6 +5,7 @@
 
 <%@ include file="../header.jsp" %>
 <link href="<c:url value="/stylesheets/SyntaxHighlighter.css"/>" media="screen" rel="stylesheet" type="text/css" />
+<style type="text/css">@import url(<c:url value="/stylesheets/tagging.css"/>);</style>
 <script src="<c:url value="/javascripts/shCore.js"/>" type="text/javascript"></script>
 <script src="<c:url value="/javascripts/shBrushJava.js"/>" type="text/javascript"></script>
 
@@ -33,7 +34,7 @@ window.onload = function () {
     <span class="data">em <fmt:formatDate pattern="dd/MM/yyyy" value="${article.date}"/></span>
     <span class="autor">, por <a href="mailto:${article.authorEmail}">${article.author}</a></span>
     <br/>
-    
+  
     <c:if test="${not empty article.content}">
 	    <div style="float: left; padding: 10px;">
 			<!-- OAS AD 'Right' begin -->

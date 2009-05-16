@@ -5,6 +5,8 @@
 
 <%@ include file="../header.jsp" %>
 <style type="text/css">@import url(<c:url value="/stylesheets/tagging.css"/>);</style>
+<style type="text/css">@import url(<c:url value="/stylesheets/thickbox.css"/>);</style>
+<script type="text/javascript" src="<c:url value="/javascripts/thickbox.js"/>"></script>
 
 <div id="content">
 
@@ -45,7 +47,7 @@
 
 		<br/>
 		<div class="categoryHeader">Edição do artigo</div>
-		
+		  
 		<script type="text/javascript" src="<c:url value="/tiny_mce/tiny_mce.js"/>"></script>
 		<script type="text/javascript">
 		tinyMCE.init({
@@ -70,7 +72,8 @@
 		
 			<textarea name="content" style="width:100%" >${article.content}</textarea>
 		<br/>
-		
+		<a href="article/ajuda.html?height=300&width=400" title="Como inserir imagens e anexos" class="thickbox">&raquo; Dicas de como inserir imagens e anexos</a>
+		<br/><br/>
 		<div class="categoryHeader">Anexar arquivos (*.zip)</div>
 		<br/>		
 				Imagens (não deve possuir diretórios): <input type="file" name="images"/>
@@ -101,5 +104,6 @@
 	</div>
 
 </div>
+
 
 <%@ include file="../footer.jsp" %>
