@@ -19,12 +19,19 @@ window.onload = function () {
 <b class="spiffy"><b class="spiffy1"><b></b></b><b class="spiffy2"><b></b></b><b class="spiffy3"></b><b class="spiffy4"></b><b class="spiffy5"></b></b>
 	<div class="spiffyfg inner-content">
   <span class="article">
-    <h2><a href="#">${article.title }</a></h2>
+    <h2><a href="#">${article.title}</a>
+    <c:if test="${isAuthor or isModerator}">- 
+    	<a href="<c:url value="/article.open.logic?id=${article.id}"/>">Editar</a>
+    </c:if>
+    <c:if test="${isModerator and article.approved eq true}">-
+    	<a href="<c:url value="/approve.desaproove.logic?id=${article.id}"/>"> <img src="<c:url value="/images/guj/thumb_down.gif" />" border="0" name="approveDown" title="Desaprovar" /></a>
+    </c:if>
+    </h2>
   </span>
   
   <div class="miolo">
     <span class="data">em <fmt:formatDate pattern="dd/MM/yyyy" value="${article.date}"/></span>
-    <span class="autor">, por <a href="mailto:${article.authorEmail}">${article.author }</a></span>
+    <span class="autor">, por <a href="mailto:${article.authorEmail}">${article.author}</a></span>
     <br/>
     
     <c:if test="${not empty article.content}">

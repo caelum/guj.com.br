@@ -11,7 +11,17 @@
 <div class="articles box">
 	<b class="spiffy"><b class="spiffy1"><b></b></b><b class="spiffy2"><b></b></b><b class="spiffy3"></b><b class="spiffy4"></b><b class="spiffy5"></b></b>
 	<div class="spiffyfg inner-content">
-		<h2><a href="#">Categorias</a></h2>
+		<h2><a href="#">Categorias</a> |
+			
+			<a href="<c:url value="/article.write.logic"/>">Escreva um artigo</a> |
+			
+			<c:if test="${isModerator}">
+				<a href="<c:url value="/approve.list.logic"/>">Aprovação</a> |
+				<a href="<c:url value="/category.save.logic"/>">Criar categoria</a>
+			</c:if>
+			
+		</h2>
+		
 		<div style="margin-left: 25px;">
 			<c:forEach items="${categories}" var="category">
 				<c:if test="${category.articles.size$0 > 0}">
@@ -20,35 +30,51 @@
 			</c:forEach>
 		</div>
 		
-		<br><br>
+		<br/><br/>
 		
-<script type="text/javascript">
-function addTag(articleId) {
-	var tags = prompt('Informe as tags, separando-as por vírgula');
-	
-	if (tags != null && tags.length > 0) {
-		$.get('<c:url value="/article.addTag.logic"/>',
-			{ articleId: articleId, tags: tags },
-			function() {
-				var s = '';
-				var p = tags.split(',');
-				
-				for (var i = 0; i < p.length; i++) {
-					s += '<span class="tagging-list-item tag tag_front"><b><a href="<c:url value="/article.listByTag.logic"/>?tag='+ p[i].replace(/^\s*|\s*$/g, "") +'">' + p[i] + '</a></b></span>';
-				}
+		<c:if test="${isAuthor}">
+		<div class="categoryHeader">Artigos pendentes</div>
 			
-				$("#tags_" + articleId).append(s);
+			<ul>
+			<c:forEach items="${articlesPend}" var="articlesPend">
+				
+				<li><span class="post" style="font-size: 110%; font-weight: bold;"><a href="<c:url value="/article.show.logic?id=${articlesPend.id}"/>">${articlesPend.title}</a></span></li>
+			
+			</c:forEach>
+			</ul>
+			
+		</c:if>
+		
+		<br/><br/>
+		
+	<script type="text/javascript">
+		function addTag(articleId) {
+			var tags = prompt('Informe as tags, separando-as por vírgula');
+			
+			if (tags != null && tags.length > 0) {
+				$.get('<c:url value="/article.addTag.logic"/>',
+					{ articleId: articleId, tags: tags },
+					function() {
+						var s = '';
+						var p = tags.split(',');
+						
+						for (var i = 0; i < p.length; i++) {
+							s += '<span class="tagging-list-item tag tag_front"><b><a href="<c:url value="/article.listByTag.logic"/>?tag='+ p[i].replace(/^\s*|\s*$/g, "") +'">' + p[i] + '</a></b></span>';
+						}
+					
+						$("#tags_" + articleId).append(s);
+					}
+				);
 			}
-		);
-	}
-}
-</script>
+		}
+	</script>
 		<ul>
 			<c:forEach items="${categories}" var="category">
 				<c:if test="${category.articles.size$0 > 0}">
 					<div class="categoryHeader">${category.name}<a name="category_${category.id}"></a></div>
 					<div class="categoryArticles">
 					<c:forEach items="${category.articles}" var="article">
+					 <c:if test="${article.approved}">
 						<li>
 							<c:choose>
 								<c:when test="${article.exclusive}">
@@ -84,6 +110,7 @@ function addTag(articleId) {
 							</div>
 							<br/><br>
 						</li>
+					</c:if>
 					</c:forEach>
 					</div>
 				</c:if>

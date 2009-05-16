@@ -15,6 +15,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
+import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -28,6 +29,7 @@ import org.hibernate.annotations.CascadeType;
 @Table(name = "articles")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 public class Article {
+
 	@Id
 	@GeneratedValue
 	private Long id;
@@ -41,7 +43,7 @@ public class Article {
 	private Date date;
 
 	@ManyToMany
-	@Cascade({CascadeType.ALL, CascadeType.DELETE_ORPHAN})
+	@Cascade( { CascadeType.ALL, CascadeType.DELETE_ORPHAN })
 	@JoinTable(name = "article_tags")
 	@Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 	private List<Tag> tags = new ArrayList<Tag>();
@@ -50,7 +52,10 @@ public class Article {
 	private String subtitle;
 	private boolean exclusive;
 	private boolean oldStyle;
+
+	@Lob
 	private String content;
+
 	private String pdf;
 	private String download;
 	private String author;
@@ -61,6 +66,12 @@ public class Article {
 
 	@Column(name = "author_email")
 	private String authorEmail;
+
+	@Column(name = "user_id")
+	private Integer userId;
+
+	@Column(name = "moderator_id")
+	private Integer moderatorId;
 
 	public Long getId() {
 		return id;
@@ -179,18 +190,22 @@ public class Article {
 
 		while (m.find()) {
 			m = p.matcher(s);
-			s = s.replaceAll("(?m)<java>(.*?)<br/>(.*?)</java>", "<java>$1<##replace##>$2</java>");
+			s = s.replaceAll("(?m)<java>(.*?)<br/>(.*?)</java>",
+					"<java>$1<##replace##>$2</java>");
 		}
 
 		s = s.replaceAll("<##replace##>", "\n");
-		s = s.replaceAll("<java>", "<br/> <textarea name='code' class='java' cols='60' rows='10'>");
+		s = s
+				.replaceAll("<java>",
+						"<br/> <textarea name='code' class='java' cols='60' rows='10'>");
 		s = s.replaceAll("</java>", "</textarea> <br/>");
 
 		return s;
 	}
 
 	private String handleTitleTag(String s) {
-		return s.replaceAll("(?m)<title>(.*?)</title>", "<div id='subtitle'><b>$1</b></div>");
+		return s.replaceAll("(?m)<title>(.*?)</title>",
+				"<div id='subtitle'><b>$1</b></div>");
 	}
 
 	private String handleCreditsTag(String s) {
@@ -198,7 +213,8 @@ public class Article {
 	}
 
 	/**
-	 * @param category the category to set
+	 * @param category
+	 *            the category to set
 	 */
 	public void setCategory(Category category) {
 		this.category = category;
@@ -212,7 +228,8 @@ public class Article {
 	}
 
 	/**
-	 * @param level the level to set
+	 * @param level
+	 *            the level to set
 	 */
 	public void setLevel(ArticleLevel level) {
 		this.level = level;
@@ -226,7 +243,8 @@ public class Article {
 	}
 
 	/**
-	 * @param tags the tags to set
+	 * @param tags
+	 *            the tags to set
 	 */
 	public void setTags(List<Tag> tags) {
 		this.tags = tags;
@@ -238,4 +256,21 @@ public class Article {
 	public List<Tag> getTags() {
 		return tags;
 	}
+
+	public Integer getUserId() {
+		return userId;
+	}
+
+	public void setUserId(Integer userId) {
+		this.userId = userId;
+	}
+
+	public Integer getModeratorId() {
+		return moderatorId;
+	}
+
+	public void setModeratorId(Integer moderatorId) {
+		this.moderatorId = moderatorId;
+	}
+
 }
