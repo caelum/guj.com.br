@@ -2,6 +2,8 @@ package br.com.guj.logic;
 
 import javax.servlet.http.HttpServletRequest;
 
+import net.jforum.entities.UserSession;
+
 import org.vraptor.annotations.Component;
 import org.vraptor.annotations.In;
 import org.vraptor.annotations.Out;
@@ -23,9 +25,9 @@ public class CategoryLogic {
 
 	public void save() {
 
-		isModerator = true;
+		UserSession us = (UserSession) request.getAttribute("userSession");
 
-		// UserSession us = (UserSession) request.getAttribute("userSession");
+		this.isModerator = (us != null) ? us.isModerator() : false;
 
 	}
 

@@ -155,9 +155,7 @@ public class ArticleLogic {
 			}
 		}
 
-		// this.isModerator = (us != null) ? us.isModerator() : false;
-
-		this.isModerator = true;
+		this.isModerator = (us != null) ? us.isModerator() : false;
 
 	}
 
@@ -175,9 +173,7 @@ public class ArticleLogic {
 
 		}
 
-		// this.isModerator = (us != null) ? us.isModerator() : false;
-
-		this.isModerator = true;
+		this.isModerator = (us != null) ? us.isModerator() : false;
 
 		// this.articlesBox = getRandomArticles();
 		// this.postsBox = getRandomPosts();

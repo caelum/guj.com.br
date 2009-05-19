@@ -25,7 +25,7 @@ public class HomeLogic {
 	private List<Post> posts;
 	private List<Article> articles;
 	private List<Tag> tags = new ArrayList<Tag>();
-	
+
 	@In
 	private HttpServletRequest request;
 
@@ -70,4 +70,5 @@ public class HomeLogic {
 	public void setTags(List<it.exprivia.cnos.opencloud.Tag> tags) {
 		this.tags = tags;
 	}
+
 }

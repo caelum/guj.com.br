@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import net.jforum.entities.UserSession;
+
 import org.vraptor.annotations.Component;
 import org.vraptor.annotations.In;
 import org.vraptor.annotations.Out;
@@ -43,11 +45,9 @@ public class ApproveLogic {
 
 	public void list() {
 
-		// UserSession us = (UserSession) request.getAttribute("userSession");
+		UserSession us = (UserSession) request.getAttribute("userSession");
 
-		// article.setModeratorId(us.getUserId());
-
-		this.isModerator = true;
+		this.isModerator = (us != null) ? us.isModerator() : false;
 
 		this.articles = this.getAllArticles();
 
@@ -73,9 +73,9 @@ public class ApproveLogic {
 		Category category = new CategoryLogic().getCategory(categoryId);
 		article.setCategory(category);
 
-		// UserSession us = (UserSession) request.getAttribute("userSession");
+		UserSession us = (UserSession) request.getAttribute("userSession");
 
-		// article.setModeratorId(us.getUserId());
+		this.isModerator = (us != null) ? us.isModerator() : false;
 
 	}
 
@@ -84,6 +84,10 @@ public class ApproveLogic {
 		Article article = this.getArticle(articleId);
 
 		article.setApproved(false);
+
+		UserSession us = (UserSession) request.getAttribute("userSession");
+
+		article.setModeratorId(us.getUserId());
 
 	}
 
