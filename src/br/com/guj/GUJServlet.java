@@ -16,7 +16,6 @@ import net.jforum.context.web.WebRequestContext;
 import net.jforum.context.web.WebResponseContext;
 import net.jforum.entities.UserSession;
 import net.jforum.util.preferences.ConfigKeys;
-import net.jforum.util.preferences.SystemGlobals;
 
 import org.vraptor.VRaptorServlet;
 
@@ -59,10 +58,7 @@ public class GUJServlet extends VRaptorServlet {
 			ResponseContext responseContext = new WebResponseContext(response);
 
 			JForumContext forumContext = new JForumContext(request.getContextPath(),
-                SystemGlobals.getValue(ConfigKeys.SERVLET_EXTENSION),
-                requestContext,
-                responseContext
-            );
+                ".java", requestContext, responseContext);
 
             ex.setForumContext(forumContext);
 
