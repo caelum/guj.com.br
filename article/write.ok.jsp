@@ -72,7 +72,12 @@
 		
 			<textarea name="content" style="width:100%" >${article.content}</textarea>
 		<br/>
-		<a href="article/ajuda.html?height=300&width=400" title="Como inserir imagens e anexos" class="thickbox">&raquo; Dicas de como inserir imagens e anexos</a>
+		<a href="#">&raquo; Dicas: </a>
+		<a href="http://www.guj.com.br/posts/downloadAttach/4020.java" title="Como escrever">Como escrever</a>
+		|
+		<a href="article/help2.html?height=250&width=500" title="Como inserir códigos" class="thickbox">Incluindo códigos no artigo</a>
+		|
+		<a href="article/help1.html?height=300&width=400" title="Como inserir imagens e anexos" class="thickbox">Inserindo imagens e anexos</a>
 		<br/><br/>
 		<div class="categoryHeader">Anexar arquivos (*.zip)</div>
 		<br/>		
