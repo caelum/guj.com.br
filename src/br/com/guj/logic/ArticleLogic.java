@@ -12,6 +12,9 @@ import javax.servlet.http.HttpSession;
 import net.jforum.entities.UserSession;
 import net.jforum.util.preferences.ConfigKeys;
 
+import org.hibernate.Criteria;
+import org.hibernate.classic.Session;
+import org.hibernate.criterion.Restrictions;
 import org.vraptor.annotations.Component;
 import org.vraptor.annotations.In;
 import org.vraptor.annotations.InterceptedBy;
@@ -40,8 +43,7 @@ public class ArticleLogic {
 	private List<Article> articlesBox;
 	private List<Category> categories;
 	private List<Article> articles;
-	private List<Article> articlesPend;
-
+	private List<Article> pendingArticles;
 	private Tag tag;
 	private boolean isLogged;
 	private Article article;
@@ -51,6 +53,9 @@ public class ArticleLogic {
 
 	@Out
 	private boolean isAuthor;
+
+	@Out
+	private List<String> linksOfCodes;
 
 	@In
 	private HttpServletRequest request;
@@ -77,6 +82,20 @@ public class ArticleLogic {
 	private Article getArticle(long id) {
 		return (Article) HibernateUtil.getSessionFactory().getCurrentSession()
 				.get(Article.class, id);
+	}
+
+	@SuppressWarnings("unchecked")
+	private List<Article> getPendingArticlesByAuthor(int userId) {
+
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+
+		Criteria criteria = session.createCriteria(Article.class);
+
+		criteria.add(Restrictions.eq("userId", userId));
+		criteria.add(Restrictions.eq("approved", false));
+		criteria.add(Restrictions.isNull("category"));
+
+		return criteria.list();
 	}
 
 	@Viewless
@@ -135,27 +154,19 @@ public class ArticleLogic {
 
 		UserSession us = (UserSession) request.getAttribute("userSession");
 
-		this.setArticlesPend(new ArrayList<Article>());
+		this.setPendingArticles(new ArrayList<Article>());
 
 		if (us != null) {
-			for (Category category : this.getCategories()) {
 
-				for (Article article : category.getArticles()) {
+			this.getPendingArticles().addAll(
+					this.getPendingArticlesByAuthor(us.getUserId()));
 
-					if (article.getUserId() == us.getUserId()
-							&& !article.isApproved()) {
+			this.isAuthor = true;
 
-						this.getArticlesPend().add(article);
-						this.isAuthor = true;
-
-					}
-
-				}
-
-			}
 		}
 
-		this.isModerator = (us != null) ? us.isModerator() : false;
+		this.isModerator = true;
+		// this.isModerator = (us != null) ? us.isModerator() : false;
 
 	}
 
@@ -163,17 +174,20 @@ public class ArticleLogic {
 
 		this.article = this.getArticle(id);
 
-		UserSession us = (UserSession) request.getAttribute("userSession");
+		UserSession us = (UserSession) this.request.getAttribute("userSession");
 
 		if (us != null) {
 
 			if (us.getUserId() == this.article.getUserId()) {
+
 				this.isAuthor = true;
+
 			}
 
 		}
 
-		this.isModerator = (us != null) ? us.isModerator() : false;
+		this.isModerator = true;
+		// this.isModerator = (us != null) ? us.isModerator() : false;
 
 		// this.articlesBox = getRandomArticles();
 		// this.postsBox = getRandomPosts();
@@ -205,6 +219,9 @@ public class ArticleLogic {
 		if (!this.isLogged)
 			return;
 
+		String imagesPath = request.getContextPath() + "/"
+				+ "files" + "/";
+
 		if (article.getId() == null) {
 
 			article.setContent(content);
@@ -217,8 +234,7 @@ public class ArticleLogic {
 
 			String contentStr = article.getContent();
 
-			String imagesPath = request.getContextPath() + "/files/"
-					+ article.getUserId() + "/"
+			imagesPath += article.getUserId() + "/"
 					+ article.getTitle().trim().toLowerCase() + "/";
 
 			article.setContent(MessageFormat.format(contentStr,
@@ -234,14 +250,18 @@ public class ArticleLogic {
 			articleUpToDate.setSubtitle(article.getSubtitle());
 			articleUpToDate.setAuthor(article.getAuthor());
 			articleUpToDate.setAuthorEmail(article.getAuthorEmail());
-			articleUpToDate.setContent(content);
+
+			imagesPath += articleUpToDate.getUserId() + "/"
+					+ article.getTitle().trim().toLowerCase() + "/";
+
+			articleUpToDate.setContent(MessageFormat.format(content,
+					new Object[] { imagesPath }));
 
 			article = articleUpToDate;
 
 		}
 
-		String filesPath = request.getRealPath("/") + File.separator + "files"
-				+ File.separator;
+		String filesPath = request.getRealPath("/") + "files" + File.separator;
 
 		String articlePath = article.getUserId().toString() + File.separator
 				+ article.getTitle().trim().toLowerCase() + File.separator;
@@ -255,8 +275,8 @@ public class ArticleLogic {
 
 		if (this.codes != null) {
 
-			FileUtil.prepareAndCopyCodes(this.codes.getFile(), filesPath,
-					articlePath);
+			FileUtil.prepareAndCopyCodes(this.codes.getFile(), this.codes
+					.getFileName(), filesPath, articlePath);
 
 		}
 
@@ -266,10 +286,64 @@ public class ArticleLogic {
 
 		this.article = this.getArticle(id);
 
+		this.isAuthor = true;
+
+		putCodesInLinks();
+
+	}
+
+	@SuppressWarnings("deprecation")
+	private void putCodesInLinks() {
+
+		String filesPath = request.getRealPath("/") + "files" + File.separator;
+
+		String articlePath = this.article.getUserId().toString()
+				+ File.separator + this.article.getTitle().trim().toLowerCase()
+				+ File.separator;
+
+		String fullPath = filesPath + articlePath;
+
+		File directory = new File(fullPath);
+
+		File[] listFiles = directory.listFiles();
+
+		this.setLinksOfCodes(new ArrayList<String>());
+
+		String linkPath = this.article.getUserId().toString() + "/"
+				+ this.article.getTitle().trim().toLowerCase();
+
+		if (listFiles != null) {
+
+			for (File file : listFiles) {
+
+				if (file.getName().lastIndexOf(".zip") != -1) {
+
+					String link = "<a href=\"" + this.request.getContextPath()
+							+ "/files/" + linkPath + "/"
+							+ file.getName().trim() + "\">"
+							+ file.getName().toLowerCase().trim() + "</a>";
+
+					this.getLinksOfCodes().add(link);
+
+				}
+
+			}
+
+		}
 	}
 
 	public void validateSave(ValidationErrors errors,
 			@Parameter(key = "content") String content, Article article) {
+
+		UserSession us = (UserSession) request.getAttribute("userSession");
+
+		// TODO verificar bug da variável isLogged
+
+		if (us == null) {
+			errors.add(new Message("userSession",
+					"Você deve estar logado para escrever um artigo!"));
+			return;
+		}
 
 		if (StringValidation.isBlank(article.getTitle())) {
 			errors.add(new Message("article.title", "Título;"));
@@ -350,12 +424,20 @@ public class ArticleLogic {
 		this.isAuthor = isAuthor;
 	}
 
-	public List<Article> getArticlesPend() {
-		return articlesPend;
+	public List<Article> getPendingArticles() {
+		return pendingArticles;
 	}
 
-	public void setArticlesPend(List<Article> articlesPend) {
-		this.articlesPend = articlesPend;
+	public void setPendingArticles(List<Article> pendingArticles) {
+		this.pendingArticles = pendingArticles;
+	}
+
+	public List<String> getLinksOfCodes() {
+		return linksOfCodes;
+	}
+
+	public void setLinksOfCodes(List<String> linksOfCodes) {
+		this.linksOfCodes = linksOfCodes;
 	}
 
 }

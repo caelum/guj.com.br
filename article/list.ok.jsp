@@ -36,9 +36,9 @@
 		<div class="categoryHeader">Artigos pendentes</div>
 			
 			<ul>
-			<c:forEach items="${articlesPend}" var="articlesPend">
+			<c:forEach items="${pendingArticles}" var="pendingArticles">
 				
-				<li><span class="post" style="font-size: 110%; font-weight: bold;"><a href="<c:url value="/article.show.logic?id=${articlesPend.id}"/>">${articlesPend.title}</a></span></li>
+				<li><span class="post" style="font-size: 110%; font-weight: bold;"><a href="<c:url value="/article.show.logic?id=${pendingArticles.id}"/>">${pendingArticles.title}</a></span></li>
 			
 			</c:forEach>
 			</ul>

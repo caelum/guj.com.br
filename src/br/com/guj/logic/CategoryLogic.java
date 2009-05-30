@@ -27,7 +27,8 @@ public class CategoryLogic {
 
 		UserSession us = (UserSession) request.getAttribute("userSession");
 
-		this.isModerator = (us != null) ? us.isModerator() : false;
+		this.isModerator = true;
+		//this.isModerator = (us != null) ? us.isModerator() : false;
 
 	}
 

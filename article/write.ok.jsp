@@ -70,22 +70,38 @@
 		});
 		</script>
 		
-			<textarea name="content" style="width:100%" >${article.content}</textarea>
+		<textarea name="content" style="width:100%" >${article.content}</textarea>
+		
 		<br/>
-		<a href="#">&raquo; Dicas: </a>
+		
+		<c:if test="${isAuthor and linksOfCodes.size$0 > 0}">
+			<a href="#">&raquo; Links dos códigos</a>
+			<br/>
+				<ul>
+				<c:forEach items="${linksOfCodes}" var="link">
+					
+					<li><c:out value="${link}" escapeXml="true"/></li>
+				
+				</c:forEach>
+				</ul>
+		</c:if>
+		
+		<br/>
+		
+		<a href="#">&raquo; Dicas</a> <br/><br/>
+		
 		<a href="http://www.guj.com.br/posts/downloadAttach/4020.java" title="Como escrever">Como escrever</a>
 		|
 		<a href="article/help2.html?height=250&width=500" title="Como inserir códigos" class="thickbox">Incluindo códigos no artigo</a>
 		|
 		<a href="article/help1.html?height=300&width=400" title="Como inserir imagens e anexos" class="thickbox">Inserindo imagens e anexos</a>
 		<br/><br/>
-		<div class="categoryHeader">Anexar arquivos (*.zip)</div>
+		<div class="categoryHeader">Anexar arquivos</div>
 		<br/>		
-				Imagens (não deve possuir diretórios): <input type="file" name="images"/>
+				Imagens: <input type="file" name="images" accept="application/zip"/>
 				<br/>
 				<br/>
-				C&oacute;digos: <input type="file" name="codes"/>
-	
+				C&oacute;digos: <input type="file" name="codes" accept="application/zip"/>
 		
 		<br/><br/>
 			<input type="image" class="botao" src="<c:url value="/images/guj/botao_enviar.gif"/>" tabindex="5" />

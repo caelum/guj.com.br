@@ -33,24 +33,34 @@ public class FileUtil {
 			if (listFiles != null) {
 
 				for (File file : listFiles) {
-					
+
 					file.delete();
-					
+
 				}
-				
+
 			}
 
 			while (entries.hasMoreElements()) {
 
 				ZipEntry entry = (ZipEntry) entries.nextElement();
 
-				directory.mkdirs();
+				String name = entry.getName();
 
-				File file = new File(directory, entry.getName());
-				file.createNewFile();
+				if (name.lastIndexOf(".gif") != -1
+						|| name.lastIndexOf(".png") != -1
+						|| name.lastIndexOf(".jpg") != -1) {
 
-				copyFileToDisk(zipFile.getInputStream(entry),
-						new BufferedOutputStream(new FileOutputStream(file)));
+					directory.mkdirs();
+
+					File file = new File(directory, entry.getName());
+					file.createNewFile();
+
+					copyFileToDisk(
+							zipFile.getInputStream(entry),
+							new BufferedOutputStream(new FileOutputStream(file)));
+
+				}
+
 			}
 
 			zipFile.close();
@@ -63,18 +73,18 @@ public class FileUtil {
 
 	}
 
-	public static void prepareAndCopyCodes(File codes, String filesPath,
-			String articlePath) {
+	public static void prepareAndCopyCodes(File codes, String name,
+			String filesPath, String articlePath) {
 
 		try {
-			
+
 			InputStream input = new BufferedInputStream(new FileInputStream(
 					codes));
 
 			File directory = new File(filesPath + articlePath);
 			directory.mkdirs();
 
-			File file = new File(directory, "codigos.zip");
+			File file = new File(directory, name);
 			file.createNewFile();
 
 			OutputStream output = new BufferedOutputStream(
@@ -108,4 +118,5 @@ public class FileUtil {
 		in.close();
 		out.close();
 	}
+
 }
