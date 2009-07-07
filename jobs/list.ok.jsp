@@ -9,15 +9,6 @@
 		
 		<div class="spiffyfg inner-content">
 			<h2><a href="#">Ofertas de Empregos</a></h2>
-			<div style="padding: 20px;">
-				<strong>Promo&ccedil;&atilde;o GUJ e NetCarreiras</strong><br>
-				<em>
-				Voc&ecirc; que &eacute; usu&aacute;rio do GUJ tem descontos especiais para ser um profissional associado ao NetCarreiras. 
-				Acesse o site atrav&eacute;s do link <a href="http://netcarreiras.com/promo/guj" target="_new">http://netcarreiras.com/promo/guj</a>
-				e confira os descontos especiais na assinatura dos planos do site. 
-				(Descontos v&aacute;lidos exclusivamente para acessos atrav&eacute;s deste link, de Mar&ccedil;o/09 a Jul/09).
-				</em>
-			</div> 
 			<ul>
 				<c:forEach items="${jobs}" var="job">
 					<li>
