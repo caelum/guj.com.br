@@ -46,6 +46,7 @@ public class GUJServlet extends VRaptorServlet {
 		request.setAttribute("infoq", this.infoqAgregator.getItems());
 		request.setAttribute("news", this.newsAgregator.getItems());
 		request.setAttribute("forum", this.forumAgregator.getItems());
+		request.setAttribute("jobs", JobsAgregator.getItems());
 
 		boolean isLogged = "1".equals(request.getSession().getAttribute(
 				ConfigKeys.LOGGED));

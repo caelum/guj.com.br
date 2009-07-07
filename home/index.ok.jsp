@@ -113,12 +113,12 @@ $().ready(function() {
 	<div class="posts box">
 		<b class="spiffy"><b class="spiffy1"><b></b></b><b class="spiffy2"><b></b></b><b class="spiffy3"></b><b class="spiffy4"></b><b class="spiffy5"></b></b>
 		<div class="spiffyfg">
-			  <h2><a href="#">Posts de blogs</a></h2>
+			  <h2><a href="#">Ofertas de Empregos</a></h2>
 			  <ul>
-			  	<c:forEach items="${posts}" var="post">
+			  	<c:forEach items="${jobs}" var="job">
 			  		<li>
-			      		<span class="post"><a href="${post.link}" target="_blank">${fn:escapeXml(post.title)}</a></span>
-			      		<span class="data">em <span class="blog">${post.blog.title}</span>, <fmt:formatDate pattern="dd/MM/yyyy" value="${post.date}"/></span>
+			      		<span class="post"><a href="${job.link}" target="_blank">${fn:escapeXml(job.title)}</a></span>
+			      		<span class="data"><fmt:formatDate pattern="dd/MM/yyyy" value="${job.pubDate}"/></span>
 			    	</li>
 			  	</c:forEach>
 			  </ul>
