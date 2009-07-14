@@ -117,8 +117,8 @@ $().ready(function() {
 			  <ul>
 			  	<c:forEach items="${jobs}" var="job">
 			  		<li>
-			      		<span class="post"><a href="${job.link}" target="_blank">${fn:escapeXml(job.title)}</a></span>
-			      		<span class="data"><fmt:formatDate pattern="dd/MM/yyyy" value="${job.pubDate}"/></span>
+			      		<span class="post"><a href="${job.link}" target="_blank">${fn:escapeXml(job.title)}</a>,</span>
+			      		<span class="data">em <fmt:formatDate pattern="dd/MM/yyyy" value="${job.date}"/></span>
 			    	</li>
 			  	</c:forEach>
 			  </ul>
