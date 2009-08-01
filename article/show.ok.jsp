@@ -21,12 +21,6 @@ window.onload = function () {
 	<div class="spiffyfg inner-content">
   <span class="article">
     <h2><a href="#">${article.title}</a>
-    <c:if test="${isAuthor or isModerator}">- 
-    	<a href="<c:url value="/article.open.logic?id=${article.id}"/>">Editar</a>
-    </c:if>
-    <c:if test="${isModerator and article.approved eq true}">-
-    	<a href="<c:url value="/approve.disaproove.logic?id=${article.id}"/>"> <img src="<c:url value="/images/guj/thumb_down.gif" />" border="0" name="approveDown" title="Desaprovar" /></a>
-    </c:if>								 
     </h2>
   </span>
   

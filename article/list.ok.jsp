@@ -12,14 +12,6 @@
 	<b class="spiffy"><b class="spiffy1"><b></b></b><b class="spiffy2"><b></b></b><b class="spiffy3"></b><b class="spiffy4"></b><b class="spiffy5"></b></b>
 	<div class="spiffyfg inner-content">
 		<h2><a href="#">Categorias</a> |
-			
-			<a href="<c:url value="/article.write.logic"/>">Escreva um artigo</a> |
-			
-			<c:if test="${isModerator}">
-				<a href="<c:url value="/approve.list.logic"/>">Aprovação</a> |
-				<a href="<c:url value="/category.save.logic"/>">Criar categoria</a>
-			</c:if>
-			
 		</h2>
 		
 		<div style="margin-left: 25px;">
@@ -30,20 +22,6 @@
 			</c:forEach>
 			
 		</div>
-		
-		<c:if test="${isAuthor}">
-		<br/><br/>
-		<div class="categoryHeader">Artigos pendentes</div>
-			
-			<ul>
-			<c:forEach items="${pendingArticles}" var="pendingArticles">
-				
-				<li><span class="post" style="font-size: 110%; font-weight: bold;"><a href="<c:url value="/article.show.logic?id=${pendingArticles.id}"/>">${pendingArticles.title}</a></span></li>
-			
-			</c:forEach>
-			</ul>
-			
-		</c:if>
 		
 		<br/><br/>
 		
