@@ -96,16 +96,4 @@
 	<welcome-file-list>
 		<welcome-file>index.jsp</welcome-file>
 	</welcome-file-list>
-  
-  <!-- Mandatory filter; should be the last one in the chain -->
-  <!-- 
-  <filter>
-        <filter-name>niceUrl</filter-name>
-        <filter-class>org.vraptor.plugin.niceurls.NiceURLFilter</filter-class>
-    </filter>
-  <filter-mapping>
-    <filter-name>niceUrl</filter-name>
-    <url-pattern>/*</url-pattern>
-  </filter-mapping>
-   -->
 </web-app>

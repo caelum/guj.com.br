@@ -263,7 +263,7 @@ input.selecionado {
   margin: 0 0 20px 0;
   font-size: 0.9em;
   float: left;
-  width: 85%
+  width: 97%;
 }
 
 #content .box ul {
@@ -283,7 +283,7 @@ input.selecionado {
 }
 
 #content #home .forum {
-  width: 28%;
+  width: 32%;
   float: left;
   margin-right: 8px;
   font-size: 12px;
@@ -313,7 +313,7 @@ input.selecionado {
 
 #content #home .news {
   float: left;
-  width: 32%;
+  width: 33%;
   margin-right: 8px;
   font-size: 12px;
 }
@@ -334,7 +334,7 @@ input.selecionado {
 
 #content #home .articles {
   float: left;
-  width: 25%;
+  width: 31%;
   font-size: 12px;
 }
 

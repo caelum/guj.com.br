@@ -53,13 +53,16 @@ $().ready(function() {
 			  </ul>
 			  
 			  <p align="center">
-				<!-- OAS AD 'Right' begin -->
-				<SCRIPT LANGUAGE="JavaScript">
-				<!--
-				OAS_AD('Right');
-				//-->
-				</SCRIPT>
-				<!-- OAS AD 'Right' end -->
+				<script type="text/javascript"><!--
+					google_ad_client = "pub-7098584793170190";
+					/* GUJ Quadrado Home */
+					google_ad_slot = "3282687954";
+					google_ad_width = 300;
+					google_ad_height = 250;
+					//-->
+					</script> 
+					<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"> 
+				</script> 
 			</p>
 		</div>
 		
@@ -70,14 +73,7 @@ $().ready(function() {
 		<b class="spiffy"><b class="spiffy1"><b></b></b><b class="spiffy2"><b></b></b><b class="spiffy3"></b><b class="spiffy4"></b><b class="spiffy5"></b></b>
 		<div class="spiffyfg">
 			  <h2><a href="<c:url value="/article.list.logic"/>">Artigos</a></h2>
-			 
-			 <c:forEach items="${tags}" var="tag">
-			 
-			 	<a href="${tag.link}" class="tag_${tag.weightInt}">${tag.name}</a>
-			 
-			 </c:forEach>
-			 
-			 <%-- <ul>
+			 <ul>
 		    	<c:forEach items="${articles}" var="article">
 					<li>
 						<h3><a href="<c:url value="/article.show.logic?id=${article.id}"/>">${fn:escapeXml(article.title)}</a></h3>
@@ -94,26 +90,14 @@ $().ready(function() {
 					</li>	    	
 		    	</c:forEach>
 			  </ul>
-			  
-			  --%>
 		</div>
 		<b class="spiffy"><b class="spiffy5"></b><b class="spiffy4"></b><b class="spiffy3"></b><b class="spiffy2"><b></b></b><b class="spiffy1"><b></b></b></b>
-	</div>
-	
-	<div style="float: left; width: 12%; margin-left: 8px;">
-		<!-- OAS AD 'x04' begin -->
-		<SCRIPT LANGUAGE="JavaScript">
-		<!--
-		OAS_AD('x04');
-		//-->
-		</SCRIPT>
-		<!-- OAS AD 'x04' end -->
 	</div>
 
 	<div class="posts box">
 		<b class="spiffy"><b class="spiffy1"><b></b></b><b class="spiffy2"><b></b></b><b class="spiffy3"></b><b class="spiffy4"></b><b class="spiffy5"></b></b>
 		<div class="spiffyfg">
-			  <h2><a href="#">Ofertas de Empregos</a></h2>
+			  <h2><a href="<c:url value="/jobs.list.logic"/>">Ofertas de Empregos</a></h2>
 			  <ul>
 			  	<c:forEach items="${jobs}" var="job">
 			  		<li>

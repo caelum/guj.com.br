@@ -31,13 +31,17 @@ window.onload = function () {
   
     <c:if test="${not empty article.content}">
 	    <div style="float: left; padding: 10px;">
-			<!-- OAS AD 'Right' begin -->
-			<SCRIPT LANGUAGE="JavaScript">
-			<!--
-			OAS_AD('Right');
+			<script type="text/javascript"><!--
+			google_ad_client = "pub-7098584793170190";
+			/* GUJ Quadrado Artigos */
+			google_ad_slot = "2113535366";
+			google_ad_width = 300;
+			google_ad_height = 250;
 			//-->
-			</SCRIPT>
-			<!-- OAS AD 'Right' end -->
+			</script> 
+			<script type="text/javascript"
+			src="http://pagead2.googlesyndication.com/pagead/show_ads.js"> 
+			</script>
 		</div>
 	      
 	      <span class="content">${article.formatedContent}</span>
@@ -50,13 +54,17 @@ window.onload = function () {
       <br/><br/>
       
       <div style="border-left: 3px solid #ccc; padding-left: 10px;">
-			<!-- OAS AD 'Right' begin -->
-			<SCRIPT LANGUAGE="JavaScript">
-			<!--
-			OAS_AD('Right');
+			<script type="text/javascript"><!--
+			google_ad_client = "pub-7098584793170190";
+			/* GUJ Quadrado Artigos */
+			google_ad_slot = "2113535366";
+			google_ad_width = 300;
+			google_ad_height = 250;
 			//-->
-			</SCRIPT>
-			<!-- OAS AD 'Right' end -->
+			</script> 
+			<script type="text/javascript"
+			src="http://pagead2.googlesyndication.com/pagead/show_ads.js"> 
+			</script>
       </div>
       
       <h3>Este artigo est&aacute; em formato PDF</h3>
@@ -67,15 +75,7 @@ window.onload = function () {
   </div>
 	<b class="spiffy"><b class="spiffy5"></b><b class="spiffy4"></b><b class="spiffy3"></b><b class="spiffy2"><b></b></b><b class="spiffy1"><b></b></b></b>
 </div>
-	<div style="float: left; width: 12%; margin-left: 8px;">
-		<!-- OAS AD 'x04' begin -->
-		<SCRIPT LANGUAGE="JavaScript">
-		<!--
-		OAS_AD('x04');
-		//-->
-		</SCRIPT>
-		<!-- OAS AD 'x04' end -->
-	</div>
+
 </div>
 
 <%@ include file="../footer.jsp" %>
