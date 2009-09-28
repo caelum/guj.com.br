@@ -1,0 +1,54 @@
+		</td>
+		
+		<td valign="top" style="padding-top: 35px;">
+			<!-- OAS AD 'x04' begin -->
+			<SCRIPT LANGUAGE="JavaScript">
+			<!--
+			OAS_AD('x04');
+			//-->
+			</SCRIPT>
+			<!-- OAS AD 'x04' end -->
+		</td>
+	</tr>
+	
+	<tr>
+		<td align="center" colspan="2">
+			<#if session?exists && session.isAdmin()><span class="gen"><a id="adminpanel" href='${JForumContext.encodeURL("/admBase/login")}'>${I18n.getMessage("ForumBase.admin")}</a></span></#if>
+		</td>
+	</tr>
+
+	<tr>
+		<td align="center" colspan="2">
+			<span class="copyright">Powered by <a class="copyright" href="http://www.jforum.net/" target="_blank">JForum ${version}</a> &copy; <a class="copyright" href="http://www.jforum.net/team.jsp" target="_blank">JForum Team</a></span>
+		</td>
+	</tr>
+</table>
+
+<#if hasCodeBlock>
+	<#include "highlighter_js.htm"/>
+</#if>
+
+<!-- OAS AD 'x01' begin -->
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+OAS_AD('x01');
+//-->
+</SCRIPT>
+<!-- OAS AD 'x01' end -->
+
+<iframe src="${contextPath}/ping_session.jsp" height="0" width="0" frameborder="0" scrolling="no"></iframe>
+<div id="footer">
+	<p>Apoiado e desenvolvido por <a href="http://www.caelum.com.br">Caelum Cursos Java</a> - Copyright &copy; 2002-2009 <a href="mailto:guj@guj.com.br">GUJ</a> <script type="text/javascript" src="http://widgets.amung.us/small.js"></script><script type="text/javascript">WAU_small('kwnaee1y3d4h')</script></p>
+</div>
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-132222-1");
+pageTracker._initData();
+pageTracker._trackPageview();
+</script>
+
+</body>
+</html>

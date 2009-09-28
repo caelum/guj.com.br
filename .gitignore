@@ -1,0 +1,4 @@
+WEB-INF/jforumLuceneIndex/
+WEB-INF/classes
+*.class
+work/

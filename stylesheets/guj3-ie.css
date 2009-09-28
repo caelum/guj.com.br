@@ -1,0 +1,40 @@
+#menu ul li {
+	font-size: 17px;
+}
+
+#content #home .forum {
+  width: 28%;
+}
+
+#content #home .news {
+  width: 29%;
+}
+
+#content #home .articles {
+  width: 25%;
+}
+
+#content #home .posts {
+  width: 48%;
+}
+
+#content #home .infoq {
+	width: 48%;
+}
+
+#menu {
+  padding-top:7px;
+}
+
+#submenu {
+	vertical-align: middle;
+    padding-top:10px;
+}
+
+#content .box {
+	width: 84%;
+}
+
+#content .box ul li {
+  padding-left:10px;
+}

@@ -1,0 +1,36 @@
+a:hover.tag_1, a:hover.tag_2, a:hover.tag_3, a:hover.tag_4
+{
+    background-color: #dddddd;
+}
+
+.tag_1, .tag_2, .tag_3, .tag_4 {
+    background-color: transparent;
+    margin: 3px;
+    padding: 1px;
+    font-family: Arial, Helvetica, Sans-Serif;
+}
+
+.tag_1 {
+	font-size: 10pt;
+}
+
+.tag_2 {
+	font-size: 14pt;
+}
+
+.tag_3 {
+	font-size: 18pt;
+}
+
+.tag_4 {
+	font-size: 20pt;
+}
+
+.tagcloud {
+	text-align: justify;
+    margin: 15px;
+    padding: 10px;
+    background-color: #f6f6f6;
+    border: #bbbbbb 1px solid;
+    -moz-border-radius: 10px;
+}

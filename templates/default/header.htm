@@ -1,0 +1,185 @@
+<#setting number_format = "#"/>
+<#setting datetime_format = dateTimeFormat/>
+<#assign logged = logged?default(false)/>
+<#assign language = language?default("en_US")/>
+<#assign hasCodeBlock = hasCodeBlock?default(false)/>
+
+<#assign adsenseCodes = {
+        "posts2":1261842631, <#-- Assuntos gerais (Off-topic) -->
+        "posts4":1058692035, <#-- Java Básico -->
+        "posts5":1145346990, <#-- Java Avançado -->
+        "posts6":1701924132, <#-- Java e Desenvolvimento Web -->
+        "posts17":8613875243, <#-- Notícias -->
+        "posts11":0062583420, <#-- Certificação Java -->
+        "posts12":0114837211, <#-- Padrões, Arquiteturas e Projetos -->
+		"posts18":5791791724 <#-- Ferramentas -->
+}/>
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=${encoding}" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="-1" />
+
+<!-- OAS SETUP begin -->
+<SCRIPT LANGUAGE=JavaScript>
+<!--
+//configuration
+OAS_url = 'http://media.realmedia.com.br/RealMedia/ads/';
+OAS_listpos = 'Top,x01,x04';
+OAS_query = '';
+OAS_sitepage = 'guj/forum';
+//end of configuration
+OAS_version = 10;
+OAS_rn = '001234567890'; OAS_rns = '1234567890';
+OAS_rn = new String (Math.random()); OAS_rns = OAS_rn.substring (2, 11);
+function OAS_NORMAL(pos) {
+	document.write('<A HREF="' + OAS_url + 'click_nx.ads/' + OAS_sitepage + '/1' + OAS_rns + '@' + OAS_listpos + '!' + pos + OAS_query + '" TARGET=_top>');
+	document.write('<IMG SRC="' + OAS_url + 'adstream_nx.ads/' + OAS_sitepage + '/1' + OAS_rns + '@' + OAS_listpos + '!' + pos + OAS_query + '" BORDER=0></A>');
+}
+//-->
+</SCRIPT>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+OAS_version = 11;
+if (navigator.userAgent.indexOf('Mozilla/3') != -1)
+OAS_version = 10;
+if (OAS_version >= 11)
+document.write('<SCR'+ 'IPT LANGUAGE=JavaScript1.1 SRC="' + OAS_url + 'adstream_mjx.ads/' + OAS_sitepage + '/1' + OAS_rns + '@' + OAS_listpos + OAS_query + '"></SC'+'RIPT>');
+//-->
+</SCRIPT><SCRIPT LANGUAGE="JavaScript">
+<!-- 
+document.write('')
+function OAS_AD(pos) {
+if (OAS_version >= 11)
+	OAS_RICH(pos);
+else
+	OAS_NORMAL(pos);
+}
+//-->
+</SCRIPT>
+<!-- OAS SETUP end -->
+
+<link href="${contextPath}/stylesheets/guj3.css?${startupTime}" media="screen" rel="stylesheet" type="text/css" />
+<style type="text/css">@import url( ${contextPath}/templates/${templateName}/styles/style.css?${startupTime} );</style>
+<style type="text/css">@import url( ${contextPath}/templates/${templateName}/styles/${language}.css?${startupTime} );</style>
+<script type="text/javascript" src="${contextPath}/javascripts/jquery-1.3.1.min.js?${startupTime}"></script>
+<script type="text/javascript" src="${contextPath}/javascripts/jquery.corners.min.js?${startupTime}"></script>
+<!--[if IE]>
+<link href="${contextPath}/stylesheets/guj3-ie.css?${startupTime}" media="screen" rel="stylesheet" type="text/css" />
+<![endif]-->
+  
+<script type="text/javascript">
+$().ready(function() {
+	$("#returnPath").val(document.location);
+	
+	if (!$.browser.msie && navigator.userAgent.indexOf("Chrome") == -1) {
+		$("table, table th").corners("6px");
+	}
+});
+</script>
+
+<#if hasCodeBlock>
+	<style type="text/css">@import url( ${contextPath}/templates/${templateName}/styles/SyntaxHighlighter.css?${startupTime} );</style>
+</#if>
+
+<title>${pageTitle?default("JForum")?html}</title>
+
+</head>
+<body class="${language}">
+	
+	<div id="header">
+	    <div class="container1">
+	    	<div id="banner">
+				<!-- OAS AD 'Top' begin -->
+				<SCRIPT LANGUAGE="JavaScript">
+				<!--
+				OAS_AD('Top');
+				//-->
+				</SCRIPT>
+				<!-- OAS AD 'Top' end -->
+	    	</div>
+	      <div class="container2">
+	        <a href="${contextPath}/home.index.logic" id="logo">GUJ</a>
+	        <h2>Not&iacute;cias, artigos e o maior f&oacute;rum brasileiro sobre Java</h2>
+	      </div>
+	    </div>
+	  </div>
+
+	  <div id="menu">
+	    <ul>
+	      <li class="home">
+	        <a href="${contextPath}/home.index.logic">home</a>
+	      </li>
+	      <li class="forum">
+	        <a href="${contextPath}/forums/list.java">f&oacute;rum</a>
+	      </li>
+	      <li class="artigos">
+	        <a href="${contextPath}/article.list.logic">artigos</a>
+	      </li>
+	      <li class="noticias">
+	        <a href="${contextPath}/forums/show/17.java">not&iacute;cias</a>
+	      </li>
+	
+		  <li class="topics">
+	        <a href="${contextPath}/recentTopics/list.java">t&oacute;picos recentes</a>
+	      </li>
+
+	      <li class="empregos">
+	        <a href="${contextPath}/jobs.list.logic">empregos</a>
+	      </li>
+	
+			<!--
+	      <li class="blogs">
+	        <a href="${contextPath}/posts">blogs</a>
+	      </li>
+	      -->
+	    </ul>
+	    <form class="busca" method="GET" action="${contextPath}/jforum.java?module=search&action=search">
+			<input type="hidden" name="module" value="search"/>
+			<input type="hidden" name="action" value="search"/>
+	      	<input class="campo rounded" name="search_keywords" value="Pesquisar" onFocus="if (this.value == 'Pesquisar') { this.value = '';}" onBlur="if (this.value == '') { this.value = 'Pesquisar';}" tabindex="1"/>
+	      	<input type="image" class="botao" style="border: 0px;" src="${contextPath}/images/guj/botao_ok.gif" tabindex="2">
+	    </form>
+	  </div>
+
+<div id="submenu">
+	<div class="container1">
+		<div class="container2">
+			<#if !logged && !sso>
+			  Bem-vindo ao GUJ. <a href="${JForumContext.encodeURL("/user/insert")}" style="color: #4382B0;">Crie seu login</a>, 
+	          ou digite-o para logar no site.
+
+	          <form class="login" action="${contextPath}/jforum.java?module=user&action=validateLogin" method="POST">
+	            <input type="hidden" name="returnPath" id="returnPath" value="" />
+	            Usu&aacute;rio: <input class="campo rounded" name="username" size="8" tabindex="3" />
+				Senha: <input class="campo rounded" style="border: 0px;" type="password" size="8" name="password" tabindex="4" />
+	            <input type="image" class="botao" style="border: 0px;" src="${contextPath}/images/guj/botao_entrar.gif" tabindex="5" name="login" value="Login">
+	          </form>
+			</#if>
+			
+			<#if logged>
+				<a id="myprofile" class="mainmenu" href="${JForumContext.encodeURL("/user/edit/${session.userId}")}"><img src="${contextPath}/templates/${templateName}/images/icon_mini_profile.gif" border="0" alt="[Profile]" /> MEUS DADOS</a>&nbsp; 
+				<a id="privatemessages" class="mainmenu" href="${JForumContext.encodeURL("/pm/inbox")}"><img src="${contextPath}/templates/${templateName}/images/icon_mini_message.gif" border="0" alt="[Message]" />
+					MENSAGENS PRIVADAS (${session.privateMessages})
+				</a>&nbsp;
+                <a id="mymessages" class="mainmenu" href="${JForumContext.encodeURL("/posts/listByUser/${session.userId}")}"><img src="${contextPath}/templates/${templateName}/images/icon_mini_message.gif" border="0" alt="Minhas Mensagens" />
+                   MINHAS MENSAGENS
+                </a>&nbsp;
+                <a id="favorites" class="mainmenu" href="${JForumContext.encodeURL("/bookmarks/list/${session.userId}")}"><img src="${contextPath}/templates/${templateName}/images/icon_mini_message.gif" border="0" alt="Favoritos" />
+                   FAVORITOS
+                </a>&nbsp;
+				</span>
+
+				<#if !sso>
+					<a id="logout" class="mainmenu" href="${JForumContext.encodeURL("/user/logout")}"><img src="${contextPath}/templates/${templateName}/images/icon_mini_login.gif" border="0" alt="[Login]" /> LOGOUT [${session.username}] </a></span>
+				</#if>
+			</#if>
+		</div>
+	</div>
+</div>
+
+<table width="100%" border="0" style="padding: 15px;">
+	<tr>
+		<td width="100%">
+
