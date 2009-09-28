@@ -1,4 +1,4 @@
-package br.com.caelum.guj.logic;
+package br.com.caelum.guj.controller;
 
 import br.com.caelum.guj.feeds.JobsAgregator;
 import br.com.caelum.vraptor.Path;

@@ -1,4 +1,4 @@
-package br.com.caelum.guj.logic;
+package br.com.caelum.guj.controller;
 
 import java.util.List;
 

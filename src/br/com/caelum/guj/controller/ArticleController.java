@@ -1,4 +1,4 @@
-package br.com.caelum.guj.logic;
+package br.com.caelum.guj.controller;
 
 import static br.com.caelum.vraptor.view.Results.nothing;
 
