@@ -2,23 +2,28 @@ package br.com.caelum.guj.logic;
 
 import java.util.List;
 
-import org.vraptor.annotations.Component;
-
 import br.com.caelum.guj.Config;
 import br.com.caelum.guj.hibernate.HibernateUtil;
 import br.com.caelum.guj.model.Article;
 import br.com.caelum.guj.model.Post;
+import br.com.caelum.vraptor.Path;
+import br.com.caelum.vraptor.Resource;
+import br.com.caelum.vraptor.Result;
 
 /**
  * @author Rafael Steil
+ * @author Lucas Cavalcanti
  */
-@Component("home")
-public class HomeLogic {
-	private List<Post> posts;
-	private List<Article> articles;
+@Resource
+public class HomeController {
+	private final Result result;
+
+	public HomeController(Result result) {
+		this.result = result;
+	}
 
 	@SuppressWarnings("unchecked")
-	public List<Post> getAllPosts() {
+	private List<Post> getAllPosts() {
 		return HibernateUtil.getSessionFactory().getCurrentSession()
 			.createQuery("from Post p order by p.date desc").setMaxResults(
 				Config.getIntvalue("posts.home.items")).setCacheable(
@@ -26,23 +31,17 @@ public class HomeLogic {
 	}
 
 	@SuppressWarnings("unchecked")
-	public List<Article> getAllArticles() {
+	private List<Article> getAllArticles() {
 		return HibernateUtil.getSessionFactory().getCurrentSession()
 				.createQuery("from Article a order by a.id desc")
 				.setMaxResults(Config.getIntvalue("article.home.items"))
 				.setCacheable(true).setCacheRegion("homeArticles").list();
 	}
 
+	@Path("/")
 	public void index() {
-		this.posts = this.getAllPosts();
-		this.articles = this.getAllArticles();
+		result.include("posts", this.getAllPosts());
+		result.include("articles", this.getAllArticles());
 	}
 
-	public List<Article> getArticles() {
-		return this.articles;
-	}
-
-	public List<Post> getPosts() {
-		return posts;
-	}
 }

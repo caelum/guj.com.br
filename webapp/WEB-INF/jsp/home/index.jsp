@@ -4,7 +4,7 @@
 
 <c:set var="rmSection" value="guj/home"/>
 
-<%@ include file="../header.jsp" %>
+<%@ include file="/header.jsp" %>
 <style type="text/css">@import url(<c:url value="/stylesheets/opencloud.css"/>);</style>
 <script type="text/javascript" src="<c:url value="/javascripts/guj.js"/>"></script>
 
@@ -129,4 +129,4 @@ $().ready(function() {
 </div>
   </div>
 
-<%@ include file="../footer.jsp" %>
+<%@ include file="/footer.jsp" %>

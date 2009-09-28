@@ -77,7 +77,7 @@ $().ready(function() {
 			<!-- OAS AD 'Top' end -->
     	</div>
       <div class="container2">
-        <a href="<c:url value="/home.index.logic"/>" id="logo">GUJ</a>
+        <a href="<c:url value="/"/>" id="logo">GUJ</a>
         <h2>Not&iacute;cias, artigos e o maior f&oacute;rum brasileiro sobre Java</h2></a>
       </div>
     </div>
@@ -86,7 +86,7 @@ $().ready(function() {
   <div id="menu">
     <ul>
       <li class="home">
-        <a href="<c:url value="/home.index.logic"/>">home</a>
+        <a href="<c:url value="/"/>">home</a>
       </li>
       <li class="forum">
         <a href="<c:url value="/forums/list.java"/>">f&oacute;rum</a>
