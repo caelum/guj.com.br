@@ -5,7 +5,7 @@
 
 	<c:set var="title">Categorias</c:set>
 
-	<%@ include file="../header.jsp"%>
+	<%@ include file="/header.jsp"%>
 
 
 	<div id="content">
@@ -18,7 +18,7 @@
 
 	<br/>
 
-	<form action="<c:url value="/category.add.logic"/>" method="POST">
+	<form action="<c:url value="/categories"/>" method="POST">
 	
 	 <c:if test="${errors.size$0 > 0}">
 	   		Campos obrigatórios:
@@ -52,5 +52,5 @@
 	</div>
 
 
-	<%@ include file="../footer.jsp"%>
+	<%@ include file="/footer.jsp"%>
 </c:if>

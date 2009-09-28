@@ -46,7 +46,7 @@ public class ApproveController {
 		article.setApproved(true);
 		article.setLevel(ArticleLevel.valueOf(articleLevel));
 
-		Category category = new CategoryLogic().getCategory(categoryId);
+		Category category = new CategoryController(result, null).getCategory(categoryId);
 		article.setCategory(category);
 
 		result.include("isModerator", true);
