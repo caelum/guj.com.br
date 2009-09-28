@@ -5,7 +5,7 @@
 			
 <c:set var="title">Artigos pendentes para aprovação</c:set>
 
-<%@ include file="../header.jsp" %>
+<%@ include file="/header.jsp" %>
 
 <div id="content">
 
@@ -50,7 +50,7 @@
 					<li><a href="<c:url value="/article.show.logic?id=${article.id}"/>">${article.title}</a>
 							| <fmt:formatDate pattern="dd/MM/yyyy" value="${article.date}"/>
 							|<a href="#" onclick="approve(${article.id});"><img src="<c:url value="/images/guj/thumb_up.gif" />" border="0" name="approveUp" title="Aprovar"/></a>	
-							<a href="<c:url value="/approve.delete.logic?id=${article.id}"/>"><img src="<c:url value="/images/guj/delete.gif" />" border="0" name="approveDown" title="Apagar" /></a>
+							<a href="<c:url value="/approve/delete?id=${article.id}"/>"><img src="<c:url value="/images/guj/delete.gif" />" border="0" name="approveDown" title="Apagar" /></a>
 					</li>
 				</ul>
 			</c:forEach>
@@ -64,7 +64,7 @@
 				var categorySel = document.getElementById("categorySel");
 				var levelSel = document.getElementById("levelSel");						
 		
-				$.get('<c:url value="/approve.save.logic"/>',
+				$.get('<c:url value="/approve/save"/>',
 						{ articleId: articleId, categoryId: categorySel.value, articleLevel: levelSel.value },
 						function() {
 							
@@ -90,6 +90,6 @@
 
 </div>
 
-<%@ include file="../footer.jsp" %>
+<%@ include file="/footer.jsp" %>
 
 </c:if>
