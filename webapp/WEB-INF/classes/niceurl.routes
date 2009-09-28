@@ -1,0 +1,21 @@
+# novas paginas
+/ 					   			=>  home.index
+#/java.tutorial.artigo.:{id}.1.guj	=> 	article.show.#{id}
+#/article/:{logic}/		   			=>  article.#{logic}
+
+# Direto pro JSP
+#/:{pagina}/            ==> /WEB-INF/jsp/paginas/#{pagina}.jsp
+#/:{pasta}/:{pagina}/   ==> /WEB-INF/jsp/paginas/#{pasta}/#{pagina}.jsp
+
+# Coloca barra no final antes de dar 404
+# TODO pattern matching deveria pegar pelo menos 1 caracter
+#/:{a}           >>>  /#{a}/
+#/:{a}/:{b}      >>>  /#{a}/#{b}/
+
+# HACK Retira jsessionid ate 3 niveis
+/;jsessionid=*  >>> /
+/;JSESSIONID=*  >>> /
+/:{coisa}/;jsessionid=*  >>> /#{coisa}/
+/:{coisa}/;JSESSIONID=*  >>> /#{coisa}/
+/:{coisa}/:{maiscoisa}/;jsessionid=*  >>> /#{coisa}/#{maiscoisa}/
+/:{coisa}/:{maiscoisa}/;JSESSIONID=*  >>> /#{coisa}/#{maiscoisa}/
