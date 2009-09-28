@@ -33,7 +33,7 @@
 	
     <filter>
 		<filter-name>hibernateSessionViewFilter</filter-name>
-		<filter-class>br.com.guj.hibernate.OpenSessionInViewFilter</filter-class>
+		<filter-class>br.com.caelum.guj.hibernate.OpenSessionInViewFilter</filter-class>
 	</filter>
 	
 	<filter-mapping>
@@ -59,7 +59,7 @@
 	
 	<servlet>
 		<servlet-name>guj</servlet-name>
-		<servlet-class>br.com.guj.GUJServlet</servlet-class>
+		<servlet-class>br.com.caelum.guj.GUJServlet</servlet-class>
 		<!-- 
 		<load-on-startup>0</load-on-startup>
 		 -->

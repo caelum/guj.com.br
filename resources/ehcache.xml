@@ -2,31 +2,31 @@
     <diskStore path="java.io.tmpdir"/>
 
 	<!-- Post -->
-	<cache name="br.com.guj.model.Post"
+	<cache name="br.com.caelum.guj.model.Post"
 		maxElementsInMemory="100"
 		eternal="true"
 		overflowToDisk="false"/>
 		
 	<!-- Blog -->
-	<cache name="br.com.guj.model.Blog"
+	<cache name="br.com.caelum.guj.model.Blog"
 		maxElementsInMemory="100"
 		eternal="true"
 		overflowToDisk="false"/>
 		
 	<!-- Article -->
-	<cache name="br.com.guj.model.Article"
+	<cache name="br.com.caelum.guj.model.Article"
 		maxElementsInMemory="300"
 		eternal="true"
 		overflowToDisk="false"/>
 		
 	<!-- Article Tags -->
-	<cache name="br.com.guj.model.Article.tags"
+	<cache name="br.com.caelum.guj.model.Article.tags"
 		maxElementsInMemory="5000"
 		eternal="true"
 		overflowToDisk="false"/>
 		
 	<!-- Category -->
-	<cache name="br.com.guj.model.Category"
+	<cache name="br.com.caelum.guj.model.Category"
 		maxElementsInMemory="300"
 		eternal="true"
 		overflowToDisk="false"/>
@@ -44,7 +44,7 @@
 		overflowToDisk="false"/>
 		
 	<!-- Category Articles -->
-	<cache name="br.com.guj.model.Category.articles"
+	<cache name="br.com.caelum.guj.model.Category.articles"
 		maxElementsInMemory="300"
 		eternal="true"
 		overflowToDisk="false"/>

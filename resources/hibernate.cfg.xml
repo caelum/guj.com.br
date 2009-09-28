@@ -33,10 +33,10 @@
 
 		<property name="dialect">org.hibernate.dialect.MySQLDialect</property>
 		
-		<mapping class="br.com.guj.model.Post"/>
-		<mapping class="br.com.guj.model.Blog"/>
-		<mapping class="br.com.guj.model.Article"/>
-		<mapping class="br.com.guj.model.Category"/>
-		<mapping class="br.com.guj.model.Tag"/>
+		<mapping class="br.com.caelum.guj.model.Post"/>
+		<mapping class="br.com.caelum.guj.model.Blog"/>
+		<mapping class="br.com.caelum.guj.model.Article"/>
+		<mapping class="br.com.caelum.guj.model.Category"/>
+		<mapping class="br.com.caelum.guj.model.Tag"/>
 	</session-factory>
 </hibernate-configuration>
