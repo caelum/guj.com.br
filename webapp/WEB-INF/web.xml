@@ -56,14 +56,25 @@
 		<filter-name>GUJ2_UrlRewriteFilter</filter-name>
 		<url-pattern>*.guj</url-pattern>
 	</filter-mapping>
-	
-	<servlet>
-		<servlet-name>guj</servlet-name>
-		<servlet-class>br.com.caelum.guj.GUJServlet</servlet-class>
-		<!-- 
-		<load-on-startup>0</load-on-startup>
-		 -->
-	</servlet>
+	<context-param>
+        <param-name>br.com.caelum.vraptor.packages</param-name>
+        <param-value>br.com.caelum.guj</param-value>
+    </context-param>
+    <context-param>
+		<param-name>br.com.caelum.vraptor.provider</param-name>
+		<param-value>br.com.caelum.vraptor.vraptor2.Provider</param-value>
+	</context-param>
+	<filter>
+		<filter-name>vraptor</filter-name>
+		<filter-class>br.com.caelum.vraptor.VRaptor</filter-class>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>vraptor</filter-name>
+		<url-pattern>/*</url-pattern>
+		<dispatcher>FORWARD</dispatcher>
+		<dispatcher>REQUEST</dispatcher>
+	</filter-mapping>
 	
 	<servlet>
     	<servlet-name>jforum</servlet-name>
@@ -83,11 +94,6 @@
     	<servlet-name>jforum</servlet-name>
     	<url-pattern>*.java</url-pattern>
   	</servlet-mapping>
-
-	<servlet-mapping>
-    	<servlet-name>guj</servlet-name>
-    	<url-pattern>*.logic</url-pattern>
-    </servlet-mapping>
 
     <session-config>
     	<session-timeout>10</session-timeout>

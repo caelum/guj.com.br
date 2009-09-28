@@ -18,7 +18,7 @@ public class HomeLogic {
 	private List<Article> articles;
 
 	@SuppressWarnings("unchecked")
-	private List<Post> getAllPosts() {
+	public List<Post> getAllPosts() {
 		return HibernateUtil.getSessionFactory().getCurrentSession()
 			.createQuery("from Post p order by p.date desc").setMaxResults(
 				Config.getIntvalue("posts.home.items")).setCacheable(
@@ -26,7 +26,7 @@ public class HomeLogic {
 	}
 
 	@SuppressWarnings("unchecked")
-	private List<Article> getAllArticles() {
+	public List<Article> getAllArticles() {
 		return HibernateUtil.getSessionFactory().getCurrentSession()
 				.createQuery("from Article a order by a.id desc")
 				.setMaxResults(Config.getIntvalue("article.home.items"))

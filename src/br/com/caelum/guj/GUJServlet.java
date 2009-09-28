@@ -1,63 +1,46 @@
 package br.com.caelum.guj;
 
-import java.io.IOException;
-
-import javax.servlet.ServletConfig;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import net.jforum.SessionFacade;
 import net.jforum.entities.UserSession;
 import net.jforum.util.preferences.ConfigKeys;
+import br.com.caelum.vraptor.InterceptionException;
+import br.com.caelum.vraptor.Intercepts;
+import br.com.caelum.vraptor.Result;
+import br.com.caelum.vraptor.core.InterceptorStack;
+import br.com.caelum.vraptor.interceptor.Interceptor;
+import br.com.caelum.vraptor.resource.ResourceMethod;
 
-import org.vraptor.VRaptorServlet;
+@Intercepts
+public class GUJServlet implements Interceptor {
+	private final Agregators agregators;
+	private final Result result;
+	private final HttpSession session;
 
-import br.com.caelum.guj.feeds.Agregator;
-import br.com.caelum.guj.feeds.JobsAgregator;
-
-public class GUJServlet extends VRaptorServlet {
-	private Agregator forumAgregator;
-	private Agregator newsAgregator;
-	private Agregator infoqAgregator;
-
-	@Override
-	public void init(ServletConfig config) throws ServletException {
-		super.init(config);
-		Config.loadConfigs();
-
-		this.forumAgregator = new Agregator("forum.refresh.interval",
-				"forum.items", "forum.url");
-		this.newsAgregator = new Agregator("news.refresh.interval",
-				"news.items", "news.url");
-		this.infoqAgregator = new Agregator("infoq.refresh.interval",
-				"infoq.items", "infoq.url");
-
-		JobsAgregator.start();
+	public GUJServlet(Agregators agregators, Result result, HttpSession session) {
+		this.agregators = agregators;
+		this.result = result;
+		this.session = session;
 	}
 
-	/**
-	 * @see org.vraptor.VRaptorServlet#service(javax.servlet.http.HttpServletRequest,
-	 *      javax.servlet.http.HttpServletResponse)
-	 */
 	@Override
-	protected void service(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
-		request.setAttribute("infoq", this.infoqAgregator.getItems());
-		request.setAttribute("news", this.newsAgregator.getItems());
-		request.setAttribute("forum", this.forumAgregator.getItems());
-		request.setAttribute("jobs", JobsAgregator.getItems());
+	public boolean accepts(ResourceMethod method) {
+		return true;
+	}
 
-		boolean isLogged = "1".equals(request.getSession().getAttribute(
-				ConfigKeys.LOGGED));
-		request.setAttribute("logged", isLogged);
+	@Override
+	public void intercept(InterceptorStack stack, ResourceMethod method, Object instance) throws InterceptionException {
+		agregators.addAggregators(result);
+
+		boolean isLogged = "1".equals(session.getAttribute(ConfigKeys.LOGGED));
+		result.include("logged", isLogged);
 
 		if (isLogged) {
-			UserSession userSession = SessionFacade.getUserSession(request
-					.getSession().getId());
-			request.setAttribute("userSession", userSession);
+			UserSession userSession = SessionFacade.getUserSession(session.getId());
+			result.include("userSession", userSession);
 		}
 
-		super.service(request, response);
+		stack.next(method, instance);
 	}
 }
