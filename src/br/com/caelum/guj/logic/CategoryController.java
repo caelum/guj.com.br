@@ -2,8 +2,8 @@ package br.com.caelum.guj.logic;
 
 import static br.com.caelum.vraptor.view.Results.logic;
 
+import org.apache.commons.lang.StringUtils;
 import org.hibernate.Session;
-import org.vraptor.validator.StringValidation;
 
 import br.com.caelum.guj.model.Category;
 import br.com.caelum.vraptor.Get;
@@ -35,7 +35,7 @@ public class CategoryController {
 	@Path("/categories") @Post
 	public void add(final Category category) {
 		validator.checking(new Validations() {{
-			that(!StringValidation.isBlank(category.getName()),"category.name", "Nome;");
+			that(!StringUtils.isBlank(category.getName()),"category.name", "Nome;");
 		}});
 		validator.onErrorUse(logic()).forwardTo(CategoryController.class).save();
 
