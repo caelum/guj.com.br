@@ -2,9 +2,9 @@ package br.com.caelum.guj.logic;
 
 import static br.com.caelum.vraptor.view.Results.logic;
 
+import org.hibernate.Session;
 import org.vraptor.validator.StringValidation;
 
-import br.com.caelum.guj.hibernate.HibernateUtil;
 import br.com.caelum.guj.model.Category;
 import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Path;
@@ -19,10 +19,12 @@ public class CategoryController {
 
 	private final Result result;
 	private final Validator validator;
+	private final Session session;
 
-	public CategoryController(Result result, Validator validator) {
+	public CategoryController(Result result, Validator validator, Session session) {
 		this.result = result;
 		this.validator = validator;
+		this.session = session;
 	}
 
 	@Path("/categories") @Get
@@ -37,13 +39,12 @@ public class CategoryController {
 		}});
 		validator.onErrorUse(logic()).forwardTo(CategoryController.class).save();
 
-		HibernateUtil.getSessionFactory().getCurrentSession().save(category);
+		session.save(category);
 		result.use(logic()).redirectTo(CategoryController.class).save();
 	}
 
 	protected Category getCategory(Long id) {
-		return (Category) HibernateUtil.getSessionFactory().getCurrentSession()
-				.get(Category.class, id);
+		return (Category) session.get(Category.class, id);
 	}
 
 }

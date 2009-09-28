@@ -31,16 +31,6 @@
     	<url-pattern>*.java</url-pattern>
   	</filter-mapping>
 	
-    <filter>
-		<filter-name>hibernateSessionViewFilter</filter-name>
-		<filter-class>br.com.caelum.guj.hibernate.OpenSessionInViewFilter</filter-class>
-	</filter>
-	
-	<filter-mapping>
-		<filter-name>hibernateSessionViewFilter</filter-name>
-	  	<url-pattern>*.logic</url-pattern> 
-	</filter-mapping>
-	
 	<filter>
 		<filter-name>GUJ2_UrlRewriteFilter</filter-name>
 		<filter-class>org.tuckey.web.filters.urlrewrite.UrlRewriteFilter</filter-class>
@@ -62,7 +52,7 @@
     </context-param>
     <context-param>
 		<param-name>br.com.caelum.vraptor.provider</param-name>
-		<param-value>br.com.caelum.vraptor.vraptor2.Provider</param-value>
+		<param-value>br.com.caelum.guj.vraptor.CustomProvider</param-value>
 	</context-param>
 	<filter>
 		<filter-name>vraptor</filter-name>

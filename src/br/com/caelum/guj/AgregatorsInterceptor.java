@@ -13,12 +13,12 @@ import br.com.caelum.vraptor.interceptor.Interceptor;
 import br.com.caelum.vraptor.resource.ResourceMethod;
 
 @Intercepts
-public class GUJServlet implements Interceptor {
+public class AgregatorsInterceptor implements Interceptor {
 	private final Agregators agregators;
 	private final Result result;
 	private final HttpSession session;
 
-	public GUJServlet(Agregators agregators, Result result, HttpSession session) {
+	public AgregatorsInterceptor(Agregators agregators, Result result, HttpSession session) {
 		this.agregators = agregators;
 		this.result = result;
 		this.session = session;

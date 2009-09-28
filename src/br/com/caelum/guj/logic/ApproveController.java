@@ -7,7 +7,9 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import net.jforum.entities.UserSession;
-import br.com.caelum.guj.hibernate.HibernateUtil;
+
+import org.hibernate.Session;
+
 import br.com.caelum.guj.model.Article;
 import br.com.caelum.guj.model.ArticleLevel;
 import br.com.caelum.guj.model.Category;
@@ -19,10 +21,12 @@ public class ApproveController {
 
 	private final HttpServletRequest request;
 	private final Result result;
+	private final Session session;
 
-	public ApproveController(Result result, HttpServletRequest request) {
+	public ApproveController(Result result, HttpServletRequest request, Session session) {
 		this.result = result;
 		this.request = request;
+		this.session = session;
 	}
 
 	public void list() {
@@ -34,7 +38,7 @@ public class ApproveController {
 	@SuppressWarnings("unchecked")
 	protected List<Category> getAllCategories() {
 
-		return HibernateUtil.getSession().createQuery(
+		return session.createQuery(
 				"from Category c ORDER BY c.name").setCacheable(false).list();
 
 	}
@@ -46,7 +50,7 @@ public class ApproveController {
 		article.setApproved(true);
 		article.setLevel(ArticleLevel.valueOf(articleLevel));
 
-		Category category = new CategoryController(result, null).getCategory(categoryId);
+		Category category = new CategoryController(result, null, session).getCategory(categoryId);
 		article.setCategory(category);
 
 		result.include("isModerator", true);
@@ -71,7 +75,7 @@ public class ApproveController {
 
 		Article article = this.getArticle(id);
 
-		HibernateUtil.getSessionFactory().getCurrentSession().delete(article);
+		session.delete(article);
 
 		result.use(logic()).forwardTo(ApproveController.class).list();
 	}
@@ -79,7 +83,7 @@ public class ApproveController {
 	@SuppressWarnings("unchecked")
 	private List<Article> getAllArticles() {
 
-		return HibernateUtil.getSession().createQuery(
+		return session.createQuery(
 				"from Article a where a.approved = false ORDER BY a.date")
 				.setCacheable(true).setCacheRegion("ApproveArticles").list();
 
@@ -87,8 +91,7 @@ public class ApproveController {
 
 	private Article getArticle(long id) {
 
-		return (Article) HibernateUtil.getSessionFactory().getCurrentSession()
-				.get(Article.class, id);
+		return (Article) session.get(Article.class, id);
 	}
 
 }

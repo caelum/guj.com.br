@@ -8,7 +8,9 @@ import java.util.List;
 import javax.servlet.http.HttpSession;
 
 import net.jforum.util.preferences.ConfigKeys;
-import br.com.caelum.guj.hibernate.HibernateUtil;
+
+import org.hibernate.Session;
+
 import br.com.caelum.guj.model.Article;
 import br.com.caelum.guj.model.Category;
 import br.com.caelum.guj.model.Tag;
@@ -24,21 +26,23 @@ public class ArticleController {
 
 	private final Result result;
 
-	public ArticleController(HttpSession session, Result result) {
+	private final Session session;
+
+	public ArticleController(HttpSession httpSession, Result result, Session session) {
 		this.result = result;
-		this.isLogged = "1".equals(session.getAttribute(ConfigKeys.LOGGED));
+		this.session = session;
+		this.isLogged = "1".equals(httpSession.getAttribute(ConfigKeys.LOGGED));
 	}
 
 	@SuppressWarnings("unchecked")
 	protected List<Category> getAllCategories() {
-		return HibernateUtil.getSession().createQuery(
+		return session.createQuery(
 				"from Category c ORDER BY c.name").setCacheable(true)
 				.setCacheRegion("Categories").list();
 	}
 
 	private Article getArticle(long id) {
-		return (Article) HibernateUtil.getSessionFactory().getCurrentSession()
-				.get(Article.class, id);
+		return (Article) session.get(Article.class, id);
 	}
 
 	@Path("/articles/{articleId}/tags") @br.com.caelum.vraptor.Post
@@ -59,8 +63,7 @@ public class ArticleController {
 				newTags.add(tag);
 			}
 
-			Article article = (Article) HibernateUtil.getSession().get(
-					Article.class, articleId);
+			Article article = (Article) session.get(Article.class, articleId);
 			newTags.removeAll(article.getTags());
 			article.getTags().addAll(newTags);
 		}
@@ -68,7 +71,7 @@ public class ArticleController {
 	}
 
 	private Tag findTagByName(String tag) {
-		return (Tag) HibernateUtil.getSession().createQuery(
+		return (Tag) session.createQuery(
 				"from Tag t where lower(t.name) = lower(:name)").setParameter(
 				"name", tag).uniqueResult();
 	}
@@ -84,7 +87,7 @@ public class ArticleController {
 			tag.setName(tagName);
 			articles = new ArrayList<Article>();
 		} else {
-			articles = HibernateUtil.getSession().createQuery(
+			articles = session.createQuery(
 					"select a from Article a join a.tags t where t = :tag")
 					.setParameter("tag", tag).list();
 		}
