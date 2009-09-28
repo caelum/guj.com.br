@@ -97,7 +97,7 @@ $().ready(function() {
 	<div class="posts box">
 		<b class="spiffy"><b class="spiffy1"><b></b></b><b class="spiffy2"><b></b></b><b class="spiffy3"></b><b class="spiffy4"></b><b class="spiffy5"></b></b>
 		<div class="spiffyfg">
-			  <h2><a href="<c:url value="/jobs.list.logic"/>">Ofertas de Empregos</a></h2>
+			  <h2><a href="<c:url value="/jobs"/>">Ofertas de Empregos</a></h2>
 			  <ul>
 			  	<c:forEach items="${jobs}" var="job">
 			  		<li>

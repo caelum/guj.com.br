@@ -103,7 +103,7 @@ $().ready(function() {
       </li>
         
       <li class="empregos">
-		<a href="<c:url value="/jobs.list.logic"/>">empregos</a>
+		<a href="<c:url value="/jobs"/>">empregos</a>
       </li>
     
     	<!--

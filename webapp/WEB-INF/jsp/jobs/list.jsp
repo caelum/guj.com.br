@@ -1,7 +1,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-<%@ include file="../header.jsp" %>
+<%@ include file="/header.jsp" %>
 
 <div id="content">
 	<div class="jobs box">
@@ -34,4 +34,4 @@
 	</div>
 </div>
 
-<%@ include file="../footer.jsp" %>
+<%@ include file="/footer.jsp" %>
