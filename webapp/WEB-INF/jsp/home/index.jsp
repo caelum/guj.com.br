@@ -72,11 +72,11 @@ $().ready(function() {
 	<div class="articles box">
 		<b class="spiffy"><b class="spiffy1"><b></b></b><b class="spiffy2"><b></b></b><b class="spiffy3"></b><b class="spiffy4"></b><b class="spiffy5"></b></b>
 		<div class="spiffyfg">
-			  <h2><a href="<c:url value="/article.list.logic"/>">Artigos</a></h2>
+			  <h2><a href="<c:url value="/articles"/>">Artigos</a></h2>
 			 <ul>
 		    	<c:forEach items="${articles}" var="article">
 					<li>
-						<h3><a href="<c:url value="/article.show.logic?id=${article.id}"/>">${fn:escapeXml(article.title)}</a></h3>
+						<h3><a href="<c:url value="/articles/${article.id}"/>">${fn:escapeXml(article.title)}</a></h3>
 				      	<span class="content">
 				      		<c:choose>
 				      			<c:when test="${article.subtitle.length$0 > 200}">

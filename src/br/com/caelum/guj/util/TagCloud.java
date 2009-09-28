@@ -27,12 +27,9 @@ public class TagCloud {
 
 		for (Tag tag : tags) {
 
-			String link = contextPath + "/article.listByTag.logic?tag="
-					+ tag.getName();
+			String link = contextPath + "/articles/" + tag.getName();
 
-			cloud
-					.addTag(new it.exprivia.cnos.opencloud.Tag(tag.getName(),
-							link));
+			cloud.addTag(new it.exprivia.cnos.opencloud.Tag(tag.getName(), link));
 
 		}
 

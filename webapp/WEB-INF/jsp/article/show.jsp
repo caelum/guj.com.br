@@ -3,7 +3,7 @@
 
 <c:set var="title">${article.title}</c:set>
 
-<%@ include file="../header.jsp" %>
+<%@ include file="/header.jsp" %>
 <link href="<c:url value="/stylesheets/SyntaxHighlighter.css"/>" media="screen" rel="stylesheet" type="text/css" />
 <style type="text/css">@import url(<c:url value="/stylesheets/tagging.css"/>);</style>
 <script src="<c:url value="/javascripts/shCore.js"/>" type="text/javascript"></script>
@@ -78,4 +78,4 @@ window.onload = function () {
 
 </div>
 
-<%@ include file="../footer.jsp" %>
+<%@ include file="/footer.jsp" %>

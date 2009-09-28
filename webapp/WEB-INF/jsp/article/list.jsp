@@ -3,7 +3,7 @@
 
 <c:set var="title">Todos os artigos</c:set>
 
-<%@ include file="../header.jsp" %>
+<%@ include file="/header.jsp" %>
 <style type="text/css">@import url(<c:url value="/stylesheets/tagging.css"/>);</style>
 
 <div id="content">
@@ -30,14 +30,14 @@
 			var tags = prompt('Informe as tags, separando-as por vírgula');
 			
 			if (tags != null && tags.length > 0) {
-				$.get('<c:url value="/article.addTag.logic"/>',
-					{ articleId: articleId, tags: tags },
+				$.post('<c:url value="/articles/"/>' + articleId + '/tags',
+					{tags: tags },
 					function() {
 						var s = '';
 						var p = tags.split(',');
 						
 						for (var i = 0; i < p.length; i++) {
-							s += '<span class="tagging-list-item tag tag_front"><b><a href="<c:url value="/article.listByTag.logic"/>?tag='+ p[i].replace(/^\s*|\s*$/g, "") +'">' + p[i] + '</a></b></span>';
+							s += '<span class="tagging-list-item tag tag_front"><b><a href="<c:url value="/articles/"/>'+ p[i].replace(/^\s*|\s*$/g, "") +'">' + p[i] + '</a></b></span>';
 						}
 					
 						$("#tags_" + articleId).append(s);
@@ -56,7 +56,7 @@
 						<li>
 							<c:choose>
 								<c:when test="${article.exclusive}">
-									<span class="post" style="font-size: 110%; font-weight: bold;"><a href="<c:url value="/article.show.logic?id=${article.id}"/>">${article.title}</a></span>
+									<span class="post" style="font-size: 110%; font-weight: bold;"><a href="<c:url value="/articles/${article.id}"/>">${article.title}</a></span>
 								</c:when>
 								<c:otherwise>
 									<span class="post"><a href="#">${article.title}</a></span>
@@ -76,7 +76,7 @@
 									<span class="tagging-list" id="tags_${article.id}">
 										<c:forEach items="${article.tags}" var="tag">
 											<span class="tagging-list-item tag tag_front">
-												<b><a class="tagging-link"  href="<c:url value="/article.listByTag.logic?tag=${tag.name}"/>">${tag.name}</a>&nbsp;</a></b>
+												<b><a class="tagging-link"  href="<c:url value="/articles/${tag.name}"/>">${tag.name}</a>&nbsp;</a></b>
 											</span>
 										</c:forEach>
 									</span>
@@ -100,4 +100,4 @@
 </div>
 </div>
 
-<%@ include file="../footer.jsp" %>
+<%@ include file="/footer.jsp" %>

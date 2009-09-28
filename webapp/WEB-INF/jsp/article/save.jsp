@@ -3,7 +3,7 @@
 
 <c:set var="title">Criação de artigos</c:set>
 
-<%@ include file="../header.jsp" %>
+<%@ include file="/header.jsp" %>
 <style type="text/css">@import url(<c:url value="/stylesheets/tagging.css"/>);</style>
 
 <div id="content">
@@ -34,4 +34,4 @@
 
 </div>
 
-<%@ include file="../footer.jsp" %>
+<%@ include file="/footer.jsp" %>

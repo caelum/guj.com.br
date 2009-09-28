@@ -3,7 +3,7 @@
 
 <c:set var="title">Criação de artigos</c:set>
 
-<%@ include file="../header.jsp" %>
+<%@ include file="/header.jsp" %>
 <style type="text/css">@import url(<c:url value="/stylesheets/tagging.css"/>);</style>
 <style type="text/css">@import url(<c:url value="/stylesheets/thickbox.css"/>);</style>
 <script type="text/javascript" src="<c:url value="/javascripts/thickbox.js"/>"></script>
@@ -65,8 +65,6 @@
 			theme_advanced_toolbar_align : "left",
 			theme_advanced_statusbar_location : "bottom",
 			theme_advanced_resizing : true,
-		
-			
 		});
 		</script>
 		
@@ -127,4 +125,4 @@
 </div>
 
 
-<%@ include file="../footer.jsp" %>
+<%@ include file="/footer.jsp" %>

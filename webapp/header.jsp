@@ -92,7 +92,7 @@ $().ready(function() {
         <a href="<c:url value="/forums/list.java"/>">f&oacute;rum</a>
       </li>
       <li class="artigos">
-        <a href="<c:url value="/article.list.logic"/>">artigos</a>
+        <a href="<c:url value="/articles"/>">artigos</a>
       </li>
       <li class="noticias">
         <a href="<c:url value="/forums/show/17.java"/>">not&iacute;cias</a>

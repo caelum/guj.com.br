@@ -64,7 +64,7 @@ public class ApproveController {
 
 		article.setModeratorId(us.getUserId());
 
-		result.use(logic()).forwardTo(ArticleLogic.class).list();
+		result.use(logic()).forwardTo(ArticleController.class).list();
 	}
 
 	public void delete(long id) {

@@ -1,6 +1,6 @@
 <div class="right-bar">
   <div class="articles rounded">
-    <h2><a href="<c:url value="article.list.logic"/>">Artigos</a></h2>
+    <h2><a href="<c:url value="/articles"/>">Artigos</a></h2>
     <ul>
       <c:forEach items="${articlesBox}" var="article">
         <li>

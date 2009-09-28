@@ -47,7 +47,7 @@
 
 			<c:forEach items="${articles}" var="article">
 				<ul>
-					<li><a href="<c:url value="/article.show.logic?id=${article.id}"/>">${article.title}</a>
+					<li><a href="<c:url value="/articles/${article.id}"/>">${article.title}</a>
 							| <fmt:formatDate pattern="dd/MM/yyyy" value="${article.date}"/>
 							|<a href="#" onclick="approve(${article.id});"><img src="<c:url value="/images/guj/thumb_up.gif" />" border="0" name="approveUp" title="Aprovar"/></a>	
 							<a href="<c:url value="/approve/delete?id=${article.id}"/>"><img src="<c:url value="/images/guj/delete.gif" />" border="0" name="approveDown" title="Apagar" /></a>
