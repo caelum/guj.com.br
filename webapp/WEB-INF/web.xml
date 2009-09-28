@@ -56,7 +56,7 @@
 	</context-param>
 	<filter>
 		<filter-name>vraptor</filter-name>
-		<filter-class>br.com.caelum.vraptor.VRaptor</filter-class>
+		<filter-class>br.com.caelum.guj.vraptor.VRaptorFilter</filter-class>
 	</filter>
 
 	<filter-mapping>

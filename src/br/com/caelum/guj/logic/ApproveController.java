@@ -4,10 +4,6 @@ import static br.com.caelum.vraptor.view.Results.logic;
 
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-
-import net.jforum.entities.UserSession;
-
 import org.hibernate.Session;
 
 import br.com.caelum.guj.model.Article;
@@ -19,13 +15,11 @@ import br.com.caelum.vraptor.Result;
 @Resource
 public class ApproveController {
 
-	private final HttpServletRequest request;
 	private final Result result;
 	private final Session session;
 
-	public ApproveController(Result result, HttpServletRequest request, Session session) {
+	public ApproveController(Result result, Session session) {
 		this.result = result;
-		this.request = request;
 		this.session = session;
 	}
 
@@ -55,20 +49,6 @@ public class ApproveController {
 
 		result.include("isModerator", true);
 		result.use(logic()).forwardTo(ApproveController.class).list();
-	}
-
-	// XXX ninguém chama isso
-	public void disaproove(long id) {
-
-		Article article = this.getArticle(id);
-
-		article.setApproved(false);
-
-		UserSession us = (UserSession) this.request.getAttribute("userSession");
-
-		article.setModeratorId(us.getUserId());
-
-		result.use(logic()).forwardTo(ArticleController.class).list();
 	}
 
 	public void delete(long id) {
