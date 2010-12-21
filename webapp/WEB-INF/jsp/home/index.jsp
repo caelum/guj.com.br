@@ -53,16 +53,9 @@ $().ready(function() {
 			  </ul>
 			  
 			  <p align="center">
-				<script type="text/javascript"><!--
-					google_ad_client = "pub-7098584793170190";
-					/* GUJ Quadrado Home */
-					google_ad_slot = "3282687954";
-					google_ad_width = 300;
-					google_ad_height = 250;
-					//-->
-					</script> 
-					<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"> 
-				</script> 
+				<script type="text/javascript" language="JavaScript">
+					OAS_AD('Right');
+				</script>
 			</p>
 		</div>
 		
