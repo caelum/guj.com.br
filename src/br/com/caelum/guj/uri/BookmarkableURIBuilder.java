@@ -16,7 +16,7 @@ public class BookmarkableURIBuilder {
 	}
 
 	public boolean isBookmarkable() {
-		return this.tokenInPosition(3).equals("post");
+		return this.splittedUri.length >= 3 && this.tokenInPosition(3).equals("post");
 	}
 
 	private String tokenInPosition(int position) {

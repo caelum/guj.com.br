@@ -9,6 +9,8 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.log4j.Logger;
+
 import br.com.caelum.guj.uri.BookmarkableURIBuilder;
 import br.com.caelum.vraptor.VRaptor;
 
@@ -19,6 +21,7 @@ import br.com.caelum.vraptor.VRaptor;
  * 
  */
 public class VRaptorFilter extends VRaptor {
+	private static final Logger LOG = Logger.getLogger(VRaptorFilter.class);
 
 	@Override
 	public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain)
@@ -26,12 +29,13 @@ public class VRaptorFilter extends VRaptor {
 		HttpServletRequest request = (HttpServletRequest) req;
 		String uri = request.getRequestURI();
 
-		if (new BookmarkableURIBuilder(uri).isBookmarkable()) {
-
-			RequestDispatcher rd = request.getRequestDispatcher("");
+		BookmarkableURIBuilder builder = new BookmarkableURIBuilder(uri);
+		if (builder.isBookmarkable()) {
+			RequestDispatcher rd = request.getRequestDispatcher(builder.buildCompatibleURI());
+			LOG.info("Redirection to the compatible url for " + uri + " -- "
+					+ builder.buildCompatibleURI());
 			rd.forward(request, res);
 		} else {
-
 			if (uri.endsWith(".java") || uri.endsWith(".guj")) {
 				chain.doFilter(req, res);
 			} else {
