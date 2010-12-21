@@ -26,4 +26,9 @@
 		<priority value="info"/>
 		<appender-ref ref="jforum-stdout"/>
 	</category>
+
+	<category name="br.com.caelum">
+		<priority value="info"/>
+		<appender-ref ref="jforum-stdout"/>
+	</category>
 </log4j:configuration>
