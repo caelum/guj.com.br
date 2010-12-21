@@ -1,17 +1,30 @@
 package br.com.caelum.guj.uri;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
+import org.junit.Before;
 import org.junit.Test;
 
 public class URITermsExtractorTest {
 
-	@Test
-	public void givenAPostURIItShouldExtractId() throws Exception {
-		URITermsExtractor uriTermsExtractor = new URITermsExtractor(
-				"http://localhost:8080/guj.com.br/post/228076/uma-uri-de-teste");
-		String id = uriTermsExtractor.getId();
+	private URITermsExtractor uriTermsExtractor;
 
-		assertEquals("228076", id);
+	@Before
+	public void setUp() {
+		this.uriTermsExtractor = new URITermsExtractor("/post/228076/uma-uri-de-teste");
+	}
+
+	@Test
+	public void shouldBeAPostBookmarkableURI() {
+		assertTrue(this.uriTermsExtractor.isBookmarkable());
+
+	}
+
+	@Test
+	public void shouldReturnCompatibleURI() {
+		String compatibleURI = this.uriTermsExtractor.buildCompatibleURI();
+
+		assertEquals("/posts/list/228076.java", compatibleURI);
 	}
 }

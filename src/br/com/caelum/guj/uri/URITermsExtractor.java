@@ -2,17 +2,28 @@ package br.com.caelum.guj.uri;
 
 public class URITermsExtractor {
 
-	private final String uri;
+	private final String[] splittedUri;
 
 	public URITermsExtractor(String uri) {
-		this.uri = uri;
+		this.splittedUri = uri.split("/");
 	}
 
-	public String getId() {
+	private String getId() {
 
 		// "http://localhost:8080/guj.com.br/post/228076/uma-uri-de-teste"
-		String[] splittedUri = this.uri.split("/");
-		return splittedUri[splittedUri.length - 2];
+
+		return this.tokenInPosition(2);
 	}
 
+	public boolean isBookmarkable() {
+		return this.tokenInPosition(3).equals("post");
+	}
+
+	private String tokenInPosition(int position) {
+		return this.splittedUri[this.splittedUri.length - position];
+	}
+
+	public String buildCompatibleURI() {
+		return String.format("/posts/list/%s.java", this.getId());
+	}
 }
