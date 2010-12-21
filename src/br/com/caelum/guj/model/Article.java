@@ -27,7 +27,7 @@ import org.hibernate.annotations.CascadeType;
 
 @Entity
 @Table(name = "articles")
-// @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+@Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 public class Article {
 
 	@Id
