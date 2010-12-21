@@ -29,7 +29,9 @@ public class VRaptorFilter extends VRaptor {
 		HttpServletRequest request = (HttpServletRequest) req;
 		String uri = request.getRequestURI();
 
-		BookmarkableURIBuilder builder = new BookmarkableURIBuilder(uri);
+		BookmarkableURIBuilder builder = new BookmarkableURIBuilder(uri,
+				request.getParameter("page"));
+		LOG.info("URL: " + uri + " ------ " + builder.isBookmarkable());
 		if (builder.isBookmarkable()) {
 			RequestDispatcher rd = request.getRequestDispatcher(builder.buildCompatibleURI());
 			LOG.info("Redirection to the compatible url for " + uri + " -- "
