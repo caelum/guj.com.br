@@ -27,7 +27,7 @@ import org.hibernate.annotations.CascadeType;
 
 @Entity
 @Table(name = "articles")
-@Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+// @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 public class Article {
 
 	@Id
@@ -43,7 +43,7 @@ public class Article {
 	private Date date;
 
 	@ManyToMany
-	@Cascade( { CascadeType.ALL, CascadeType.DELETE_ORPHAN })
+	@Cascade({ CascadeType.ALL, CascadeType.DELETE_ORPHAN })
 	@JoinTable(name = "article_tags")
 	@Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 	private List<Tag> tags = new ArrayList<Tag>();
@@ -74,7 +74,7 @@ public class Article {
 	private Integer moderatorId;
 
 	public Long getId() {
-		return id;
+		return this.id;
 	}
 
 	public void setId(Long id) {
@@ -82,7 +82,7 @@ public class Article {
 	}
 
 	public String getTitle() {
-		return title;
+		return this.title;
 	}
 
 	public void setTitle(String title) {
@@ -90,7 +90,7 @@ public class Article {
 	}
 
 	public String getLink() {
-		return link;
+		return this.link;
 	}
 
 	public void setLink(String link) {
@@ -98,7 +98,7 @@ public class Article {
 	}
 
 	public Date getDate() {
-		return date;
+		return this.date;
 	}
 
 	public void setDate(Date date) {
@@ -106,7 +106,7 @@ public class Article {
 	}
 
 	public boolean isApproved() {
-		return approved;
+		return this.approved;
 	}
 
 	public void setApproved(boolean approved) {
@@ -114,7 +114,7 @@ public class Article {
 	}
 
 	public String getSubtitle() {
-		return subtitle;
+		return this.subtitle;
 	}
 
 	public void setSubtitle(String subtitle) {
@@ -122,7 +122,7 @@ public class Article {
 	}
 
 	public boolean isExclusive() {
-		return exclusive;
+		return this.exclusive;
 	}
 
 	public void setExclusive(boolean exclusive) {
@@ -130,7 +130,7 @@ public class Article {
 	}
 
 	public boolean isOldStyle() {
-		return oldStyle;
+		return this.oldStyle;
 	}
 
 	public void setOldStyle(boolean oldStyle) {
@@ -138,7 +138,7 @@ public class Article {
 	}
 
 	public String getContent() {
-		return content;
+		return this.content;
 	}
 
 	public void setContent(String content) {
@@ -146,7 +146,7 @@ public class Article {
 	}
 
 	public String getPdf() {
-		return pdf;
+		return this.pdf;
 	}
 
 	public void setPdf(String pdf) {
@@ -154,7 +154,7 @@ public class Article {
 	}
 
 	public String getDownload() {
-		return download;
+		return this.download;
 	}
 
 	public void setDownload(String download) {
@@ -162,7 +162,7 @@ public class Article {
 	}
 
 	public String getAuthor() {
-		return author;
+		return this.author;
 	}
 
 	public void setAuthor(String author) {
@@ -170,7 +170,7 @@ public class Article {
 	}
 
 	public String getAuthorEmail() {
-		return authorEmail;
+		return this.authorEmail;
 	}
 
 	public void setAuthorEmail(String authorEmail) {
@@ -178,9 +178,9 @@ public class Article {
 	}
 
 	public String getFormatedContent() {
-		String contents = nl2br(this.content);
-		contents = handleTitleTag(contents);
-		return handleCreditsTag(contents);
+		String contents = this.nl2br(this.content);
+		contents = this.handleTitleTag(contents);
+		return this.handleCreditsTag(contents);
 	}
 
 	private String nl2br(String s) {
@@ -190,22 +190,18 @@ public class Article {
 
 		while (m.find()) {
 			m = p.matcher(s);
-			s = s.replaceAll("(?m)<java>(.*?)<br/>(.*?)</java>",
-					"<java>$1<##replace##>$2</java>");
+			s = s.replaceAll("(?m)<java>(.*?)<br/>(.*?)</java>", "<java>$1<##replace##>$2</java>");
 		}
 
 		s = s.replaceAll("<##replace##>", "\n");
-		s = s
-				.replaceAll("<java>",
-						"<br/> <textarea name='code' class='java' cols='60' rows='10'>");
+		s = s.replaceAll("<java>", "<br/> <textarea name='code' class='java' cols='60' rows='10'>");
 		s = s.replaceAll("</java>", "</textarea> <br/>");
 
 		return s;
 	}
 
 	private String handleTitleTag(String s) {
-		return s.replaceAll("(?m)<title>(.*?)</title>",
-				"<div id='subtitle'><b>$1</b></div>");
+		return s.replaceAll("(?m)<title>(.*?)</title>", "<div id='subtitle'><b>$1</b></div>");
 	}
 
 	private String handleCreditsTag(String s) {
@@ -224,7 +220,7 @@ public class Article {
 	 * @return the category
 	 */
 	public Category getCategory() {
-		return category;
+		return this.category;
 	}
 
 	/**
@@ -239,7 +235,7 @@ public class Article {
 	 * @return the level
 	 */
 	public ArticleLevel getLevel() {
-		return level;
+		return this.level;
 	}
 
 	/**
@@ -254,11 +250,11 @@ public class Article {
 	 * @return the tags
 	 */
 	public List<Tag> getTags() {
-		return tags;
+		return this.tags;
 	}
 
 	public Integer getUserId() {
-		return userId;
+		return this.userId;
 	}
 
 	public void setUserId(Integer userId) {
@@ -266,7 +262,7 @@ public class Article {
 	}
 
 	public Integer getModeratorId() {
-		return moderatorId;
+		return this.moderatorId;
 	}
 
 	public void setModeratorId(Integer moderatorId) {

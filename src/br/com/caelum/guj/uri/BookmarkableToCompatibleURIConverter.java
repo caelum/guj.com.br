@@ -3,14 +3,14 @@ package br.com.caelum.guj.uri;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class BookmarkableURIBuilder {
+public class BookmarkableToCompatibleURIConverter {
 
 	private static final int POSTS_PER_PAGE = 15;
 	private final Matcher matcher;
 	private final boolean succedded;
 	private final String page;
 
-	public BookmarkableURIBuilder(String uri, String page) {
+	public BookmarkableToCompatibleURIConverter(String uri, String page) {
 		this.page = page;
 
 		// /post/<id-post>/<titulo-post>?page=<pagina>
@@ -19,7 +19,7 @@ public class BookmarkableURIBuilder {
 		this.succedded = this.matcher.find();
 	}
 
-	public BookmarkableURIBuilder(String uri) {
+	public BookmarkableToCompatibleURIConverter(String uri) {
 		this(uri, null);
 	}
 
@@ -31,7 +31,7 @@ public class BookmarkableURIBuilder {
 		return this.succedded;
 	}
 
-	public String buildCompatibleURI() {
+	public String convert() {
 		if (this.thereIsPage()) {
 			return String.format("/posts/list/%d/%s.java", this.getPage(), this.getId());
 		} else {

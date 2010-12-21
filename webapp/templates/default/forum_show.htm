@@ -1,6 +1,7 @@
 <#include "header.htm"/>
 
 <#import "../macros/pagination.ftl" as pagination>
+<#import "../macros/bookmarkableLink.ftl" as bookmarkable>
 <#import "../macros/presentation.ftl" as presentation/>
 
 <script type="text/javascript" src="${contextPath}/templates/${templateName}/js/pagination.js?${startupTime}"></script>
@@ -107,11 +108,11 @@
 						<#else>
 							<#assign rowColor = "bg_small_yellow">
 						</#if>
-
 						<tr class="${rowColor}">
-							<td width="90%">
+							<td width="90%">								
 								<#if (topic.topicReplies > 0)>
-									<a href="${JForumContext.encodeURL("/posts/list/${topic.topicId}")}" class="gen">${topic.topicTitle?html}</a>
+									<@bookmarkable.bookmarkableLink topic.topicId, topic.topicTitle/>
+									<a href="${JForumContext.encodeURL("/post/${topic.topicId}/${topic.topicTitle}")}" class="gen">${topic.topicTitle?html}</a>
 								<#else>
 									<span class="gen">${topic.topicTitle?html}</span>
 								</#if>
@@ -201,7 +202,8 @@
 						<td ${class1} width="100%">
 							<#if topic.hasAttach() && attachmentsEnabled><img src="${contextPath}/templates/${templateName}/images/icon_clip.gif" align="middle" alt="[Clip]" /></#if>
 							<span class="topictitle">
-							<a href="${JForumContext.encodeURL("/posts/list/${topic.id}")}">
+							 
+							<a href="<@bookmarkable.bookmarkableLink topic.id, topic.title />">
 							<#if topic.vote>${I18n.getMessage("ForumListing.pollLabel")}</#if>
 							<#if (topic.title?length == 0)>
 								No Subject
@@ -210,7 +212,6 @@
 							</#if>
 							</a>
 							</span>
-
 							<#if topic.paginate>
 								<span class="gensmall">
 								<br />
@@ -234,7 +235,7 @@
 								<#if (topic.totalReplies + 1 > postsPerPage?number)>
 									<#assign startPage = ((topic.totalReplies / postsPerPage?number)?int * postsPerPage?number) +"/"/>
 								</#if>
-
+								
 								<a href="${JForumContext.encodeURL("/posts/list/${startPage}${topic.id}")}#${topic.lastPostId}"><img src="${contextPath}/templates/${templateName}/images/icon_latest_reply.gif" border="0" alt="[Latest Reply]" /></a></span>
 							</#if>
 						</td>

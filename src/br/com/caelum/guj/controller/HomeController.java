@@ -27,23 +27,22 @@ public class HomeController {
 
 	@SuppressWarnings("unchecked")
 	private List<Post> getAllPosts() {
-		return session.createQuery("from Post p order by p.date desc").setMaxResults(
-				Config.getIntvalue("posts.home.items")).setCacheable(
-				true).setCacheRegion("homePosts").list();
+		return this.session.createQuery("from Post p order by p.date desc")
+				.setMaxResults(Config.getIntvalue("posts.home.items")).setCacheable(true)
+				.setCacheRegion("homePosts").list();
 	}
 
 	@SuppressWarnings("unchecked")
 	private List<Article> getAllArticles() {
-		return session
-				.createQuery("from Article a order by a.id desc")
-				.setMaxResults(Config.getIntvalue("article.home.items"))
-				.setCacheable(true).setCacheRegion("homeArticles").list();
+		return this.session.createQuery("from Article a order by a.id desc")
+				.setMaxResults(Config.getIntvalue("article.home.items")).setCacheable(true)
+				.setCacheRegion("homeArticles").list();
 	}
 
 	@Path("/")
 	public void index() {
-		result.include("posts", this.getAllPosts());
-		result.include("articles", this.getAllArticles());
+		this.result.include("posts", this.getAllPosts());
+		this.result.include("articles", this.getAllArticles());
 	}
 
 }
