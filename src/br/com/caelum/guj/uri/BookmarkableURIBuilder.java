@@ -1,10 +1,10 @@
 package br.com.caelum.guj.uri;
 
-public class URITermsExtractor {
+public class BookmarkableURIBuilder {
 
 	private final String[] splittedUri;
 
-	public URITermsExtractor(String uri) {
+	public BookmarkableURIBuilder(String uri) {
 		this.splittedUri = uri.split("/");
 	}
 

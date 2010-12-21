@@ -9,7 +9,7 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 
-import br.com.caelum.guj.uri.URITermsExtractor;
+import br.com.caelum.guj.uri.BookmarkableURIBuilder;
 import br.com.caelum.vraptor.VRaptor;
 
 /**
@@ -26,7 +26,7 @@ public class VRaptorFilter extends VRaptor {
 		HttpServletRequest request = (HttpServletRequest) req;
 		String uri = request.getRequestURI();
 
-		if (new URITermsExtractor(uri).isBookmarkable()) {
+		if (new BookmarkableURIBuilder(uri).isBookmarkable()) {
 
 			RequestDispatcher rd = request.getRequestDispatcher("");
 			rd.forward(request, res);

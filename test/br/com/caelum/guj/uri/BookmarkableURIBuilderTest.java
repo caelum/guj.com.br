@@ -6,24 +6,24 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
 
-public class URITermsExtractorTest {
+public class BookmarkableURIBuilderTest {
 
-	private URITermsExtractor uriTermsExtractor;
+	private BookmarkableURIBuilder builder;
 
 	@Before
 	public void setUp() {
-		this.uriTermsExtractor = new URITermsExtractor("/post/228076/uma-uri-de-teste");
+		this.builder = new BookmarkableURIBuilder("/post/228076/uma-uri-de-teste");
 	}
 
 	@Test
 	public void shouldBeAPostBookmarkableURI() {
-		assertTrue(this.uriTermsExtractor.isBookmarkable());
+		assertTrue(this.builder.isBookmarkable());
 
 	}
 
 	@Test
 	public void shouldReturnCompatibleURI() {
-		String compatibleURI = this.uriTermsExtractor.buildCompatibleURI();
+		String compatibleURI = this.builder.buildCompatibleURI();
 
 		assertEquals("/posts/list/228076.java", compatibleURI);
 	}
