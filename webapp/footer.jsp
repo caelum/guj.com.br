@@ -8,7 +8,7 @@ OAS_AD('x01');
 <!-- OAS AD 'x01' end -->
 
   <div id="footer">
-  	<p>Apoiado e desenvolvido por <a href="http://www.caelum.com.br">Caelum Cursos Java</a> - Copyright &copy; 2002-2009 <a href="mailto:guj@guj.com.br">GUJ</a> <script type="text/javascript" src="http://widgets.amung.us/small.js"></script><script type="text/javascript">WAU_small('kwnaee1y3d4h')</script></p>
+  	<p>GUJ: desde 2002 - Conheça também <a href="http://www.agendatech.com.br">AgendaTech</a>, <a href="http://www.tectura.com.br">Tectura</a>, <a href="http://www.programadorpoliglota.com.br">Programador Poliglota</a> e <a href="http://www.infoq.com/br">InfoQ Brasil</a>&nbsp;<script type="text/javascript" src="http://widgets.amung.us/small.js"></script><script type="text/javascript">WAU_small('kwnaee1y3d4h')</script></p>
   </div>
  
 <script type="text/javascript">
