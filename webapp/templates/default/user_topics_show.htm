@@ -1,6 +1,7 @@
 <#include "header.htm"/>
 <#import "../macros/pagination.ftl" as pagination>
 <#import "../macros/presentation.ftl" as presentation/>
+<#import "../macros/bookmarkableLink.ftl" as bookmarkable/>
 
 <script type="text/javascript" src="${contextPath}/templates/${templateName}/js/pagination.js?${startupTime}"></script>
 
@@ -44,7 +45,7 @@
 					<td class="row1" valign="middle" align="center" width="20"><@presentation.folderImage topic/></td>
 					<td class="row1" width="100%">
 						<span class="topictitle">
-						<a href="${JForumContext.encodeURL("/posts/list/${topic.id}")}"><#if (topic.title?length == 0)>No Subject<#else>${topic.title?html}</#if></a>
+						<a href="<@bookmarkable.bookmarkableLink topic.id, topic.title />"><#if (topic.title?length == 0)>No Subject<#else>${topic.title?html}</#if></a>
 						</span>
 
 						<#if topic.paginate>
@@ -66,12 +67,12 @@
 							<span class="postdetails">${topic.lastPostTime}<br />
 							<a href="${JForumContext.encodeURL("/user/profile/${topic.lastPostBy.id}")}">${topic.lastPostBy.username?html}</a>
 
-							<#assign startPage = ""/>
-							<#if (topic.totalReplies + 1 > postsPerPage?number)>
-								<#assign startPage = ((topic.totalReplies / postsPerPage?number)?int * postsPerPage?number) +"/"/>
+							<#assign lastPage = (topic.totalReplies / postsPerPage?number)?int />
+							<#if (topic.totalReplies % postsPerPage?number > 0) >
+								<#assign lastPage = lastPage + 1 />
 							</#if>
 				  
-							<a href="${JForumContext.encodeURL("/posts/list/${startPage}${topic.id}")}#${topic.lastPostId}"><img src="${contextPath}/templates/${templateName}/images/icon_latest_reply.gif" border="0" alt="[Latest Reply]" /></a></span>
+							<a href="<@bookmarkable.bookmarkablePaginatedLinkAnchor topic.id, topic.title, lastPage, topic.lastPostId />"><img src="${contextPath}/templates/${templateName}/images/icon_latest_reply.gif" border="0" alt="[Latest Reply]" /></a></span>
 						</#if>		 
 					</td>
 

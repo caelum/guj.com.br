@@ -1,5 +1,6 @@
 <#include "header.htm"/>
 <#import "../macros/pagination.ftl" as pagination/>
+<#import "../macros/bookmarkableLink.ftl" as bookmarkable/>
 <script type="text/javascript">
 <!--
 function confirmDelete(id)
@@ -48,7 +49,7 @@ function confirmDelete(id)
 				<tr align="center">	
 					<td class="${color}" align="left">
 						<span class="gen">
-						<img src="${contextPath}/templates/${templateName}/images/icon_minipost.gif" align="middle" alt="[Post]" /><a href="${JForumContext.encodeURL("/posts/list/${b.relationId}")}" class="gen">${b.title}</a>
+						<img src="${contextPath}/templates/${templateName}/images/icon_minipost.gif" align="middle" alt="[Post]" /><a href="<@bookmarkable.bookmarkableLink b.relationId, b.title />" class="gen">${b.title}</a>
 						</span>
 					</td>
 					<td class="${color}"><span class="gen"><#if (b.description?default("")?length > 0)>${b.description}</#if></span></td>

@@ -1,6 +1,7 @@
 <#include "header.htm"/>
 <#import "../macros/pagination.ftl" as pagination/>
 <#import "../macros/presentation.ftl" as presentation/>
+<#import "../macros/bookmarkableLink.ftl" as bookmarkable/>
 
 <script type="text/javascript" src="${contextPath}/templates/${templateName}/js/post_show.js?${startupTime}"></script>
 <script type="text/javascript" src="${contextPath}/templates/${templateName}/js/post.js?${startupTime}"></script>
@@ -71,8 +72,8 @@
 									<td>
 										<span class="gen">
 											<a href="${JForumContext.encodeURL("/forums/show/${forum.id}")}">${forum.name?html}</a> 
-											&raquo; <a href="${JForumContext.encodeURL("/posts/list/${post.topicId}")}">${topic.title?default("Empty")?html}</a>
-											&raquo; <a href="${JForumContext.encodeURL("/posts/preList/${post.topicId}/${post.id}${extension}#${post.id}", "")}">${I18n.getMessage("PostShow.goToMessage")}</a>
+											&raquo; <a href="<@bookmarkable.bookmarkableLink post.topicId, topic.title />">${topic.title?default("Empty")?html}</a>
+											&raquo; <a href="<@bookmarkable.bookmarkablePrePost post.topicId, topic.title, post.id />">${I18n.getMessage("PostShow.goToMessage")}</a>
 										</span>
 									</td>
 									<td align="right">

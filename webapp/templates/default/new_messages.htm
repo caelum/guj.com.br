@@ -2,9 +2,8 @@
 
 <#import "../macros/pagination.ftl" as pagination>
 <#import "../macros/presentation.ftl" as presentation/>
-
+<#import "../macros/bookmarkableLink.ftl" as bookmarkable/>
 <script type="text/javascript" src="${contextPath}/templates/${templateName}/js/pagination.js?${startupTime}"></script>
-
 <table cellspacing="0" cellpadding="10" width="100%" align="center" border="0">
 	<tr>
 		<td class="bodyline" valign="top">
@@ -55,7 +54,7 @@
 							<a href="${contextPath}/forums/show/${forum.id}${extension}">${forum.name}</a>
 						</td>
 						<td class="row1">
-							<a href="${contextPath}/posts/list/${topic.id}${extension}" class="topictitle"><#if (topic.title?length == 0)>No Subject<#else>${topic.title?html}</#if></a>
+							<a href="<@bookmarkable.bookmarkableLink topic.id, topic.title />" class="topictitle"><#if (topic.title?length == 0)>No Subject<#else>${topic.title?html}</#if></a>
 
 							<#if topic.paginate>
 								<span class="gensmall">
@@ -78,11 +77,11 @@
 								<span class="postdetails">${topic.lastPostTime}<br />
 								<a href="${contextPath}/user/profile/${topic.lastPostBy.id}${extension}">${topic.lastPostBy.username}</a>
 
-								<#assign startPage = ""/>
-								<#if (topic.totalReplies + 1 > postsPerPage)>
-									<#assign startPage = ((topic.totalReplies / postsPerPage)?int * postsPerPage) +"/"/>
-								</#if>
-								<a href="${contextPath}/posts/list/${startPage}${topic.id}${extension}#${topic.lastPostId}"><img src="${contextPath}/templates/${templateName}/images/icon_latest_reply.gif" border="0" alt="[Latest Reply]" /></a>
+									<#assign page = (topic.totalReplies / postsPerPage)?int />
+									<#if (topic.totalReplies % postsPerPage > 0)>
+										<#assign page = page + 1 />
+									</#if>
+								<a href="<@bookmarkable.bookmarkablePaginatedLinkAnchor topic.id, topic.title, page, topic.lastPostId />"><img src="${contextPath}/templates/${templateName}/images/icon_latest_reply.gif" border="0" alt="[Latest Reply]" /></a>
 								</span>
 							</#if>
 						</td>

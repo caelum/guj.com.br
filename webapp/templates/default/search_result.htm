@@ -5,6 +5,7 @@
 <#import "../macros/pagination.ftl" as topicPagination>
 <#import "../macros/search_pagination.ftl" as pagination>
 <#import "../macros/presentation.ftl" as presentation/>
+<#import "../macros/bookmarkableLink.ftl" as bookmarkable/>
 
 <table cellspacing="0" cellpadding="10" width="100%" align="center" border="0">
 	<tr>
@@ -50,13 +51,12 @@
 					<#list results as post>
 						<tr>
 							<td class="postinfo">
-								<#assign postUrl = JForumContext.encodeURL("/posts/preList/${post.topicId}/${post.id}")/>
 
 								<span class="gen">
 									<img class="icon_folder" src="${contextPath}/images/transp.gif" alt=""/>
 
 									<strong>
-										<a href="${postUrl}">${post.subject?html}</a>
+										<a href="<@bookmarkable.bookmarkablePrePost post.topicId, post.subject, post.id />">${post.subject?html}</a>
 									</strong>, 
 									${I18n.getMessage("Search.postedOn")} <a href="${JForumContext.encodeURL("/forums/show/${post.forum.id}")}">${post.forum.name}</a>, 
 									${I18n.getMessage("Search.postedAt")} ${post.time?datetime}, 
@@ -69,7 +69,7 @@
 							<td class="row1 gen">
 								${post.text}
 								<br />
-								<div align="right"><a href="${postUrl}">${I18n.getMessage("Search.viewMessage")}</a></div>
+								<div align="right"><a href="<@bookmarkable.bookmarkablePrePost post.topicId, post.subject, post.id />">${I18n.getMessage("Search.viewMessage")}</a></div>
 							</td>
 						</tr>
 

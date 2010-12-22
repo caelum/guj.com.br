@@ -13,7 +13,9 @@ import net.jforum.JForumExecutionContext;
 
 import org.apache.log4j.Logger;
 
-import br.com.caelum.guj.uri.BookmarkableToCompatibleURIConverter;
+import br.com.caelum.guj.uri.AllConverters;
+import br.com.caelum.guj.uri.ConverterMatcher;
+import br.com.caelum.guj.uri.HttpRequestInfo;
 import br.com.caelum.guj.view.Slugger;
 import br.com.caelum.vraptor.VRaptor;
 import freemarker.template.SimpleHash;
@@ -31,17 +33,18 @@ public class VRaptorFilter extends VRaptor {
 	public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain)
 			throws IOException, ServletException {
 		HttpServletRequest request = (HttpServletRequest) req;
+		this.registerSlugger();
 		String uri = request.getRequestURI();
 
-		BookmarkableToCompatibleURIConverter builder = new BookmarkableToCompatibleURIConverter(
-				uri, request.getParameter("page"));
-		LOG.info("URL: " + uri + " ------ " + builder.isBookmarkable());
+		ConverterMatcher allConverters = new ConverterMatcher(
+				AllConverters.get(new HttpRequestInfo(request)));
 
-		this.registerSlugger();
+		if (allConverters.oneMatched()) {
+			RequestDispatcher rd = request.getRequestDispatcher(allConverters.getConverter()
+					.convert());
+			LOG.info("Redirection to the compatible url for " + uri + " -- "
+					+ allConverters.getConverter().convert());
 
-		if (builder.isBookmarkable()) {
-			RequestDispatcher rd = request.getRequestDispatcher(builder.convert());
-			LOG.info("Redirection to the compatible url for " + uri + " -- " + builder.convert());
 			rd.forward(request, res);
 		} else {
 			if (uri.endsWith(".java") || uri.endsWith(".guj")) {

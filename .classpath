@@ -14,5 +14,6 @@
 	<classpathentry kind="lib" path="lib/jsp-api-2.1-6.1.10.jar"/>
 	<classpathentry kind="lib" path="lib/servlet-api.jar"/>
 	<classpathentry kind="lib" path="lib/test/junit-4.8.2.jar"/>
+	<classpathentry kind="lib" path="lib/test/mockito-all-1.8.5.jar"/>
 	<classpathentry kind="output" path="webapp/WEB-INF/classes"/>
 </classpath>
