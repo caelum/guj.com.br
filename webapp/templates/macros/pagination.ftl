@@ -34,8 +34,7 @@
 		&nbsp;...&nbsp;
 		<#list totalPostPages - 2 .. totalPostPages as page>
 			<#assign start = postsPerPage * (page - 1)/>
-
-			<#assign link>${link}<a href="${contextPath}/posts/list<#if (start>0)>/${start}</#if>/${topicId}${extension}">${page}</a></#assign>
+			<#assign link>${link}<a href="<@bookmarkable.bookmarkablePaginatedLink topicId, title , page />">${page}</a> </#assign>
 			<#if (page_index + 1 < 3)><#assign link>${link}, </#assign></#if>
 		</#list>
 
@@ -48,7 +47,7 @@
 <#-- ------------------------------------------------------------------------------- -->
 <#-- Pagination macro base code inspired from PHPBB's generate_pagination() function -->
 <#-- ------------------------------------------------------------------------------- -->
-<#macro doPagination action id=-1>
+<#macro doPagination action id=-1 topicTitle=''>
 	<#if (totalRecords > recordsPerPage)>
 		<div class="pagination">
 		<#assign link = ""/>
@@ -58,7 +57,11 @@
 		<#-- ------------- -->
 		<#if (thisPage > 1)>
 			<#assign start = (thisPage - 2) * recordsPerPage/>
-			<a href="${contextPath}/${moduleName}/${action}<#if (start > 0)>/${start}</#if><#if (id > -1)>/${id}</#if>${extension}">&#9668;</a>
+			<#if moduleName == 'posts' && topicTitle != ''>
+				<a href="<@bookmarkable.bookmarkablePaginatedLink id, topicTitle, (thisPage - 1) />">&#9668;</a>
+			<#else>
+				<a href="${contextPath}/${moduleName}/${action}<#if (start > 0)>/${start}</#if><#if (id > -1)>/${id}</#if>${extension}">&#9668;</a>
+			</#if>
 		</#if>
 
 		<#if (totalPages > 10)>
@@ -106,7 +109,11 @@
 			</#list>
 		<#else>
 			<#list 1 .. totalPages as page>
-				<@pageLink page, id/>
+				<#if moduleName == 'posts' && topicTitle != ''>
+					<@postsLink page, id, topicTitle />
+				<#else>
+					<@pageLink page, id/>
+				</#if>
 			</#list>
 		</#if>
 
@@ -115,7 +122,12 @@
 		<#-- ------------- -->
 		<#if (thisPage < totalPages)>
 			<#assign start = thisPage * recordsPerPage/>
-			<a href="${contextPath}/${moduleName}/${action}<#if (start > 0)>/${start}</#if><#if (id > -1)>/${id}</#if>${extension}">&#9658;</a>
+			
+			<#if moduleName == 'posts' && topicTitle != ''>
+				<a href="<@bookmarkable.bookmarkablePaginatedLink id, topicTitle, (thisPage + 1) />">&#9658;</a>
+			<#else>
+				<a href="${contextPath}/${moduleName}/${action}<#if (start > 0)>/${start}</#if><#if (id > -1)>/${id}</#if>${extension}">&#9658;</a>
+			</#if>
 		</#if>
 
 		<a href="#goto" onClick="return overlay(this, 'goToBox', 'rightbottom');">${I18n.getMessage("ForumIndex.goToGo")}</a>
@@ -136,6 +148,16 @@
 	<#assign start = recordsPerPage * (page - 1)/>
 	<#if page != thisPage>
 		<#assign link><a href="${contextPath}/${moduleName}/${action}<#if (start > 0)>/${start}</#if><#if (id > -1)>/${id}</#if>${extension}">${page}</a></#assign>
+	<#else>
+		<#assign link><span class="current">${page}</span></#assign>
+	</#if>
+
+	${link}
+</#macro>
+
+<#macro postsLink page id topicTitle>
+	<#if page != thisPage>
+		<#assign link><a href="<@bookmarkable.bookmarkablePaginatedLink id, topicTitle, page />">${page}</a></#assign>
 	<#else>
 		<#assign link><span class="current">${page}</span></#assign>
 	</#if>

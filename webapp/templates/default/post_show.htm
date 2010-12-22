@@ -86,7 +86,7 @@
 						<a class="nav" href="${JForumContext.encodeURL("/forums/list")}">${I18n.getMessage("ForumListing.forumIndex")} </a> 
             			&raquo; <a class="nav" href="${JForumContext.encodeURL("/forums/show/${forum.id}")}">${forum.name} </a></span>
 					</td>
-					<td valign="middle" align="right"><#assign paginationData><@pagination.doPagination "list", topic.id/></#assign>${paginationData}</td>
+					<td valign="middle" align="right"><#assign paginationData><@pagination.doPagination "list", topic.id, topic.title /></#assign>${paginationData}</td>
 				</tr>
 			</table>
 
