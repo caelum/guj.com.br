@@ -26,8 +26,8 @@ import freemarker.template.SimpleHash;
  * @author Lucas Cavalcanti
  * 
  */
-public class VRaptorFilter extends VRaptor {
-	private static final Logger LOG = Logger.getLogger(VRaptorFilter.class);
+public class BookmarkableURIFilter extends VRaptor {
+	private static final Logger LOG = Logger.getLogger(BookmarkableURIFilter.class);
 
 	@Override
 	public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain)

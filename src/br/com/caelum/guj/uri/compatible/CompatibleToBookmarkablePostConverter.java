@@ -38,9 +38,9 @@ public class CompatibleToBookmarkablePostConverter implements URIConverter {
 		String sluggedTitle = this.slugger.sluggerize(topic.getTitle());
 
 		if (this.isPaginated()) {
-			return "/post/" + topicId + "/" + sluggedTitle + "/" + this.pageNumber();
+			return "/post/" + topicId + "-" + sluggedTitle + "/" + this.pageNumber();
 		}
-		return "/post/" + topicId + "/" + sluggedTitle;
+		return "/post/" + topicId + "-" + sluggedTitle;
 	}
 
 	private int pageNumber() {

@@ -66,12 +66,12 @@
 		<dispatcher>REQUEST</dispatcher>
 	</filter-mapping>
 	<filter>
-		<filter-name>vraptor</filter-name>
-		<filter-class>br.com.caelum.guj.vraptor.VRaptorFilter</filter-class>
+		<filter-name>bookmarkable</filter-name>
+		<filter-class>br.com.caelum.guj.vraptor.BookmarkableURIFilter</filter-class>
 	</filter>
 
 	<filter-mapping>
-		<filter-name>vraptor</filter-name>
+		<filter-name>bookmarkable</filter-name>
 		<url-pattern>/*</url-pattern>
 		<dispatcher>FORWARD</dispatcher>
 		<dispatcher>REQUEST</dispatcher>

@@ -38,7 +38,7 @@ public class CompatibleToBookmarkablePostConverterTest {
 		CompatibleToBookmarkablePostConverter converter = new CompatibleToBookmarkablePostConverter(
 				aRequestFor("/posts/list/45/20.java"), repository, new Slugger());
 
-		assertEquals("/post/20/erich-created-jforum/4", converter.convert());
+		assertEquals("/post/20-erich-created-jforum/4", converter.convert());
 
 	}
 
@@ -54,7 +54,7 @@ public class CompatibleToBookmarkablePostConverterTest {
 				aRequestFor("/posts/list/20.java"), repository, new Slugger());
 		String bookmarkableURI = converter.convert();
 
-		assertEquals("/post/20/erich-created-jforum", bookmarkableURI);
+		assertEquals("/post/20-erich-created-jforum", bookmarkableURI);
 	}
 
 	private TopicRepository aRepository() {
