@@ -55,6 +55,17 @@
 		<param-value>br.com.caelum.guj.vraptor.CustomProvider</param-value>
 	</context-param>
 	<filter>
+		<filter-name>compatibleURI</filter-name>
+		<filter-class>br.com.caelum.guj.vraptor.CompatibleURIFilter</filter-class>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>compatibleURI</filter-name>
+		<url-pattern>/*</url-pattern>
+		
+		<dispatcher>REQUEST</dispatcher>
+	</filter-mapping>
+	<filter>
 		<filter-name>vraptor</filter-name>
 		<filter-class>br.com.caelum.guj.vraptor.VRaptorFilter</filter-class>
 	</filter>

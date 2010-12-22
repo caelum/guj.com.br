@@ -7,17 +7,19 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
+import br.com.caelum.guj.uri.bookmarkable.BookmarkablePrePostToCompatibleURIConverter;
+
 public class BookmarkablePrePostToCompatibleURIConverterTest {
 
 	@Test
 	public void shouldBeAPostBookmarkableURI() {
 		BookmarkablePrePostToCompatibleURIConverter validBuilder = new BookmarkablePrePostToCompatibleURIConverter(
 				aRequestFor("/guj.com.br/prepost/228076/1/uma-uri-de-teste"));
-		assertTrue(validBuilder.isBookmarkable());
+		assertTrue(validBuilder.isConvertable());
 
 		BookmarkablePrePostToCompatibleURIConverter invalidBuilder = new BookmarkablePrePostToCompatibleURIConverter(
 				aRequestFor(""));
-		assertFalse(invalidBuilder.isBookmarkable());
+		assertFalse(invalidBuilder.isConvertable());
 	}
 
 	@Test

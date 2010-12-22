@@ -13,9 +13,9 @@ import net.jforum.JForumExecutionContext;
 
 import org.apache.log4j.Logger;
 
-import br.com.caelum.guj.uri.AllConverters;
-import br.com.caelum.guj.uri.ConverterMatcher;
 import br.com.caelum.guj.uri.HttpRequestInfo;
+import br.com.caelum.guj.uri.bookmarkable.AllConverters;
+import br.com.caelum.guj.uri.bookmarkable.ConverterMatcher;
 import br.com.caelum.guj.view.Slugger;
 import br.com.caelum.vraptor.VRaptor;
 import freemarker.template.SimpleHash;

@@ -11,17 +11,19 @@ import java.util.List;
 
 import org.junit.Test;
 
+import br.com.caelum.guj.uri.bookmarkable.ConverterMatcher;
+
 public class ConverterMatcherTest {
 
 	@Test
 	public void shouldMatchIfURIIsBookmarkable() {
-		BookmarkableConverter firstConverter = mock(BookmarkableConverter.class);
-		BookmarkableConverter secondConverter = mock(BookmarkableConverter.class);
+		URIConverter firstConverter = mock(URIConverter.class);
+		URIConverter secondConverter = mock(URIConverter.class);
 
-		when(firstConverter.isBookmarkable()).thenReturn(false);
-		when(secondConverter.isBookmarkable()).thenReturn(true);
+		when(firstConverter.isConvertable()).thenReturn(false);
+		when(secondConverter.isConvertable()).thenReturn(true);
 
-		List<BookmarkableConverter> list = new LinkedList<BookmarkableConverter>();
+		List<URIConverter> list = new LinkedList<URIConverter>();
 		list.add(firstConverter);
 		list.add(secondConverter);
 
@@ -33,13 +35,13 @@ public class ConverterMatcherTest {
 
 	@Test(expected = RuntimeException.class)
 	public void shouldNotMatchIfURIIsNotBookmarkable() {
-		BookmarkableConverter firstConverter = mock(BookmarkableConverter.class);
-		BookmarkableConverter secondConverter = mock(BookmarkableConverter.class);
+		URIConverter firstConverter = mock(URIConverter.class);
+		URIConverter secondConverter = mock(URIConverter.class);
 
-		when(firstConverter.isBookmarkable()).thenReturn(false);
-		when(secondConverter.isBookmarkable()).thenReturn(false);
+		when(firstConverter.isConvertable()).thenReturn(false);
+		when(secondConverter.isConvertable()).thenReturn(false);
 
-		List<BookmarkableConverter> list = new LinkedList<BookmarkableConverter>();
+		List<URIConverter> list = new LinkedList<URIConverter>();
 		list.add(firstConverter);
 		list.add(secondConverter);
 
