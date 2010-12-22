@@ -1,4 +1,6 @@
-<#macro littlePostPagination topicId postsPerPage totalReplies>
+<#import "../macros/bookmarkableLink.ftl" as bookmarkable>
+
+<#macro littlePostPagination topicId postsPerPage totalReplies title>
 	[ <img class="icon_latest_reply" src="${contextPath}/images/transp.gif" alt="" /> ${I18n.getMessage("goToPage")}: 
 
 	<#assign totalPostPages = ((totalReplies + 1) / postsPerPage)?int/>
@@ -21,7 +23,7 @@
 	<#list 1 .. minTotal as page>
 		<#assign start = postsPerPage * (page - 1)/>
 
-		<#assign link>${link}<a href="${contextPath}/posts/list<#if (start>0)>/${start}</#if>/${topicId}${extension}">${page}</a></#assign>
+		<#assign link>${link}<a href="<@bookmarkable.bookmarkablePaginatedLink topicId, title , page />">${page}</a> </#assign>
 		<#if (page < minTotal)><#assign link>${link}, </#assign></#if>		
 	</#list>
 
