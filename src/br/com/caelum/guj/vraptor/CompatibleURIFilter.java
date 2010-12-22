@@ -35,7 +35,8 @@ public class CompatibleURIFilter implements Filter {
 		LOG.info("compatible filter: " + request.getRequestURI() + " -- and is convertable: "
 				+ converter.isConvertable());
 		if (converter.isConvertable()) {
-			response.sendRedirect(request.getContextPath() + converter.convert());
+			response.setStatus(HttpServletResponse.SC_MOVED_PERMANENTLY);
+			response.setHeader("Location", request.getContextPath() + converter.convert());
 		} else {
 			chain.doFilter(req, res);
 		}
