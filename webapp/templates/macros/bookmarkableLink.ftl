@@ -7,7 +7,7 @@ ${JForumContext.encodeURL('${bookmarkableUriBuilder.bookmarkableURL(topicId, top
 </#macro>
 
 <#macro bookmarkablePaginatedLinkAnchor topicId topicTitle page anchorTo>
-${JForumContext.encodeURL('${bookmarkableUriBuilder.bookmarkableURL(topicId, topicTitle, page, anchorTo)}', '')}
+${JForumContext.encodeURL('${bookmarkableUriBuilder.bookmarkableURL(topicId, topicTitle, page, anchorTo?string)}', '')}
 </#macro>
 
 <#macro bookmarkablePrePost topicId topicTitle postId>
