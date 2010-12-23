@@ -3,11 +3,11 @@ package br.com.caelum.guj.uri.bookmarkable;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import br.com.caelum.guj.configuration.Configs;
 import br.com.caelum.guj.uri.URIConverter;
 
 public class BookmarkablePostToCompatibleURIConverter implements URIConverter {
 
-	private static final int POSTS_PER_PAGE = 15;
 	private final Matcher matcher;
 	private final boolean succedded;
 
@@ -42,6 +42,6 @@ public class BookmarkablePostToCompatibleURIConverter implements URIConverter {
 	}
 
 	private int getPage() {
-		return (Integer.parseInt(this.matcher.group(4)) - 1) * POSTS_PER_PAGE;
+		return (Integer.parseInt(this.matcher.group(4)) - 1) * Configs.POSTS_PER_PAGE;
 	}
 }

@@ -4,13 +4,13 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import net.jforum.entities.Topic;
+import br.com.caelum.guj.configuration.Configs;
 import br.com.caelum.guj.repositories.TopicRepository;
 import br.com.caelum.guj.uri.URIConverter;
 import br.com.caelum.guj.view.Slugger;
 
 public class CompatibleToBookmarkablePostConverter implements URIConverter {
 
-	private static final int POSTS_PER_PAGE = 15;
 	private final Matcher matcher;
 	private final boolean succedded;
 	private final TopicRepository topicRepository;
@@ -44,7 +44,7 @@ public class CompatibleToBookmarkablePostConverter implements URIConverter {
 
 	private int pageNumber() {
 		int firstPostOnPage = Integer.parseInt(this.matcher.group(2));
-		return firstPostOnPage / POSTS_PER_PAGE + 1;
+		return firstPostOnPage / Configs.POSTS_PER_PAGE + 1;
 	}
 
 	private boolean isPaginated() {
