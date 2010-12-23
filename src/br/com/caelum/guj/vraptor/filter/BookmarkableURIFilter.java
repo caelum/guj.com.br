@@ -10,9 +10,6 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 
 import net.jforum.JForumExecutionContext;
-
-import org.apache.log4j.Logger;
-
 import br.com.caelum.guj.uri.DefaultBookmarkableURIBuilder;
 import br.com.caelum.guj.uri.DefaultCompatibleURIBuilder;
 import br.com.caelum.guj.uri.bookmarkable.AllConverters;
@@ -22,14 +19,12 @@ import br.com.caelum.vraptor.VRaptor;
 import freemarker.template.SimpleHash;
 
 public class BookmarkableURIFilter extends VRaptor {
-	private static final Logger LOG = Logger.getLogger(BookmarkableURIFilter.class);
 
 	@Override
 	public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain)
 			throws IOException, ServletException {
 		HttpServletRequest request = (HttpServletRequest) req;
 		this.registerSlugger();
-		String uri = request.getRequestURI();
 
 		ConverterMatcher allConverters = new ConverterMatcher(AllConverters.get(request
 				.getRequestURI()));
@@ -37,8 +32,6 @@ public class BookmarkableURIFilter extends VRaptor {
 		if (allConverters.oneMatched()) {
 			RequestDispatcher rd = request.getRequestDispatcher(allConverters.getConverter()
 					.convert());
-			LOG.info("Redirection to the compatible url for " + uri + " -- "
-					+ allConverters.getConverter().convert());
 
 			rd.forward(request, res);
 		} else {

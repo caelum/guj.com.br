@@ -37,7 +37,7 @@ public class CompatibleURIFilter implements Filter {
 		Element cachedElement = cache.get(request.getRequestURI());
 		if(cachedElement != null) {
 			String cachedUri = (String)cachedElement.getValue();
-			LOG.info("Using cache to redirect to " + cachedUri);
+			LOG.debug("Using cache to redirect to " + cachedUri);
 			redirectTo(response, cachedUri);
 			return;
 		}
@@ -46,14 +46,12 @@ public class CompatibleURIFilter implements Filter {
 				request.getRequestURI(), new TopicRepositoryWrapper(),
 				new DefaultBookmarkableURIBuilder(new Slugger()));
 
-		LOG.info("compatible filter: " + request.getRequestURI() + " -- and is convertable: "
-				+ converter.isConvertable());
 		if (converter.isConvertable()) {
 			String newUri = request.getContextPath() + converter.convert();
 			redirectTo(response, newUri);
 			cache.put(new Element(request.getRequestURI(), newUri));
 			
-			LOG.info("Caching " + newUri);
+			LOG.debug("Caching " + newUri);
 		} else {
 			chain.doFilter(req, res);
 		}
