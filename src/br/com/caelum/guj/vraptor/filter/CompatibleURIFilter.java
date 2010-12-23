@@ -1,4 +1,4 @@
-package br.com.caelum.guj.vraptor;
+package br.com.caelum.guj.vraptor.filter;
 
 import java.io.IOException;
 
@@ -21,7 +21,7 @@ import br.com.caelum.guj.view.Slugger;
 public class CompatibleURIFilter implements Filter {
 
 	private static Logger LOG = Logger.getLogger(CompatibleURIFilter.class);
-	
+
 	@Override
 	public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain)
 			throws IOException, ServletException {
@@ -30,7 +30,8 @@ public class CompatibleURIFilter implements Filter {
 		HttpServletResponse response = (HttpServletResponse) res;
 
 		CompatibleToBookmarkablePostConverter converter = new CompatibleToBookmarkablePostConverter(
-				request.getRequestURI(), new TopicRepositoryWrapper(), new DefaultBookmarkableURIBuilder(new Slugger()));
+				request.getRequestURI(), new TopicRepositoryWrapper(),
+				new DefaultBookmarkableURIBuilder(new Slugger()));
 
 		LOG.info("compatible filter: " + request.getRequestURI() + " -- and is convertable: "
 				+ converter.isConvertable());
@@ -48,7 +49,7 @@ public class CompatibleURIFilter implements Filter {
 	}
 
 	@Override
-	public void init(FilterConfig arg0) throws ServletException {
+	public void init(FilterConfig config) throws ServletException {
 
 	}
 }

@@ -1,4 +1,4 @@
-package br.com.caelum.guj.vraptor;
+package br.com.caelum.guj.vraptor.filter;
 
 import java.io.IOException;
 
@@ -21,12 +21,6 @@ import br.com.caelum.guj.view.Slugger;
 import br.com.caelum.vraptor.VRaptor;
 import freemarker.template.SimpleHash;
 
-/**
- * Para ignorar as URIs do JForum
- * 
- * @author Lucas Cavalcanti
- * 
- */
 public class BookmarkableURIFilter extends VRaptor {
 	private static final Logger LOG = Logger.getLogger(BookmarkableURIFilter.class);
 
@@ -37,8 +31,8 @@ public class BookmarkableURIFilter extends VRaptor {
 		this.registerSlugger();
 		String uri = request.getRequestURI();
 
-		ConverterMatcher allConverters = new ConverterMatcher(
-				AllConverters.get(request.getRequestURI()));
+		ConverterMatcher allConverters = new ConverterMatcher(AllConverters.get(request
+				.getRequestURI()));
 
 		if (allConverters.oneMatched()) {
 			RequestDispatcher rd = request.getRequestDispatcher(allConverters.getConverter()
@@ -48,11 +42,7 @@ public class BookmarkableURIFilter extends VRaptor {
 
 			rd.forward(request, res);
 		} else {
-			if (uri.endsWith(".java") || uri.endsWith(".guj")) {
-				chain.doFilter(req, res);
-			} else {
-				super.doFilter(req, res, chain);
-			}
+			chain.doFilter(req, res);
 		}
 	}
 
