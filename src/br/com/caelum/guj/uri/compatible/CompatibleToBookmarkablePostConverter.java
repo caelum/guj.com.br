@@ -5,7 +5,6 @@ import java.util.regex.Pattern;
 
 import net.jforum.entities.Topic;
 import br.com.caelum.guj.repositories.TopicRepository;
-import br.com.caelum.guj.uri.RequestInfo;
 import br.com.caelum.guj.uri.URIConverter;
 import br.com.caelum.guj.view.Slugger;
 

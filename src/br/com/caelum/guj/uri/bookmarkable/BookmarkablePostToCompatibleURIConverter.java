@@ -3,7 +3,6 @@ package br.com.caelum.guj.uri.bookmarkable;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import br.com.caelum.guj.uri.RequestInfo;
 import br.com.caelum.guj.uri.URIConverter;
 
 public class BookmarkablePostToCompatibleURIConverter implements URIConverter {
@@ -12,11 +11,11 @@ public class BookmarkablePostToCompatibleURIConverter implements URIConverter {
 	private final Matcher matcher;
 	private final boolean succedded;
 
-	public BookmarkablePostToCompatibleURIConverter(RequestInfo info) {
+	public BookmarkablePostToCompatibleURIConverter(String uri) {
 		// /post/<id-post>/<titulo-post>?page=<pagina>
 		Pattern pattern = Pattern
 				.compile("\\/java\\/([0-9]+)\\-([a-zA-Z0-9\\-\\_]+)*(\\/([0-9]+))?");
-		this.matcher = pattern.matcher(info.getUri());
+		this.matcher = pattern.matcher(uri);
 		this.succedded = this.matcher.find();
 	}
 

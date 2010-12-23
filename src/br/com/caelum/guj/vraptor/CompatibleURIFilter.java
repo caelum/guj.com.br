@@ -14,7 +14,6 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.log4j.Logger;
 
 import br.com.caelum.guj.repositories.TopicRepositoryWrapper;
-import br.com.caelum.guj.uri.HttpRequestInfo;
 import br.com.caelum.guj.uri.compatible.CompatibleToBookmarkablePostConverter;
 import br.com.caelum.guj.view.Slugger;
 

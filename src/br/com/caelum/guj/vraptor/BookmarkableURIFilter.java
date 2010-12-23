@@ -13,7 +13,6 @@ import net.jforum.JForumExecutionContext;
 
 import org.apache.log4j.Logger;
 
-import br.com.caelum.guj.uri.HttpRequestInfo;
 import br.com.caelum.guj.uri.bookmarkable.AllConverters;
 import br.com.caelum.guj.uri.bookmarkable.ConverterMatcher;
 import br.com.caelum.guj.view.Slugger;
@@ -37,7 +36,7 @@ public class BookmarkableURIFilter extends VRaptor {
 		String uri = request.getRequestURI();
 
 		ConverterMatcher allConverters = new ConverterMatcher(
-				AllConverters.get(new HttpRequestInfo(request)));
+				AllConverters.get(request.getRequestURI()));
 
 		if (allConverters.oneMatched()) {
 			RequestDispatcher rd = request.getRequestDispatcher(allConverters.getConverter()

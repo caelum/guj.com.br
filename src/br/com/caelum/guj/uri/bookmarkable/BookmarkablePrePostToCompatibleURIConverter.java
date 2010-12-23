@@ -4,19 +4,18 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import br.com.caelum.guj.uri.URIConverter;
-import br.com.caelum.guj.uri.RequestInfo;
 
 public class BookmarkablePrePostToCompatibleURIConverter implements URIConverter {
 
 	private final Matcher matcher;
 	private final boolean succedded;
 
-	public BookmarkablePrePostToCompatibleURIConverter(RequestInfo info) {
+	public BookmarkablePrePostToCompatibleURIConverter(String uri) {
 
 		// /prepost/<id-post>/<titulo-post>
 		Pattern pattern = Pattern
 				.compile("\\/prepost\\/([0-9]+)\\/([0-9]+)\\/([a-zA-Z0-9\\-\\_]+)*");
-		this.matcher = pattern.matcher(info.getUri());
+		this.matcher = pattern.matcher(uri);
 		this.succedded = this.matcher.find();
 	}
 
