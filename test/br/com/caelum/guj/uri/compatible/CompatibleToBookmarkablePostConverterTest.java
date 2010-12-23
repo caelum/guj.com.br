@@ -1,6 +1,5 @@
 package br.com.caelum.guj.uri.compatible;
 
-import static br.com.caelum.guj.uri.RequestInfoBuilder.aRequestFor;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -18,12 +17,12 @@ public class CompatibleToBookmarkablePostConverterTest {
 	@Test
 	public void shouldIdentifyCompatibleURIs() {
 		CompatibleToBookmarkablePostConverter converter = new CompatibleToBookmarkablePostConverter(
-				aRequestFor("/guj.com.br/posts/list/1.java"), this.aRepository(), new Slugger());
+				"/guj.com.br/posts/list/1.java", this.aRepository(), new Slugger());
 
 		assertTrue(converter.isConvertable());
 
 		converter = new CompatibleToBookmarkablePostConverter(
-				aRequestFor("/recentTopics/list.java"), this.aRepository(), new Slugger());
+				"/recentTopics/list.java", this.aRepository(), new Slugger());
 
 		assertFalse(converter.isConvertable());
 	}
@@ -36,7 +35,7 @@ public class CompatibleToBookmarkablePostConverterTest {
 		when(repository.getById(20)).thenReturn(topic);
 
 		CompatibleToBookmarkablePostConverter converter = new CompatibleToBookmarkablePostConverter(
-				aRequestFor("/posts/list/45/20.java"), repository, new Slugger());
+				"/posts/list/45/20.java", repository, new Slugger());
 
 		assertEquals("/java/20-erich-created-jforum/4", converter.convert());
 
@@ -51,7 +50,7 @@ public class CompatibleToBookmarkablePostConverterTest {
 		when(repository.getById(20)).thenReturn(topic);
 
 		CompatibleToBookmarkablePostConverter converter = new CompatibleToBookmarkablePostConverter(
-				aRequestFor("/posts/list/20.java"), repository, new Slugger());
+				"/posts/list/20.java", repository, new Slugger());
 		String bookmarkableURI = converter.convert();
 
 		assertEquals("/java/20-erich-created-jforum", bookmarkableURI);

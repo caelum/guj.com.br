@@ -22,6 +22,8 @@ public class CompatibleURIFilter implements Filter {
 
 	private static Logger LOG = Logger.getLogger(CompatibleURIFilter.class);
 
+	private static Slugger slugger = new Slugger();
+	
 	@Override
 	public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain)
 			throws IOException, ServletException {
@@ -30,7 +32,7 @@ public class CompatibleURIFilter implements Filter {
 		HttpServletResponse response = (HttpServletResponse) res;
 
 		CompatibleToBookmarkablePostConverter converter = new CompatibleToBookmarkablePostConverter(
-				new HttpRequestInfo(request), new TopicRepositoryWrapper(), new Slugger());
+				request.getRequestURI(), new TopicRepositoryWrapper(), slugger);
 
 		LOG.info("compatible filter: " + request.getRequestURI() + " -- and is convertable: "
 				+ converter.isConvertable());

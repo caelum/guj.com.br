@@ -17,12 +17,12 @@ public class CompatibleToBookmarkablePostConverter implements URIConverter {
 	private final TopicRepository topicRepository;
 	private final Slugger slugger;
 
-	public CompatibleToBookmarkablePostConverter(RequestInfo info, TopicRepository topicRepository,
+	public CompatibleToBookmarkablePostConverter(String uri, TopicRepository topicRepository,
 			Slugger slugger) {
 		this.topicRepository = topicRepository;
 		this.slugger = slugger;
 		Pattern pattern = Pattern.compile("\\/posts\\/list(\\/([0-9]+))?\\/([0-9]+).java");
-		this.matcher = pattern.matcher(info.getUri());
+		this.matcher = pattern.matcher(uri);
 		this.succedded = this.matcher.find();
 	}
 
