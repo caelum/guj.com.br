@@ -13,6 +13,8 @@ import net.jforum.JForumExecutionContext;
 
 import org.apache.log4j.Logger;
 
+import br.com.caelum.guj.uri.DefaultBookmarkableURIBuilder;
+import br.com.caelum.guj.uri.DefaultCompatibleURIBuilder;
 import br.com.caelum.guj.uri.bookmarkable.AllConverters;
 import br.com.caelum.guj.uri.bookmarkable.ConverterMatcher;
 import br.com.caelum.guj.view.Slugger;
@@ -60,7 +62,8 @@ public class BookmarkableURIFilter extends VRaptor {
 			JForumExecutionContext.set(ctx);
 		}
 		SimpleHash templateCtx = JForumExecutionContext.getTemplateContext();
-		templateCtx.put("slugger", new Slugger());
+		templateCtx.put("compatibleUriBuilder", new DefaultCompatibleURIBuilder());
+		templateCtx.put("bookmarkableUriBuilder", new DefaultBookmarkableURIBuilder(new Slugger()));
 	}
 
 }

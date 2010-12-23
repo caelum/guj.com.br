@@ -4,14 +4,17 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import br.com.caelum.guj.configuration.Configs;
+import br.com.caelum.guj.uri.CompatibleURIBuilder;
 import br.com.caelum.guj.uri.URIConverter;
 
 public class BookmarkablePostToCompatibleURIConverter implements URIConverter {
 
 	private final Matcher matcher;
 	private final boolean succedded;
+	private final CompatibleURIBuilder builder;
 
-	public BookmarkablePostToCompatibleURIConverter(String uri) {
+	public BookmarkablePostToCompatibleURIConverter(String uri, CompatibleURIBuilder builder) {
+		this.builder = builder;
 		// /post/<id-post>/<titulo-post>?page=<pagina>
 		Pattern pattern = Pattern
 				.compile("\\/java\\/([0-9]+)\\-([a-zA-Z0-9\\-\\_]+)*(\\/([0-9]+))?");
@@ -31,9 +34,9 @@ public class BookmarkablePostToCompatibleURIConverter implements URIConverter {
 	@Override
 	public String convert() {
 		if (this.thereIsPage()) {
-			return String.format("/posts/list/%d/%s.java", this.getPage(), this.getId());
+			return builder.compatibleURL(getId(), getFirstPostToShow());
 		} else {
-			return String.format("/posts/list/%s.java", this.getId());
+			return builder.compatibleURL(getId());
 		}
 	}
 
@@ -41,7 +44,7 @@ public class BookmarkablePostToCompatibleURIConverter implements URIConverter {
 		return this.matcher.group(4) != null && this.matcher.group(4).length() > 0;
 	}
 
-	private int getPage() {
+	private int getFirstPostToShow() {
 		return (Integer.parseInt(this.matcher.group(4)) - 1) * Configs.POSTS_PER_PAGE;
 	}
 }

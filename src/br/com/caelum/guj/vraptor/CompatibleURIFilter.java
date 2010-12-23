@@ -14,14 +14,13 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.log4j.Logger;
 
 import br.com.caelum.guj.repositories.TopicRepositoryWrapper;
+import br.com.caelum.guj.uri.DefaultBookmarkableURIBuilder;
 import br.com.caelum.guj.uri.compatible.CompatibleToBookmarkablePostConverter;
 import br.com.caelum.guj.view.Slugger;
 
 public class CompatibleURIFilter implements Filter {
 
 	private static Logger LOG = Logger.getLogger(CompatibleURIFilter.class);
-
-	private static Slugger slugger = new Slugger();
 	
 	@Override
 	public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain)
@@ -31,7 +30,7 @@ public class CompatibleURIFilter implements Filter {
 		HttpServletResponse response = (HttpServletResponse) res;
 
 		CompatibleToBookmarkablePostConverter converter = new CompatibleToBookmarkablePostConverter(
-				request.getRequestURI(), new TopicRepositoryWrapper(), slugger);
+				request.getRequestURI(), new TopicRepositoryWrapper(), new DefaultBookmarkableURIBuilder(new Slugger()));
 
 		LOG.info("compatible filter: " + request.getRequestURI() + " -- and is convertable: "
 				+ converter.isConvertable());

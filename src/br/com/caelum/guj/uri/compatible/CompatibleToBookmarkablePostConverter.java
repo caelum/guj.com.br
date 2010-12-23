@@ -6,20 +6,21 @@ import java.util.regex.Pattern;
 import net.jforum.entities.Topic;
 import br.com.caelum.guj.configuration.Configs;
 import br.com.caelum.guj.repositories.TopicRepository;
+import br.com.caelum.guj.uri.BookmarkableURIBuilder;
 import br.com.caelum.guj.uri.URIConverter;
-import br.com.caelum.guj.view.Slugger;
 
 public class CompatibleToBookmarkablePostConverter implements URIConverter {
 
 	private final Matcher matcher;
 	private final boolean succedded;
 	private final TopicRepository topicRepository;
-	private final Slugger slugger;
+	private final BookmarkableURIBuilder builder;
 
 	public CompatibleToBookmarkablePostConverter(String uri, TopicRepository topicRepository,
-			Slugger slugger) {
+			BookmarkableURIBuilder builder) {
 		this.topicRepository = topicRepository;
-		this.slugger = slugger;
+		this.builder = builder;
+
 		Pattern pattern = Pattern.compile("\\/posts\\/list(\\/([0-9]+))?\\/([0-9]+).java");
 		this.matcher = pattern.matcher(uri);
 		this.succedded = this.matcher.find();
@@ -34,12 +35,12 @@ public class CompatibleToBookmarkablePostConverter implements URIConverter {
 	public String convert() {
 		int topicId = Integer.parseInt(this.matcher.group(3));
 		Topic topic = this.topicRepository.getById(topicId);
-		String sluggedTitle = this.slugger.sluggerize(topic.getTitle());
 
 		if (this.isPaginated()) {
-			return "/java/" + topicId + "-" + sluggedTitle + "/" + this.pageNumber();
+			return builder.bookmarkableURL(topicId, topic.getTitle(), pageNumber());
 		}
-		return "/java/" + topicId + "-" + sluggedTitle;
+		
+		return builder.bookmarkableURL(topicId, topic.getTitle());
 	}
 
 	private int pageNumber() {
