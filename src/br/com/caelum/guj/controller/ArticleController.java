@@ -77,7 +77,7 @@ public class ArticleController {
 	}
 
 	@SuppressWarnings("unchecked")
-	@Path("/articles/{tagName}") @Get
+	@Path("/articles/tag/{tagName}") @Get
 	public void listByTag(String tagName) {
 		Tag tag = this.findTagByName(tagName);
 

@@ -33,7 +33,7 @@
 								<span class="tagging-list" id="tags_${article.id}">
 									<c:forEach items="${article.tags}" var="tag">
 										<span class="tagging-list-item tag tag_front">
-											<b><a class="tagging-link"  href="<c:url value="/articles/${tag.name}"/>">${tag.name}</a>&nbsp;</a></b>
+											<b><a class="tagging-link"  href="<c:url value="/articles/tag/${tag.name}"/>">${tag.name}</a>&nbsp;</a></b>
 										</span>
 									</c:forEach>
 								</span>
