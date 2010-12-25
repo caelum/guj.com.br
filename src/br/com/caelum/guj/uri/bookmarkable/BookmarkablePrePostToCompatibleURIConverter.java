@@ -3,20 +3,22 @@ package br.com.caelum.guj.uri.bookmarkable;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import br.com.caelum.guj.uri.CompatibleURIBuilder;
 import br.com.caelum.guj.uri.URIConverter;
-import br.com.caelum.guj.uri.RequestInfo;
 
 public class BookmarkablePrePostToCompatibleURIConverter implements URIConverter {
 
 	private final Matcher matcher;
 	private final boolean succedded;
+	private final CompatibleURIBuilder builder;
 
-	public BookmarkablePrePostToCompatibleURIConverter(RequestInfo info) {
+	public BookmarkablePrePostToCompatibleURIConverter(String uri, CompatibleURIBuilder builder) {
 
+		this.builder = builder;
 		// /prepost/<id-post>/<titulo-post>
 		Pattern pattern = Pattern
 				.compile("\\/prepost\\/([0-9]+)\\/([0-9]+)\\/([a-zA-Z0-9\\-\\_]+)*");
-		this.matcher = pattern.matcher(info.getUri());
+		this.matcher = pattern.matcher(uri);
 		this.succedded = this.matcher.find();
 	}
 
@@ -35,7 +37,7 @@ public class BookmarkablePrePostToCompatibleURIConverter implements URIConverter
 
 	@Override
 	public String convert() {
-		return String.format("/posts/preList/%s/%s.java", this.getTopicId(), this.getPostId());
+		return builder.compatiblePrePostURL(getTopicId(), getPostId());
 	}
 
 }

@@ -56,22 +56,35 @@
 	</context-param>
 	<filter>
 		<filter-name>compatibleURI</filter-name>
-		<filter-class>br.com.caelum.guj.vraptor.CompatibleURIFilter</filter-class>
+		<filter-class>br.com.caelum.guj.vraptor.filter.CompatibleURIFilter</filter-class>
 	</filter>
 
 	<filter-mapping>
 		<filter-name>compatibleURI</filter-name>
 		<url-pattern>/*</url-pattern>
-		
 		<dispatcher>REQUEST</dispatcher>
 	</filter-mapping>
+	
+	
 	<filter>
 		<filter-name>bookmarkable</filter-name>
-		<filter-class>br.com.caelum.guj.vraptor.BookmarkableURIFilter</filter-class>
+		<filter-class>br.com.caelum.guj.vraptor.filter.BookmarkableURIFilter</filter-class>
 	</filter>
 
 	<filter-mapping>
 		<filter-name>bookmarkable</filter-name>
+		<url-pattern>/*</url-pattern>
+		<dispatcher>FORWARD</dispatcher>
+		<dispatcher>REQUEST</dispatcher>
+	</filter-mapping>
+
+	<filter>
+		<filter-name>vraptorFilter</filter-name>
+		<filter-class>br.com.caelum.guj.vraptor.filter.VRaptorFilter</filter-class>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>vraptorFilter</filter-name>
 		<url-pattern>/*</url-pattern>
 		<dispatcher>FORWARD</dispatcher>
 		<dispatcher>REQUEST</dispatcher>

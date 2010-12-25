@@ -1,4 +1,4 @@
-package br.com.caelum.guj.uri;
+package br.com.caelum.guj.uri.bookmarkable;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertSame;
@@ -11,6 +11,7 @@ import java.util.List;
 
 import org.junit.Test;
 
+import br.com.caelum.guj.uri.URIConverter;
 import br.com.caelum.guj.uri.bookmarkable.ConverterMatcher;
 
 public class ConverterMatcherTest {
