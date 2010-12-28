@@ -11,12 +11,9 @@ import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Resource;
 import br.com.caelum.vraptor.Result;
 
-/**
- * @author Rafael Steil
- * @author Lucas Cavalcanti
- */
 @Resource
 public class HomeController {
+	private static final Object FORUM_DOS_MODERADORES = 16;
 	private final Result result;
 	private final Session session;
 
@@ -27,8 +24,8 @@ public class HomeController {
 
 	@SuppressWarnings("unchecked")
 	private List<Post> getAllPosts() {
-		return this.session.createQuery("from Post p order by p.date desc")
-				.setMaxResults(Config.getIntvalue("posts.home.items")).setCacheable(true)
+		return this.session.createQuery("from Post p where p.forum.id != :moderators_id order by p.date desc")
+				.setMaxResults(Config.getIntvalue("posts.home.items")).setParameter(":moderators_id", FORUM_DOS_MODERADORES).setCacheable(true)
 				.setCacheRegion("homePosts").list();
 	}
 
