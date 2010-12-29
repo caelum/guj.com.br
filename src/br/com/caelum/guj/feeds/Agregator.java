@@ -28,25 +28,26 @@ public class Agregator {
 	}
 
 	private void init() {
-		 long interval = Config.getIntvalue(this.intervalKey) * 1000 * 60;
+		long interval = Config.getIntvalue(this.intervalKey) * 1000 * 60;
 
-	        Timer infoqTimer = new Timer(true);
-	        infoqTimer.scheduleAtFixedRate(new TimerTask() {
-	            @Override
-	            public void run() {
-	            	try {
-		                items = new ArrayList<ItemIF>(FeedReader.read(Config.getValue(feedUrl)));
+		Timer infoqTimer = new Timer(true);
+		infoqTimer.scheduleAtFixedRate(new TimerTask() {
+			@Override
+			public void run() {
+				try {
+					List<ItemIF> newFeeds = new ArrayList<ItemIF>(FeedReader.read(Config.getValue(feedUrl)));
 
-		                int max = Config.getIntvalue(maxItemsKey);
+					int max = Config.getIntvalue(maxItemsKey);
 
-		                if (items.size() > max) {
-		                	items = items.subList(0, max);
-		                }
-	            	}
-	            	catch (Exception e) {
-	            		e.printStackTrace();
-	            	}
-	            }
-	        }, new Date(), interval);
+					if (newFeeds.size() > max) {
+						newFeeds = newFeeds.subList(0, max);
+					}
+					// se ocorreu erro na leitura dos novos feeds é mantida a lista anterior
+					items = newFeeds;
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		}, new Date(), interval);
 	}
 }
