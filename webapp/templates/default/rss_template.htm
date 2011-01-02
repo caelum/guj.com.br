@@ -1,3 +1,4 @@
+<#import "../macros/bookmarkableLink.ftl" as bookmarkable/>
 <?xml version="1.0" encoding="${encoding}"?>
 <rss version="2.0">
 	<channel>
@@ -12,8 +13,9 @@
 				<#if (item.categories.size() > 0)>
 					<category><![CDATA[<#list item.categories as cat>${cat}, </#list>]]></category>
 				</#if>
-				<guid isPermaLink="true">${item.link}</guid>
-				<link>${item.link}</link>
+				<#assign link><@bookmarkable.bookmarkableCompletePrePost item.link, item.title /></#assign>
+				<guid isPermaLink="true">${link}</guid>
+				<link>${link}</link>
 				<pubDate><![CDATA[${item.publishDate}]]> GMT</pubDate>
 				<author><![CDATA[ ${item.author}]]></author>
 			</item>

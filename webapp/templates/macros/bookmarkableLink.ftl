@@ -14,3 +14,6 @@ ${JForumContext.encodeURL('${bookmarkableUriBuilder.bookmarkableURL(topicId, top
 ${JForumContext.encodeURL('${bookmarkableUriBuilder.bookmarkablePrePostURL(topicId, postId, topicTitle)}', '')}
 </#macro>
 
+<#macro bookmarkableCompletePrePost completeURL topicTitle>
+${bookmarkableUriBuilder.bookmarkableCompletePrePostURL(completeURL, topicTitle)}
+</#macro>
