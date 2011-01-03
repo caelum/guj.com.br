@@ -2,7 +2,7 @@
 <#import "../macros/pagination.ftl" as pagination/>
 <#import "../macros/presentation.ftl" as presentation/>
 <#import "../macros/bookmarkableLink.ftl" as bookmarkable/>
-
+<#setting url_escaping_charset="UTF-8">
 <#assign canEditSomeMessage = false/>
 
 <!--
@@ -61,6 +61,9 @@
 						<#if rssEnabled>
 						&nbsp;<a href="${contextPath}/rss/topicPosts/${topic.id}${extension}"><img src="${contextPath}/templates/${templateName}/images/xml_button.gif" border="0" alt="XML" /></a>
 						</#if>
+						
+						<#assign url><@bookmarkable.bookmarkableLink topic.id, topic.title/></#assign>
+						<iframe allowtransparency="true" frameborder="0" scrolling="no" tabindex="0" class="twitter-share-button twitter-count-vertical" src="http://platform0.twitter.com/widgets/tweet_button.html?_=1294072800674&amp;count=horizontal&amp;lang=en&amp;text=%23GUJ%20${topic.title?url}&amp;url=http%3A%2F%2Fwww.guj.com.br${url?url}&amp;via=gujnoticias" style="width: 95px; height: 20px; " title="Twitter For Websites: Tweet Button"></iframe>
 					</td>
 				</tr>
 			</table>
