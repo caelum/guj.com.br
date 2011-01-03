@@ -66,23 +66,6 @@ $().ready(function() {
 		<b class="spiffy"><b class="spiffy1"><b></b></b><b class="spiffy2"><b></b></b><b class="spiffy3"></b><b class="spiffy4"></b><b class="spiffy5"></b></b>
 		<div class="spiffyfg">
 			  <h2><a href="<c:url value="/articles"/>">Artigos</a></h2>
-			 <ul>
-		    	<c:forEach items="${articles}" var="article">
-					<li>
-						<h3><a href="<c:url value="/articles/${article.id}"/>">${fn:escapeXml(article.title)}</a></h3>
-				      	<span class="content">
-				      		<c:choose>
-				      			<c:when test="${article.subtitle.length$0 > 200}">
-				      				${article.subtitle.substring$2[0][200]}...
-				      			</c:when>
-				      			<c:otherwise>
-				      				${article.subtitle}
-				      			</c:otherwise>
-				      		</c:choose>
-				      	</span>
-					</li>	    	
-		    	</c:forEach>
-			  </ul>
 		</div>
 		<b class="spiffy"><b class="spiffy5"></b><b class="spiffy4"></b><b class="spiffy3"></b><b class="spiffy2"><b></b></b><b class="spiffy1"><b></b></b></b>
 	</div>
