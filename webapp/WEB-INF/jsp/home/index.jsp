@@ -70,7 +70,7 @@ $().ready(function() {
 			  	
 			  	<iframe src="http://www.facebook.com/plugins/activity.php?site=www.guj.com.br&amp;width=370&amp;height=300&amp;header=true&amp;colorscheme=light&amp;recommendations=true" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:370px; height:300px;" allowTransparency="true"></iframe>
 			  </div>
-			   <h2><a href="<c:url value="/articles"/>">Artigos</a></h2>
+			  <h2><a href="<c:url value="/articles"/>">Artigos</a></h2>
 		</div>
 		<b class="spiffy"><b class="spiffy5"></b><b class="spiffy4"></b><b class="spiffy3"></b><b class="spiffy2"><b></b></b><b class="spiffy1"><b></b></b></b>
 	</div>
