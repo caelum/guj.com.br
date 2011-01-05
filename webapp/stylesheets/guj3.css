@@ -403,7 +403,7 @@ input.selecionado {
 #content #home .posts {
   clear: left;
   float: left;
-  width: 50%;
+  width: 32%;
   font-size: 12px;
   margin-right: 8px;
 }
@@ -440,7 +440,14 @@ input.selecionado {
 #content #home .infoq {
 	float: left; 
 	font-size: 12px;
-	width: 49%;
+	width: 31%;
+}
+
+#content #home .twitter {
+	float: left; 
+	font-size: 12px;
+	margin-right: 8px;
+	width: 33%;
 }
 
 #content #home .infoq ul li a {
