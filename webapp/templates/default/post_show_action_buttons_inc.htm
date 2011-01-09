@@ -2,7 +2,7 @@
 	<div class="date">
 		<#assign startStr = ""/>
 		<#if (start > 0)><#assign startStr = "${start}/"/></#if>
-		<img src="${contextPath}/templates/${templateName}/images/icon_minipost_new.gif" alt="[Post New]" />${post.formatedTime}
+		<a href="<@bookmarkable.bookmarkablePrePost topic.id, topic.title, post.id />"><img src="${contextPath}/templates/${templateName}/images/icon_minipost_new.gif" alt="[Post New]" /></a>${post.formatedTime}
 	</div>
 	<div class="subject">&nbsp;&nbsp; &nbsp;<b>${I18n.getMessage("PostShow.subject")}:</b> <a name="${post.id}">${post.subject?default("")?html}</a></div>
 	<div class="action">
