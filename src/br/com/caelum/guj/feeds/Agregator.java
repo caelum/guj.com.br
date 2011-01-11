@@ -35,15 +35,18 @@ public class Agregator {
 			@Override
 			public void run() {
 				try {
-					List<ItemIF> newFeeds = new ArrayList<ItemIF>(FeedReader.read(Config.getValue(feedUrl)));
+					List<ItemIF> newFeeds = new ArrayList<ItemIF>(FeedReader.read(Config
+							.getValue(Agregator.this.feedUrl)));
 
-					int max = Config.getIntvalue(maxItemsKey);
+					int max = Config.getIntvalue(Agregator.this.maxItemsKey);
 
 					if (newFeeds.size() > max) {
 						newFeeds = newFeeds.subList(0, max);
 					}
-					// se ocorreu erro na leitura dos novos feeds é mantida a lista anterior
-					items = newFeeds;
+
+					if (!newFeeds.isEmpty()) {
+						Agregator.this.items = newFeeds;
+					}
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
