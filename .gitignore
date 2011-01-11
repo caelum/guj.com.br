@@ -3,3 +3,4 @@ WEB-INF/classes
 *.class
 work/
 .DS_Store
+key.properties
