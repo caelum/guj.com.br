@@ -38,5 +38,6 @@
 		<mapping class="br.com.caelum.guj.model.Article"/>
 		<mapping class="br.com.caelum.guj.model.Category"/>
 		<mapping class="br.com.caelum.guj.model.Tag"/>
+		<mapping class="br.com.caelum.guj.model.NewsletterParticipant"/>
 	</session-factory>
 </hibernate-configuration>
