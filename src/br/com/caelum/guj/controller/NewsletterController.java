@@ -22,7 +22,7 @@ public class NewsletterController {
 
 		NewsletterParticipant participant = this.dao.findParticipantByGujUserId(gujUserId);
 
-		if (participant != null) {
+		if (participant == null) {
 			String email = this.dao.emailFromUser(gujUserId);
 			NewsletterParticipant p = new NewsletterParticipant(gujUserId, email);
 			// aqui registra no mailchimp
