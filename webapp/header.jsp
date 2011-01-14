@@ -140,10 +140,6 @@ $().ready(function() {
             
 	      		<a href="<c:url value="/user/logout.java"/>"><img src="<c:url value="/templates/default/images/icon_mini_login.gif"/>" border="0" alt="Logout" /> LOGOUT</a> 
 	      		
-	      		
-				<a href="${contextPath}/newsletter?_method=POST&gujUserId=${userSession.userId}">Participar da newsletter</a>
-				
-				<a href="${contextPath}/newsletter?_method=DELETE&gujUserId=${session.userId}">Sair da newsletter</a>
       		</c:when>
       		<c:otherwise>
 	      		Bem vindo ao GUJ. <a href="<c:url value="/user/insert.java"/>" style="color: #4382B0;">Crie seu login</a>, 

@@ -176,10 +176,7 @@ $().ready(function() {
 				<#if !sso>
 					<a id="logout" class="mainmenu" href="${JForumContext.encodeURL("/user/logout")}"><img src="${contextPath}/templates/${templateName}/images/icon_mini_login.gif" border="0" alt="[Login]" /> LOGOUT [${session.username}] </a></span>
 				</#if>
-				
-				<a href="${contextPath}/newsletter?_method=POST&gujUserId=${session.userId}">Participar da newsletter</a>
-				
-				<a href="${contextPath}/newsletter?_method=DELETE&gujUserId=${session.userId}">Sair da newsletter</a>
+			
 			</#if>
 		</div>
 	</div>
