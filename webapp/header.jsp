@@ -111,14 +111,15 @@ $().ready(function() {
       -->
     </ul>
     
-    <form class="busca" method="GET" action="<c:url value="/search"/>" id="cse-search-box">
-		<input type="hidden" name="cx" value="017656399519328943088:3aeg_mft4fe" />
-    		<input type="hidden" name="cof" value="FORID:9" />
-    		<input type="hidden" name="ie" value="UTF-8" />
-		<input class="campo_rounded" type="text" name="q" size="31" tabindex="1" />
-      	<input type="image" class="botao" style="border: 0px;" src="<c:url value="/images/guj/botao_ok.gif"/>" tabindex="2">
-    </form>
-	<script type="text/javascript" src="http://www.google.com/cse/brand?form=cse-search-box&lang=pt"></script>
+    <form action="<c:url value="/search"/>" id="cse-search-box" class="busca">
+	    <input type="hidden" name="cx" value="partner-pub-9448585618971060:4001950301" />
+	    <input type="hidden" name="cof" value="FORID:10" />
+	    <input type="hidden" name="ie" value="UTF-8" />
+	    <input class="campo_rounded" type="text" name="q" size="31" tabindex="1" />
+	    <input type="image" class="botao" style="border: 0px;" src="<c:url value="/images/guj/botao_ok.gif"/>" tabindex="2">
+	</form>
+
+<script type="text/javascript" src="http://www.google.com.br/coop/cse/brand?form=cse-search-box&amp;lang=en"></script>
 	<iframe src="http://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fwww.facebook.com%2FGUJ.com.br&amp;layout=button_count&amp;show_faces=false&amp;width=200&amp;action=like&amp;colorscheme=light&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:200px; height:21px; position:relative; top:7px;" allowTransparency="true"></iframe>
   </div>
   
