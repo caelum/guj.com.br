@@ -27,7 +27,6 @@ public class NewsletterController {
 	@Post
 	@Path(value = "/newsletter/")
 	public void register(Integer gujUserId) {
-
 		NewsletterParticipant participant = this.dao.findParticipantByGujUserId(gujUserId);
 
 		if (participant == null) {
