@@ -11,20 +11,20 @@ import br.com.caelum.vraptor.ioc.Component;
 
 @Component
 @ApplicationScoped
-public class KeyReader {
+public class NewsletterConfigs {
 
 	private String key;
 
 	@PostConstruct
 	public void initialize() throws IOException {
 		Properties properties = new Properties();
-		InputStream stream = KeyReader.class.getResourceAsStream("/key.properties");
+		InputStream stream = NewsletterConfigs.class.getResourceAsStream("/key.properties");
 		properties.load(stream);
 		key = (String) properties.get("newsletter_key");
 		stream.close();
 	}
 
-	public String getKey() {
+	public String getAPIKey() {
 		return key;
 	}
 }
