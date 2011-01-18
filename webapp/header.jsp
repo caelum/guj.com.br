@@ -141,7 +141,14 @@ $().ready(function() {
               </a>&nbsp;
             
 	      		<a href="<c:url value="/user/logout.java"/>"><img src="<c:url value="/templates/default/images/icon_mini_login.gif"/>" border="0" alt="Logout" /> LOGOUT</a> 
-	      		
+	      		<c:choose>
+		      		<c:when test="${newsletterParticipant}">
+		      			<a href="<c:url value="/newsletter/"/>?_method=DELETE&gujUserId=${userSession.userId}">Não quero receber a Newsletter</a>
+		      		</c:when>
+		      		<c:otherwise>
+		      			<a href="<c:url value="/newsletter/"/>?_method=POST&gujUserId=${userSession.userId}">Quero receber a Newsletter</a>
+		      		</c:otherwise>
+	      		</c:choose>
       		</c:when>
       		<c:otherwise>
 	      		Bem vindo ao GUJ. <a href="<c:url value="/user/insert.java"/>" style="color: #4382B0;">Crie seu login</a>, 
