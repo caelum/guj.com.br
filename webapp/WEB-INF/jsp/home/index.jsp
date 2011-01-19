@@ -40,7 +40,7 @@ $().ready(function() {
 		<b class="spiffy"><b class="spiffy1"><b></b></b><b class="spiffy2"><b></b></b><b class="spiffy3"></b><b class="spiffy4"></b><b class="spiffy5"></b></b>
 		<div class="spiffyfg">
 			  <h2>
-			    <a href="<c:url value="/forums/show/17.java"/>">Not&iacute;cias</a>
+			    <a href="<c:url value="/noticias"/>">Not&iacute;cias</a>
 			  </h2>
 			  <ul>
 			  	<c:forEach items="${news}" var="n">

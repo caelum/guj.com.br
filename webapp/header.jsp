@@ -93,7 +93,7 @@ $().ready(function() {
       </li>
       
       <li class="noticias">
-        <a href="<c:url value="/forums/show/17.java"/>">not&iacute;cias</a>
+        <a href="<c:url value="/noticias"/>">not&iacute;cias</a>
       </li>
       
       <li class="topics">
