@@ -7,8 +7,9 @@ import br.com.caelum.vraptor.Result;
 
 /**
  * Esse controller apenas redireciona as urls antigas para as novas
+ * 
  * @author Lucas Cavalcanti
- *
+ * 
  */
 @Resource
 public class OldUrlsController {
@@ -38,8 +39,14 @@ public class OldUrlsController {
 	public void articleShow(long id) {
 		result.use(http()).movedPermanentlyTo(ArticleController.class).show(id);
 	}
+
 	@Path("/article.listByTag.logic")
 	public void articleListByTag(String tag) {
 		result.use(http()).movedPermanentlyTo(ArticleController.class).listByTag(tag);
+	}
+
+	@Path("/noticias")
+	public void noticias() {
+		result.use(http()).movedPermanentlyTo("/forums/show/17.java");
 	}
 }
