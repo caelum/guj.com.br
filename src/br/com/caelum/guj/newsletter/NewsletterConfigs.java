@@ -15,6 +15,7 @@ public class NewsletterConfigs {
 
 	private String key;
 	private String listId;
+	private String dc;
 
 	@PostConstruct
 	public void initialize() throws IOException {
@@ -23,6 +24,7 @@ public class NewsletterConfigs {
 		properties.load(stream);
 		key = (String) properties.get("newsletter_key");
 		listId = (String) properties.get("list_id");
+		dc = (String) properties.get("dc");
 		stream.close();
 	}
 
@@ -32,5 +34,9 @@ public class NewsletterConfigs {
 
 	public String getListId() {
 		return listId;
+	}
+
+	public String getDc() {
+		return dc;
 	}
 }
