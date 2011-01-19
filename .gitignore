@@ -4,3 +4,4 @@ WEB-INF/classes
 work/
 .DS_Store
 key.properties
+newsletter_config.properties
