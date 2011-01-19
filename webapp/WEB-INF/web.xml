@@ -125,6 +125,16 @@
     	<session-timeout>10</session-timeout>
     </session-config>
     
+    <filter>
+    	<filter-name>gujSessionCleanup</filter-name>
+    	<filter-class>br.com.caelum.guj.vraptor.filter.GUJSessionCleanupFilter</filter-class>
+    </filter>
+    
+    <filter-mapping>
+    	<filter-name>gujSessionCleanup</filter-name>
+    	<url-pattern>/user/logout.java</url-pattern>
+    </filter-mapping>
+    
 	<welcome-file-list>
 		<welcome-file>index.jsp</welcome-file>
 	</welcome-file-list>
