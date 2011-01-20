@@ -21,7 +21,6 @@ public class GUJSessionCleanupFilter implements Filter {
 	public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain) throws IOException,
 			ServletException {
 		HttpSession session = ((HttpServletRequest) req).getSession();
-		System.out.println("matando as coisas especificas do guj da sessao");
 		session.removeAttribute("newsletterParticipant");
 		chain.doFilter(req, res);
 	}

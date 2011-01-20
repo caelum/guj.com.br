@@ -29,13 +29,14 @@ public class NewsletterFilter implements Filter {
 	public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain) throws IOException,
 			ServletException {
 		HttpServletRequest request = (HttpServletRequest) req;
-		HttpSession session = request.getSession();
-		UserSession user = (UserSession) session.getAttribute("userSession");
+		if (!request.getRequestURI().endsWith(".js") && !request.getRequestURI().endsWith(".css")) {
+			HttpSession session = request.getSession();
+			UserSession user = (UserSession) request.getAttribute("userSession");
 
-		if (user != null) {
-			defineParticipantStatus(request, session, user);
+			if (user != null) {
+				defineParticipantStatus(request, session, user);
+			}
 		}
-
 		chain.doFilter(req, res);
 	}
 

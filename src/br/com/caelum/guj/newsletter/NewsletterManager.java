@@ -17,8 +17,6 @@ public class NewsletterManager {
 	private static final String SUBSCRIBE_URI_TEMPLATE = "http://<dc>.api.mailchimp.com/1.3/?"
 			+ "output=xml&method=listSubscribe&apikey=<apikey>&email_address=<emailaddress>&double_optin=false&id=<listid>";
 
-	private static final String UNSUBSCRIBE_URI_TEMPLATE = "http://<dc>.api.mailchimp.com/1.3/?"
-			+ "output=xml&method=listUnsubscribe&apikey=<apikey>&email_address=<emailaddress>&id=<listid>";
 	private final NewsletterConfigs configs;
 
 	private static final Logger LOGGER = Logger.getLogger(NewsletterManager.class);
