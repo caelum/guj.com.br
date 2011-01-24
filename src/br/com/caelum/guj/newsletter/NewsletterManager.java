@@ -15,7 +15,7 @@ import br.com.caelum.vraptor.ioc.RequestScoped;
 @RequestScoped
 public class NewsletterManager {
 	private static final String SUBSCRIBE_URI_TEMPLATE = "http://<dc>.api.mailchimp.com/1.3/?"
-			+ "output=xml&method=listSubscribe&apikey=<apikey>&email_address=<emailaddress>&double_optin=false&id=<listid>";
+			+ "output=xml&method=listSubscribe&apikey=<apikey>&email_address=<emailaddress>&double_optin=<optin>&id=<listid>";
 
 	private final NewsletterConfigs configs;
 
@@ -26,9 +26,19 @@ public class NewsletterManager {
 	}
 
 	public void subscribe(NewsletterParticipant participant) {
+		subscribe(participant, false);
+
+	}
+
+	public void subscribeWithConfirmation(NewsletterParticipant participant) {
+		subscribe(participant, true);
+	}
+
+	private void subscribe(NewsletterParticipant participant, boolean sendConfirmation) {
 		String subscribeURI = SUBSCRIBE_URI_TEMPLATE.replace("<dc>", configs.getDc())
 				.replace("<emailaddress>", participant.getEmail()).replace("<apikey>", configs.getAPIKey())
-				.replace("<listid>", configs.getListId());
+				.replace("<listid>", configs.getListId())
+				.replace("<optin>", Boolean.valueOf(sendConfirmation).toString());
 
 		LOGGER.info("Registering the email " + participant.getEmail() + " at the newsletter");
 
@@ -43,10 +53,6 @@ public class NewsletterManager {
 		} finally {
 			get.releaseConnection();
 		}
-
 	}
 
-	public void unsubscribe() {
-
-	}
 }

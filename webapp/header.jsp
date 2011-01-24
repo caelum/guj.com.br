@@ -142,7 +142,15 @@ $().ready(function() {
             
 	      		<a href="<c:url value="/user/logout.java"/>"><img src="<c:url value="/templates/default/images/icon_mini_login.gif"/>" border="0" alt="Logout" /> LOGOUT</a> 
 	      		<c:if test="${not newsletterParticipant}">
-	      			<a href="<c:url value="/newsletter/"/>?_method=POST&gujUserId=${userSession.userId}">Desejo receber as Newsletters do GUJ</a>
+	      			<a href="<c:url value="/newsletter/"/>?_method=POST&gujUserId=${userSession.userId}">Desejo receber as Newsletters do GUJ com meu e-mail</a>
+	      			<a href="javascript:entraNewsletter();">Com outro e-mail</a>
+	      			<div id="entraNewsletter" style="display: none; position: absolute;">
+	      				<form action="<c:url value="/newsletterWithConfirmation/"/>" method="post">
+	      					<input type="hidden" name="gujUserId" value="${userSession.userId}"/>
+	      					<input type="text" name="email">
+							<input type="submit" value="Participar">
+	      				</form>
+	      			</div>
 	      		</c:if>
       		</c:when>
       		<c:otherwise>
@@ -162,3 +170,8 @@ $().ready(function() {
   </div>
 
   
+<script language="javascript">
+	function entraNewsletter() {
+		$('#entraNewsletter').toggle();
+	}
+</script>

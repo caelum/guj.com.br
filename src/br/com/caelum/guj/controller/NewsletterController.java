@@ -7,7 +7,6 @@ import javax.servlet.http.HttpSession;
 import br.com.caelum.guj.dao.GUJUserDAO;
 import br.com.caelum.guj.model.NewsletterParticipant;
 import br.com.caelum.guj.newsletter.NewsletterManager;
-import br.com.caelum.vraptor.Delete;
 import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Resource;
@@ -36,26 +35,32 @@ public class NewsletterController {
 
 		if (participant == null) {
 			String email = this.dao.emailFromUser(gujUserId);
-			NewsletterParticipant p = new NewsletterParticipant(gujUserId, email);
-
+			NewsletterParticipant p = registerParticipant(gujUserId, email);
 			manager.subscribe(p);
-			this.dao.registerNewsletterParticipant(p);
-			session.setAttribute("newsletterParticipant", true);
 
 		}
 		result.use(Results.logic()).redirectTo(HomeController.class).index();
 	}
 
-	@Delete
-	@Path(value = "/newsletter/")
-	public void unregister(Integer gujUserId) {
+	@Post
+	@Path(value = "/newsletterWithConfirmation/")
+	public void register(Integer gujUserId, String email) throws URISyntaxException {
 		NewsletterParticipant participant = this.dao.findParticipantByGujUserId(gujUserId);
 
-		if (participant != null) {
-			// aqui desregistra no mailchimp
-			this.dao.unregisterNewsletterParticipant(participant);
-			session.setAttribute("newsletterParticipant", false);
+		if (participant == null) {
+			NewsletterParticipant p = registerParticipant(gujUserId, email);
+			manager.subscribeWithConfirmation(p);
+
 		}
 		result.use(Results.logic()).redirectTo(HomeController.class).index();
 	}
+
+	private NewsletterParticipant registerParticipant(Integer gujUserId, String email) {
+		NewsletterParticipant p = new NewsletterParticipant(gujUserId, email);
+
+		this.dao.registerNewsletterParticipant(p);
+		session.setAttribute("newsletterParticipant", true);
+		return p;
+	}
+
 }
