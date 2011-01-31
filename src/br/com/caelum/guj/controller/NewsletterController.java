@@ -6,7 +6,7 @@ import javax.servlet.http.HttpSession;
 
 import br.com.caelum.guj.dao.GUJUserDAO;
 import br.com.caelum.guj.model.NewsletterParticipant;
-import br.com.caelum.guj.newsletter.NewsletterManager;
+import br.com.caelum.guj.newsletter.NewsletterSubscriber;
 import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Resource;
@@ -19,9 +19,9 @@ public class NewsletterController {
 	private final GUJUserDAO dao;
 	private final HttpSession session;
 	private final Result result;
-	private final NewsletterManager manager;
+	private final NewsletterSubscriber manager;
 
-	public NewsletterController(GUJUserDAO dao, HttpSession session, Result result, NewsletterManager manager) {
+	public NewsletterController(GUJUserDAO dao, HttpSession session, Result result, NewsletterSubscriber manager) {
 		this.dao = dao;
 		this.session = session;
 		this.result = result;

@@ -19,12 +19,9 @@ public class Agregators {
 	public void init() {
 		Config.loadConfigs();
 
-		this.forumAgregator = new Agregator("forum.refresh.interval",
-				"forum.items", "forum.url");
-		this.newsAgregator = new Agregator("news.refresh.interval",
-				"news.items", "news.url");
-		this.infoqAgregator = new Agregator("infoq.refresh.interval",
-				"infoq.items", "infoq.url");
+		this.forumAgregator = new Agregator("forum.refresh.interval", "forum.items", "forum.url");
+		this.newsAgregator = new Agregator("news.refresh.interval", "news.items", "news.url");
+		this.infoqAgregator = new Agregator("infoq.refresh.interval", "infoq.items", "infoq.url");
 
 		JobsAgregator.start();
 	}
