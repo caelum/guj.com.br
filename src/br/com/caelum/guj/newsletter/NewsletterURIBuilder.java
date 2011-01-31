@@ -10,7 +10,7 @@ public class NewsletterURIBuilder {
 			+ "output=xml&method=listSubscribe&apikey=<apikey>&email_address=<emailaddress>&double_optin=<optin>&id=<listid>";
 
 	public NewsletterURIBuilder(NewsletterConfigs configs) {
-		subscribeURI = subscribeURI.replace("<dc>", configs.getDc()).replace("<apiKey>", configs.getAPIKey())
+		subscribeURI = subscribeURI.replace("<dc>", configs.getDc()).replace("<apikey>", configs.getAPIKey())
 				.replace("<listid>", configs.getListId());
 	}
 
