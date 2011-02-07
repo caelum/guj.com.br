@@ -2,7 +2,6 @@
 <html>
 <head>
 <meta http-equiv="content-type" content="text/html;charset=ISO-8859-1" />
-
 <c:if test="${empty rmSection}">
 	<c:set var="rmSection" value="guj/internas"/>
 </c:if>
@@ -61,7 +60,12 @@ else
 $().ready(function() {
 	$("#returnPath").val(document.location);
 });
-</script>  
+$(function() {
+	if (!newsletterCookieHidden()) {
+		$("#menuNewsletter").attr("style","");
+	}
+});
+</script>
 </head>
 
 <body>
@@ -162,18 +166,40 @@ $().ready(function() {
     </div>
   </div>
   <c:if test="${not newsletterParticipant and logged}">
-	  <div id="menuNewsletter">
+	  <div id="menuNewsletter" style="display:none; visibility: invisible;">
 		 <div style="float:left; margin-top:5px;">
 	  		Para participar da newsletter com o e-mail <strong>X@X</strong>, <a href="<c:url value="/newsletter/"/>?_method=POST&gujUserId=${userSession.userId}">clique aqui</a>, ou acesse <a href="<c:url value="/user/edit/${userSession.userId}.java"/>">seu cadastro</a> para modificar seu e-mail.
 	  	 </div>
 	  	 <div style="text-align:center; float:right; padding:5px;">
-	  	 	<a href="#" onclick="$('#menuNewsletter').slideToggle('slow');"><img src="<c:url value="/images/guj/cancel_16.png"/>" border="0"/></a>
+	  	 	<a href="#" onclick="escondeNewsletter();"><img src="<c:url value="/images/guj/cancel_16.png"/>" border="0"/></a>
 	  	 </div>
 	  </div>
   </c:if>
   
 <script language="javascript">
-	function entraNewsletter() {
-		$('#entraNewsletter').toggle();
+	function newsletterCookieHidden() {
+		return readCookie('gujNewsletterMenu')=='hidden';
+	}
+</script>
+
+<script language="javascript">
+function readCookie(name) {
+	var nameEQ = name + "=";
+	var ca = document.cookie.split(';');
+	for(var i=0;i < ca.length;i++) {
+		var c = ca[i];
+		while (c.charAt(0)==' ') c = c.substring(1,c.length);
+		if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+	}
+	return null;
+}
+</script>
+
+<script language="javascript">
+	function escondeNewsletter() {
+		$('#menuNewsletter').slideToggle('slow');
+		if (!newsletterCookieHidden()){
+			document.cookie='gujNewsletterMenu=hidden';
+		}
 	}
 </script>
