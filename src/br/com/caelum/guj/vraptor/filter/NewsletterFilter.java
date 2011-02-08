@@ -41,15 +41,11 @@ public class NewsletterFilter implements Filter {
 	}
 
 	private void defineParticipantStatus(HttpServletRequest request, HttpSession session, UserSession user) {
-		Boolean isParticipant = (Boolean) session.getAttribute("newsletterParticipant");
-		if (isParticipant == null) {
+		if (session.getAttribute("newsletterParticipant") == null) {
 			GUJUserDAO dao = new GUJUserDAO(getHibernateSession(request));
 			NewsletterParticipant participant = dao.findParticipantByGujUserId(user.getUserId());
-			if (participant != null) {
-				session.setAttribute("newsletterParticipant", true);
-			} else {
-				session.setAttribute("newsletterParticipant", false);
-			}
+			boolean isParticipant = participant != null;
+			session.setAttribute("newsletterParticipant", isParticipant);
 		}
 	}
 
