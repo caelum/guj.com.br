@@ -55,41 +55,39 @@ public class CompatibleURIFilter implements Filter {
 			return;
 		}
 
-		String compatibleURI = request.getContextPath() + bookmarkableURIToCompatibleURI(requestURI);
+		String compatibleURI = bookmarkableURIToCompatibleURI(requestURI, request);
 		
 		boolean requestURIIsBookmarkable = compatibleURI != null;
 
 		if (requestURIIsBookmarkable) {
-			String cachedBookmarkableURI = cache.getBookmarkableURI(compatibleURI);
-
-			boolean requestURIIsBookmarkableButDiffersFromCachedURI = cachedBookmarkableURI != null
-					&& !requestURI.equals(cachedBookmarkableURI);
+			cachedBookmarkableUri = cache.getBookmarkableURI(compatibleURI);
 			
-			if (requestURIIsBookmarkableButDiffersFromCachedURI) {
-				redirectTo(response, cachedBookmarkableURI);
+			boolean compatibleURLIsCached = cachedBookmarkableUri != null;
+			
+			if (compatibleURLIsCached && !requestURI.equals(cachedBookmarkableUri)) {
+				redirectTo(response, cachedBookmarkableUri);
 				LOG.debug("Using cache to redirect to " + cachedBookmarkableUri);
 				return;
-			} else {
-				String correctBookmarkableURI = compatibleURIToBookmarkableURI(compatibleURI, request);
-				
-				if (!requestURI.equals(correctBookmarkableURI)) {
-					redirectTo(response, correctBookmarkableURI);
-					cache.put(compatibleURI, correctBookmarkableURI);
-
-					LOG.debug("Caching " + correctBookmarkableURI);
-					return;
-				}
+			}
+			String correctBookmarkableURI = compatibleURIToBookmarkableURI(compatibleURI, request);
+			
+			cache.put(compatibleURI, correctBookmarkableURI);
+			LOG.debug("Caching " + correctBookmarkableURI);
+			
+			if (!requestURI.equals(correctBookmarkableURI)) {
+				redirectTo(response, correctBookmarkableURI);
+				return;
 			}
 		}
 
 		chain.doFilter(req, res);
 	}
 
-	private String bookmarkableURIToCompatibleURI(String compatibleURI) {
+	private String bookmarkableURIToCompatibleURI(String compatibleURI, HttpServletRequest request) {
 		ConverterMatcher converter = new ConverterMatcher(AllBookmarkableToCompatibleConverters.get(compatibleURI));
 
 		if (converter.oneMatched()) {
-			return converter.getConverter().convert();
+			return request.getContextPath() + converter.getConverter().convert();
 		}
 		return null;
 	}

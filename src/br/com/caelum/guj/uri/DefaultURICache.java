@@ -24,9 +24,6 @@ public class DefaultURICache implements URICache {
 		cacheManager.removeCache(URIS);
 	}
 	
-	/* (non-Javadoc)
-	 * @see br.com.caelum.guj.uri.URICache#getBookmarkableURI(java.lang.String)
-	 */
 	@Override
 	public String getBookmarkableURI(String compatibleURI) {
 		Element cachedElement = compatibleURI_bookmarkableURI.get(compatibleURI);
@@ -36,9 +33,6 @@ public class DefaultURICache implements URICache {
 		return (String) cachedElement.getValue();
 	}
 	
-	/* (non-Javadoc)
-	 * @see br.com.caelum.guj.uri.URICache#put(java.lang.String, java.lang.String)
-	 */
 	@Override
 	public void put(String compatibleURI, String bookmarkableURI) {
 		this.compatibleURI_bookmarkableURI.put(new Element(compatibleURI, bookmarkableURI));

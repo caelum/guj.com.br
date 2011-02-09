@@ -45,6 +45,8 @@ public class CompatibleURIFilterTest {
 		when(filterConfig.getInitParameter("cache")).thenReturn(
 				URICacheStub.class.getName());
 		
+		when(request.getContextPath()).thenReturn("guj.com.br");
+		
 		filter.init(filterConfig);
 	}
 
@@ -52,13 +54,23 @@ public class CompatibleURIFilterTest {
 	public void tearDown() {
 		filter.destroy();
 	}
+	
+	@Test
+	public void shouldInvokeDoFilterIfRequestURLIsNotToForum() throws Exception {
+		String requestedURI = "guj.com.br/rss/recentTopics.java";
+
+		when(request.getRequestURI()).thenReturn(requestedURI);
+
+		filter.doFilter(request, response, chain);
+
+		verify(chain).doFilter(request, response);
+	}
 
 	@Test
 	public void shouldInvokeDoFilterIfURIIsBookmarkableAndCorrect() throws Exception {
 		String requestedURI = "guj.com.br/java/20-erich-created-jforum";
 
 		when(request.getRequestURI()).thenReturn(requestedURI);
-		when(request.getContextPath()).thenReturn("guj.com.br");
 
 		filter.doFilter(request, response, chain);
 
@@ -71,7 +83,6 @@ public class CompatibleURIFilterTest {
 		String bookmarkableURI = "guj.com.br/java/20-erich-created-jforum";
 
 		when(request.getRequestURI()).thenReturn(requestedURI);
-		when(request.getContextPath()).thenReturn("guj.com.br");
 
 		filter.doFilter(request, response, chain);
 		
@@ -86,7 +97,6 @@ public class CompatibleURIFilterTest {
 		String alteredURI = "guj.com.br/java/20-sr-saude-actually-created-jforum";
 
 		when(request.getRequestURI()).thenReturn(alteredURI);
-		when(request.getContextPath()).thenReturn("guj.com.br");
 		
 		filter.doFilter(request, response, chain);
 
@@ -101,7 +111,6 @@ public class CompatibleURIFilterTest {
 		String bookmarkableURI = "guj.com.br/java/20-erich-created-jforum";
 
 		when(request.getRequestURI()).thenReturn(requestedURI);
-		when(request.getContextPath()).thenReturn("guj.com.br");
 
 		filter.doFilter(request, response, chain);
 		filter.doFilter(request, response, chain);
@@ -117,35 +126,30 @@ public class CompatibleURIFilterTest {
 		verify(response, times(3)).setStatus(HttpServletResponse.SC_MOVED_PERMANENTLY);
 		verify(response, times(3)).setHeader("Location", bookmarkableURI);
 	}
-
-	private TopicRepositoryStub getTopicRepositoryFromFilter(CompatibleURIFilter filter) throws NoSuchFieldException, IllegalAccessException {
-		Field topicRepositoryField = CompatibleURIFilter.class.getDeclaredField("topicRepository");
-		topicRepositoryField.setAccessible(true);
-		TopicRepositoryStub repository = (TopicRepositoryStub) topicRepositoryField.get(filter);
-		return repository;
-	}
 	
 	@Test
-	public void shouldRetriveOriginalBookmarkableURIFromCacheIfUserHasAlteredAnCachedURI() throws Exception{
+	public void shouldRetrieveOriginalBookmarkableURIFromCacheIfUserHasModifiedAnCachedURI() throws Exception{
 		String originalURI = "guj.com.br/java/20-erich-created-jforum";
 		String alteredURI = "guj.com.br/java/20-sr-saude-actually-created-jforum";
 		String compatibleURI = "guj.com.br/posts/list/20.java";
 		
 		when(request.getRequestURI()).thenReturn(originalURI);
-		when(request.getContextPath()).thenReturn("guj.com.br");
 		
 		filter.doFilter(request, response, chain);
 		
 		when(request.getRequestURI()).thenReturn(alteredURI);
-		when(request.getContextPath()).thenReturn("guj.com.br");
 		
 		filter.doFilter(request, response, chain);
 		
 		URICacheStub uriCache = getCacheFromFilter(filter);
+		TopicRepositoryStub repository = getTopicRepositoryFromFilter(filter);
 		
 		Assert.assertTrue(uriCache.isGetBookmarkableURICalled());
 		Assert.assertTrue(uriCache.isPutCalled());
+		
 		Assert.assertEquals(originalURI, uriCache.getBookmarkableURI(compatibleURI));
+		Assert.assertEquals(1, repository.getCallsToRepository());
+		
 		verify(chain, times(1)).doFilter(request, response);
 		verify(response).setStatus(HttpServletResponse.SC_MOVED_PERMANENTLY);
 		verify(response).setHeader("Location", originalURI);
@@ -158,4 +162,10 @@ public class CompatibleURIFilterTest {
 		return uriCache;
 	}
 
+	private TopicRepositoryStub getTopicRepositoryFromFilter(CompatibleURIFilter filter) throws NoSuchFieldException, IllegalAccessException {
+		Field topicRepositoryField = CompatibleURIFilter.class.getDeclaredField("topicRepository");
+		topicRepositoryField.setAccessible(true);
+		TopicRepositoryStub repository = (TopicRepositoryStub) topicRepositoryField.get(filter);
+		return repository;
+	}
 }
