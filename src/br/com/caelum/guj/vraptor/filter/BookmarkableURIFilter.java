@@ -2,7 +2,9 @@ package br.com.caelum.guj.vraptor.filter;
 
 import java.io.IOException;
 
+import javax.servlet.Filter;
 import javax.servlet.FilterChain;
+import javax.servlet.FilterConfig;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
@@ -15,15 +17,15 @@ import br.com.caelum.guj.uri.DefaultCompatibleURIBuilder;
 import br.com.caelum.guj.uri.bookmarkable.AllBookmarkableToCompatibleConverters;
 import br.com.caelum.guj.uri.bookmarkable.ConverterMatcher;
 import br.com.caelum.guj.view.Slugger;
-import br.com.caelum.vraptor.VRaptor;
 import freemarker.template.SimpleHash;
 
-public class BookmarkableURIFilter extends VRaptor {
+public class BookmarkableURIFilter implements Filter{
 
 	@Override
 	public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain)
 			throws IOException, ServletException {
 		HttpServletRequest request = (HttpServletRequest) req;
+		
 		this.registerSlugger();
 
 		ConverterMatcher allConverters = new ConverterMatcher(AllBookmarkableToCompatibleConverters.get(request
@@ -48,5 +50,14 @@ public class BookmarkableURIFilter extends VRaptor {
 		templateCtx.put("compatibleUriBuilder", new DefaultCompatibleURIBuilder());
 		templateCtx.put("bookmarkableUriBuilder", new DefaultBookmarkableURIBuilder(new Slugger()));
 	}
-
+	
+	@Override
+	public void destroy() {
+		
+	}
+	
+	@Override
+	public void init(FilterConfig arg0) throws ServletException {
+		
+	}
 }
