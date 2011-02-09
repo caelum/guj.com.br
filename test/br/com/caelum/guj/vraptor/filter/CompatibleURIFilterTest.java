@@ -1,16 +1,20 @@
 package br.com.caelum.guj.vraptor.filter;
 
 import static org.mockito.Mockito.never;
+import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import java.io.IOException;
+import java.lang.reflect.Field;
 
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import junit.framework.Assert;
 
 import org.junit.After;
 import org.junit.Before;
@@ -38,6 +42,8 @@ public class CompatibleURIFilterTest {
 		filter = new CompatibleURIFilter();
 		when(filterConfig.getInitParameter("topicRepository")).thenReturn(
 				TopicRepositoryStub.class.getName());
+		when(filterConfig.getInitParameter("cache")).thenReturn(
+				URICacheStub.class.getName());
 		
 		filter.init(filterConfig);
 	}
@@ -48,7 +54,7 @@ public class CompatibleURIFilterTest {
 	}
 
 	@Test
-	public void shouldInvokeDoFilterIfURIIsBookmarkable() throws Exception {
+	public void shouldInvokeDoFilterIfURIIsBookmarkableAndCorrect() throws Exception {
 		String requestedURI = "guj.com.br/java/20-erich-created-jforum";
 
 		when(request.getRequestURI()).thenReturn(requestedURI);
@@ -60,7 +66,7 @@ public class CompatibleURIFilterTest {
 	}
 
 	@Test
-	public void shouldRedirectToBookmarkableURIIfCompatibleURI() throws IOException, ServletException {
+	public void shouldRedirectToBookmarkableURIIfRequestURIIsCompatibleURI() throws IOException, ServletException {
 		String requestedURI = "guj.com.br/posts/list/20.java";
 		String bookmarkableURI = "guj.com.br/java/20-erich-created-jforum";
 
@@ -87,6 +93,69 @@ public class CompatibleURIFilterTest {
 		verify(chain,never()).doFilter(request, response);
 		verify(response).setStatus(HttpServletResponse.SC_MOVED_PERMANENTLY);
 		verify(response).setHeader("Location", originalURI);
+	}
+	
+	@Test
+	public void shouldCacheBookmarkableURIConvertion() throws Exception{
+		String requestedURI = "guj.com.br/posts/list/20.java";
+		String bookmarkableURI = "guj.com.br/java/20-erich-created-jforum";
+
+		when(request.getRequestURI()).thenReturn(requestedURI);
+		when(request.getContextPath()).thenReturn("guj.com.br");
+
+		filter.doFilter(request, response, chain);
+		filter.doFilter(request, response, chain);
+		filter.doFilter(request, response, chain);
+		
+		URICacheStub uriCache = getCacheFromFilter(filter);
+		TopicRepositoryStub repository = getTopicRepositoryFromFilter(filter);
+		
+		Assert.assertEquals(bookmarkableURI, uriCache.getBookmarkableURI(requestedURI));
+		Assert.assertTrue(uriCache.isGetBookmarkableURICalled());
+		Assert.assertEquals(1, repository.getCallsToRepository());
+		verify(chain,never()).doFilter(request, response);
+		verify(response, times(3)).setStatus(HttpServletResponse.SC_MOVED_PERMANENTLY);
+		verify(response, times(3)).setHeader("Location", bookmarkableURI);
+	}
+
+	private TopicRepositoryStub getTopicRepositoryFromFilter(CompatibleURIFilter filter) throws NoSuchFieldException, IllegalAccessException {
+		Field topicRepositoryField = CompatibleURIFilter.class.getDeclaredField("topicRepository");
+		topicRepositoryField.setAccessible(true);
+		TopicRepositoryStub repository = (TopicRepositoryStub) topicRepositoryField.get(filter);
+		return repository;
+	}
+	
+	@Test
+	public void shouldRetriveOriginalBookmarkableURIFromCacheIfUserHasAlteredAnCachedURI() throws Exception{
+		String originalURI = "guj.com.br/java/20-erich-created-jforum";
+		String alteredURI = "guj.com.br/java/20-sr-saude-actually-created-jforum";
+		String compatibleURI = "guj.com.br/posts/list/20.java";
+		
+		when(request.getRequestURI()).thenReturn(originalURI);
+		when(request.getContextPath()).thenReturn("guj.com.br");
+		
+		filter.doFilter(request, response, chain);
+		
+		when(request.getRequestURI()).thenReturn(alteredURI);
+		when(request.getContextPath()).thenReturn("guj.com.br");
+		
+		filter.doFilter(request, response, chain);
+		
+		URICacheStub uriCache = getCacheFromFilter(filter);
+		
+		Assert.assertTrue(uriCache.isGetBookmarkableURICalled());
+		Assert.assertTrue(uriCache.isPutCalled());
+		Assert.assertEquals(originalURI, uriCache.getBookmarkableURI(compatibleURI));
+		verify(chain, times(1)).doFilter(request, response);
+		verify(response).setStatus(HttpServletResponse.SC_MOVED_PERMANENTLY);
+		verify(response).setHeader("Location", originalURI);
+	}
+	
+	private URICacheStub getCacheFromFilter(CompatibleURIFilter filter) throws NoSuchFieldException, IllegalAccessException {
+		Field uriCacheField = CompatibleURIFilter.class.getDeclaredField("cache");
+		uriCacheField.setAccessible(true);
+		URICacheStub uriCache = (URICacheStub) uriCacheField.get(filter);
+		return uriCache;
 	}
 
 }

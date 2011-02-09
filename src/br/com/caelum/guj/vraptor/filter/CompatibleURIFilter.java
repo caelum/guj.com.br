@@ -11,35 +11,22 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import net.sf.ehcache.Cache;
-import net.sf.ehcache.CacheManager;
-import net.sf.ehcache.Element;
-
 import org.apache.log4j.Logger;
 
 import br.com.caelum.guj.repositories.TopicRepository;
 import br.com.caelum.guj.repositories.TopicRepositoryWrapper;
 import br.com.caelum.guj.uri.DefaultBookmarkableURIBuilder;
+import br.com.caelum.guj.uri.DefaultURICache;
+import br.com.caelum.guj.uri.URICache;
 import br.com.caelum.guj.uri.bookmarkable.AllBookmarkableToCompatibleConverters;
 import br.com.caelum.guj.uri.bookmarkable.ConverterMatcher;
 import br.com.caelum.guj.uri.compatible.CompatibleToBookmarkablePostConverter;
 import br.com.caelum.guj.view.Slugger;
 
 public class CompatibleURIFilter implements Filter {
-
-	private static final String URIS = "uris";
 	private static Logger LOG = Logger.getLogger(CompatibleURIFilter.class);
-	private Cache compatibleURI_bookmarkableURI;
-	private CacheManager cacheManager;
 	private TopicRepository topicRepository;
-
-	private String retrieveBookmarkableURIFromCache(String compatibleURI) {
-		Element cachedElement = compatibleURI_bookmarkableURI.get(compatibleURI);
-		if (cachedElement == null) {
-			return null;
-		}
-		return (String) cachedElement.getValue();
-	}
+	private URICache cache;
 
 	@Override
 	public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain) throws IOException,
@@ -50,7 +37,7 @@ public class CompatibleURIFilter implements Filter {
 
 		String requestURI = request.getRequestURI();
 
-		String cachedBookmarkableUri = retrieveBookmarkableURIFromCache(requestURI);
+		String cachedBookmarkableUri = cache.getBookmarkableURI(requestURI);
 
 		if (cachedBookmarkableUri != null) {
 			LOG.debug("Using cache to redirect to " + cachedBookmarkableUri);
@@ -58,44 +45,58 @@ public class CompatibleURIFilter implements Filter {
 			return;
 		}
 
-		String newBookmarkableUri = compatibleToBookmarkableURI(requestURI, request);
+		String newBookmarkableUri = compatibleURIToBookmarkableURI(requestURI, request);
 
-		if (newBookmarkableUri != null ) {
+		if (newBookmarkableUri != null) {
 			redirectTo(response, newBookmarkableUri);
-			compatibleURI_bookmarkableURI.put(new Element(requestURI, newBookmarkableUri));
+			cache.put(requestURI, newBookmarkableUri);
 
 			LOG.debug("Caching " + newBookmarkableUri);
 			return;
 		}
 
-		ConverterMatcher allBookmarkableConverters = new ConverterMatcher(
-				AllBookmarkableToCompatibleConverters.get(requestURI));
+		String compatibleURI = request.getContextPath() + bookmarkableURIToCompatibleURI(requestURI);
+		
+		boolean requestURIIsBookmarkable = compatibleURI != null;
 
-		if (allBookmarkableConverters.oneMatched()) {
-			String compatibleURI = allBookmarkableConverters.getConverter().convert();
+		if (requestURIIsBookmarkable) {
+			String cachedBookmarkableURI = cache.getBookmarkableURI(compatibleURI);
 
-			String cachedBookmarkableURI = retrieveBookmarkableURIFromCache(compatibleURI);
-
-			if (cachedBookmarkableURI != null && !requestURI.equals(cachedBookmarkableURI)) {
+			boolean requestURIIsBookmarkableButDiffersFromCachedURI = cachedBookmarkableURI != null
+					&& !requestURI.equals(cachedBookmarkableURI);
+			
+			if (requestURIIsBookmarkableButDiffersFromCachedURI) {
 				redirectTo(response, cachedBookmarkableURI);
+				LOG.debug("Using cache to redirect to " + cachedBookmarkableUri);
 				return;
 			} else {
-				String newUri = compatibleToBookmarkableURI(compatibleURI, request);
-				if (!newUri.equals(requestURI)) {
-					redirectTo(response, newUri);
-					compatibleURI_bookmarkableURI.put(new Element(compatibleURI, newUri));
-					
-					LOG.debug("Caching " + newUri);
+				String correctBookmarkableURI = compatibleURIToBookmarkableURI(compatibleURI, request);
+				
+				if (!requestURI.equals(correctBookmarkableURI)) {
+					redirectTo(response, correctBookmarkableURI);
+					cache.put(compatibleURI, correctBookmarkableURI);
+
+					LOG.debug("Caching " + correctBookmarkableURI);
 					return;
 				}
 			}
 		}
+
 		chain.doFilter(req, res);
 	}
 
-	private String compatibleToBookmarkableURI(String compatibleURI, HttpServletRequest request) {
-		CompatibleToBookmarkablePostConverter converter = new CompatibleToBookmarkablePostConverter(compatibleURI, topicRepository,
-				new DefaultBookmarkableURIBuilder(new Slugger()));
+	private String bookmarkableURIToCompatibleURI(String compatibleURI) {
+		ConverterMatcher converter = new ConverterMatcher(AllBookmarkableToCompatibleConverters.get(compatibleURI));
+
+		if (converter.oneMatched()) {
+			return converter.getConverter().convert();
+		}
+		return null;
+	}
+
+	private String compatibleURIToBookmarkableURI(String compatibleURI, HttpServletRequest request) {
+		CompatibleToBookmarkablePostConverter converter = new CompatibleToBookmarkablePostConverter(compatibleURI,
+				topicRepository, new DefaultBookmarkableURIBuilder(new Slugger()));
 		if (converter.isConvertable()) {
 			return request.getContextPath() + converter.convert();
 		}
@@ -109,15 +110,13 @@ public class CompatibleURIFilter implements Filter {
 
 	@Override
 	public void destroy() {
-		cacheManager.removeCache(URIS);
+		cache.removeCache();
 	}
 
 	@Override
 	public void init(FilterConfig config) throws ServletException {
 		createTopicRepository(config);
-		cacheManager = CacheManager.create();
-		compatibleURI_bookmarkableURI = new Cache(URIS, 10000, false, true, 1000000, 1000000);
-		cacheManager.addCache(compatibleURI_bookmarkableURI);
+		createURICache(config);
 	}
 
 	private void createTopicRepository(FilterConfig config) throws ServletException {
@@ -127,6 +126,19 @@ public class CompatibleURIFilter implements Filter {
 		} else {
 			try {
 				topicRepository = (TopicRepository) Class.forName(topicRepositoryClassName).newInstance();
+			} catch (Exception e) {
+				throw new ServletException(e);
+			}
+		}
+	}
+	
+	private void createURICache(FilterConfig config) throws ServletException {
+		String cacheClassName = config.getInitParameter("cache");
+		if (cacheClassName == null) {
+			cache = new DefaultURICache();
+		} else {
+			try {
+				cache = (URICache) Class.forName(cacheClassName).newInstance();
 			} catch (Exception e) {
 				throw new ServletException(e);
 			}
