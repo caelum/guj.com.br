@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import net.jforum.JForumExecutionContext;
 import br.com.caelum.guj.uri.DefaultBookmarkableURIBuilder;
 import br.com.caelum.guj.uri.DefaultCompatibleURIBuilder;
-import br.com.caelum.guj.uri.bookmarkable.AllConverters;
+import br.com.caelum.guj.uri.bookmarkable.AllBookmarkableToCompatibleConverters;
 import br.com.caelum.guj.uri.bookmarkable.ConverterMatcher;
 import br.com.caelum.guj.view.Slugger;
 import br.com.caelum.vraptor.VRaptor;
@@ -26,7 +26,7 @@ public class BookmarkableURIFilter extends VRaptor {
 		HttpServletRequest request = (HttpServletRequest) req;
 		this.registerSlugger();
 
-		ConverterMatcher allConverters = new ConverterMatcher(AllConverters.get(request
+		ConverterMatcher allConverters = new ConverterMatcher(AllBookmarkableToCompatibleConverters.get(request
 				.getRequestURI()));
 
 		if (allConverters.oneMatched()) {

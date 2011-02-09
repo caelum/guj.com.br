@@ -6,7 +6,7 @@ import java.util.List;
 import br.com.caelum.guj.uri.DefaultCompatibleURIBuilder;
 import br.com.caelum.guj.uri.URIConverter;
 
-public class AllConverters {
+public class AllBookmarkableToCompatibleConverters {
 
 	public static List<URIConverter> get(String uri) {
 		List<URIConverter> converters = new LinkedList<URIConverter>();
