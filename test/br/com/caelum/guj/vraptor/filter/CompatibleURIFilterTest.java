@@ -76,6 +76,25 @@ public class CompatibleURIFilterTest {
 
 		verify(chain).doFilter(request, response);
 	}
+	
+	@Test
+	public void shouldInvokeDoFilterIfURIIsBookmarkableAndCorrectUsingCacheIfCached() throws Exception {
+		String requestedURI = "guj.com.br/java/20-erich-created-jforum";
+		
+		when(request.getRequestURI()).thenReturn(requestedURI);
+		TopicRepositoryStub repository = getTopicRepositoryFromFilter(filter);
+		URICacheStub uriCache = getCacheFromFilter(filter);
+
+		filter.doFilter(request, response, chain);
+		Assert.assertTrue(uriCache.isPutCalled());
+		
+		filter.doFilter(request, response, chain);
+		filter.doFilter(request, response, chain);
+		filter.doFilter(request, response, chain);
+		
+		Assert.assertEquals(1, repository.getCallsToRepository());
+		verify(chain, times(4)).doFilter(request, response);
+	}
 
 	@Test
 	public void shouldRedirectToBookmarkableURIIfRequestURIIsCompatibleURI() throws IOException, ServletException {
@@ -122,6 +141,7 @@ public class CompatibleURIFilterTest {
 		Assert.assertEquals(bookmarkableURI, uriCache.getBookmarkableURI(requestedURI));
 		Assert.assertTrue(uriCache.isGetBookmarkableURICalled());
 		Assert.assertEquals(1, repository.getCallsToRepository());
+		
 		verify(chain,never()).doFilter(request, response);
 		verify(response, times(3)).setStatus(HttpServletResponse.SC_MOVED_PERMANENTLY);
 		verify(response, times(3)).setHeader("Location", bookmarkableURI);
@@ -134,18 +154,17 @@ public class CompatibleURIFilterTest {
 		String compatibleURI = "guj.com.br/posts/list/20.java";
 		
 		when(request.getRequestURI()).thenReturn(originalURI);
-		
-		filter.doFilter(request, response, chain);
-		
-		when(request.getRequestURI()).thenReturn(alteredURI);
-		
 		filter.doFilter(request, response, chain);
 		
 		URICacheStub uriCache = getCacheFromFilter(filter);
 		TopicRepositoryStub repository = getTopicRepositoryFromFilter(filter);
 		
+		verify(chain, times(1)).doFilter(request, response);
 		Assert.assertTrue(uriCache.isGetBookmarkableURICalled());
 		Assert.assertTrue(uriCache.isPutCalled());
+		
+		when(request.getRequestURI()).thenReturn(alteredURI);
+		filter.doFilter(request, response, chain);
 		
 		Assert.assertEquals(originalURI, uriCache.getBookmarkableURI(compatibleURI));
 		Assert.assertEquals(1, repository.getCallsToRepository());

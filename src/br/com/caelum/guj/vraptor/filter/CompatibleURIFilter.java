@@ -38,7 +38,7 @@ public class CompatibleURIFilter implements Filter {
 		String requestURI = request.getRequestURI();
 
 		String cachedBookmarkableUri = cache.getBookmarkableURI(requestURI);
-
+		
 		if (cachedBookmarkableUri != null) {
 			LOG.debug("Using cache to redirect to " + cachedBookmarkableUri);
 			redirectTo(response, cachedBookmarkableUri);
@@ -64,9 +64,13 @@ public class CompatibleURIFilter implements Filter {
 			
 			boolean compatibleURLIsCached = cachedBookmarkableUri != null;
 			
-			if (compatibleURLIsCached && !requestURI.equals(cachedBookmarkableUri)) {
-				redirectTo(response, cachedBookmarkableUri);
-				LOG.debug("Using cache to redirect to " + cachedBookmarkableUri);
+			if (compatibleURLIsCached) {
+				if (!requestURI.equals(cachedBookmarkableUri)) {
+					redirectTo(response, cachedBookmarkableUri);
+					LOG.debug("Using cache to redirect to " + cachedBookmarkableUri);
+					return;
+				}
+				chain.doFilter(request, response);
 				return;
 			}
 			String correctBookmarkableURI = compatibleURIToBookmarkableURI(compatibleURI, request);
