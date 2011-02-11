@@ -60,11 +60,6 @@ else
 $().ready(function() {
 	$("#returnPath").val(document.location);
 });
-$(function() {
-	if (!newsletterCookieHidden()) {
-		$("#menuNewsletter").attr("style","");
-	}
-});
 </script>
 </head>
 
@@ -174,32 +169,33 @@ $(function() {
 	  	 	<a href="#" onclick="escondeNewsletter();"><img src="<c:url value="/images/guj/cancel_16.png"/>" border="0"/></a>
 	  	 </div>
 	  </div>
+	  
+	  <script language="javascript">
+		function newsletterCookieHidden() {
+			return readCookie('gujNewsletterMenu')=='hidden';
+		}
+		
+		function readCookie(name) {
+			var nameEQ = name + "=";
+			var ca = document.cookie.split(';');
+			for(var i=0;i < ca.length;i++) {
+				var c = ca[i];
+				while (c.charAt(0)==' ') c = c.substring(1,c.length);
+				if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+			}
+			return null;
+		}
+		
+		if (!newsletterCookieHidden()) {
+			$("#menuNewsletter").attr("style","");
+		}
+		
+		function escondeNewsletter() {
+			$('#menuNewsletter').slideToggle('slow');
+			if (!newsletterCookieHidden()){
+				document.cookie='gujNewsletterMenu=hidden';
+			}
+		}
+		</script>
   </c:if>
   
-<script language="javascript">
-	function newsletterCookieHidden() {
-		return readCookie('gujNewsletterMenu')=='hidden';
-	}
-</script>
-
-<script language="javascript">
-function readCookie(name) {
-	var nameEQ = name + "=";
-	var ca = document.cookie.split(';');
-	for(var i=0;i < ca.length;i++) {
-		var c = ca[i];
-		while (c.charAt(0)==' ') c = c.substring(1,c.length);
-		if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
-	}
-	return null;
-}
-</script>
-
-<script language="javascript">
-	function escondeNewsletter() {
-		$('#menuNewsletter').slideToggle('slow');
-		if (!newsletterCookieHidden()){
-			document.cookie='gujNewsletterMenu=hidden';
-		}
-	}
-</script>
