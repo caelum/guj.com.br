@@ -163,7 +163,7 @@ $().ready(function() {
   <c:if test="${not newsletterParticipant and logged}">
 	  <div id="menuNewsletter" style="display:none; visibility: invisible;">
 		 <div style="float:left; margin-top:5px;">
-	  		Para participar da newsletter com o e-mail <strong>X@X</strong>, <a href="<c:url value="/newsletter/"/>?_method=POST&gujUserId=${userSession.userId}">clique aqui</a>, ou acesse <a href="<c:url value="/user/edit/${userSession.userId}.java"/>">seu cadastro</a> para modificar seu e-mail.
+	  		Para participar da newsletter com o e-mail <strong>${userSession.userEmail}</strong>, <a href="<c:url value="/newsletter/"/>?_method=POST&gujUserId=${userSession.userId}">clique aqui</a>, ou acesse <a href="<c:url value="/user/edit/${userSession.userId}.java"/>">seu cadastro</a> para modificar seu e-mail.
 	  	 </div>
 	  	 <div style="text-align:center; float:right; padding:5px;">
 	  	 	<a href="#" onclick="escondeNewsletter();"><img src="<c:url value="/images/guj/cancel_16.png"/>" border="0"/></a>
