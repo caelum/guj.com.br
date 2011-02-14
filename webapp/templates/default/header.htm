@@ -71,7 +71,8 @@ else
   
 <script type="text/javascript">
 $().ready(function() {
-	$("#returnPath").val(document.location);
+	$("#returnPath").val("${contextPath}");
+	
 	
 	if (!$.browser.msie && navigator.userAgent.indexOf("Chrome") == -1) {
 		$("table, table th").corners("6px");
