@@ -26,9 +26,10 @@ public class NewsletterFilter implements Filter {
 		HttpServletRequest request = (HttpServletRequest) req;
 		if (!request.getRequestURI().endsWith(".js") && !request.getRequestURI().endsWith(".css")) {
 			HttpSession session = request.getSession();
+			
 			UserSession user = (UserSession) request.getAttribute("userSession");
 
-			if (user != null && user.getNewsletterParticipant() != null) {
+			if (user != null && user.getNewsletterParticipant() == null) {
 				defineParticipantStatus(request, session, user);
 			}
 		}
