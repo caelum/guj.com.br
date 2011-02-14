@@ -4,6 +4,8 @@ import java.net.URISyntaxException;
 
 import javax.servlet.http.HttpSession;
 
+import net.jforum.entities.UserSession;
+
 import br.com.caelum.guj.dao.GUJUserDAO;
 import br.com.caelum.guj.model.NewsletterParticipant;
 import br.com.caelum.guj.newsletter.NewsletterSubscriber;
@@ -37,7 +39,6 @@ public class NewsletterController {
 			String email = this.dao.emailFromUser(gujUserId);
 			NewsletterParticipant p = registerParticipant(gujUserId, email);
 			manager.subscribe(p);
-
 		}
 		result.use(Results.logic()).redirectTo(HomeController.class).index();
 	}
@@ -50,7 +51,6 @@ public class NewsletterController {
 		if (participant == null) {
 			NewsletterParticipant p = registerParticipant(gujUserId, email);
 			manager.subscribeWithConfirmation(p);
-
 		}
 		result.use(Results.logic()).redirectTo(HomeController.class).index();
 	}
@@ -59,7 +59,8 @@ public class NewsletterController {
 		NewsletterParticipant p = new NewsletterParticipant(gujUserId, email);
 
 		this.dao.registerNewsletterParticipant(p);
-		session.setAttribute("newsletterParticipant", true);
+		UserSession userSession = (UserSession) session.getAttribute("userSession");
+		userSession.setNewsletterParticipant(true);
 		return p;
 	}
 

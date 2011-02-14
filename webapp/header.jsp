@@ -139,7 +139,7 @@ $().ready(function() {
                    FAVORITOS
               </a>&nbsp;
             
-            	<c:if test="${not newsletterParticipant}">
+            	<c:if test="${not userSession.newsletterParticipant}">
             		<a id="newsletter" class="mainmenu" href="#" onclick="$('#menuNewsletter').slideToggle('slow');"><img src="<c:url value="/templates/default/images/icon_mini_message.gif"/>" border="0" alt="Favoritos" /> NEWSLETTER <span class="novo">(novo)</span></a>
 	      		</c:if>
             
@@ -160,7 +160,7 @@ $().ready(function() {
       </div>
     </div>
   </div>
-  <c:if test="${not newsletterParticipant and logged}">
+  <c:if test="${not userSession.newsletterParticipant and logged}">
 	  <div id="menuNewsletter" style="display:none; visibility: invisible;">
 		 <div style="float:left; margin-top:5px;">
 	  		Para participar da newsletter com o e-mail <strong>${userSession.userEmail}</strong>, <a href="<c:url value="/newsletter/"/>?_method=POST&gujUserId=${userSession.userId}">clique aqui</a>, ou acesse <a href="<c:url value="/user/edit/${userSession.userId}.java"/>">seu cadastro</a> para modificar seu e-mail.

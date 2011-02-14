@@ -10,6 +10,8 @@ import java.net.URISyntaxException;
 
 import javax.servlet.http.HttpSession;
 
+import net.jforum.entities.UserSession;
+
 import org.junit.Test;
 
 import br.com.caelum.guj.dao.GUJUserDAO;
@@ -25,15 +27,17 @@ public class NewsletterControllerTest {
 		NewsletterSubscriber manager = mock(NewsletterSubscriber.class);
 		GUJUserDAO dao = mock(GUJUserDAO.class);
 		HttpSession session = mock(HttpSession.class);
+		UserSession userSession = mock(UserSession.class);
 
 		when(dao.findParticipantByGujUserId(gujUserId)).thenReturn(null);
 		when(dao.emailFromUser(gujUserId)).thenReturn("email@email.com");
+		when(session.getAttribute("userSession")).thenReturn(userSession);
 
 		NewsletterController controller = new NewsletterController(dao, session, new MockResult(), manager);
 		controller.register(gujUserId);
 
 		verify(dao).registerNewsletterParticipant(any(NewsletterParticipant.class));
-		verify(session).setAttribute("newsletterParticipant", true);
+		verify(userSession).setNewsletterParticipant(true);
 		verify(manager).subscribe(any(NewsletterParticipant.class));
 	}
 
@@ -44,14 +48,16 @@ public class NewsletterControllerTest {
 
 		GUJUserDAO dao = mock(GUJUserDAO.class);
 		HttpSession session = mock(HttpSession.class);
+		UserSession userSession = mock(UserSession.class);
 
 		when(dao.findParticipantByGujUserId(gujUserId)).thenReturn(new NewsletterParticipant());
+		when(session.getAttribute("userSession")).thenReturn(userSession);
 
 		NewsletterController controller = new NewsletterController(dao, session, new MockResult(), manager);
 		controller.register(gujUserId);
 
 		verify(dao, never()).registerNewsletterParticipant(any(NewsletterParticipant.class));
-		verify(session, never()).setAttribute("newsletterParticipant", true);
+		verify(userSession, never()).setNewsletterParticipant(true);
 		verify(manager, never()).subscribe(any(NewsletterParticipant.class));
 	}
 }

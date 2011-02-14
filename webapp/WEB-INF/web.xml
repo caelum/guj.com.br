@@ -54,6 +54,7 @@
 		<param-name>br.com.caelum.vraptor.provider</param-name>
 		<param-value>br.com.caelum.guj.vraptor.CustomProvider</param-value>
 	</context-param>
+	
 	<filter>
 		<filter-name>compatibleURI</filter-name>
 		<filter-class>br.com.caelum.guj.vraptor.filter.CompatibleURIFilter</filter-class>
@@ -64,7 +65,6 @@
 		<url-pattern>/*</url-pattern>
 		<dispatcher>REQUEST</dispatcher>
 	</filter-mapping>
-	
 	
 	<filter>
 		<filter-name>bookmarkable</filter-name>
@@ -94,7 +94,6 @@
 		<filter-name>newsletterFilter</filter-name>
 		<filter-class>br.com.caelum.guj.vraptor.filter.NewsletterFilter</filter-class>
 	</filter>
-
 	<filter-mapping>
 		<filter-name>newsletterFilter</filter-name>
 		<url-pattern>/*</url-pattern>
@@ -105,11 +104,9 @@
 	<servlet>
     	<servlet-name>jforum</servlet-name>
     	<servlet-class>net.jforum.JForum</servlet-class>
-    	
 		<!--
     	<load-on-startup>0</load-on-startup>
 		-->
-		
     	<init-param>
       		<param-name>development</param-name>
       		<param-value>true</param-value>
@@ -124,16 +121,6 @@
     <session-config>
     	<session-timeout>10</session-timeout>
     </session-config>
-    
-    <filter>
-    	<filter-name>gujSessionCleanup</filter-name>
-    	<filter-class>br.com.caelum.guj.vraptor.filter.GUJSessionCleanupFilter</filter-class>
-    </filter>
-    
-    <filter-mapping>
-    	<filter-name>gujSessionCleanup</filter-name>
-    	<url-pattern>/user/logout.java</url-pattern>
-    </filter-mapping>
     
 	<welcome-file-list>
 		<welcome-file>index.jsp</welcome-file>

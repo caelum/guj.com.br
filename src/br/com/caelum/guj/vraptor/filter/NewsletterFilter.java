@@ -20,11 +20,6 @@ import br.com.caelum.guj.model.NewsletterParticipant;
 import br.com.caelum.vraptor.util.hibernate.SessionCreator;
 
 public class NewsletterFilter implements Filter {
-
-	@Override
-	public void destroy() {
-	}
-
 	@Override
 	public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain) throws IOException,
 			ServletException {
@@ -33,7 +28,7 @@ public class NewsletterFilter implements Filter {
 			HttpSession session = request.getSession();
 			UserSession user = (UserSession) request.getAttribute("userSession");
 
-			if (user != null) {
+			if (user != null && user.getNewsletterParticipant() != null) {
 				defineParticipantStatus(request, session, user);
 			}
 		}
@@ -41,12 +36,10 @@ public class NewsletterFilter implements Filter {
 	}
 
 	private void defineParticipantStatus(HttpServletRequest request, HttpSession session, UserSession user) {
-		if (session.getAttribute("newsletterParticipant") == null) {
-			GUJUserDAO dao = new GUJUserDAO(getHibernateSession(request));
-			NewsletterParticipant participant = dao.findParticipantByGujUserId(user.getUserId());
-			boolean isParticipant = participant != null;
-			session.setAttribute("newsletterParticipant", isParticipant);
-		}
+		GUJUserDAO dao = new GUJUserDAO(getHibernateSession(request));
+		NewsletterParticipant participant = dao.findParticipantByGujUserId(user.getUserId());
+		boolean isParticipant = participant != null;
+		user.setNewsletterParticipant(isParticipant);
 	}
 
 	private Session getHibernateSession(HttpServletRequest request) {
@@ -57,5 +50,8 @@ public class NewsletterFilter implements Filter {
 	@Override
 	public void init(FilterConfig cfg) throws ServletException {
 	}
-
+	
+	@Override
+	public void destroy() {
+	}
 }
