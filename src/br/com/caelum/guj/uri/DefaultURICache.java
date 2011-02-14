@@ -16,7 +16,7 @@ public class DefaultURICache implements URICache {
 
 	private void createCache() {
 		cacheManager = CacheManager.create();
-		compatibleURI_bookmarkableURI = new Cache(URIS, 10000, false, true, 1000000, 1000000);
+		compatibleURI_bookmarkableURI = new Cache(URIS, 10000, false, false, 86400, 86400);
 		cacheManager.addCache(compatibleURI_bookmarkableURI);
 	}
 	
