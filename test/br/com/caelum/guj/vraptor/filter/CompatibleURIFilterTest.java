@@ -83,16 +83,13 @@ public class CompatibleURIFilterTest {
 		
 		when(request.getRequestURI()).thenReturn(requestedURI);
 		TopicRepositoryStub repository = getTopicRepositoryFromFilter(filter);
-		URICacheStub uriCache = getCacheFromFilter(filter);
 
 		filter.doFilter(request, response, chain);
-		Assert.assertTrue(uriCache.isPutCalled());
-		
 		filter.doFilter(request, response, chain);
 		filter.doFilter(request, response, chain);
 		filter.doFilter(request, response, chain);
 		
-		Assert.assertEquals(1, repository.getCallsToRepository());
+		Assert.assertEquals(0, repository.getCallsToRepository());
 		verify(chain, times(4)).doFilter(request, response);
 	}
 
@@ -108,20 +105,6 @@ public class CompatibleURIFilterTest {
 		verify(chain,never()).doFilter(request, response);
 		verify(response).setStatus(HttpServletResponse.SC_MOVED_PERMANENTLY);
 		verify(response).setHeader("Location", bookmarkableURI);
-	}
-
-	@Test
-	public void shouldRestoreOriginalBookmarkableURIIfUserHasAlteredTheURI() throws IOException, ServletException {
-		String originalURI = "guj.com.br/java/20-erich-created-jforum";
-		String alteredURI = "guj.com.br/java/20-sr-saude-actually-created-jforum";
-
-		when(request.getRequestURI()).thenReturn(alteredURI);
-		
-		filter.doFilter(request, response, chain);
-
-		verify(chain,never()).doFilter(request, response);
-		verify(response).setStatus(HttpServletResponse.SC_MOVED_PERMANENTLY);
-		verify(response).setHeader("Location", originalURI);
 	}
 	
 	@Test
@@ -148,30 +131,23 @@ public class CompatibleURIFilterTest {
 	}
 	
 	@Test
-	public void shouldRetrieveOriginalBookmarkableURIFromCacheIfUserHasModifiedAnCachedURI() throws Exception{
+	public void shouldInvokeDoFilterIfBookmarkableURIChanged() throws Exception{
 		String originalURI = "guj.com.br/java/20-erich-created-jforum";
 		String alteredURI = "guj.com.br/java/20-sr-saude-actually-created-jforum";
-		String compatibleURI = "guj.com.br/posts/list/20.java";
-		
-		when(request.getRequestURI()).thenReturn(originalURI);
-		filter.doFilter(request, response, chain);
 		
 		URICacheStub uriCache = getCacheFromFilter(filter);
 		TopicRepositoryStub repository = getTopicRepositoryFromFilter(filter);
 		
-		verify(chain, times(1)).doFilter(request, response);
-		Assert.assertTrue(uriCache.isGetBookmarkableURICalled());
-		Assert.assertTrue(uriCache.isPutCalled());
+		when(request.getRequestURI()).thenReturn(originalURI);
+		filter.doFilter(request, response, chain);
+		
+		Assert.assertFalse(uriCache.isPutCalled());
 		
 		when(request.getRequestURI()).thenReturn(alteredURI);
 		filter.doFilter(request, response, chain);
 		
-		Assert.assertEquals(originalURI, uriCache.getBookmarkableURI(compatibleURI));
-		Assert.assertEquals(1, repository.getCallsToRepository());
-		
-		verify(chain, times(1)).doFilter(request, response);
-		verify(response).setStatus(HttpServletResponse.SC_MOVED_PERMANENTLY);
-		verify(response).setHeader("Location", originalURI);
+		verify(chain, times(2)).doFilter(request, response);
+		Assert.assertEquals(0, repository.getCallsToRepository());
 	}
 	
 	private URICacheStub getCacheFromFilter(CompatibleURIFilter filter) throws NoSuchFieldException, IllegalAccessException {

@@ -18,8 +18,6 @@ import br.com.caelum.guj.repositories.TopicRepositoryWrapper;
 import br.com.caelum.guj.uri.DefaultBookmarkableURIBuilder;
 import br.com.caelum.guj.uri.DefaultURICache;
 import br.com.caelum.guj.uri.URICache;
-import br.com.caelum.guj.uri.bookmarkable.AllBookmarkableToCompatibleConverters;
-import br.com.caelum.guj.uri.bookmarkable.ConverterMatcher;
 import br.com.caelum.guj.uri.compatible.CompatibleToBookmarkablePostConverter;
 import br.com.caelum.guj.view.Slugger;
 
@@ -54,46 +52,7 @@ public class CompatibleURIFilter implements Filter {
 			LOG.debug("Caching " + newBookmarkableUri);
 			return;
 		}
-
-		String compatibleURI = bookmarkableURIToCompatibleURI(requestURI, request);
-		
-		boolean requestURIIsBookmarkable = compatibleURI != null;
-
-		if (requestURIIsBookmarkable) {
-			cachedBookmarkableUri = cache.getBookmarkableURI(compatibleURI);
-			
-			boolean compatibleURLIsCached = cachedBookmarkableUri != null;
-			
-			if (compatibleURLIsCached) {
-				if (!requestURI.equals(cachedBookmarkableUri)) {
-					redirectTo(response, cachedBookmarkableUri);
-					LOG.debug("Using cache to redirect to " + cachedBookmarkableUri);
-					return;
-				}
-				chain.doFilter(request, response);
-				return;
-			}
-			String correctBookmarkableURI = compatibleURIToBookmarkableURI(compatibleURI, request);
-			
-			cache.put(compatibleURI, correctBookmarkableURI);
-			LOG.debug("Caching " + correctBookmarkableURI);
-			
-			if (!requestURI.equals(correctBookmarkableURI)) {
-				redirectTo(response, correctBookmarkableURI);
-				return;
-			}
-		}
-
 		chain.doFilter(req, res);
-	}
-
-	private String bookmarkableURIToCompatibleURI(String compatibleURI, HttpServletRequest request) {
-		ConverterMatcher converter = new ConverterMatcher(AllBookmarkableToCompatibleConverters.get(compatibleURI));
-
-		if (converter.oneMatched()) {
-			return request.getContextPath() + converter.getConverter().convert();
-		}
-		return null;
 	}
 
 	private String compatibleURIToBookmarkableURI(String compatibleURI, HttpServletRequest request) {
