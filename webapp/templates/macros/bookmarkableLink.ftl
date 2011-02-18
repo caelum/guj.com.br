@@ -1,6 +1,9 @@
-<#macro bookmarkableLink topicId topicTitle>
+<#macro bookmarkableLink topicId topicTitle>${JForumContext.encodeURL('${bookmarkableUriBuilder.bookmarkableURL(topicId, topicTitle)}', '')}</#macro>
+
+<#macro bookmarkableLink2 topicId topicTitle>
 ${JForumContext.encodeURL('${bookmarkableUriBuilder.bookmarkableURL(topicId, topicTitle)}', '')}
 </#macro>
+
 
 <#macro bookmarkablePaginatedLink topicId topicTitle page>
 ${JForumContext.encodeURL('${bookmarkableUriBuilder.bookmarkableURL(topicId, topicTitle, page)}', '')}
