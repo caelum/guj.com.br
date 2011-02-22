@@ -3,6 +3,9 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="resources"/>
 	<classpathentry kind="src" path="test"/>
+	<classpathentry kind="src" path="tools/phpbb2jforum/src"/>
+	<classpathentry kind="src" path="tools/luceneIndexer"/>
+	<classpathentry kind="src" path="tests/core"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER">
 		<attributes>
 			<attribute name="owner.project.facets" value="jst.java"/>
@@ -15,5 +18,63 @@
 	<classpathentry kind="lib" path="lib/servlet-api.jar"/>
 	<classpathentry kind="lib" path="lib/test/junit-4.8.2.jar"/>
 	<classpathentry kind="lib" path="lib/test/mockito-all-1.8.5.jar"/>
+	<classpathentry kind="lib" path="WEB-INF/lib/activation.jar"/>
+	<classpathentry kind="lib" path="WEB-INF/lib/bsh-2.0b4.jar"/>
+	<classpathentry kind="lib" path="WEB-INF/lib/c3p0-0.9.1-pre9.jar"/>
+	<classpathentry kind="lib" path="WEB-INF/lib/commons-codec-1.3.jar"/>
+	<classpathentry kind="lib" path="WEB-INF/lib/commons-httpclient-3.0-rc3.jar"/>
+	<classpathentry kind="lib" path="WEB-INF/lib/commons-io-1.1.jar"/>
+	<classpathentry kind="lib" path="WEB-INF/lib/commons-lang-2.3.jar"/>
+	<classpathentry kind="lib" path="WEB-INF/lib/commons-logging-api.jar"/>
+	<classpathentry kind="lib" path="WEB-INF/lib/concurrent.jar"/>
+	<classpathentry kind="lib" path="WEB-INF/lib/ehcache-1.1.jar"/>
+	<classpathentry kind="lib" path="WEB-INF/lib/freemarker-2.3.9.jar"/>
+	<classpathentry kind="lib" path="WEB-INF/lib/hsqldb-1.8.0.1.jar"/>
+	<classpathentry kind="lib" path="WEB-INF/lib/htmlparser-1.5.jar"/>
+	<classpathentry kind="lib" path="WEB-INF/lib/jaxen.jar"/>
+	<classpathentry kind="lib" path="WEB-INF/lib/jboss-cache-1.2.4.jar"/>
+	<classpathentry kind="lib" path="WEB-INF/lib/jboss-common.jar"/>
+	<classpathentry kind="lib" path="WEB-INF/lib/jboss-jmx.jar"/>
+	<classpathentry kind="lib" path="WEB-INF/lib/jboss-system.jar"/>
+	<classpathentry kind="lib" path="WEB-INF/lib/jcaptcha-all-1.0-RC2.0.1.jar"/>
+	<classpathentry kind="lib" path="WEB-INF/lib/jdom.jar"/>
+	<classpathentry kind="lib" path="WEB-INF/lib/jgroups-all-2.2.9-beta2.jar"/>
+	<classpathentry kind="lib" path="WEB-INF/lib/jtds-1.2.2.jar"/>
+	<classpathentry kind="lib" path="WEB-INF/lib/log4j-1.2.12.jar"/>
+	<classpathentry kind="lib" path="WEB-INF/lib/lucene-analyzers-2.2.0.jar"/>
+	<classpathentry kind="lib" path="WEB-INF/lib/lucene-core-2.2.0.jar"/>
+	<classpathentry kind="lib" path="WEB-INF/lib/lucene-highlighter-2.2.0.jar"/>
+	<classpathentry kind="lib" path="WEB-INF/lib/mail.jar"/>
+	<classpathentry kind="lib" path="WEB-INF/lib/mysql-connector-java-5.0.3-bin.jar"/>
+	<classpathentry kind="lib" path="WEB-INF/lib/ojdbc14.jar"/>
+	<classpathentry kind="lib" path="WEB-INF/lib/postgresql-8.0-313.jdbc3.jar"/>
+	<classpathentry kind="lib" path="WEB-INF/lib/quartz-1.5.1.jar"/>
+	<classpathentry kind="lib" path="WEB-INF/lib/xalan.jar"/>
+	<classpathentry kind="lib" path="WEB-INF/lib/xercesImpl.jar"/>
+	<classpathentry kind="lib" path="WEB-INF/lib/xml-apis.jar"/>
+	<classpathentry kind="lib" path="WEB-INF/lib/xmlrpc.jar"/>
+	<classpathentry kind="lib" path="WEB-INF/lib/xom-1.0.jar"/>
+	<classpathentry kind="lib" path="lib/jargs-1.0.jar"/>
+	<classpathentry kind="lib" path="www/website/WEB-INF/lib/activation.jar"/>
+	<classpathentry kind="lib" path="www/website/WEB-INF/lib/commons-lang-2.0.jar"/>
+	<classpathentry kind="lib" path="www/website/WEB-INF/lib/commons-logging-api.jar"/>
+	<classpathentry kind="lib" path="www/website/WEB-INF/lib/ecs.jar"/>
+	<classpathentry kind="lib" path="www/website/WEB-INF/lib/freshcookies-security-0.31.jar"/>
+	<classpathentry kind="lib" path="www/website/WEB-INF/lib/java2html.jar"/>
+	<classpathentry kind="lib" path="www/website/WEB-INF/lib/jaxen.jar"/>
+	<classpathentry kind="lib" path="www/website/WEB-INF/lib/jdom.jar"/>
+	<classpathentry kind="lib" path="www/website/WEB-INF/lib/jrcs-diff.jar"/>
+	<classpathentry kind="lib" path="www/website/WEB-INF/lib/JSPWiki.jar"/>
+	<classpathentry kind="lib" path="www/website/WEB-INF/lib/log4j.jar"/>
+	<classpathentry kind="lib" path="www/website/WEB-INF/lib/lucene-highlighter.jar"/>
+	<classpathentry kind="lib" path="www/website/WEB-INF/lib/lucene.jar"/>
+	<classpathentry kind="lib" path="www/website/WEB-INF/lib/mail.jar"/>
+	<classpathentry kind="lib" path="www/website/WEB-INF/lib/multipartrequest.jar"/>
+	<classpathentry kind="lib" path="www/website/WEB-INF/lib/mysql-connector-java-5.0.3-bin.jar"/>
+	<classpathentry kind="lib" path="www/website/WEB-INF/lib/nekohtml.jar"/>
+	<classpathentry kind="lib" path="www/website/WEB-INF/lib/oro.jar"/>
+	<classpathentry kind="lib" path="www/website/WEB-INF/lib/oscache.jar"/>
+	<classpathentry kind="lib" path="www/website/WEB-INF/lib/sandler.jar"/>
+	<classpathentry kind="lib" path="www/website/WEB-INF/lib/xmlrpc.jar"/>
 	<classpathentry kind="output" path="webapp/WEB-INF/classes"/>
 </classpath>

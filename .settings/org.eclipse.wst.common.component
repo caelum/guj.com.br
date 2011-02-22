@@ -5,6 +5,9 @@
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/resources"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/test"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/tools/phpbb2jforum/src"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/tools/luceneIndexer"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/tests/core"/>
         <property name="context-root" value="guj.com.br"/>
         <property name="java-output-path"/>
     </wb-module>

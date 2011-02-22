@@ -97,7 +97,6 @@
 	<filter-mapping>
 		<filter-name>newsletterFilter</filter-name>
 		<url-pattern>/*</url-pattern>
-		<dispatcher>REDIRECT</dispatcher>
 		<dispatcher>FORWARD</dispatcher>
 		<dispatcher>REQUEST</dispatcher>
 	</filter-mapping>
