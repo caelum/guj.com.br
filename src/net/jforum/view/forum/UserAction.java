@@ -81,6 +81,7 @@ import net.jforum.util.preferences.TemplateKeys;
 import net.jforum.view.forum.common.UserCommon;
 import net.jforum.view.forum.common.ViewCommon;
 
+import org.apache.commons.codec.binary.Base64;
 import org.apache.log4j.Logger;
 
 /**
@@ -556,9 +557,9 @@ public class UserAction extends Command
 			String decoded;
 			
 			try {
-				decoded = new String(new sun.misc.BASE64Decoder().decodeBuffer(auth.substring(6)));
+				decoded = new String(new Base64().decode(auth.substring(6)).toString());
 			}
-			catch (IOException e) {
+			catch (Exception e) {
 				throw new ForumException(e);
 			}
 			
