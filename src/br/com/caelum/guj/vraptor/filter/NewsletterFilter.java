@@ -9,7 +9,6 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 import net.jforum.entities.UserSession;
 
@@ -25,18 +24,17 @@ public class NewsletterFilter implements Filter {
 			ServletException {
 		HttpServletRequest request = (HttpServletRequest) req;
 		if (!request.getRequestURI().endsWith(".js") && !request.getRequestURI().endsWith(".css")) {
-			HttpSession session = request.getSession();
-			
+
 			UserSession user = (UserSession) request.getAttribute("userSession");
 
 			if (user != null && user.getNewsletterParticipant() == null) {
-				defineParticipantStatus(request, session, user);
+				defineParticipantStatus(request, user);
 			}
 		}
 		chain.doFilter(req, res);
 	}
 
-	private void defineParticipantStatus(HttpServletRequest request, HttpSession session, UserSession user) {
+	private void defineParticipantStatus(HttpServletRequest request, UserSession user) {
 		GUJUserDAO dao = new GUJUserDAO(getHibernateSession(request));
 		NewsletterParticipant participant = dao.findParticipantByGujUserId(user.getUserId());
 		boolean isParticipant = participant != null;
@@ -51,7 +49,7 @@ public class NewsletterFilter implements Filter {
 	@Override
 	public void init(FilterConfig cfg) throws ServletException {
 	}
-	
+
 	@Override
 	public void destroy() {
 	}

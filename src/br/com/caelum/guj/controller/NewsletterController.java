@@ -2,10 +2,9 @@ package br.com.caelum.guj.controller;
 
 import java.net.URISyntaxException;
 
-import javax.servlet.http.HttpSession;
+import javax.servlet.http.HttpServletRequest;
 
 import net.jforum.entities.UserSession;
-
 import br.com.caelum.guj.dao.GUJUserDAO;
 import br.com.caelum.guj.model.NewsletterParticipant;
 import br.com.caelum.guj.newsletter.NewsletterSubscriber;
@@ -19,13 +18,13 @@ import br.com.caelum.vraptor.view.Results;
 public class NewsletterController {
 
 	private final GUJUserDAO dao;
-	private final HttpSession session;
 	private final Result result;
 	private final NewsletterSubscriber manager;
+	private final HttpServletRequest request;
 
-	public NewsletterController(GUJUserDAO dao, HttpSession session, Result result, NewsletterSubscriber manager) {
+	public NewsletterController(GUJUserDAO dao, HttpServletRequest request, Result result, NewsletterSubscriber manager) {
 		this.dao = dao;
-		this.session = session;
+		this.request = request;
 		this.result = result;
 		this.manager = manager;
 	}
@@ -59,7 +58,7 @@ public class NewsletterController {
 		NewsletterParticipant p = new NewsletterParticipant(gujUserId, email);
 
 		this.dao.registerNewsletterParticipant(p);
-		UserSession userSession = (UserSession) session.getAttribute("userSession");
+		UserSession userSession = (UserSession) request.getAttribute("userSession");
 		userSession.setNewsletterParticipant(true);
 		return p;
 	}

@@ -10,7 +10,6 @@
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
 	<classpathentry kind="lib" path="lib/jsp-2.1-6.1.10.jar"/>
 	<classpathentry kind="lib" path="lib/jsp-api-2.1-6.1.10.jar"/>
-	<classpathentry kind="lib" path="lib/servlet-api.jar"/>
 	<classpathentry kind="lib" path="lib/test/junit-4.8.2.jar"/>
 	<classpathentry kind="lib" path="lib/test/mockito-all-1.8.5.jar"/>
 	<classpathentry kind="lib" path="WEB-INF/lib/activation.jar"/>
@@ -77,5 +76,6 @@
 			<attribute name="owner.project.facets" value="java"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="/Applications/Servers/jetty-6.1.11/lib/servlet-api-2.5-6.1.11.jar"/>
 	<classpathentry kind="output" path="webapp/WEB-INF/classes"/>
 </classpath>
