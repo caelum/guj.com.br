@@ -160,6 +160,7 @@ $().ready(function() {
       </div>
     </div>
   </div>
+
   <c:if test="${not userSession.newsletterParticipant and logged}">
 	  <div id="menuNewsletter" style="display:none; visibility: invisible;">
 		 <div style="float:left; margin-top:5px;">
@@ -169,6 +170,7 @@ $().ready(function() {
 	  	 	<a href="#" onclick="escondeNewsletter();"><img src="<c:url value="/images/guj/cancel_16.png"/>" border="0"/></a>
 	  	 </div>
 	  </div>
+	  
 	  
 	  <script language="javascript">
 		function newsletterCookieHidden() {
