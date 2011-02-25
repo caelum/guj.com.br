@@ -193,7 +193,7 @@ $().ready(function() {
 		function escondeNewsletter() {
 			$('#menuNewsletter').slideToggle('slow');
 			if (!newsletterCookieHidden()){
-				document.cookie='gujNewsletterMenu=hidden';
+				document.cookie='gujNewsletterMenu=hidden;path=/';
 			}
 		}
 		</script>
