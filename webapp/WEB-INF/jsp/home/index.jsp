@@ -51,7 +51,38 @@ $().ready(function() {
 				    </li>
 		  		</c:forEach>
 			  </ul>
-			  
+			  <br />
+			  <h2>
+		      	  <a href="<c:url value="/recentTopics/list.java"/>">Siga-nos no twitter</a>
+		  	  </h2>
+			  <a href="http://twitter.com/guj_noticias" target="_blank">
+			  <div id="twitterWidget">
+		  			<div id="twitterInfoWrapper">
+		  				<div style="float:left"><img id="gujTwitterAvatar" /></div>
+		  				<div id="gujFollowers"><p>@guj_noticias</p></div>
+		  			</div>
+		  			<div id="conteudoUltimoTweet">
+		  				
+		  			</div>
+			  </div>
+			  </a>
+			  <div style="clear:both"></div>
+			  <script type="text/javascript">
+						function twitterWidget(selector, user) {
+			
+						    var element = $(selector);
+			
+						    $.getJSON(
+						      "http://api.twitter.com/1/users/show/" + user + ".json?callback=?",
+						      function(data) {
+						            $("#gujTwitterAvatar").attr("src", data.profile_image_url );
+						            $("#gujFollowers").append("<p>" + data.followers_count + " seguidores</p>");
+						            $("#conteudoUltimoTweet").append("\"" + data.status.text + "\"");
+						      }
+						    );
+						  }
+						  twitterWidget("#twitterWidget","guj_noticias");
+			  </script>
 			  <p align="center">
 				<script type="text/javascript" language="JavaScript">
 					OAS_AD('Right');

@@ -603,3 +603,30 @@ input.selecionado {
  .inner-content { padding: 10px; }
  
  .novo { color: #FF124D;}
+ 
+ 
+#twitterWidget {
+	width:100%;	
+	margin: 20px 5px 10px 5px;
+	height: 50px;
+}
+#twitterInfoWrapper {
+	float:left;
+	width:35%;	
+}
+#gujFollowers {
+	float:right;
+	font-weight: bold;	
+}
+
+#gujFollowers p{
+	color: #57A80B;
+	margin-top: 0px;
+	padding: 0px;	
+}
+
+#conteudoUltimoTweet {
+	float:right; 
+	width:55%;	
+	font-style: italic;
+}
