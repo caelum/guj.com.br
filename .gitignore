@@ -5,3 +5,5 @@ work/
 .DS_Store
 key.properties
 newsletter_config.properties
+.settings/org.eclipse.wst.validation.prefs
+

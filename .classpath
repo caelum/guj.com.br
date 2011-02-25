@@ -49,12 +49,12 @@
 	<classpathentry kind="lib" path="WEB-INF/lib/xmlrpc.jar"/>
 	<classpathentry kind="lib" path="WEB-INF/lib/xom-1.0.jar"/>
 	<classpathentry kind="lib" path="lib/jargs-1.0.jar"/>
+	<classpathentry kind="lib" path="lib/servlet-api.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jst.server.core.container/org.mortbay.jetty.serveradaptor.runtimeClasspathProvider/Jetty 6"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6">
 		<attributes>
 			<attribute name="owner.project.facets" value="java"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="/Applications/Servers/jetty-6.1.11/lib/servlet-api-2.5-6.1.11.jar"/>
 	<classpathentry kind="output" path="webapp/WEB-INF/classes"/>
 </classpath>
