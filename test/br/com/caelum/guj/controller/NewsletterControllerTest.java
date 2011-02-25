@@ -8,7 +8,7 @@ import static org.mockito.Mockito.when;
 
 import java.net.URISyntaxException;
 
-import javax.servlet.http.HttpSession;
+import javax.servlet.http.HttpServletRequest;
 
 import net.jforum.entities.UserSession;
 
@@ -26,14 +26,14 @@ public class NewsletterControllerTest {
 		Integer gujUserId = 1;
 		NewsletterSubscriber manager = mock(NewsletterSubscriber.class);
 		GUJUserDAO dao = mock(GUJUserDAO.class);
-		HttpSession session = mock(HttpSession.class);
+		HttpServletRequest request = mock(HttpServletRequest.class);
 		UserSession userSession = mock(UserSession.class);
 
 		when(dao.findParticipantByGujUserId(gujUserId)).thenReturn(null);
 		when(dao.emailFromUser(gujUserId)).thenReturn("email@email.com");
-		when(session.getAttribute("userSession")).thenReturn(userSession);
+		when(request.getAttribute("userSession")).thenReturn(userSession);
 
-		NewsletterController controller = new NewsletterController(dao, session, new MockResult(), manager);
+		NewsletterController controller = new NewsletterController(dao, request, new MockResult(), manager);
 		controller.register(gujUserId);
 
 		verify(dao).registerNewsletterParticipant(any(NewsletterParticipant.class));
@@ -47,13 +47,13 @@ public class NewsletterControllerTest {
 		NewsletterSubscriber manager = mock(NewsletterSubscriber.class);
 
 		GUJUserDAO dao = mock(GUJUserDAO.class);
-		HttpSession session = mock(HttpSession.class);
+		HttpServletRequest request = mock(HttpServletRequest.class);
 		UserSession userSession = mock(UserSession.class);
 
 		when(dao.findParticipantByGujUserId(gujUserId)).thenReturn(new NewsletterParticipant());
-		when(session.getAttribute("userSession")).thenReturn(userSession);
+		when(request.getAttribute("userSession")).thenReturn(userSession);
 
-		NewsletterController controller = new NewsletterController(dao, session, new MockResult(), manager);
+		NewsletterController controller = new NewsletterController(dao, request, new MockResult(), manager);
 		controller.register(gujUserId);
 
 		verify(dao, never()).registerNewsletterParticipant(any(NewsletterParticipant.class));
