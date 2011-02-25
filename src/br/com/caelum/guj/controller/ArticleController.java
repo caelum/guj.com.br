@@ -18,6 +18,7 @@ import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Resource;
 import br.com.caelum.vraptor.Result;
+import br.com.caelum.vraptor.view.Results;
 
 @Resource
 public class ArticleController {
@@ -104,5 +105,6 @@ public class ArticleController {
 	public void show(long id) {
 		result.include("article", this.getArticle(id));
 	}
+
 
 }

@@ -4,6 +4,7 @@ import static br.com.caelum.vraptor.view.Results.http;
 import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Resource;
 import br.com.caelum.vraptor.Result;
+import br.com.caelum.vraptor.view.Results;
 
 /**
  * Esse controller apenas redireciona as urls antigas para as novas
@@ -49,4 +50,9 @@ public class OldUrlsController {
 	public void noticias() {
 		result.use(http()).movedPermanentlyTo("/forums/show/17.java");
 	}
+	
+	@Path("/{id}")
+	public void shortTopicURL(long id){
+		result.use(Results.http()).movedPermanentlyTo("/java/"+id);
+	}	
 }

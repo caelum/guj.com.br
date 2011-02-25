@@ -50,6 +50,20 @@ public class BookmarkablePostToCompatibleURIConverterTest {
 
 		assertEquals("/posts/list/228076.java", compatibleURI);
 	}
+	
+	// XXX rename
+	@Test
+	public void shouldReturnCompatibleURI2() {
+		CompatibleURIBuilder builder = aBuilder();
+		when(builder.compatibleURL("228076")).thenReturn("/posts/list/228076.java");
+		
+		BookmarkablePostToCompatibleURIConverter converter = new BookmarkablePostToCompatibleURIConverter(
+				"/java/228076", builder);
+		String compatibleURI = converter.convert();
+		
+		assertTrue(converter.isConvertable());
+		assertEquals("/posts/list/228076.java", compatibleURI);
+	}
 
 	private CompatibleURIBuilder aBuilder() {
 		return mock(CompatibleURIBuilder.class);
