@@ -1,3 +1,5 @@
+<#import "../macros/bookmarkableLink.ftl" as bookmarkable/>
+
 <#setting number_format = "#"/>
 <#setting datetime_format = dateTimeFormat/>
 <#assign logged = logged?default(false)/>
@@ -14,6 +16,7 @@
         "posts12":0114837211, <#-- Padrões, Arquiteturas e Projetos -->
 		"posts18":5791791724 <#-- Ferramentas -->
 }/>
+
 
 <html>
 <head>
@@ -85,6 +88,10 @@ $().ready(function() {
 </#if>
 
 <title>${pageTitle?default("JForum")?html}</title>
+
+<#if topic?? && bookmarkableUriBuilder??>
+	<link rel="canonical" href="<@bookmarkable.bookmarkableLink topic.id, topic.title/>"/>
+</#if>
 
 </head>
 <body class="${language}">

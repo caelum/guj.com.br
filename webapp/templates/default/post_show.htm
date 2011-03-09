@@ -13,12 +13,6 @@
 <script type="text/javascript" src="${contextPath}/templates/${templateName}/js/post.js?${startupTime}"></script>
 <script type="text/javascript" src="${contextPath}/templates/${templateName}/js/pagination.js?${startupTime}"></script>
 
-<script type="text/javascript" >
-	$(function () {
-		$('head').append('<link rel="canonical" href="<@bookmarkable.bookmarkableLink topic.id, topic.title/>"/>');	
-	});
-</script>
-
 <#if logged>
 	<script type="text/javascript" src="${contextPath}/templates/${templateName}/js/watch.js?${startupTime}"></script>
 </#if>
