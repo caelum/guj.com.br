@@ -15,24 +15,46 @@ public class DefaultBookmarkableURIBuilder implements BookmarkableURIBuilder {
 		this.slugger = slugger;
 	}
 
+	private StringBuilder concatPageToURL(StringBuilder sb, int pageNumber) {
+		if (pageNumber > 1) {
+			sb.append("/").append(pageNumber);
+		}
+		return sb;
+	}
+
 	@Override
 	public String bookmarkableURL(int topicId, String title, int pageNumber) {
-		return "/java/" + topicId + "-" + this.slugger.sluggerize(title) + "/" + pageNumber;
+		StringBuilder url = new StringBuilder("/java/").append(topicId).append("-")
+				.append(this.slugger.sluggerize(title));
+		
+		return concatPageToURL(url, pageNumber).toString();
 	}
 
 	@Override
 	public String bookmarkableURL(int topicId, String title, int pageNumber, String anchor) {
-		return "/java/" + topicId + "-" + this.slugger.sluggerize(title) + "/" + pageNumber + "#" + anchor;
+		StringBuilder url = new StringBuilder("/java/").append(topicId).append("-")
+				.append(this.slugger.sluggerize(title));
+		
+		this.concatPageToURL(url, pageNumber);
+		url.append("#").append(anchor);
+		
+		return url.toString();
 	}
 
 	@Override
 	public String bookmarkablePrePostURL(int topicId, int postId, String topicTitle) {
-		return "/prepost/" + topicId + "/" + postId + "/" + this.slugger.sluggerize(topicTitle);
+		StringBuilder url = new StringBuilder("/prepost/").append(topicId).append("/")
+		.append(postId).append("/").append(this.slugger.sluggerize(topicTitle));
+		
+		return url.toString();
 	}
 
 	@Override
 	public String bookmarkableURL(int topicId, String title) {
-		return "/java/" + topicId + "-" + this.slugger.sluggerize(title);
+		StringBuilder url = new StringBuilder("/java/").append(topicId).append("-")
+		.append(this.slugger.sluggerize(title));
+		
+		return url.toString();
 	}
 
 	@Override
