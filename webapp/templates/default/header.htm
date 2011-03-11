@@ -92,9 +92,10 @@ $().ready(function() {
 <#if topic??>
 	<#assign correctBookmarkableURI><@bookmarkable.bookmarkableLink topic.id, topic.title/></#assign>
 	<#assign requestURIBeforeForward = JForumContext.request.getAttribute("bookmarkableURIBeforeForward") />
-	
-	<#if correctBookmarkableURI != requestURIBeforeForward>
-		<link rel="canonical" href="<@bookmarkable.bookmarkableLink topic.id, topic.title/>"/>
+	<#assign requestPageBeforeForward = JForumContext.request.getAttribute("requestedTopicPageBeforeForward") />
+
+	<#if (correctBookmarkableURI + requestPageBeforeForward) != requestURIBeforeForward>
+		<link rel="canonical" href="<@bookmarkable.bookmarkableLink topic.id, topic.title/>${JForumContext.request.getAttribute("requestedTopicPageBeforeForward")}"/>
 	</#if>
 </#if>
 

@@ -5,9 +5,9 @@ import java.util.regex.Pattern;
 
 import br.com.caelum.guj.configuration.Configs;
 import br.com.caelum.guj.uri.CompatibleURIBuilder;
-import br.com.caelum.guj.uri.URIConverter;
+import br.com.caelum.guj.uri.PaginatedURIConverter;
 
-public class BookmarkablePostToCompatibleURIConverter implements URIConverter {
+public class BookmarkablePostToCompatibleURIConverter implements PaginatedURIConverter {
 
 	private final Matcher matcher;
 	private final boolean succedded;
@@ -46,5 +46,12 @@ public class BookmarkablePostToCompatibleURIConverter implements URIConverter {
 
 	private int getFirstPostToShow() {
 		return (Integer.parseInt(this.matcher.group(4)) - 1) * Configs.POSTS_PER_PAGE;
+	}
+	
+	public Integer getPage() {
+		if (thereIsPage()) {
+			return new Integer(this.matcher.group(4));
+		}
+		return null;
 	}
 }

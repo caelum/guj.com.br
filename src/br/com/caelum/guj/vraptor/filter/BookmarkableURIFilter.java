@@ -15,7 +15,9 @@ import br.com.caelum.guj.repositories.TopicRepository;
 import br.com.caelum.guj.repositories.TopicRepositoryWrapper;
 import br.com.caelum.guj.uri.DefaultBookmarkableURIBuilder;
 import br.com.caelum.guj.uri.DefaultURICache;
+import br.com.caelum.guj.uri.PaginatedURIConverter;
 import br.com.caelum.guj.uri.URICache;
+import br.com.caelum.guj.uri.URIConverter;
 import br.com.caelum.guj.uri.bookmarkable.AllBookmarkableToCompatibleConverters;
 import br.com.caelum.guj.uri.bookmarkable.ConverterMatcher;
 import br.com.caelum.guj.uri.compatible.CompatibleToBookmarkablePostConverter;
@@ -41,12 +43,25 @@ public class BookmarkableURIFilter implements Filter {
 			if (converters.shortBookmarkableURI()) {
 				redirectUsingCache(request, response, compatibleURI);
 			} else {
-				request.setAttribute("bookmarkableURIBeforeForward", request.getRequestURI());
+				setRequestAttributesToCanonicalLink(request, converters);
 				request.getRequestDispatcher(compatibleURI).forward(request, response);
 			}
 		} else {
 			chain.doFilter(request, response);
 		}
+	}
+
+	private void setRequestAttributesToCanonicalLink(HttpServletRequest request, ConverterMatcher converters) {
+		URIConverter converter = converters.getConverter();
+		String requestedTopicPage = "";
+		if (converter instanceof PaginatedURIConverter) {
+			Integer topicPage = ((PaginatedURIConverter) converter).getPage();
+			if (topicPage != null && topicPage > 1) {
+				requestedTopicPage = "/"+topicPage;
+			}
+		}
+		request.setAttribute("requestedTopicPageBeforeForward", requestedTopicPage);
+		request.setAttribute("bookmarkableURIBeforeForward", request.getRequestURI());
 	}
 
 	private void redirectUsingCache(HttpServletRequest request, HttpServletResponse response, String compatibleURI) {
