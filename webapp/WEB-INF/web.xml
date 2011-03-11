@@ -62,7 +62,7 @@
 
 	<filter-mapping>
 		<filter-name>compatibleURI</filter-name>
-		<url-pattern>/*</url-pattern>
+		<url-pattern>/posts/*</url-pattern>
 		<dispatcher>REQUEST</dispatcher>
 	</filter-mapping>
 	
@@ -73,7 +73,7 @@
 
 	<filter-mapping>
 		<filter-name>bookmarkable</filter-name>
-		<url-pattern>/*</url-pattern>
+		<url-pattern>/java/*</url-pattern>
 		<dispatcher>FORWARD</dispatcher>
 		<dispatcher>REQUEST</dispatcher>
 	</filter-mapping>

@@ -11,44 +11,29 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 
-import net.jforum.JForumExecutionContext;
-import br.com.caelum.guj.uri.DefaultBookmarkableURIBuilder;
-import br.com.caelum.guj.uri.DefaultCompatibleURIBuilder;
 import br.com.caelum.guj.uri.bookmarkable.AllBookmarkableToCompatibleConverters;
 import br.com.caelum.guj.uri.bookmarkable.ConverterMatcher;
-import br.com.caelum.guj.view.Slugger;
-import freemarker.template.SimpleHash;
 
 public class BookmarkableURIFilter implements Filter{
 
 	@Override
-	public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain)
+	public void doFilter(ServletRequest req, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
 		HttpServletRequest request = (HttpServletRequest) req;
 		
-		this.registerSlugger();
-
-		ConverterMatcher allConverters = new ConverterMatcher(AllBookmarkableToCompatibleConverters.get(request
+		ConverterMatcher converters = new ConverterMatcher(AllBookmarkableToCompatibleConverters.get(request
 				.getRequestURI()));
 
-		if (allConverters.oneMatched()) {
-			RequestDispatcher rd = request.getRequestDispatcher(allConverters.getConverter()
-					.convert());
-
-			rd.forward(request, res);
+		if (converters.oneMatched()) {
+			dispatcher(request, converters).forward(request, response);
 		} else {
-			chain.doFilter(req, res);
+			chain.doFilter(request, response);
 		}
 	}
 
-	private void registerSlugger() {
-		if (!JForumExecutionContext.exists()) {
-			JForumExecutionContext ctx = JForumExecutionContext.get();
-			JForumExecutionContext.set(ctx);
-		}
-		SimpleHash templateCtx = JForumExecutionContext.getTemplateContext();
-		templateCtx.put("compatibleUriBuilder", new DefaultCompatibleURIBuilder());
-		templateCtx.put("bookmarkableUriBuilder", new DefaultBookmarkableURIBuilder(new Slugger()));
+	private RequestDispatcher dispatcher(HttpServletRequest request, ConverterMatcher converters) {
+		return request.getRequestDispatcher(converters.getConverter()
+				.convert());
 	}
 	
 	@Override
