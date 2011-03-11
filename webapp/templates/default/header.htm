@@ -89,8 +89,13 @@ $().ready(function() {
 
 <title>${pageTitle?default("JForum")?html}</title>
 
-<#if topic?? && bookmarkableUriBuilder??>
-	<link rel="canonical" href="<@bookmarkable.bookmarkableLink topic.id, topic.title/>"/>
+<#if topic??>
+	<#assign correctBookmarkableURI><@bookmarkable.bookmarkableLink topic.id, topic.title/></#assign>
+	<#assign requestURIBeforeForward = JForumContext.request.getAttribute("bookmarkableURIBeforeForward") />
+	
+	<#if correctBookmarkableURI != requestURIBeforeForward>
+		<link rel="canonical" href="<@bookmarkable.bookmarkableLink topic.id, topic.title/>"/>
+	</#if>
 </#if>
 
 </head>

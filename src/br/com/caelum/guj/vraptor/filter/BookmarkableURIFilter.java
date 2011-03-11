@@ -25,6 +25,7 @@ public class BookmarkableURIFilter implements Filter{
 				.getRequestURI()));
 
 		if (converters.oneMatched()) {
+			request.setAttribute("bookmarkableURIBeforeForward", request.getRequestURI());
 			dispatcher(request, converters).forward(request, response);
 		} else {
 			chain.doFilter(request, response);
