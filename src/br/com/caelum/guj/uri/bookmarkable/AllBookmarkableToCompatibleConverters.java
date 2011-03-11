@@ -11,6 +11,7 @@ public class AllBookmarkableToCompatibleConverters {
 	public static List<URIConverter> get(String uri) {
 		List<URIConverter> converters = new LinkedList<URIConverter>();
 
+		converters.add(new BookmarkableShortPostToCompatibleURIConverter(uri, new DefaultCompatibleURIBuilder()));
 		converters.add(new BookmarkablePostToCompatibleURIConverter(uri, new DefaultCompatibleURIBuilder()));
 		converters.add(new BookmarkablePrePostToCompatibleURIConverter(uri, new DefaultCompatibleURIBuilder()));
 

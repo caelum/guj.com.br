@@ -17,7 +17,7 @@ public class BookmarkablePostToCompatibleURIConverter implements URIConverter {
 		this.builder = builder;
 		// /post/<id-post>/<titulo-post>?page=<pagina>
 		Pattern pattern = Pattern
-				.compile("\\/java\\/([0-9]+)[\\-]?([a-zA-Z0-9\\-\\_]+)*(\\/([0-9]+))?");
+				.compile("\\/java\\/([0-9]+)\\-([a-zA-Z0-9\\-\\_]+)*(\\/([0-9]+))?");
 		this.matcher = pattern.matcher(uri);
 		this.succedded = this.matcher.find();
 	}

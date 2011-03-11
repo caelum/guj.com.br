@@ -20,6 +20,11 @@ public class ConverterMatcher {
 		return this.converterFound;
 	}
 
+	public boolean shortBookmarkableURI() {
+		return (this.converterFound &&
+				this.theOne instanceof BookmarkableShortPostToCompatibleURIConverter);
+	}
+
 	public URIConverter getConverter() {
 		if (this.converterFound)
 			return this.theOne;

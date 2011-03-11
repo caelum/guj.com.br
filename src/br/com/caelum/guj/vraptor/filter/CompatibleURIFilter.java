@@ -94,15 +94,12 @@ public class CompatibleURIFilter implements Filter {
 	}
 	
 	private void createURICache(FilterConfig config) throws ServletException {
-		String cacheClassName = config.getInitParameter("cache");
-		if (cacheClassName == null) {
+		URICache cacheFromContext = (URICache) config.getServletContext().getAttribute("URICache");
+		if (cacheFromContext == null) {
 			cache = new DefaultURICache();
+			config.getServletContext().setAttribute("URICache", cache);
 		} else {
-			try {
-				cache = (URICache) Class.forName(cacheClassName).newInstance();
-			} catch (Exception e) {
-				throw new ServletException(e);
-			}
+			this.cache = cacheFromContext;
 		}
 	}
 }

@@ -10,6 +10,7 @@ import java.lang.reflect.Field;
 
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -34,16 +35,23 @@ public class CompatibleURIFilterTest {
 	private FilterChain chain;
 	@Mock
 	private FilterConfig filterConfig;
+	@Mock
+	private ServletContext servletContext;
 
 	private CompatibleURIFilter filter;
+	
+	private URICacheStub uriCacheStub;
 
 	@Before
 	public void setup() throws ServletException {
 		filter = new CompatibleURIFilter();
+		uriCacheStub = new URICacheStub();
+		
 		when(filterConfig.getInitParameter("topicRepository")).thenReturn(
 				TopicRepositoryStub.class.getName());
-		when(filterConfig.getInitParameter("cache")).thenReturn(
-				URICacheStub.class.getName());
+		
+		when(filterConfig.getServletContext()).thenReturn(servletContext);
+		when(filterConfig.getServletContext().getAttribute("URICache")).thenReturn(uriCacheStub);
 		
 		when(request.getContextPath()).thenReturn("guj.com.br");
 		
@@ -118,11 +126,10 @@ public class CompatibleURIFilterTest {
 		filter.doFilter(request, response, chain);
 		filter.doFilter(request, response, chain);
 		
-		URICacheStub uriCache = getCacheFromFilter(filter);
 		TopicRepositoryStub repository = getTopicRepositoryFromFilter(filter);
 		
-		Assert.assertEquals(bookmarkableURI, uriCache.getBookmarkableURI(requestedURI));
-		Assert.assertTrue(uriCache.isGetBookmarkableURICalled());
+		Assert.assertEquals(bookmarkableURI, uriCacheStub.getBookmarkableURI(requestedURI));
+		Assert.assertTrue(uriCacheStub.isGetBookmarkableURICalled());
 		Assert.assertEquals(1, repository.getCallsToRepository());
 		
 		verify(chain,never()).doFilter(request, response);
@@ -135,26 +142,18 @@ public class CompatibleURIFilterTest {
 		String originalURI = "guj.com.br/java/20-erich-created-jforum";
 		String alteredURI = "guj.com.br/java/20-sr-saude-actually-created-jforum";
 		
-		URICacheStub uriCache = getCacheFromFilter(filter);
 		TopicRepositoryStub repository = getTopicRepositoryFromFilter(filter);
 		
 		when(request.getRequestURI()).thenReturn(originalURI);
 		filter.doFilter(request, response, chain);
 		
-		Assert.assertFalse(uriCache.isPutCalled());
+		Assert.assertFalse(uriCacheStub.isPutCalled());
 		
 		when(request.getRequestURI()).thenReturn(alteredURI);
 		filter.doFilter(request, response, chain);
 		
 		verify(chain, times(2)).doFilter(request, response);
 		Assert.assertEquals(0, repository.getCallsToRepository());
-	}
-	
-	private URICacheStub getCacheFromFilter(CompatibleURIFilter filter) throws NoSuchFieldException, IllegalAccessException {
-		Field uriCacheField = CompatibleURIFilter.class.getDeclaredField("cache");
-		uriCacheField.setAccessible(true);
-		URICacheStub uriCache = (URICacheStub) uriCacheField.get(filter);
-		return uriCache;
 	}
 
 	private TopicRepositoryStub getTopicRepositoryFromFilter(CompatibleURIFilter filter) throws NoSuchFieldException, IllegalAccessException {
