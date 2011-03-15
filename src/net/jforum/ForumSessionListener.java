@@ -59,7 +59,9 @@ public class ForumSessionListener implements HttpSessionListener
 	/** 
 	 * @see javax.servlet.http.HttpSessionListener#sessionCreated(javax.servlet.http.HttpSessionEvent)
 	 */
-	public void sessionCreated(HttpSessionEvent event) {}
+	public void sessionCreated(HttpSessionEvent event) {
+		logger.info("Creating a new session");
+	}
 
 	/** 
 	 * @see javax.servlet.http.HttpSessionListener#sessionDestroyed(javax.servlet.http.HttpSessionEvent)
@@ -81,6 +83,7 @@ public class ForumSessionListener implements HttpSessionListener
 			logger.warn(e);
 		}
 
+		logger.info("Destroying the session for: " + sessionId);
 		SessionFacade.remove(sessionId);
 	}
 }

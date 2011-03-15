@@ -297,7 +297,7 @@ public class SessionFacade implements Cacheable
 	{
 		if (cache != null) {
 			UserSession us = (UserSession)cache.get(FQN, sessionId);
-			return (us != null ? us : null);
+			return us;
 		}
 
 		logger.warn("Got a null cache in getUserSession. #" + sessionId);

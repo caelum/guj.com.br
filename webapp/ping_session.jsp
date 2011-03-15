@@ -5,4 +5,4 @@
 <body>
 Done. This is used by JForum to ensure the session does not expire.
 </body>
-</htm l>
+</html>

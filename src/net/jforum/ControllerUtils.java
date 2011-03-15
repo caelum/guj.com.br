@@ -47,6 +47,8 @@ import java.util.Date;
 
 import javax.servlet.http.Cookie;
 
+import org.apache.log4j.Logger;
+
 import net.jforum.context.ForumContext;
 import net.jforum.context.RequestContext;
 import net.jforum.context.SessionContext;
@@ -75,6 +77,8 @@ import freemarker.template.SimpleHash;
  */
 public class ControllerUtils
 {
+	
+	private static final Logger logger = Logger.getLogger(ControllerUtils.class);
 	/**
 	 * Setup common variables used by almost all templates.
 	 * 
@@ -289,6 +293,7 @@ public class ControllerUtils
 			SessionFacade.add(userSession);
 		}
 		else if (ConfigKeys.TYPE_SSO.equals(SystemGlobals.getValue(ConfigKeys.AUTHENTICATION_TYPE))) {
+			logger.error("Nao deveria acontecer. GUJ nao usa SSO.");
 			SSO sso;
 			
 			try {
@@ -298,8 +303,10 @@ public class ControllerUtils
 				throw new ForumException(e);
 			}
 
+			
 			// If SSO, then check if the session is valid
 			if (!sso.isSessionValid(userSession, request)) {
+				logger.error("Deveria acontecer MUITO MENOS.");
 				SessionFacade.remove(userSession.getSessionId());
 				refreshSession();
 			}
