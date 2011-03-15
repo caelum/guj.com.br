@@ -51,22 +51,22 @@ $().ready(function() {
 				    </li>
 		  		</c:forEach>
 			  </ul>
-			  <br />
-			  <h2>
-		      	  <a href="<c:url value="/recentTopics/list.java"/>">Siga-nos no twitter</a>
-		  	  </h2>
-			  <a href="http://twitter.com/guj_noticias" target="_blank">
-			  <div id="twitterWidget">
-		  			<div id="twitterInfoWrapper">
-		  				<div style="float:left"><img id="gujTwitterAvatar" /></div>
-		  				<div id="gujFollowers"><p>@guj_noticias</p></div>
-		  			</div>
-		  			<div id="conteudoUltimoTweet">
+<!-- 			  <br /> -->
+<!-- 			  <h2> -->
+<%-- 		      	  <a href="<c:url value="/recentTopics/list.java"/>">Siga-nos no twitter</a> --%>
+<!-- 		  	  </h2> -->
+<!-- 			  <a href="http://twitter.com/guj_noticias" target="_blank"> -->
+<!-- 			  <div id="twitterWidget"> -->
+<!-- 		  			<div id="twitterInfoWrapper"> -->
+<!-- 		  				<div style="float:left"><img id="gujTwitterAvatar" /></div> -->
+<!-- 		  				<div id="gujFollowers"><p>@guj_noticias</p></div> -->
+<!-- 		  			</div> -->
+<!-- 		  			<div id="conteudoUltimoTweet"> -->
 		  				
-		  			</div>
-			  </div>
-			  </a>
-			  <div style="clear:both"></div>
+<!-- 		  			</div> -->
+<!-- 			  </div> -->
+<!-- 			  </a> -->
+<!-- 			  <div style="clear:both"></div> -->
 			  <script type="text/javascript">
 						function twitterWidget(selector, user) {
 			
