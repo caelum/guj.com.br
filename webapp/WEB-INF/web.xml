@@ -77,6 +77,13 @@
 		<dispatcher>FORWARD</dispatcher>
 		<dispatcher>REQUEST</dispatcher>
 	</filter-mapping>
+	
+	<filter-mapping>
+		<filter-name>bookmarkable</filter-name>
+		<url-pattern>/prepost/*</url-pattern>
+		<dispatcher>FORWARD</dispatcher>
+		<dispatcher>REQUEST</dispatcher>
+	</filter-mapping>
 
 	<filter>
 		<filter-name>vraptorFilter</filter-name>
