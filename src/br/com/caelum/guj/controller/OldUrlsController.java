@@ -54,5 +54,11 @@ public class OldUrlsController {
 	@Path("/{id}")
 	public void shortTopicURL(long id){
 		result.use(Results.http()).movedPermanentlyTo("/java/"+id);
-	}	
+	}
+	
+	
+	@Path("/MundoJ")
+	public void mundoJTopicURL() {
+		result.use(http()).movedPermanentlyTo("/forums/show/25.java");
+	}
 }
