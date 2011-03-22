@@ -76,8 +76,7 @@ else
 $().ready(function() {
 	$("#returnPath").val("${contextPath}");
 	
-	
-	if (!$.browser.msie && navigator.userAgent.indexOf("Chrome") == -1) {
+	if (!$.browser.msie && navigator.userAgent.indexOf("Chrome") == -1 && navigator.userAgent.indexOf("Firefox/4") == -1) {
 		$("table, table th").corners("6px");
 	}
 });
