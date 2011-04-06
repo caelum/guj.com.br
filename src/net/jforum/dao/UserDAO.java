@@ -383,4 +383,6 @@ public interface UserDAO
 	 * @return the user instance if a match is found, or null otherwise
 	 */
 	public User findByEmail(String email);
+	
+	public boolean isNewsletterParticipant(int userId);
 }

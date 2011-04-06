@@ -1132,4 +1132,24 @@ public class GenericUserDAO extends AutoKeys implements UserDAO
 		
 		return u;
 	}
+	
+	public boolean isNewsletterParticipant(int userId) {
+		String sql = "SELECT gujUserId FROM NewsletterParticipant WHERE gujUserId = ?";
+		PreparedStatement p = null;
+		ResultSet rs = null;
+
+		try {
+			p = JForumExecutionContext.getConnection().prepareStatement(sql);
+			p.setInt(1, userId);
+			rs = p.executeQuery();
+			
+			return rs.next();
+		}
+		catch (SQLException e) {
+			throw new DatabaseException(e);
+		}
+		finally {
+			DbUtils.close(rs, p);
+		}
+	}
 }

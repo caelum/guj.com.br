@@ -493,6 +493,11 @@ public class UserAction extends Command
 					userSession.setLastVisit(new Date(tmpUs.getStartTime().getTime() + tmpUs.getSessionTime()));
 				}
 				
+				UserDAO dao = DataAccessDriver.getInstance().newUserDAO();
+				boolean newsletterParticipant = dao.isNewsletterParticipant(userSession.getUserId());
+				
+				userSession.setNewsletterParticipant(newsletterParticipant);
+				
 				SessionFacade.add(userSession);
 				SessionFacade.setAttribute(ConfigKeys.TOPICS_READ_TIME, new HashMap());
 				ControllerUtils.addCookie(SystemGlobals.getValue(ConfigKeys.COOKIE_NAME_DATA), 
