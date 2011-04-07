@@ -103,6 +103,9 @@ $().ready(function() {
 		<a href="<c:url value="/jobs"/>">empregos</a>
       </li>
     
+      <li class="artigos">
+      	<a href="<c:url value="/articles"/>">artigos</a>
+      </li>
     	<!--
       <li class="blogs">
         <a href="${pageContext.request.contextPath}/posts">blogs</a>
