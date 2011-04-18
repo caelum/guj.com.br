@@ -25,7 +25,7 @@ import net.jforum.view.forum.common.ViewCommon;
 public class MostViewedNonJavaTopicsAction  extends Command {
 	private static final int JAVA_FORUM_ID = 17;
 	private static final int OFF_TOPIC_ID = 2;
-	private static final int QUERY_LIMIT = 5;
+	private static final int QUERY_LIMIT = 10;
 	private List forums;
 
 	public void list()

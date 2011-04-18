@@ -24,7 +24,7 @@ import net.jforum.view.forum.common.ViewCommon;
 
 public class MostRepliedJavaTopicsAction extends Command {
 	private static final int JAVA_FORUM_ID = 17;
-	private static final int QUERY_LIMIT = 5;
+	private static final int QUERY_LIMIT = 10;
 	
 	private List forums;
 

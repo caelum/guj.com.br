@@ -49,6 +49,7 @@ import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collection;
 import java.util.Date;
 import java.util.HashMap;
@@ -1105,16 +1106,17 @@ public class GenericTopicDAO extends AutoKeys implements TopicDAO {
 		String sql = "SELECT t.*, p.user_id AS last_user_id, p.post_time, p.attach AS attach "+
 					 " FROM jforum_topics t, jforum_posts p "+
 					 " WHERE p.post_id = t.topic_last_post_id AND t.forum_id = ? "+
+					 " AND t.topic_time >= ? "+
 					 " ORDER BY t.topic_views DESC LIMIT 0,?";
 		
 		PreparedStatement p = null;
 		try {
-//			p = JForumExecutionContext.getConnection().prepareStatement(sql);
 			DBConnection implementation = DBConnection.getImplementation();
 			Connection connection = implementation.getConnection();
 			p = connection.prepareStatement(sql);
 			p.setInt(1, forumId);
-			p.setInt(2, limit);
+			p.setDate(2, new java.sql.Date(createTwoMonthsAgoDate().getTimeInMillis()));
+			p.setInt(3, limit);
 
 			List list = this.fillTopicsData(p);
 			return list;
@@ -1124,18 +1126,26 @@ public class GenericTopicDAO extends AutoKeys implements TopicDAO {
 			DbUtils.close(p);
 		}
 	}
+
+	private Calendar createTwoMonthsAgoDate() {
+		Calendar date = Calendar.getInstance();
+		date.add(Calendar.MONTH, -2);
+		return date;
+	}
 	
 	public List selectMostRepliedFromForum(int forumId, int limit) {
 		String sql = "SELECT t.*, p.user_id AS last_user_id, p.post_time, p.attach AS attach "+
 					 " FROM jforum_topics t, jforum_posts p "+
 					 " WHERE p.post_id = t.topic_last_post_id AND t.forum_id = ? "+
+					 " AND t.topic_time >= ? "+
 					 " ORDER BY t.topic_replies DESC LIMIT 0,?";
 		
 		PreparedStatement p = null;
 		try {
 			p = JForumExecutionContext.getConnection().prepareStatement(sql);
 			p.setInt(1, forumId);
-			p.setInt(2, limit);
+			p.setDate(2, new java.sql.Date(createTwoMonthsAgoDate().getTimeInMillis()));
+			p.setInt(3, limit);
 			
 			List list = this.fillTopicsData(p);
 			return list;
@@ -1150,6 +1160,7 @@ public class GenericTopicDAO extends AutoKeys implements TopicDAO {
 		String sql = "SELECT t.*, p.user_id AS last_user_id, p.post_time, p.attach AS attach "+
 		 " FROM jforum_topics t, jforum_posts p "+
 		 " WHERE p.post_id = t.topic_last_post_id AND t.forum_id NOT IN (?,?) "+
+		 " AND t.topic_time >= ? "+
 		 " ORDER BY t.topic_views DESC LIMIT 0,?";
 		
 		PreparedStatement p = null;
@@ -1157,7 +1168,8 @@ public class GenericTopicDAO extends AutoKeys implements TopicDAO {
 			p = JForumExecutionContext.getConnection().prepareStatement(sql.toString());
 			p.setInt(1, (Integer) idsExcludedFromSearch.get(0));
 			p.setInt(2, (Integer) idsExcludedFromSearch.get(1));
-			p.setInt(3, queryLimit);
+			p.setDate(3, new java.sql.Date(createTwoMonthsAgoDate().getTimeInMillis()));
+			p.setInt(4, queryLimit);
 			
 			List list = this.fillTopicsData(p);
 			return list;
@@ -1172,6 +1184,7 @@ public class GenericTopicDAO extends AutoKeys implements TopicDAO {
 		String sql = "SELECT t.*, p.user_id AS last_user_id, p.post_time, p.attach AS attach "+
 		" FROM jforum_topics t, jforum_posts p "+
 		" WHERE p.post_id = t.topic_last_post_id AND t.forum_id NOT IN (?,?) "+
+		" AND t.topic_time >= ? "+
 		" ORDER BY t.topic_replies DESC LIMIT 0,?";
 		
 		PreparedStatement p = null;
@@ -1179,7 +1192,8 @@ public class GenericTopicDAO extends AutoKeys implements TopicDAO {
 			p = JForumExecutionContext.getConnection().prepareStatement(sql.toString());
 			p.setInt(1, (Integer) idsExcludedFromSearch.get(0));
 			p.setInt(2, (Integer) idsExcludedFromSearch.get(1));
-			p.setInt(3, queryLimit);
+			p.setDate(3, new java.sql.Date(createTwoMonthsAgoDate().getTimeInMillis()));
+			p.setInt(4, queryLimit);
 			
 			List list = this.fillTopicsData(p);
 			return list;
@@ -1189,4 +1203,5 @@ public class GenericTopicDAO extends AutoKeys implements TopicDAO {
 			DbUtils.close(p);
 		}
 	}
+	
 }
