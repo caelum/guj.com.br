@@ -96,13 +96,11 @@
 	<servlet>
     	<servlet-name>jforum</servlet-name>
     	<servlet-class>net.jforum.JForum</servlet-class>
-		<!--
-    	<load-on-startup>0</load-on-startup>
-		-->
     	<init-param>
       		<param-name>development</param-name>
       		<param-value>true</param-value>
     	</init-param>
+    	<load-on-startup>1</load-on-startup>
   	</servlet>
 
   	<servlet-mapping>
