@@ -48,12 +48,8 @@
 	</filter-mapping>
 	<context-param>
         <param-name>br.com.caelum.vraptor.packages</param-name>
-        <param-value>br.com.caelum.guj</param-value>
+        <param-value>br.com.caelum.vraptor.util.hibernate</param-value>
     </context-param>
-    <context-param>
-		<param-name>br.com.caelum.vraptor.provider</param-name>
-		<param-value>br.com.caelum.guj.vraptor.CustomProvider</param-value>
-	</context-param>
 	
 	<filter>
 		<filter-name>compatibleURI</filter-name>
