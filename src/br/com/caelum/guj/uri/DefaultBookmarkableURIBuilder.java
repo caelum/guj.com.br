@@ -6,7 +6,9 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import br.com.caelum.guj.view.Slugger;
+import br.com.caelum.vraptor.ioc.Component;
 
+@Component
 public class DefaultBookmarkableURIBuilder implements BookmarkableURIBuilder {
 
 	private final Slugger slugger;

@@ -75,6 +75,8 @@ import net.jforum.search.SearchResult;
 import net.jforum.util.DbUtils;
 import net.jforum.util.preferences.ConfigKeys;
 import net.jforum.util.preferences.SystemGlobals;
+import br.com.caelum.guj.feeds.TopicJsonFeed;
+import br.com.caelum.guj.uri.BookmarkableURIBuilder;
 
 /**
  * @author Rafael Steil
@@ -1197,6 +1199,72 @@ public class GenericTopicDAO extends AutoKeys implements TopicDAO {
 			
 			List list = this.fillTopicsData(p);
 			return list;
+		} catch (SQLException e) {
+			throw new DatabaseException(e);
+		} finally {
+			DbUtils.close(p);
+		}
+	}
+	
+	public List<TopicJsonFeed> selectRecentFromForum(int forumId, int queryLimit, BookmarkableURIBuilder uriBuilder) {
+		String sql = "SELECT t.*, p.user_id AS last_user_id, p.post_time, p.attach AS attach "+
+		" FROM jforum_topics t, jforum_posts p "+
+		" WHERE p.post_id = t.topic_last_post_id AND t.forum_id = ? "+
+		" ORDER BY t.topic_time DESC LIMIT 0,?";
+		
+		ArrayList<TopicJsonFeed> topics = new ArrayList<TopicJsonFeed>();
+		
+		PreparedStatement p = null;
+		try {
+			p = JForumExecutionContext.getConnection().prepareStatement(sql.toString());
+			p.setInt(1, forumId);
+			p.setInt(2, queryLimit);
+
+			
+			ResultSet rs = p.executeQuery();
+			StringBuffer sbFirst = new StringBuffer(128);
+			
+			while(rs.next()) {
+				TopicJsonFeed topic = new TopicJsonFeed();
+				topic.setTitle(rs.getString("topic_title"));
+				topic.setId(rs.getInt("topic_id"));
+				topic.setDate(new Date(rs.getTimestamp("topic_time").getTime()));
+				topic.setViews(rs.getInt("topic_views"));
+				topic.setReplies(rs.getInt("topic_replies"));
+				topic.setAuthorId(rs.getInt("user_id"));
+				topic.setUri(uriBuilder.bookmarkableURL(topic.getId(), topic.getTitle()));
+				
+				topics.add(topic);
+				sbFirst.append(rs.getInt("user_id")).append(',');
+			}
+			
+			// Users
+			if (sbFirst.length() > 0) {
+				sbFirst.delete(sbFirst.length() - 1, sbFirst.length());
+				
+				sql = "SELECT user_id, username, user_email FROM jforum_users WHERE user_id IN (#ID#)";
+				sql = sql.replaceAll("#ID#", sbFirst.toString());
+
+				Map<Integer, String> users = new HashMap<Integer, String>();
+
+				p = JForumExecutionContext.getConnection().prepareStatement(sql);
+				rs = p.executeQuery();
+
+				while (rs.next()) {
+					users.put(new Integer(rs.getInt("user_id")), rs.getString("username"));
+				}
+
+				rs.close();
+				rs = null;
+				p.close();
+				p = null;
+
+				for (TopicJsonFeed topic : topics) {
+					topic.setAuthor(users.get(topic.getAuthorId()));
+				}
+			}
+			
+			return topics;
 		} catch (SQLException e) {
 			throw new DatabaseException(e);
 		} finally {
