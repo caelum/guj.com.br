@@ -1207,7 +1207,7 @@ public class GenericTopicDAO extends AutoKeys implements TopicDAO {
 	}
 	
 	public List<TopicJsonFeed> selectRecentFromForum(int forumId, int queryLimit, BookmarkableURIBuilder uriBuilder) {
-		String sql = "SELECT t.*, p.user_id AS last_user_id, p.post_time, p.attach AS attach "+
+		String sql = "SELECT t.topic_title, t.topic_id, t.topic_time, t.topic_views, t.user_id, t.topic_replies, p.user_id AS last_user_id, p.post_time, p.attach AS attach "+
 		" FROM jforum_topics t, jforum_posts p "+
 		" WHERE p.post_id = t.topic_last_post_id AND t.forum_id = ? "+
 		" ORDER BY t.topic_time DESC LIMIT 0,?";
@@ -1242,7 +1242,7 @@ public class GenericTopicDAO extends AutoKeys implements TopicDAO {
 			if (sbFirst.length() > 0) {
 				sbFirst.delete(sbFirst.length() - 1, sbFirst.length());
 				
-				sql = "SELECT user_id, username, user_email FROM jforum_users WHERE user_id IN (#ID#)";
+				sql = "SELECT user_id, username FROM jforum_users WHERE user_id IN (#ID#)";
 				sql = sql.replaceAll("#ID#", sbFirst.toString());
 
 				Map<Integer, String> users = new HashMap<Integer, String>();
