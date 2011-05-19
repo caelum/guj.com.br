@@ -3,6 +3,8 @@ package br.com.caelum.guj.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import net.jforum.DBConnection;
+import net.jforum.JForumExecutionContext;
 import net.jforum.dao.generic.GenericTopicDAO;
 import br.com.caelum.guj.feeds.TopicJsonFeed;
 import br.com.caelum.guj.uri.BookmarkableURIBuilder;
@@ -28,8 +30,19 @@ public class JsonFeedController {
 		List<TopicJsonFeed> topics = new ArrayList<TopicJsonFeed>();
 
 		if (forumId != INTERNAL_FORUM) {
-			GenericTopicDAO dao = new GenericTopicDAO();
-			topics = dao.selectRecentFromForum(forumId, MAX_RESULTS, uriBuilder);
+			JForumExecutionContext context = null;
+			try {
+				context = JForumExecutionContext.get();
+				context.setConnection(DBConnection.getImplementation().getConnection());
+				JForumExecutionContext.set(context);
+				
+				GenericTopicDAO dao = new GenericTopicDAO();
+				topics = dao.selectRecentFromForum(forumId, MAX_RESULTS, uriBuilder);
+			}catch (Exception e) {
+			} finally {
+				JForumExecutionContext.finish();
+			}
+			
 		}
 		
 		result.use(Results.json()).withoutRoot().from(topics).recursive().serialize();
