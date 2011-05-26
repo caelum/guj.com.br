@@ -45,6 +45,6 @@ public class JsonFeedController {
 			
 		}
 		
-		result.use(Results.json()).withoutRoot().from(topics).recursive().serialize();
+		result.use(Results.jsonp()).withCallback("callback").withoutRoot().from(topics).recursive().serialize();
 	}
 }
