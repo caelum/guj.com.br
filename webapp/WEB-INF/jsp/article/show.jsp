@@ -32,9 +32,9 @@ window.onload = function () {
     <c:if test="${not empty article.content}">
 	    <div style="float: left; padding: 10px;">
 			<script type="text/javascript"><!--
-			google_ad_client = "pub-7098584793170190";
+			google_ad_client = "ca-pub-4821508865882703";
 			/* GUJ Quadrado Artigos */
-			google_ad_slot = "2113535366";
+			google_ad_slot = "4286648793";
 			google_ad_width = 300;
 			google_ad_height = 250;
 			//-->
