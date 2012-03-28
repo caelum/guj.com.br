@@ -17,7 +17,7 @@
 <SCRIPT LANGUAGE=JavaScript>
 <!--
 //configuration
-OAS_url = 'http://media.realmedia.com.br/RealMedia/ads/';
+OAS_url = 'http://de.realmediadigital.com/RealMedia/ads/';
 OAS_listpos = 'Top,Right,x01,x04';
 OAS_query = '';
 OAS_sitepage = '${rmSection}';
