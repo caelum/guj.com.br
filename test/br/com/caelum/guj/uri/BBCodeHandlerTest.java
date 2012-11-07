@@ -51,7 +51,7 @@ public class BBCodeHandlerTest {
 	@Test
 	public void shouldReturnTrueForUrlContainingCaelum() {
 		String url = "http://www.meusite.com.br/caelum-eh-legal";
-		String siteCaelum = "http://caelum.com.br";
+		String siteCaelum = "http://www.caelum.com.br";
 		
 		assertTrue(url.matches(regexWithoutTags));
 		assertTrue(siteCaelum.matches(regexWithoutTags));
@@ -92,6 +92,17 @@ public class BBCodeHandlerTest {
 		
 		assertTrue(matcher.matches());
 		assertEquals(url, matcher.group(2));
+	}
+	
+	@Test
+	public void shouldReturnMatchedUrlIfSurroundedWithUrl() {
+		String site = "www.somesite.com/evento-conexaojava-em-sp";
+		String url = "[url]" + site + "[/url]";
+		Pattern pattern = Pattern.compile(regexWithTags);
+		Matcher matcher = pattern.matcher(url);
+		
+		assertTrue(matcher.matches());
+		assertEquals(site, matcher.group(1));
 	}
 	
 	@Test

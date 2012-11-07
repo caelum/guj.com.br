@@ -221,7 +221,7 @@
 	
 	<!-- URL -->
 	<match name="simple-url-follow" removeQuotes="true">
-		<regex>(?i)\[url\]([\w]+?://(www\.)?(apple\.com|uol\.com\.br|globo\.com|oracle\.com|sun\.com|(.*?)(caelum|casadocodigo|ondetrabalhar|qcon|conexaojava|mundoj)).*?)\[/url\]</regex>
+		<regex>(?i)\[url\](([\w]+?://)?(www\.)?(apple\.com|uol\.com\.br|globo\.com|oracle\.com|sun\.com|(.*?)(caelum|casadocodigo|ondetrabalhar|qcon|conexaojava|mundoj)).*?)\[/url\]</regex>
 		<replace>
 		<![CDATA[
 		<a class="snap_shots" href="$1" target="_new" >$1</a>
