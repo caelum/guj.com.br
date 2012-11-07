@@ -200,7 +200,7 @@
 
 					<#if useSignature>
 						<tr>
-							<td colspan="2" class="${rowColor}" width="100%" height="28"><hr/><span class="gensmall">${user.signature?replace("<a ","<a rel='nofollow' ")}</span></td>
+							<td colspan="2" class="${rowColor}" width="100%" height="28"><hr/><span class="gensmall">${user.signature?replace("rel='nofollow'","")}</span></td>
 						</tr>
 					</#if>
 		
