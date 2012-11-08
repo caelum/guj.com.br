@@ -7,6 +7,7 @@ import static org.junit.Assert.assertTrue;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import net.jforum.util.bbcode.BBCode;
 import net.jforum.util.bbcode.BBCodeHandler;
 import net.jforum.util.preferences.ConfigKeys;
 import net.jforum.util.preferences.SystemGlobals;
@@ -96,13 +97,18 @@ public class BBCodeHandlerTest {
 	
 	@Test
 	public void shouldReturnMatchedUrlIfSurroundedWithUrl() {
-		String site = "www.somesite.com/evento-conexaojava-em-sp";
+		String site = "www.caelum.com.br";
 		String url = "[url]" + site + "[/url]";
 		Pattern pattern = Pattern.compile(regexWithTags);
 		Matcher matcher = pattern.matcher(url);
 		
 		assertTrue(matcher.matches());
 		assertEquals(site, matcher.group(1));
+		
+		BBCode bb = handler.findByName("simple-url-follow");
+		String text = url;
+		text = text.replaceAll(bb.getRegex(), bb.getReplace());
+		System.out.println(text);
 	}
 	
 	@Test
