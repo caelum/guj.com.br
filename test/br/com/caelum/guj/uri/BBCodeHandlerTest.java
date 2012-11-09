@@ -36,6 +36,7 @@ public class BBCodeHandlerTest {
 	
 	@Test
 	public void shouldReturnTrueForBigCompaniesUrl() {
+		assertTrue("http://www.caelum.com.br".matches(regexWithoutTags));
 		assertTrue("http://www.guj.com.br".matches(regexWithoutTags));
 		assertTrue("http://www.uol.com.br".matches(regexWithoutTags));
 		assertTrue("http://www.apple.com".matches(regexWithoutTags));
@@ -130,7 +131,7 @@ public class BBCodeHandlerTest {
 	public void shouldReturnTrueForCaelumSite() {
 		String site = "    http://www.caelum.com.br/evento/gtug-appengine/";
 		String url = "[url]" + site + "[/url]";
-		String siteSemTagsUrl = "   http://www.caelum.com.br/evento/gtug-appengine/";
+		String siteSemTagsUrl = "http://www.caelum.com.br/evento/gtug-appengine/";
 		
 		Pattern pattern = Pattern.compile(regexWithTags);
 		Matcher matcher = pattern.matcher(url);
