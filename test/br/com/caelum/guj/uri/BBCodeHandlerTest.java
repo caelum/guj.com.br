@@ -36,6 +36,7 @@ public class BBCodeHandlerTest {
 	
 	@Test
 	public void shouldReturnTrueForBigCompaniesUrl() {
+		assertTrue("http://www.guj.com.br".matches(regexWithoutTags));
 		assertTrue("http://www.uol.com.br".matches(regexWithoutTags));
 		assertTrue("http://www.apple.com".matches(regexWithoutTags));
 		assertTrue("http://www.globo.com".matches(regexWithoutTags));
@@ -45,8 +46,11 @@ public class BBCodeHandlerTest {
 	
 	@Test
 	public void shouldReturnFalseForUrlWithoutKeywords() {
-		String url = "http://www.meusite.com.br/perfect-circle-eh-legal";
-		assertFalse(url.matches(regexWithoutTags));
+		assertFalse("http://www.meusite.com.br/perfect-circle-eh-legal".matches(regexWithoutTags));
+		assertFalse("   http://www.meusite.com.br/perfect-circle-eh-legal".matches(regexWithoutTags));
+		assertFalse("www.meusite.com.br/perfect-circle-eh-legal".matches(regexWithoutTags));
+		assertFalse("[url]www.meusite.com.br/perfect-circle-eh-legal[/url]".matches(regexWithoutTags));
+		assertFalse("[url]   www.meusite.com.br/perfect-circle-eh-legal  [/url]".matches(regexWithoutTags));
 	}
 	
 	@Test
@@ -108,7 +112,6 @@ public class BBCodeHandlerTest {
 		BBCode bb = handler.findByName("simple-url-follow");
 		String text = url;
 		text = text.replaceAll(bb.getRegex(), bb.getReplace());
-		System.out.println(text);
 	}
 	
 	@Test
@@ -121,6 +124,21 @@ public class BBCodeHandlerTest {
 		
 		assertTrue(matcher.matches());
 		assertEquals(site, matcher.group(1));
+	}
+	
+	@Test
+	public void shouldReturnTrueForCaelumSite() {
+		String site = "    http://www.caelum.com.br/evento/gtug-appengine/";
+		String url = "[url]" + site + "[/url]";
+		String siteSemTagsUrl = "   http://www.caelum.com.br/evento/gtug-appengine/";
+		
+		Pattern pattern = Pattern.compile(regexWithTags);
+		Matcher matcher = pattern.matcher(url);
+		
+		assertTrue(matcher.matches());
+		assertEquals(site, matcher.group(1));
+		
+		assertTrue(siteSemTagsUrl.matches(regexWithoutTags));
 	}
 	
 }
