@@ -187,7 +187,7 @@
 		<regex>(^|[\n ]|\()([\w]+?://[^ \"\n\r\t&lt;\)\[]*)</regex>
 		<replace>
 		<![CDATA[
-		$1<a class="snap_shots" href="$2" target="_blank" rel="nofollow1">$2</a>
+		$1<a class="snap_shots" href="$2" target="_blank" rel="nofollow">$2</a>
 		]]>
 		</replace>
 	</match>
@@ -196,7 +196,7 @@
 		<regex>(^|[\n ]\()(www\.[^ \"\t\n\r&lt;\)\[]*)</regex>
 		<replace>
 		<![CDATA[
-		$1<a class="snap_shots" href="http://$2" target="_blank" rel="nofollow2">$2</a>
+		$1<a class="snap_shots" href="http://$2" target="_blank" rel="nofollow">$2</a>
 		]]>
 		</replace>
 	</match>
@@ -205,7 +205,7 @@
 		<regex>(^|[\n ]\()(ftp\.[^ \"\t\n\r&lt;\)\[]*)</regex>
 		<replace>
 		<![CDATA[
-		$1<a class="snap_shots" href="ftp://$2" target="_blank" rel="nofollow3">$2</a>
+		$1<a class="snap_shots" href="ftp://$2" target="_blank" rel="nofollow">$2</a>
 		]]>
 		</replace>
 	</match>
@@ -234,7 +234,7 @@
 		<regex>(?i)\[url\](.*?)\[/url\]</regex>
 		<replace>
 		<![CDATA[
-		<a class="snap_shots" href="$1" target="_new" rel="nofollow4">$1</a>
+		<a class="snap_shots" href="$1" target="_new" rel="nofollow">$1</a>
 		]]>
 		</replace>
 	</match>
@@ -244,7 +244,7 @@
 		<regex>(?i)\[url=['"]?(.*?[^'"])['"]?\](.*?)\[/url\]</regex>
 		<replace>
 		<![CDATA[
-		<a class="snap_shots" href="$1" target="_new" rel="nofollow5">$2</a>
+		<a class="snap_shots" href="$1" target="_new" rel="nofollow">$2</a>
 		]]>
 		</replace>
 	</match>
