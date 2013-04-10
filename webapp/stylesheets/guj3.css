@@ -69,14 +69,14 @@ input.selecionado {
 #header {
   margin: 0;
   padding: 0;
-  background-color: #3a77a6;
+  background-color: #244b69;
 }
 
 #logo {
   margin: 0 5px;
   padding-top: 0;
   background: transparent url(../images/guj/novo-logo-guj.png) no-repeat 0 15px;
-  height: 70px;
+  height: 74px;
   width: 230px;
   display: block;
   text-indent: -9999px;
@@ -88,14 +88,6 @@ input.selecionado {
   color: #fff;
   font-size: 12px;
   font-weight: normal;
-}
-
-#header .container1 {
-  background: transparent url(../images/guj/header_inferior_esquerdo.gif) no-repeat bottom left;
-}
-
-#header .container2 {
-  background: transparent url(../images/guj/header_inferior_direito.gif) no-repeat bottom right;
 }
 
 #footer {
@@ -113,7 +105,7 @@ input.selecionado {
 }
 
 #menu {
-  background: transparent url(../images/guj/menu_verde_background.gif) repeat-x;
+  background-color: #84bc41;
   margin: 0;
   padding: 0;
   height: 44px;

@@ -7,7 +7,7 @@
 </c:if>
 
 <c:if test="${empty title}">
-	<c:set var="title">Not&iacute;cias, artigos e o maior f&oacute;rum brasileiro sobre Java - Home</c:set>
+	<c:set var="title">O portal de desenvolvedores do Brasil</c:set>
 </c:if>
 
 <title>GUJ - ${title}</title>
@@ -77,7 +77,7 @@ $().ready(function() {
     	</div>
       <div class="container2">
         <a href="<c:url value="/"/>" id="logo">GUJ</a>
-        <h2>Not&iacute;cias, artigos e o maior f&oacute;rum brasileiro sobre Java</h2></a>
+        <h2>${title}</h2></a>
       </div>
     </div>
   </div>
