@@ -87,6 +87,9 @@ $().ready(function() {
       <li class="home">
         <a href="<c:url value="/"/>">home</a>
       </li>
+     <li class="guj-respostas">
+		<a href="<c:url value="/perguntas"/>">guj respostas (beta)</a>
+     </li>
       <li class="forum">
         <a href="<c:url value="/forums/list.java"/>">f&oacute;rum</a>
       </li>
@@ -97,14 +100,6 @@ $().ready(function() {
       
       <li class="topics">
         <a href="<c:url value="/recentTopics/list.java"/>">t&oacute;picos recentes</a>
-      </li>
-        
-      <li class="empregos">
-		<a href="<c:url value="/jobs"/>">empregos</a>
-      </li>
-    
-      <li class="artigos">
-      	<a href="<c:url value="/articles"/>">artigos</a>
       </li>
     	<!--
       <li class="blogs">
