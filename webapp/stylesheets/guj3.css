@@ -3,7 +3,7 @@ body {
   margin: 0 auto;
   padding: 0;
   background: #fff;
-  font-family: "Trebuchet MS", Tahoma, Arial, Serif;
+  font-family: Arial,'Liberation Sans','DejaVu Sans',sans-serif;
   font-size: 15px;
   color: #333333;
 }
