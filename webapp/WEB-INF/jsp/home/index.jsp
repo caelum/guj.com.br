@@ -23,11 +23,11 @@ $().ready(function() {
 		    <a href="#">Novo GuJ (beta)</a>
 		  </h2>
 		  <ul>
-			  	<c:forEach items="${forum}" var="topic">
+			  	<c:forEach items="${brutalQuestions}" var="question">
 				<li>
-					<a href="${topic.link}">${fn:escapeXml(topic.title)}</a>
-				<span class="autor">por ${topic.creator},
-				em <fmt:formatDate pattern="dd/MM/yyyy HH:mm" value="${topic.date}"/></span>
+					<a href="${question.link}">${fn:escapeXml(question.title)}</a>
+				<span class="autor">por ${question.creator},
+				em <fmt:formatDate pattern="dd/MM/yyyy HH:mm" value="${question.date}"/></span>
 				</li>
 			</c:forEach>
 			</ul>

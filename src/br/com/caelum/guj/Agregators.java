@@ -14,6 +14,7 @@ public class Agregators {
 	private Agregator forumAgregator;
 	private Agregator newsAgregator;
 	private Agregator infoqAgregator;
+	private Agregator brutalAgregator;
 
 	@PostConstruct
 	public void init() {
@@ -22,6 +23,7 @@ public class Agregators {
 		this.forumAgregator = new Agregator("forum.refresh.interval", "forum.items", "forum.url");
 		this.newsAgregator = new Agregator("news.refresh.interval", "news.items", "news.url");
 		this.infoqAgregator = new Agregator("infoq.refresh.interval", "infoq.items", "infoq.url");
+		this.brutalAgregator = new Agregator("brutal.refresh.interval", "brutal.items", "brutal.url");
 
 		JobsAgregator.start();
 	}
@@ -30,6 +32,7 @@ public class Agregators {
 		result.include("infoq", this.infoqAgregator.getItems());
 		result.include("news", this.newsAgregator.getItems());
 		result.include("forum", this.forumAgregator.getItems());
+		result.include("brutalQuestions", this.brutalAgregator.getItems());
 		result.include("jobs", JobsAgregator.getItems());
 	}
 }
