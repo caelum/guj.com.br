@@ -20,22 +20,24 @@ $().ready(function() {
 		<b class="spiffy"><b class="spiffy1"><b></b></b><b class="spiffy2"><b></b></b><b class="spiffy3"></b><b class="spiffy4"></b><b class="spiffy5"></b></b>
 		<div class="spiffyfg">
 		  <h2>
-		    <a href="<c:url value="/recentTopics/list.java"/>">Forum - &Uacute;ltimas mensagens</a>
+		    <a href="#">Novo GuJ (beta)</a>
 		  </h2>
 		  <ul>
-		  	<c:forEach items="${forum}" var="topic">
-		  		<li>
-		  			<a href="${topic.link}">${fn:escapeXml(topic.title)}</a>
-			      	<span class="autor">por ${topic.creator},
-			      	em <fmt:formatDate pattern="dd/MM/yyyy HH:mm" value="${topic.date}"/></span>
-			    </li>
-	  		</c:forEach>
-		  </ul>
+			  	<c:forEach items="${forum}" var="topic">
+				<li>
+					<a href="${topic.link}">${fn:escapeXml(topic.title)}</a>
+				<span class="autor">por ${topic.creator},
+				em <fmt:formatDate pattern="dd/MM/yyyy HH:mm" value="${topic.date}"/></span>
+				</li>
+			</c:forEach>
+			</ul>
+			
+			<%@include file="/tag_cloud.jsp" %>
 		</div>
-		
 		<b class="spiffy"><b class="spiffy5"></b><b class="spiffy4"></b><b class="spiffy3"></b><b class="spiffy2"><b></b></b><b class="spiffy1"><b></b></b></b>
 	</div>
-
+	
+	
 	<div class="news box">
 		<b class="spiffy"><b class="spiffy1"><b></b></b><b class="spiffy2"><b></b></b><b class="spiffy3"></b><b class="spiffy4"></b><b class="spiffy5"></b></b>
 		<div class="spiffyfg">
@@ -93,21 +95,27 @@ $().ready(function() {
 		<b class="spiffy"><b class="spiffy5"></b><b class="spiffy4"></b><b class="spiffy3"></b><b class="spiffy2"><b></b></b><b class="spiffy1"><b></b></b></b>
 	</div>
 
-	<div class="articles box">
+	<div class="forum box">
 		<b class="spiffy"><b class="spiffy1"><b></b></b><b class="spiffy2"><b></b></b><b class="spiffy3"></b><b class="spiffy4"></b><b class="spiffy5"></b></b>
 		<div class="spiffyfg">
-			  <div style="text-align: center;">
-			  	<iframe src="http://www.facebook.com/plugins/likebox.php?href=http%3A%2F%2Fwww.facebook.com%2FGUJ.com.br&amp;width=370&amp;colorscheme=light&amp;show_faces=true&amp;stream=false&amp;header=false&amp;height=267" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:370px; height:267px;" allowTransparency="true"></iframe>
-			  	
-			  	
-			  	<iframe src="http://www.facebook.com/plugins/recommendations.php?site=www.guj.com.br&amp;width=370&amp;height=300&amp;header=true&amp;colorscheme=light" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:370px; height:300px;" allowTransparency="true"></iframe>
-			  	
-			  </div>
-			  <br />
+		  <h2>
+		    <a href="<c:url value="/recentTopics/list.java"/>">Forum - &Uacute;ltimas mensagens</a>
+		  </h2>
+		  <ul>
+		  	<c:forEach items="${forum}" var="topic">
+		  		<li>
+		  			<a href="${topic.link}">${fn:escapeXml(topic.title)}</a>
+			      	<span class="autor">por ${topic.creator},
+			      	em <fmt:formatDate pattern="dd/MM/yyyy HH:mm" value="${topic.date}"/></span>
+			    </li>
+	  		</c:forEach>
+		  </ul>
 		</div>
+		
 		<b class="spiffy"><b class="spiffy5"></b><b class="spiffy4"></b><b class="spiffy3"></b><b class="spiffy2"><b></b></b><b class="spiffy1"><b></b></b></b>
 	</div>
-
+	
+	
 	<div class="posts box">
 		<b class="spiffy"><b class="spiffy1"><b></b></b><b class="spiffy2"><b></b></b><b class="spiffy3"></b><b class="spiffy4"></b><b class="spiffy5"></b></b>
 		<div class="spiffyfg">
@@ -123,42 +131,22 @@ $().ready(function() {
 		</div>
 		<b class="spiffy"><b class="spiffy5"></b><b class="spiffy4"></b><b class="spiffy3"></b><b class="spiffy2"><b></b></b><b class="spiffy1"><b></b></b></b>			
 	</div>
-	<div class="twitter box">
-		<script src="http://widgets.twimg.com/j/2/widget.js"></script>
-<script>
-new TWTR.Widget({
-  version: 2,
-  type: 'search',
-  search: '#guj -javalivros',
-  interval: 6000,
-  title: '',
-  subject: 'O que falam do #GUJ?',
-  width: 'auto',
-  height: 300,
-  theme: {
-    shell: {
-      background: '#8ec1da',
-      color: '#ffffff'
-    },
-    tweets: {
-      background: '#ffffff',
-      color: '#444444',
-      links: '#1985b5'
-    }
-  },
-  features: {
-    scrollbar: false,
-    loop: true,
-    live: true,
-    hashtags: true,
-    timestamp: true,
-    avatars: true,
-    toptweets: true,
-    behavior: 'default'
-  }
-}).render().start();
-</script>
+	
+	<div class="articles box">
+		<b class="spiffy"><b class="spiffy1"><b></b></b><b class="spiffy2"><b></b></b><b class="spiffy3"></b><b class="spiffy4"></b><b class="spiffy5"></b></b>
+		<div class="spiffyfg">
+			  <div style="text-align: center;">
+			  	<iframe src="http://www.facebook.com/plugins/likebox.php?href=http%3A%2F%2Fwww.facebook.com%2FGUJ.com.br&amp;width=370&amp;colorscheme=light&amp;show_faces=true&amp;stream=false&amp;header=false&amp;height=267" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:370px; height:267px;" allowTransparency="true"></iframe>
+			  	
+			  	
+			  	<iframe src="http://www.facebook.com/plugins/recommendations.php?site=www.guj.com.br&amp;width=370&amp;height=300&amp;header=true&amp;colorscheme=light" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:370px; height:300px;" allowTransparency="true"></iframe>
+			  	
+			  </div>
+			  <br />
+		</div>
+		<b class="spiffy"><b class="spiffy5"></b><b class="spiffy4"></b><b class="spiffy3"></b><b class="spiffy2"><b></b></b><b class="spiffy1"><b></b></b></b>
 	</div>
+	
 	<div class="infoq box">
 		<b class="spiffy"><b class="spiffy1"><b></b></b><b class="spiffy2"><b></b></b><b class="spiffy3"></b><b class="spiffy4"></b><b class="spiffy5"></b></b>
 		<div class="spiffyfg">

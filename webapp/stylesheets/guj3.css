@@ -2,7 +2,7 @@
 body {
   margin: 0 auto;
   padding: 0;
-  background: #e5ecf3;
+  background: #fff;
   font-family: "Trebuchet MS", Tahoma, Arial, Serif;
   font-size: 15px;
   color: #333333;
@@ -93,15 +93,16 @@ input.selecionado {
 #footer {
 	clear: both;
 	margin: 0;
-	padding: 0;
+	padding: 10px;
 	background-color: #f4f4e6;
-	height: 46px;
+	height: 100px;
 }
 
-#footer p {
+#footer .footer-item{
 	font-size: 12px;
 	text-align: center;
-	padding: 10px;
+	margin:0;
+	padding:2px 0;
 }
 
 #menu {
@@ -621,4 +622,36 @@ input.selecionado {
 	float:right; 
 	width:55%;	
 	font-style: italic;
+}
+
+/*Tags*/
+
+
+.main-tags{
+	-webkit-padding-start: 6px;	
+	-moz-padding-start: 6px;	
+	padding-start: 6px;	
+}
+
+.main-tags li{
+	display: inline-block;
+}
+
+.main-tag {
+	background-color: #f8f8f8;
+	border: 1px solid #adc2d0;
+	color: #3e6d8e;
+	font-size: 10px;
+	padding: 0 0.4em;
+	line-height: 1.45em;
+	border-radius: 5px;
+	display:block;
+}
+
+.main-tag:hover {
+	background-color: #e0eaf1;
+}
+
+#footer .main-tags{
+	margin:0;
 }
