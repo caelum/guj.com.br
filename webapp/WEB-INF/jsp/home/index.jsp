@@ -1,6 +1,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@taglib prefix="tags" tagdir="/WEB-INF/tags"%>
 
 <c:set var="rmSection" value="guj/home"/>
 
@@ -27,7 +28,7 @@ $().ready(function() {
 					  	<c:forEach items="${brutalQuestions}" var="question">
 						<li>
 							<a href="${question.link}">${fn:escapeXml(question.title)}</a>
-							em <fmt:formatDate pattern="dd/MM/yyyy HH:mm" value="${question.date}"/></span>
+							-  <tags:prettyTime time="${question.date}"/>
 						</li>
 					</c:forEach>
 					</ul>
@@ -48,7 +49,7 @@ $().ready(function() {
 					  	<c:forEach items="${news}" var="n">
 					  		<li>
 					  			<a href="${n.link}">${fn:escapeXml(n.title)}</a>
-						      	em <fmt:formatDate pattern="dd/MM/yyyy HH:mm" value="${n.date}"/></span>
+							-  <tags:prettyTime time="${n.date}"/>
 						    </li>
 				  		</c:forEach>
 					  </ul>
@@ -72,7 +73,7 @@ $().ready(function() {
 				  	<c:forEach items="${forum}" var="topic">
 				  		<li>
 				  			<a href="${topic.link}">${fn:escapeXml(topic.title)}</a>
-					      	em <fmt:formatDate pattern="dd/MM/yyyy HH:mm" value="${topic.date}"/></span>
+							-  <tags:prettyTime time="${topic.date}"/>
 					    </li>
 			  		</c:forEach>
 				  </ul>
@@ -91,7 +92,7 @@ $().ready(function() {
 					  	<c:forEach items="${jobs}" var="job">
 					  		<li>
 					      		<span class="post"><a href="${job.link}" target="_blank">${fn:escapeXml(job.title)}</a>,</span>
-					      		<span class="data">em <fmt:formatDate pattern="dd/MM/yyyy" value="${job.date}"/></span>
+					      		<span class="data"> - <tags:prettyTime time="${job.date}"/></span>
 					    	</li>
 					  	</c:forEach>
 					  </ul>
@@ -118,7 +119,7 @@ $().ready(function() {
 				  		<c:forEach items="${infoq}" var="item">
 					  		<li>
 					  			<a href="${item.link}">${fn:escapeXml(item.title)}</a>
-						      	<span class="data">em <fmt:formatDate pattern="dd/MM/yyyy" value="${item.date}"/></span>
+						      	<span class="data">- <tags:prettyTime time="${item.date}"/></span>
 						    </li>
 				  		</c:forEach>
 					  </ul>
