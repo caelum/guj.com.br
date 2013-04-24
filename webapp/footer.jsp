@@ -9,7 +9,18 @@ OAS_AD('x01');
 
 <iframe src="<c:url value="/ping_session.jsp" />" height="0" width="0" frameborder="0" scrolling="no"></iframe>
   <div id="footer">
-  	<p>Apoiado e desenvolvido por <a href="http://www.caelum.com.br">Caelum Cursos Java</a> - GUJ: desde 2002 <br /> <a href="http://www.casadocodigo.com.br">Conhe&ccedil;a tamb&eacute;m os livros da Casa do C&oacute;digo</a>&nbsp;</p>
+  	<p class="footer-item">
+  		Apoiado e desenvolvido por <a href="http://www.caelum.com.br">Caelum Cursos Java</a> - GUJ: desde 2002 <br /> 
+	</p>
+  	<p class="footer-item">
+	  	<a href="http://www.casadocodigo.com.br">Conhe&ccedil;a tamb&eacute;m os livros da Casa do C&oacute;digo</a>&nbsp;<br/>
+	</p>
+  	<p class="footer-item">
+		Tags do novo GUJ Respostas:
+	</p>
+	<div class="footer-item">
+		<%@include file="/tag_cloud.jsp" %>
+	</div>
   </div>
  
 <script type="text/javascript">
