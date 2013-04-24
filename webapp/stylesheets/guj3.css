@@ -262,7 +262,7 @@ input.selecionado {
 }
 
 #content a:hover {
-  border-bottom: 2px solid #ececcb;
+  border-bottom: 1px solid #ececcb;
 }
 
 #content .box {
@@ -614,8 +614,9 @@ input.selecionado {
 	display:block;
 }
 
-.main-tag:hover {
-	background-color: #e0eaf1;
+#content a.main-tag:hover {
+        background-color: #e0eaf1;
+        border-bottom: 1px solid #adc2d0;
 }
 
 #footer .main-tags{
