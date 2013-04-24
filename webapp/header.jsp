@@ -11,7 +11,7 @@
 </c:if>
 
 <title>GUJ - ${title}</title>
-<link href="<c:url value="/stylesheets/guj3.css?20090222"/>" media="screen" rel="stylesheet" type="text/css" />
+<link href="<c:url value="/stylesheets/guj3.css?20130424"/>" media="screen" rel="stylesheet" type="text/css" />
 
 <!-- OAS SETUP begin -->
 <SCRIPT LANGUAGE=JavaScript>
