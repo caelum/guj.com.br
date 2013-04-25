@@ -618,6 +618,17 @@ input.selecionado {
 	margin:0;
 }
 
+/*Facebook Curtir*/
+.facebook-curtir{
+	border:none;
+	overflow:hidden;
+	width:100px;
+	height:21px;
+	position:relative;
+	top:7px;
+	margin-left:15px;
+}
+
 /*Responsive*/
 
 @media only screen and (max-width: 1200px) {
