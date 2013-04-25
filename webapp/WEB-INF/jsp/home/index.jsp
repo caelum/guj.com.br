@@ -7,13 +7,6 @@
 
 <%@ include file="/header.jsp" %>
 <style type="text/css">@import url(<c:url value="/stylesheets/opencloud.css"/>);</style>
-<script type="text/javascript" src="<c:url value="/javascripts/guj.js"/>"></script>
-
-<script type="text/javascript">
-$().ready(function() {
-	alignHomeBoxes();
-});
-</script>
 
 <div id="content">
 	<div id="home">

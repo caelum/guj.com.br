@@ -151,6 +151,10 @@ input.selecionado {
   background: transparent url(../images/guj/layout_edit_header.gif) no-repeat center left;
 }
 
+#menu ul li.guj-respostas-pergunte {
+  background: transparent url(../images/guj/question_mark.png) no-repeat center left;
+}
+
 #menu ul li.noticias {
   background: transparent url(../images/guj/book_open_header.gif) no-repeat center left;
 }
