@@ -1,6 +1,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
 <head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="content-type" content="text/html;charset=ISO-8859-1" />
 <c:if test="${empty rmSection}">
 	<c:set var="rmSection" value="guj/internas"/>
