@@ -86,7 +86,7 @@ input.selecionado {
   margin: 0;
   padding: 10px 0 15px 15px;
   color: #fff;
-  font-size: 12px;
+  font-size: .8em;
   font-weight: normal;
 }
 
@@ -99,7 +99,7 @@ input.selecionado {
 }
 
 #footer .footer-item{
-	font-size: 12px;
+	font-size: .8em;
 	text-align: center;
 	margin:0;
 	padding:2px 0;
@@ -132,7 +132,7 @@ input.selecionado {
   padding: 0 0 0 20px;
   color: #fff;
   font-variant: small-caps;
-  font-size: 18px;
+  font-size: 1.2em;
 }
 
 #menu ul li a {
@@ -199,14 +199,13 @@ input.selecionado {
   padding: 0;
   height: 40px;
   background: transparent url(../images/guj/submenu_background.gif) repeat-x;
-  font-size: 13px;
+  font-size: .85em;
   line-height: 40px;
   overflow: hidden;
 }
 
-#submenu a:link, #submenu a:visited {
+#submenu a {
 	color: #333;
-	font-size: 13px;
 }
 
 #submenu a:hover {
@@ -276,7 +275,7 @@ input.selecionado {
   float: left;
   width: 27%;
   float: left;
-  font-size: 14px;
+  font-size: .9em;
 }
 
 #content .big-box{
@@ -300,7 +299,7 @@ input.selecionado {
 #content .box h2 {
   margin: 0;
   padding: 5px 10px;
-  font-size: 18px;
+  font-size: 1.3em;
 }
 
 #content .forum .autor {
@@ -475,7 +474,7 @@ input.selecionado {
 }
 
 .right-bar h2 {
-	font-size: 14px;
+	font-size: .9em;
 	text-align: center;
 	margin-top: 0px;
 }
@@ -622,7 +621,8 @@ input.selecionado {
 /*Responsive*/
 
 @media only screen and (max-width: 1200px) {
-	#banner{
+	#banner,
+	#menu form.busca{
 		display:none;
 	}
 }
@@ -635,6 +635,14 @@ input.selecionado {
 	#content .posts{
 		height:580px;
 	}
+	
+}
+
+@media only screen and (max-width: 880px) {
+	#menu ul li.topics{
+		display:none;
+	}
+	
 }
 
 @media only screen and (max-width: 830px) {
@@ -648,6 +656,30 @@ input.selecionado {
 	}
 	
 	.news .oas_ad, .box.facebook{
-		display:none
+		display:none;
+	}
+}
+
+@media only screen and (max-width: 755px) {
+	#submenu{
+		display:none;
+	}
+}
+
+@media only screen and (max-width: 700px) {
+	#menu .noticias{
+		display:none;
+	}
+}
+
+@media only screen and (max-width: 590px) {
+	#menu .home{
+		display:none;
+	}
+}
+
+@media only screen and (max-width: 560px) {
+	body{
+		font-size:13px;
 	}
 }
