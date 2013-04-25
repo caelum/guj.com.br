@@ -270,7 +270,7 @@ input.selecionado {
   float: left;
   width: 27%;
   float: left;
-  font-size: 12px;
+  font-size: 14px;
 }
 
 #content .box ul {
@@ -292,10 +292,6 @@ input.selecionado {
 #content #home .home-group {
 	overflow:hidden;
 	margin-bottom:2%;
-}
-
-#content #home .forum ul li a {
-	font-weight: bold;
 }
 
 #content .forum .autor {
@@ -397,10 +393,6 @@ input.selecionado {
   list-style-image: url(../images/guj/page.gif);
 }
 
-#content #home .posts ul li .post {
-	font-weight: bold;
-}
-
 #content .posts .blog {
   font-weight: bold;
   font-style: italic;
@@ -408,7 +400,6 @@ input.selecionado {
 
 #content .posts .data {
   padding: 2px 0 2px 3px;
-  font-size: 12px;
 }
 
 #content .posts .content {
@@ -420,10 +411,6 @@ input.selecionado {
 #content .posts .vote {
   background: url(../images/guj/thumb_up.gif) no-repeat left top;
   padding: 0 0 0 20px;
-}
-
-#content #home .infoq ul li a {
-	font-weight: bold;
 }
 
 #content .jobs ul li {
