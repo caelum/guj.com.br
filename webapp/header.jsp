@@ -3,6 +3,14 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="content-type" content="text/html;charset=ISO-8859-1" />
+<meta name="description" content="GUJ - O portal de desenvolvedores do Brasil">
+
+<meta property="og:title" content="GUJ - O portal de desenvolvedores do Brasil">
+<meta property="og:site_name" content="guj.com.br">
+<meta property="og:url" content="http://www.guj.com.br">
+<meta property="og:type" content="forum">
+<meta property="og:image" content="<c:url value="/imgs/guj-logo.png"/>">
+
 <c:if test="${empty rmSection}">
 	<c:set var="rmSection" value="guj/internas"/>
 </c:if>
