@@ -139,35 +139,35 @@ input.selecionado {
   color: #fff;
 }
 
-#menu ul li.home {
+.home {
   background: transparent url(../images/guj/house.gif) no-repeat center left;
 }
 
-#menu ul li.forum {
+.forum {
   background: transparent url(../images/guj/comment_menu.gif) no-repeat center left;
 }
 
-#menu ul li.guj-respostas {
+.guj-respostas {
   background: transparent url(../images/guj/layout_edit_header.gif) no-repeat center left;
 }
 
-#menu ul li.guj-respostas-pergunte {
+.guj-respostas-pergunte {
   background: transparent url(../images/guj/question_mark.png) no-repeat center left;
 }
 
-#menu ul li.noticias {
+.noticias {
   background: transparent url(../images/guj/book_open_header.gif) no-repeat center left;
 }
 
-#menu ul li.topics {
+.topics {
   background: transparent url(../images/guj/recent_topics.gif) no-repeat center left;
 }
 
-#menu ul li.empregos {
+.empregos {
   background: transparent url(../images/guj/group.gif) no-repeat center left;
 }
 
-#menu ul li.blogs {
+.blogs {
   background: transparent url(../images/guj/page.gif) no-repeat center left;
 }
 
@@ -687,5 +687,10 @@ input.selecionado {
 @media only screen and (max-width: 560px) {
 	body{
 		font-size:13px;
+	}
+	
+	#menu ul li{
+		background: transparent;
+		padding:0;
 	}
 }
