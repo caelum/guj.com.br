@@ -279,7 +279,7 @@ input.selecionado {
 }
 
 #content .big-box{
-	height:580px;
+	height:630px;
 }
 
 #content .small-box{
@@ -635,6 +635,10 @@ input.selecionado {
 	#banner,
 	#menu form.busca{
 		display:none;
+	}
+	
+	#content .big-box{
+		height:730px;
 	}
 }
 
