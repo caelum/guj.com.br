@@ -334,6 +334,10 @@ input.selecionado {
   list-style-image: url(../images/guj/book_open.gif);
 }
 
+#content .articles.box {
+	width: 93%;
+}
+
 #content .articles h3 {
   display: inline;
   vertical-align: top;
