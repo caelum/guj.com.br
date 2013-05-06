@@ -712,3 +712,13 @@ input.selecionado {
 		padding:0;
 	}
 }
+
+.chamada-novo-guj{
+	display:inline-block;
+	padding-top: 6em;
+	padding-left: .6em;
+}
+
+.chamada-novo-guj p{
+	padding: 0;
+}

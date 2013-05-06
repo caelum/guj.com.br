@@ -243,47 +243,12 @@ function smiliePopup()
 
 				<tr>
 					<!-- Smilies -->
-					<td class="row1" valign="top">
+					<td class="row1, " valign="top">
 						<span class="gen"><b>${I18n.getMessage("PostForm.body")}</b></span>
-
-						<table cellspacing="0" cellpadding="1" border="0" align="center">
-							<tr>
-								<td valign="middle" align="center">
-									<br />
-									<table cellspacing="0" cellpadding="5" width="100" border="0">
-										<tr align="center">
-											<td class="gensmall" colspan="4"><b>${I18n.getMessage("PostForm.emoticons")}</b></td>
-										</tr>
-
-										<#assign count = 0/>
-										<#assign lastSmilie = ""/>
-											<#list smilies as smilie>
-												<#if (count < 20)>
-													<#if lastSmilie == "" || lastSmilie.url != smilie.url>
-														<#if count % 4 == 0>
-															<tr>
-														</#if>
-														<td><a href="javascript:emoticon('${smilie.code}');">${smilie.url}</a></td>
-														<#assign count = count + 1/>
-														<#if count % 4 == 0>
-															</tr>
-														</#if>
-														<#assign lastSmilie = smilie/>
-													</#if>
-												</#if>
-											</#list>
-
-											<#if !(count % 4 == 0)>
-											</#if>
-										<tr align="center">
-											<td colspan="4">
-												<span class="nav"><a href="#" onclick="smiliePopup();return false;">${I18n.getMessage("PostForm.moreSmilies")}</a></span>
-											</td>
-										</tr>
-									</table>
-								</td>
-							</tr>
-						</table>
+						<span class="chamada-novo-guj">
+							<p>Duvida Técnica?</p>
+							<p>Experiemente o novo <a href="${contextPath}/perguntas">GUJ Respostas!</a></p>
+						</span>
 					</td>
 
 					<!-- BB Codes, textarea -->
