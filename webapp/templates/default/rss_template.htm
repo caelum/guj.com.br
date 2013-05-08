@@ -16,7 +16,7 @@
 				<#assign link><@bookmarkable.bookmarkableCompletePrePost item.link, item.title /></#assign>
 				<guid isPermaLink="true">${link}</guid>
 				<link>${link}</link>
-				<pubDate><![CDATA[${item.publishDate}]]> GMT</pubDate>
+				<pubDate><![CDATA[${item.publishDate} -0300]]></pubDate>
 				<author><![CDATA[ ${item.author}]]></author>
 			</item>
 		</#list>
