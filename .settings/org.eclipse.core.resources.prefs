@@ -2,6 +2,7 @@ eclipse.preferences.version=1
 encoding//webapp/templates/default/admin/admin_index.htm=UTF-8
 encoding//webapp/templates/default/admin/admin_welcome.htm=UTF-8
 encoding//webapp/templates/default/bookmark_insert.htm=UTF-8
+encoding//webapp/templates/default/bottom.htm=UTF-8
 encoding//webapp/templates/default/header.htm=UTF-8
 encoding//webapp/templates/default/install.htm=UTF-8
 encoding//webapp/templates/default/install_check_info.htm=UTF-8
