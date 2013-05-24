@@ -1,4 +1,3 @@
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <ol class="main-tags">
 	<li><a class="main-tag" href="<c:url value='/tag/java'/>">java</a></li>
 	<li><a class="main-tag" href="<c:url value='/tag/android'/>">android</a></li>

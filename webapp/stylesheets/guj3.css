@@ -109,10 +109,6 @@ input.selecionado {
 	padding-start: 0px;	
 }
 
-.footer-caelum {
-	color: #fff;
-}
-
 .footer .main-tags .main-tag {
 	font-size: 12px;
 }
@@ -125,17 +121,16 @@ input.selecionado {
 	margin-left: 1em;
 }
 
-.footer-menu-label{
-	margin-right: .3em;
+.footer a.footer-link {
+	color: #fff;
 }
 
-.footer-menu a {
-	color: #fff;
+.footer-menu a.footer-link{
 	font-weight: bold;
 }
 
-.footer-menu a:not(:last-child){
-	padding-right: 1em;
+.footer-menu-label, .footer-menu a:not(:last-child){
+	padding-right: .5em;
 }
 
 .footer-muted-message {
@@ -183,7 +178,7 @@ input.selecionado {
 	width: 183px;
 }
 
-.footer-sub-list li, .footer-sub-list a{
+.footer-sub-list li, .footer-sub-list a.footer-link{
 	color: #cfcfcf;
 	line-height: 1.1em;
 	display: inline;

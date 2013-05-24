@@ -32,7 +32,7 @@ OAS_AD('x01');
 			<li class="sponsor-box">
 				<a class="footer-logo cdc-logo" href="http://www.casadocodigo.com.br/">CASA DO CÓ“DIGO</a>
 				<ul class="footer-sub-list">
-					<li>Conheça também os livros da <a href="http://www.casadocodigo.com.br">Casa do Código</a></li>
+					<li>Conheça também os livros da <a class="footer-link" href="http://www.casadocodigo.com.br">Casa do Código</a></li>
 				</ul>
 			</li>
 		<!-- <li class="sponsor-box"><a class="footer-logo online-logo" href="#">Caelum Online</a></li> -->
@@ -43,15 +43,15 @@ OAS_AD('x01');
 		<span class="footer-menu">
 			<span class="footer-menu-label">GUJ Respostas: </span>
 			
-			<a href="<c:url value="/nao-resolvido" />" class="unsolved-link">Não solucionadas</a>
-			<a href="<c:url value="/sem-respostas" />">Sem respostas</a>
+			<a class="footer-link" href="<c:url value="/nao-resolvido" />" class="unsolved-link">Não solucionadas</a>
+			<a class="footer-link" href="<c:url value="/sem-respostas" />">Sem respostas</a>
 		</span>
 		<span class="footer-menu">
 			<span class="footer-menu-label">GUJ Fórum: </span>
-			<a href="<c:url value="/forums/list.java" />">Índice de Fóruns</a>
-			<a href="<c:url value="/recentTopics/list.java" />">Tópicos Recentes</a>
+			<a class="footer-link" href="<c:url value="/forums/list.java" />">Índice de Fóruns</a>
+			<a class="footer-link" href="<c:url value="/recentTopics/list.java" />">Tópicos Recentes</a>
 		</span>
-		<span class="footer-muted-message">Desenvolvido por <a class="footer-caelum" href="http://www.caelum.com.br">Caelum</a> &#8212 GUJ: desde 2002</span>
+		<span class="footer-muted-message">Desenvolvido por <a class="footer-link" href="http://www.caelum.com.br">Caelum</a> &#8212 GUJ: desde 2002</span>
 	</div>
 </div>
  
