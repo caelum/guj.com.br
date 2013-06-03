@@ -773,6 +773,15 @@ input.selecionado {
 	#menu .noticias{
 		display:none;
 	}
+	
+	/*Footer*/
+	.footer-list .sponsor-box{
+		width: 49%;
+	}
+	
+	.sponsor-box:first-child{
+		display: none;
+	}
 }
 
 @media only screen and (max-width: 590px) {
@@ -800,4 +809,15 @@ input.selecionado {
 
 .chamada-novo-guj p{
 	padding: 0;
+}
+
+@media only screen and (max-width: 400px) {
+	.footer-list .sponsor-box{
+		width: 100%;
+		margin-bottom: 3em;
+	}
+	
+	.footer-logo{
+		margin-bottom: 4%;
+	}
 }
