@@ -19,8 +19,11 @@
 			  <ul>
 				  	<c:forEach items="${brutalQuestions}" var="question">
 					<li>
-						<a href="${question.link}">${fn:escapeXml(question.title)}</a>
-						-  <tags:prettyTime time="${question.date}"/>
+						<span class="brutal-feed-description"> 
+							<a href="${question.link}">${fn:escapeXml(question.title)}</a>
+							-  <tags:prettyTime time="${question.date}"/>
+						</span>
+						<img src="${question.enclosure.location}" class="brutal-feed-image">
 					</li>
 				</c:forEach>
 				</ul>

@@ -363,7 +363,7 @@ input.selecionado {
 }
 
 #content .big-box{
-	height:630px;
+	height:690px;
 }
 
 #content .small-box{
@@ -720,6 +720,18 @@ input.selecionado {
 	position:relative;
 	top:7px;
 	margin-left:15px;
+}
+
+.brutal-feed-image {
+	vertical-align: middle;
+	border-radius: 100%;
+	background-color: #e3e8ec;
+}
+
+.brutal-feed-description {
+	display: inline-block;
+	vertical-align: middle;
+	width: 89%;
 }
 
 /*Responsive*/
