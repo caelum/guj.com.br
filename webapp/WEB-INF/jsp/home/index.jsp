@@ -10,20 +10,22 @@
 
 <div id="content">
 	<div id="home">
-		<div class="forum box big-box">
+		<div class="box big-box">
 			<b class="spiffy"><b class="spiffy1"><b></b></b><b class="spiffy2"><b></b></b><b class="spiffy3"></b><b class="spiffy4"></b><b class="spiffy5"></b></b>
 			<div class="spiffyfg">
 			  <h2>
 			    <a href='<c:url value="/perguntas"/>'>Últimas respostas</a>
 			  </h2>
-			  <ul>
+			  <ul class="brutal-feed">
 				  	<c:forEach items="${brutalQuestions}" var="question">
 					<li>
-						<span class="brutal-feed-description"> 
+						<span class="brutal-feed-title brutal-feed-data"> 
 							<a href="${question.link}">${fn:escapeXml(question.title)}</a>
-							-  <tags:prettyTime time="${question.date}"/>
 						</span>
-						<img src="${question.enclosure.location}" class="brutal-feed-image">
+						<div class="brutal-feed-description brutal-feed-data">
+							<img src="${question.enclosure.location}" class="brutal-feed-image">
+						 	<span class="brutal-feed-when"><tags:prettyTime time="${question.date}"/></span>
+						</div>						
 					</li>
 				</c:forEach>
 				</ul>

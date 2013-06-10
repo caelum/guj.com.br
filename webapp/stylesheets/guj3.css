@@ -722,16 +722,40 @@ input.selecionado {
 	margin-left:15px;
 }
 
+
+/* Brutal */
 .brutal-feed-image {
 	vertical-align: middle;
-	border-radius: 100%;
 	background-color: #e3e8ec;
 }
 
+.brutal-feed-title {
+	width: 75%;
+}
+
 .brutal-feed-description {
-	display: inline-block;
+	width: 23%;
+	text-align: center;
+}
+
+.brutal-feed-when{
+	font-size:.7em;
+	width: 100%;
+	display: block;
+}
+
+.brutal-feed-data{
 	vertical-align: middle;
-	width: 89%;
+	display: inline-block;
+}
+
+#content .box .brutal-feed{
+	padding: 0;
+}
+
+#content .box .brutal-feed li{
+	padding: .8em 0;
+	border-bottom: 1px solid #eaeaea;
 }
 
 /*Responsive*/
