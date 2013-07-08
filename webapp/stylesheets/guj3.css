@@ -152,7 +152,7 @@ input.selecionado {
 .footer-logo {
 	font-size: 0;
 	display: inline-block;
-	background-image: url("../imgs/footer-sprite.png");
+	background-image: url("http://www.guj.com.br/imgs/footer-sprite.png");
 	background-repeat: no-repeat;
 	vertical-align: top;
 	margin-bottom: 5%;
@@ -163,17 +163,17 @@ input.selecionado {
 	width: 100%;
 }
 
-.footer-list .guj-logo{
-	background-position: 0px -53px;
-	width: 161px;
+.footer-list .first-logo{
+	background-position: 0px -55px;
+	width: 124px;
 }
 
-.footer-list .caelum-logo{
-	background-position: 0px -106px;
+.footer-list .second-logo{
+	background-position: 0px -107px;
 	width: 170px;
 }
 
-.footer-list .cdc-logo{
+.footer-list .third-logo{
 	background-position: 0px 0px;
 	width: 183px;
 }

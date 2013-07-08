@@ -13,13 +13,13 @@ OAS_AD('x01');
 		
 		<ul class="footer-list">
 			<li class="sponsor-box">
-				<a class="footer-logo guj-logo" href="<c:url value="/" />">GUJ</a>
+				<a class="footer-logo first-logo" href="<c:url value="/" />">ALURA</a>
 				<ul class="footer-sub-list">
-					<li>Publicidade? guj@guj.com.br</li>
+					<li><a href="http://www.alura.com.br">Cursos online de tecnologia</a></li>
 				</ul>
 			</li>
 			<li class="sponsor-box">
-				<a class="footer-logo caelum-logo" href="http://www.caelum.com.br">CAELUM</a>
+				<a class="footer-logo second-logo" href="http://www.caelum.com.br">CAELUM</a>
 				<ul class="footer-sub-list">
 					<li><a class="footer-link" href="http://www.caelum.com.br/cursos/java/">Java</a></li>
 					<li><a class="footer-link" href="http://www.caelum.com.br/cursos/mobile/">Mobile</a></li>
@@ -30,7 +30,7 @@ OAS_AD('x01');
 				</ul>
 			</li>
 			<li class="sponsor-box">
-				<a class="footer-logo cdc-logo" href="http://www.casadocodigo.com.br/">CASA DO CÓ“DIGO</a>
+				<a class="footer-logo third-logo" href="http://www.casadocodigo.com.br/">CASA DO CÓ“DIGO</a>
 				<ul class="footer-sub-list">
 					<li>Conheça também os livros da <a class="footer-link" href="http://www.casadocodigo.com.br">Casa do Código</a></li>
 				</ul>
