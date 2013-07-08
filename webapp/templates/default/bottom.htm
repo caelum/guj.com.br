@@ -34,13 +34,13 @@ OAS_AD('x01');
 		
 		<ul class="footer-list">
 			<li class="sponsor-box">
-				<a class="footer-logo guj-logo" href="<c:url value="/" />">GUJ</a>
+				<a class="footer-logo first-logo" href="<c:url value="/" />">ALURA</a>
 				<ul class="footer-sub-list">
-					<li>Publicidade? guj@guj.com.br</li>
+					<li><a class="footer-link" href="http://www.alura.com.br">Cursos online de tecnologia</a></li>
 				</ul>
 			</li>
 			<li class="sponsor-box">
-				<a class="footer-logo caelum-logo" href="http://www.caelum.com.br">CAELUM</a>
+				<a class="footer-logo second-logo" href="http://www.caelum.com.br">CAELUM</a>
 				<ul class="footer-sub-list">
 					<li><a class="footer-link" href="http://www.caelum.com.br/cursos/java/">Java</a></li>
 					<li><a class="footer-link" href="http://www.caelum.com.br/cursos/mobile/">Mobile</a></li>
@@ -51,28 +51,34 @@ OAS_AD('x01');
 				</ul>
 			</li>
 			<li class="sponsor-box">
-				<a class="footer-logo cdc-logo" href="http://www.casadocodigo.com.br/">CASA DO C&Oacute;DIGO</a>
+				<a class="footer-logo third-logo" href="http://www.casadocodigo.com.br/">CASA DO CӓDIGO</a>
 				<ul class="footer-sub-list">
-					<li>Conhe&ccedil;a tamb&eacute;m os livros da <a class="footer-link" href="http://www.casadocodigo.com.br">Casa do C&oacute;digo</a></li>
+					<li><a class="footer-link" href="http://www.casadocodigo.com.br">Conhe&ccedil;a tamb&eacute;m os livros da Casa do C&oacute;digo</a></li>
 				</ul>
 			</li>
 		<!-- <li class="sponsor-box"><a class="footer-logo online-logo" href="#">Caelum Online</a></li> -->
 		</ul>
-		
-		<#include "tag_cloud.htm" />
-
+	</div>
+	<div class="dark-footer">
+		<ol class="main-tags main-tags-first">
+			<#include "tag_cloud.htm" />
+		</ol>
+		<ol class="main-tags main-tags-second">
+			<li><a class="main-tag" href="http://www.lumpa.com.br/tag/photoshop">photoshop</a></li>
+			<li><a class="main-tag" href="http://www.lumpa.com.br/tag/illustrator">illustrator</a></li>
+		</ol>
 		<span class="footer-menu">
 			<span class="footer-menu-label">GUJ Respostas: </span>
 			
-			<a class="footer-link" href="/nao-resolvido" class="unsolved-link">N&atildeo solucionadas</a>
-			<a class="footer-link" href="/sem-respostas">Sem respostas</a>
+			<a class="footer-link" href="<c:url value="/nao-resolvido" />N&atildeo solucionadas</a>
+			<a class="footer-link" href="<c:url value="/sem-respostas" />Sem respostas</a>
 		</span>
 		<span class="footer-menu">
 			<span class="footer-menu-label">GUJ F&oacute;rum: </span>
-			<a class="footer-link" href="/forums/list.java">&Iacute;ndice de F&oacute;runs</a>
-			<a class="footer-link" href="/recentTopics/list.java">T&oacute;picos Recentes</a>
+			<a class="footer-link" href="<c:url value="/forums/list.java" />&Iacute;ndice de F&oacute;runs</a>
+			<a class="footer-link" href="<c:url value="/recentTopics/list.java" />T&oacute;picos Recentes</a>
 		</span>
-		<span class="footer-muted-message">Desenvolvido por <a class="footer-link" href="http://www.caelum.com.br">Caelum</a> &#8212 GUJ: desde 2002</span>
+		<span class="footer-muted-message">Publicidade: guj@guj.com.br &#8212 Desenvolvido por <a class="footer-link" href="http://www.caelum.com.br">Caelum</a> &#8212 GUJ: desde 2002</span>
 	</div>
 </div>
 <script type="text/javascript">
