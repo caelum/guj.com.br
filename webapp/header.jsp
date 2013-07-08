@@ -132,45 +132,6 @@ $().ready(function() {
 	<iframe class="facebook-curtir" src="http://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fwww.facebook.com%2FGUJ.com.br&amp;layout=button_count&amp;show_faces=false&amp;width=200&amp;action=like&amp;colorscheme=light&amp;height=21" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
   </div>
   
-  <div id="submenu">
-    <div class="container1">
-      <div class="container2">
-          
-      	<c:choose>
-      		<c:when test="${logged}">
-	      	  <a id="myprofile" class="mainmenu" href="<c:url value="/user/edit/${userSession.userId}.java"/>"><img src="<c:url value="/templates/default/images/icon_mini_profile.gif"/>" border="0" alt="[Profile]" /> MEUS DADOS</a>&nbsp; 
-              <a id="privatemessages" class="mainmenu" href="<c:url value="/pm/inbox.java"/>"><img src="<c:url value="/templates/default/images/icon_mini_message.gif"/>" border="0" alt="[Message]" />
-                MENSAGENS PRIVADAS (${userSession.privateMessages})
-              </a>&nbsp;
-              <a id="mymessages" class="mainmenu" href="<c:url value="/posts/listByUser/${userSession.userId}.java"/>"><img src="<c:url value="/templates/default/images/icon_mini_message.gif"/>" border="0" alt="Minhas Mensagens" />
-                MINHAS MENSAGENS
-              </a>&nbsp;
-              <a id="favorites" class="mainmenu" href="<c:url value="/bookmarks/list/${userSession.userId}.java"/>"><img src="<c:url value="/templates/default/images/icon_mini_message.gif"/>" border="0" alt="Favoritos" />
-                   FAVORITOS
-              </a>&nbsp;
-            
-            	<c:if test="${not userSession.newsletterParticipant}">
-            		<a id="newsletter" class="mainmenu" href="#" onclick="$('#menuNewsletter').slideToggle('slow');"><img src="<c:url value="/templates/default/images/icon_mini_message.gif"/>" border="0" alt="Favoritos" /> NEWSLETTER <span class="novo">(novo)</span></a>
-	      		</c:if>
-            
-	      	  <a href="<c:url value="/user/logout.java"/>"><img src="<c:url value="/templates/default/images/icon_mini_login.gif"/>" border="0" alt="Logout" /> LOGOUT</a> 
-      		</c:when>
-      		<c:otherwise>
-	      		GUJ Forum. <a href="<c:url value="/user/insert.java"/>" style="color: #4382B0;">Crie seu login</a>, 
-	          	ou digite-o para logar no site.
-              
-	          	<form class="login" action="<c:url value="/jforum.java?module=user&action=validateLogin"/>" method="POST">
-                    <input type="hidden" name="returnPath" id="returnPath"/>
-	            	Usu&aacute;rio: <input class="campo rounded" size="8" name="username" tabindex="3" />
-					Senha: <input class="campo rounded" type="password" size="8" name="password" tabindex="4"/>
-	            	<input type="image" class="botao" src="<c:url value="/images/guj/botao_entrar.gif"/>" tabindex="5" name="login" value="Login">
-	          	</form>
-      		</c:otherwise>
-      	</c:choose>
-      </div>
-    </div>
-  </div>
-
   <c:if test="${not userSession.newsletterParticipant and logged}">
 	  <div id="menuNewsletter" style="display:none; visibility: invisible;">
 		 <div style="float:left; margin-top:5px;">

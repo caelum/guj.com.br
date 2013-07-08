@@ -391,7 +391,7 @@ input.selecionado {
 }
 
 #content .big-box{
-	height:690px;
+	height:650px;
 }
 
 #content .small-box{
@@ -424,7 +424,7 @@ input.selecionado {
 
 #content .box h2 {
   margin: 0;
-  padding: 5px 10px;
+  padding: 5px 0;
   font-size: 1.3em;
 }
 
@@ -714,9 +714,9 @@ input.selecionado {
 /*Tags*/
 
 .spiffyfg > .main-tags{
-	-webkit-padding-start: 6px;	
-	-moz-padding-start: 6px;	
-	padding-start: 6px;	
+	-webkit-padding-start: 0px;	
+	-moz-padding-start: 0px;	
+	padding-start: 0px;	
 }
 
 .main-tags li{
