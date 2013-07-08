@@ -15,7 +15,7 @@ OAS_AD('x01');
 			<li class="sponsor-box">
 				<a class="footer-logo first-logo" href="<c:url value="/" />">ALURA</a>
 				<ul class="footer-sub-list">
-					<li><a href="http://www.alura.com.br">Cursos online de tecnologia</a></li>
+					<li><a class="footer-link" href="http://www.alura.com.br">Cursos online de tecnologia</a></li>
 				</ul>
 			</li>
 			<li class="sponsor-box">
@@ -37,9 +37,15 @@ OAS_AD('x01');
 			</li>
 		<!-- <li class="sponsor-box"><a class="footer-logo online-logo" href="#">Caelum Online</a></li> -->
 		</ul>
-		
-		<%@include file="/tag_cloud.jsp" %>
-
+	</div>
+	<div class="dark-footer">
+		<ol class="main-tags main-tags-first">
+			<%@include file="/tag_cloud.jsp" %>
+		</ol>
+		<ol class="main-tags main-tags-second">
+			<li><a class="main-tag" href="http://www.lumpa.com.br/tag/photoshop">photoshop</a></li>
+			<li><a class="main-tag" href="http://www.lumpa.com.br/tag/illustrator">illustrator</a></li>
+		</ol>
 		<span class="footer-menu">
 			<span class="footer-menu-label">GUJ Respostas: </span>
 			
@@ -51,7 +57,7 @@ OAS_AD('x01');
 			<a class="footer-link" href="<c:url value="/forums/list.java" />">Índice de Fóruns</a>
 			<a class="footer-link" href="<c:url value="/recentTopics/list.java" />">Tópicos Recentes</a>
 		</span>
-		<span class="footer-muted-message">Desenvolvido por <a class="footer-link" href="http://www.caelum.com.br">Caelum</a> &#8212 GUJ: desde 2002</span>
+		<span class="footer-muted-message">Publicidade: guj@guj.com.br &#8212 Desenvolvido por <a class="footer-link" href="http://www.caelum.com.br">Caelum</a> &#8212 GUJ: desde 2002</span>
 	</div>
 </div>
  

@@ -97,7 +97,7 @@ input.selecionado {
 	height: auto;
 	margin-top: 50px;
 	text-align: center;
-	padding: 2em 0;
+	padding-top: 2em;
 	font-size: 13px;
 	color: #999;
 	clear:both;
@@ -109,8 +109,32 @@ input.selecionado {
 	padding-start: 0px;	
 }
 
+.footer .main-tags {
+ 	padding: 0 0 15px; 
+ 	margin: 0;
+ 	line-height: 13px;
+}
+
 .footer .main-tags .main-tag {
 	font-size: 12px;
+}
+
+.footer .dark-footer {
+	background-color: #1f405b;
+	padding: 2em 0;
+}
+
+.footer .main-tags-second:before {
+	content: "Lumpa";
+}
+
+.footer .main-tags-first:before {
+	content: "GUJ";
+}
+
+.footer .main-tags:before {
+	display:block;
+	margin-bottom: .5em;
 }
 
 .footer-menu{
@@ -129,8 +153,12 @@ input.selecionado {
 	font-weight: bold;
 }
 
-.footer-menu-label, .footer-menu a:not(:last-child){
-	padding-right: .5em;
+.footer-menu-label{
+	padding-right: 1em;
+}
+
+.footer-menu a:not(:last-child){
+	margin-right: .3em
 }
 
 .footer-muted-message {
@@ -139,7 +167,7 @@ input.selecionado {
 }
 
 .footer-list {
-	margin-bottom: 2.5%;
+	margin: 0 0 2%;
 }
 
 .footer-list .sponsor-box{
@@ -155,7 +183,7 @@ input.selecionado {
 	background-image: url("http://www.guj.com.br/imgs/footer-sprite.png");
 	background-repeat: no-repeat;
 	vertical-align: top;
-	margin-bottom: 5%;
+	margin-bottom: 4%;
 	height: 53px;
 }
 
