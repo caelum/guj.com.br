@@ -32,7 +32,7 @@ OAS_AD('x01');
 			<li class="sponsor-box">
 				<a class="footer-logo third-logo" href="http://www.casadocodigo.com.br/">CASA DO CÓ“DIGO</a>
 				<ul class="footer-sub-list">
-					<li>Conheça também os livros da <a class="footer-link" href="http://www.casadocodigo.com.br">Casa do Código</a></li>
+					<li><a class="footer-link" href="http://www.casadocodigo.com.br">Conheça também os livros da Casa do Código</a></li>
 				</ul>
 			</li>
 		<!-- <li class="sponsor-box"><a class="footer-logo online-logo" href="#">Caelum Online</a></li> -->
