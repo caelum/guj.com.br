@@ -45,6 +45,9 @@ OAS_AD('x01');
 		<ol class="main-tags main-tags-second">
 			<li><a class="main-tag" href="http://www.lumpa.com.br/tag/photoshop">photoshop</a></li>
 			<li><a class="main-tag" href="http://www.lumpa.com.br/tag/illustrator">illustrator</a></li>
+			<li><a class="main-tag" href="http://www.lumpa.com.br/tag/inDesign">inDesign</a></li>
+			<li><a class="main-tag" href="http://www.lumpa.com.br/tag/tipografia">tipografia</a></li>
+			<li><a class="main-tag" href="http://www.lumpa.com.br/tag/vetorização">vetorização</a></li>
 		</ol>
 		<span class="footer-menu">
 			<span class="footer-menu-label">GUJ Respostas: </span>
