@@ -755,6 +755,8 @@ input.selecionado {
 .brutal-feed-image {
 	vertical-align: middle;
 	background-color: #e3e8ec;
+	height: 32px;
+	width: 32px;
 }
 
 .brutal-feed-title {
