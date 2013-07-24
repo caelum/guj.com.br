@@ -400,6 +400,7 @@ input.selecionado {
 
 #content .box ul {
   list-style-type: none;
+  word-break: break-word;
   margin: 5px 0 0 0;
   padding: 0 0 0 28px;
 }
