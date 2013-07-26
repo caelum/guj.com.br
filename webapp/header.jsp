@@ -22,44 +22,18 @@
 <title>GUJ - ${title}</title>
 <link href="<c:url value="/stylesheets/guj3.css?20130424"/>" media="screen" rel="stylesheet" type="text/css" />
 
-<!-- OAS SETUP begin -->
-<SCRIPT LANGUAGE=JavaScript>
-<!--
-//configuration
-OAS_url = 'http://de.realmediadigital.com/RealMedia/ads/';
-OAS_listpos = 'Top,Right,x01,x04';
-OAS_query = '';
-OAS_sitepage = '${rmSection}';
-//end of configuration
-OAS_version = 10;
-OAS_rn = '001234567890'; OAS_rns = '1234567890';
-OAS_rn = new String (Math.random()); OAS_rns = OAS_rn.substring (2, 11);
-function OAS_NORMAL(pos) {
-	document.write('<A HREF="' + OAS_url + 'click_nx.ads/' + OAS_sitepage + '/1' + OAS_rns + '@' + OAS_listpos + '!' + pos + OAS_query + '" TARGET=_top>');
-	document.write('<IMG SRC="' + OAS_url + 'adstream_nx.ads/' + OAS_sitepage + '/1' + OAS_rns + '@' + OAS_listpos + '!' + pos + OAS_query + '" BORDER=0></A>');
-}
-//-->
-</SCRIPT>
-<SCRIPT LANGUAGE="JavaScript">
-<!--
-OAS_version = 11;
-if (navigator.userAgent.indexOf('Mozilla/3') != -1)
-OAS_version = 10;
-if (OAS_version >= 11)
-document.write('<SCR'+ 'IPT LANGUAGE=JavaScript1.1 SRC="' + OAS_url + 'adstream_mjx.ads/' + OAS_sitepage + '/1' + OAS_rns + '@' + OAS_listpos + OAS_query + '"></SC'+'RIPT>');
-//-->
-</SCRIPT><SCRIPT LANGUAGE="JavaScript">
-<!-- 
-document.write('')
-function OAS_AD(pos) {
-if (OAS_version >= 11)
-	OAS_RICH(pos);
-else
-	OAS_NORMAL(pos);
-}
-//-->
-</SCRIPT>
-<!-- OAS SETUP end -->
+<script type="text/javascript">var p="http",d="static";if(document.location.protocol=="https:"){p+="s";d="engine";}var z=document.createElement("script");z.type="text/javascript";z.async=true;z.src=p+"://"+d+".adzerk.net/ados.js";var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(z,s);</script>
+<script type="text/javascript">
+var ados = ados || {};
+ados.run = ados.run || [];
+ados.run.push(function() {
+/* load placement for account: caelum, site: guj, size: 728x90 - Leaderboard*/
+ados_add_placement(7120, 49043, "banner", 4);
+// para o futuro:
+//ados_setKeywords('java, hibernate, jsf'); 
+ados_load();
+});</script>
+
 <!--[if IE]>
 <link href="<c:url value="/stylesheets/guj3-ie.css?20090222"/>" media="screen" rel="stylesheet" type="text/css" />
 <![endif]-->
@@ -75,15 +49,7 @@ $().ready(function() {
 <body>
   <div id="header">
     <div class="container1">
-    	<div id="banner">
-			<!-- OAS AD 'Top' begin -->
-			<SCRIPT LANGUAGE="JavaScript">
-			<!--
-			OAS_AD('Top');
-			//-->
-			</SCRIPT>
-			<!-- OAS AD 'Top' end -->
-    	</div>
+    	<div id="banner"></div>
       <div class="container2">
         <a href="<c:url value="/"/>" id="logo">GUJ</a>
         <h2>${title}</h2></a>
