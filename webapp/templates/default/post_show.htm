@@ -217,26 +217,7 @@
 					<#if adCounter == 1>
 						<tr>
 							<td colspan="2" align="center" class="row1">
-								<#if adsenseCodes["posts" + topic.forumId]?exists>
-									<script type="text/javascript"><!--
-									google_ad_client = "ca-pub-4821508865882703";
-									google_ad_slot = "7111293531";
-									google_ad_width = 728;
-									google_ad_height = 90;
-									google_ad_format = "728x90_as";
-									google_ad_type = "text_image";
-									google_ad_channel = "${adsenseCodes["posts" + topic.forumId]}";
-									google_color_border = "FAFAFA";
-									google_color_bg = "FAFAFA";
-									google_color_link = "0066CC";
-									google_color_text = "000000";
-									google_color_url = "008000";
-									//-->
-									</script>
-									<script type="text/javascript"
-									  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
-									</script>
-								</#if>
+								<div id="postBanner"></div>
 							</td>
 						</tr>
 					</#if>

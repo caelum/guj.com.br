@@ -28,7 +28,9 @@
 	ados.run = ados.run || [];
 	ados.run.push(function() {
 		/* load placement for account: caelum, site: guj, size: 728x90 - Leaderboard*/
-		ados_add_placement(7120, 49043, "banner", 4);
+		ados_add_placement(7120, 49043, "headerBanner", 4);
+		/* load placement for account: caelum, site: guj, size: 728x90 - Leaderboard*/
+		ados_add_placement(7120, 49043, "postBanner", 4);
 		/* load placement for account: caelum, site: guj, size: 300x250 - Medium Rectangle*/
 		ados_add_placement(7120, 49043, "medRectangleAd", 5);
 		// para o futuro:
@@ -52,7 +54,7 @@ $().ready(function() {
 <body>
   <div id="header">
     <div class="container1">
-    	<div id="banner"></div>
+    	<div id="headerBanner"></div>
       <div class="container2">
         <a href="<c:url value="/"/>" id="logo">GUJ</a>
         <h2>${title}</h2></a>
