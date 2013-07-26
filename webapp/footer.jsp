@@ -1,12 +1,3 @@
-
-<!-- OAS AD 'x01' begin -->
-<SCRIPT LANGUAGE="JavaScript">
-<!--
-OAS_AD('x01');
-//-->
-</SCRIPT>
-<!-- OAS AD 'x01' end -->
-
 <iframe src="<c:url value="/ping_session.jsp" />" height="0" width="0" frameborder="0" scrolling="no"></iframe>
 <div class="footer">
 	<div class="container">

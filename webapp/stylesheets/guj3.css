@@ -789,6 +789,12 @@ input.selecionado {
 	border-bottom: 1px solid #eaeaea;
 }
 
+#medRectangleAd {
+	text-align: center;
+	margin: 1em 0;
+	padding: 10px 0;	
+}
+
 /*Responsive*/
 
 @media only screen and (max-width: 1200px) {
@@ -830,7 +836,7 @@ input.selecionado {
 		height:auto;
 	}
 	
-	.news .oas_ad, .box.facebook{
+	.box.facebook{
 		display:none;
 	}
 }

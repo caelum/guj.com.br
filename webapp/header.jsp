@@ -24,15 +24,18 @@
 
 <script type="text/javascript">var p="http",d="static";if(document.location.protocol=="https:"){p+="s";d="engine";}var z=document.createElement("script");z.type="text/javascript";z.async=true;z.src=p+"://"+d+".adzerk.net/ados.js";var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(z,s);</script>
 <script type="text/javascript">
-var ados = ados || {};
-ados.run = ados.run || [];
-ados.run.push(function() {
-/* load placement for account: caelum, site: guj, size: 728x90 - Leaderboard*/
-ados_add_placement(7120, 49043, "banner", 4);
-// para o futuro:
-//ados_setKeywords('java, hibernate, jsf'); 
-ados_load();
-});</script>
+	var ados = ados || {};
+	ados.run = ados.run || [];
+	ados.run.push(function() {
+		/* load placement for account: caelum, site: guj, size: 728x90 - Leaderboard*/
+		ados_add_placement(7120, 49043, "banner", 4);
+		/* load placement for account: caelum, site: guj, size: 300x250 - Medium Rectangle*/
+		ados_add_placement(7120, 49043, "medRectangleAd", 5);
+		// para o futuro:
+		//ados_setKeywords('java, hibernate, jsf'); 
+		ados_load();
+	});
+</script>
 
 <!--[if IE]>
 <link href="<c:url value="/stylesheets/guj3-ie.css?20090222"/>" media="screen" rel="stylesheet" type="text/css" />
