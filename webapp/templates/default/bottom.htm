@@ -15,6 +15,26 @@
 		</td>
 	</tr>
 </table>
+<aside class="sidebar">
+	<div class="sidebar-item-header">
+		<h2 class="sidebar-item-title">
+			Not&iacute;cias
+		</h2>
+	</div>
+	<ol class="rss-list">
+		<#list brutalNews as news>
+			<li class="rss-item">
+				<span class="rss-item-date">${news.date?date?string("dd/MM/yyyy")} </span>
+				<h3 class="rss-item-title">
+					<a href="${news.link}">${news.title}</a>
+				</h3>
+			</li>
+		</#list>
+	</ol>
+	<a class="other-news" href="/noticias">Mais not&iacute;cias</a>
+
+<!-- 	<div id="adSideBar" class="ad medium-ads"></div> -->
+</aside>
 
 <#if hasCodeBlock>
 	<#include "highlighter_js.htm"/>

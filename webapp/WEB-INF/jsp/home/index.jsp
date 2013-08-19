@@ -64,6 +64,7 @@
 			    <a href="<c:url value="/recentTopics/list.java"/>">Forum - &Uacute;ltimas mensagens</a>
 			  </h2>
 			  <ul>
+			  
 			  	<c:forEach items="${forum}" var="topic">
 			  		<li>
 			  			<a href="${topic.link}">${fn:escapeXml(topic.title)}</a>

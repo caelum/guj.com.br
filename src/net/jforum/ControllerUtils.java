@@ -49,6 +49,8 @@ import javax.servlet.http.Cookie;
 
 import org.apache.log4j.Logger;
 
+import br.com.caelum.guj.Agregators;
+
 import net.jforum.context.ForumContext;
 import net.jforum.context.RequestContext;
 import net.jforum.context.SessionContext;
@@ -111,6 +113,8 @@ public class ControllerUtils
 		context.put("canAccessModerationLog", SecurityRepository.canAccess(SecurityConstants.PERM_MODERATION_LOG));
 		context.put("JForumContext", jforumContext);
 		context.put("timestamp", new Long(System.currentTimeMillis()));
+		Agregators.getInstance().addAggregators(context);
+
 	}
 
 	/**

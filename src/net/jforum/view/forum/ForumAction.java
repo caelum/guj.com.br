@@ -148,6 +148,7 @@ public class ForumAction extends Command
 		}
 
 		this.context.put("mostUsersEverOnline", mostUsersEverOnline);
+
 	}
 
 	public void moderation()
