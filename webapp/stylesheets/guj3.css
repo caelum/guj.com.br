@@ -1,4 +1,11 @@
 /* Copyright (c) 2002-2009 GUJ  */
+
+*{
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
 body {
   margin: 0 auto;
   padding: 0;
@@ -798,12 +805,18 @@ input.selecionado {
 
 /*Basic new structure*/
 
-.sidebar, .sidebar *{
-	-moz-box-sizing: border-box;
-	-webkit-box-sizing: border-box;
-	box-sizing: border-box;
-	
+.container {
+	margin-left: auto;
+	margin-right: auto;
+	max-width: 98%;
+	overflow: hidden;
 }
+
+.first-content{
+	float: left;
+}
+
+/*Side bar*/
 
 .sidebar{
 	float: left;
@@ -820,6 +833,9 @@ input.selecionado {
 
 .sidebar-item-title{
 	float: left;
+	margin-bottom: 0;
+	font-size: 1.2em;
+	font-weight: normal;
 }
 
 .rss-list{
@@ -836,18 +852,27 @@ input.selecionado {
 .rss-item-title{
 	line-height: 1.3em;
 	margin-bottom: 0;
-	font-size: 1em;
 	display: inline;
+	font-weight: normal;
+	margin: 0;
+	padding: 0;
+	font-size: 1em;
 }
 
 .rss-item-title a{
 	font-family: Trebuchet MS,Liberation Sans,DejaVu Sans,sans-serif;
 }
 
-.first-content{
-	float: left;
+.rss-item-date{
+	font-size: .9em;
+	color: #999;
 }
 
+.other-news{
+	float: right;
+	font-size: .9em;
+	margin-top: 5px;
+}
 
 /*Responsive*/
 

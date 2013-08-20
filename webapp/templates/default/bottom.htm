@@ -1,40 +1,41 @@
-		</td>
+			</td>
+			
+			
+		</tr>
 		
-		
-	</tr>
+		<tr>
+			<td align="center" colspan="2">
+				<#if session?exists && session.isAdmin()><span class="gen"><a id="adminpanel" href='${JForumContext.encodeURL("/admBase/login")}'>${I18n.getMessage("ForumBase.admin")}</a></span></#if>
+			</td>
+		</tr>
 	
-	<tr>
-		<td align="center" colspan="2">
-			<#if session?exists && session.isAdmin()><span class="gen"><a id="adminpanel" href='${JForumContext.encodeURL("/admBase/login")}'>${I18n.getMessage("ForumBase.admin")}</a></span></#if>
-		</td>
-	</tr>
-
-	<tr>
-		<td align="center" colspan="2">
-			<span class="copyright">Powered by <a class="copyright" href="http://www.jforum.net/" target="_blank">JForum ${version}</a> &copy; <a class="copyright" href="http://www.jforum.net/team.jsp" target="_blank">JForum Team</a></span>
-		</td>
-	</tr>
-</table>
-<aside class="sidebar">
-	<div class="sidebar-item-header">
-		<h2 class="sidebar-item-title">
-			Not&iacute;cias
-		</h2>
-	</div>
-	<ol class="rss-list">
-		<#list brutalNews as news>
-			<li class="rss-item">
-				<span class="rss-item-date">${news.date?date?string("dd/MM/yyyy")} </span>
-				<h3 class="rss-item-title">
-					<a href="${news.link}">${news.title}</a>
-				</h3>
-			</li>
-		</#list>
-	</ol>
-	<a class="other-news" href="/noticias">Mais not&iacute;cias</a>
-
-<!-- 	<div id="adSideBar" class="ad medium-ads"></div> -->
-</aside>
+		<tr>
+			<td align="center" colspan="2">
+				<span class="copyright">Powered by <a class="copyright" href="http://www.jforum.net/" target="_blank">JForum ${version}</a> &copy; <a class="copyright" href="http://www.jforum.net/team.jsp" target="_blank">JForum Team</a></span>
+			</td>
+		</tr>
+	</table>
+	<aside class="sidebar">
+		<div class="sidebar-item-header">
+			<h2 class="sidebar-item-title">
+				Not&iacute;cias
+			</h2>
+		</div>
+		<ol class="rss-list">
+			<#list brutalNews as news>
+				<li class="rss-item">
+					<span class="rss-item-date">${news.date?date?string("dd/MM/yyyy")} -</span>
+					<h3 class="rss-item-title">
+						<a href="${news.link}">${news.title}</a>
+					</h3>
+				</li>
+			</#list>
+		</ol>
+		<a class="other-news" href="/noticias">Mais not&iacute;cias...</a>
+	
+	<!-- 	<div id="adSideBar" class="ad medium-ads"></div> -->
+	</aside>
+</div>		
 
 <#if hasCodeBlock>
 	<#include "highlighter_js.htm"/>
@@ -85,7 +86,7 @@
 		<span class="footer-menu">
 			<span class="footer-menu-label">GUJ Respostas: </span>
 			
-			<a class="footer-link" href="http://www.guj.com.br/nao-resolvido">N&atildeo solucionadas</a>
+			<a class="footer-link" href="http://www.guj.com.br/nao-resolvido">N&atilde;o solucionadas</a>
 			<a class="footer-link" href="http://www.guj.com.br/sem-respostas">Sem respostas</a>
 		</span>
 		<span class="footer-menu">
