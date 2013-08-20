@@ -29,8 +29,7 @@ public class Agregators {
 		agregatorsMap.put("news", new Agregator("news.refresh.interval", "news.items", "news.url"));
 		agregatorsMap.put("brutalQuestions", new Agregator("brutal.refresh.interval", "brutal.items", "brutal.url"));
 		agregatorsMap.put("brutalNews", new Agregator("brutal_news.refresh.interval", "brutal_news.items", "brutal_news.url"));
-
-		JobsAgregator.start();
+		agregatorsMap.put("jobs", JobsAgregator.start());
 		
 		instance = this;
 	}

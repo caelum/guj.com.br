@@ -814,6 +814,7 @@ input.selecionado {
 
 .first-content{
 	float: left;
+	width: 75%;
 }
 
 /*Side bar*/
@@ -821,7 +822,7 @@ input.selecionado {
 .sidebar{
 	float: left;
 	padding: 0 15px;
-	width:30%
+	width: 25%
 }
 
 .sidebar-item-header{
@@ -868,10 +869,17 @@ input.selecionado {
 	color: #999;
 }
 
-.other-news{
+.more-rss{
 	float: right;
 	font-size: .9em;
 	margin-top: 5px;
+}
+
+/*Ads*/
+.medium-ads{
+	width: 300px;
+	height: 250px;
+	margin-top: 30px;
 }
 
 /*Responsive*/

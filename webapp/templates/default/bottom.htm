@@ -26,14 +26,32 @@
 				<li class="rss-item">
 					<span class="rss-item-date">${news.date?date?string("dd/MM/yyyy")} -</span>
 					<h3 class="rss-item-title">
-						<a href="${news.link}">${news.title}</a>
+						<a href="${news.link}">${news.title?html}</a>
 					</h3>
 				</li>
 			</#list>
 		</ol>
-		<a class="other-news" href="/noticias">Mais not&iacute;cias...</a>
-	
-	<!-- 	<div id="adSideBar" class="ad medium-ads"></div> -->
+		<a class="more-rss" href="/noticias">Mais not&iacute;cias...</a>
+
+		<div id="adSideBar" class="medium-ads"></div>
+
+		<div class="sidebar-item-header">
+			<h2 class="sidebar-item-title">
+				Ofertas de Empregos
+			</h2>
+		</div>
+		<ol class="rss-list">
+			<#list jobs as job>
+				<li class="rss-item">
+					<span class="rss-item-date">${job.date?date?string("dd/MM/yyyy")} -</span>
+					<h3 class="rss-item-title">
+						<a href="${job.link}">${job.title?html}</a>
+					</h3>
+				</li>
+			</#list>
+		</ol>
+		<a class="more-rss" href="/jobs">Mais ofertas...</a>
+
 	</aside>
 </div>		
 
