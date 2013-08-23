@@ -80,13 +80,39 @@ input.selecionado {
 }
 
 #logo {
-  margin: 0 5px;
-  padding-top: 0;
-  background: transparent url(../images/guj/novo-logo-guj.png) no-repeat 0 15px;
-  height: 74px;
-  width: 230px;
-  display: block;
-  text-indent: -9999px;
+	margin: 0 5px;
+	padding-top: 0;
+	background: transparent url(../images/guj/novo-logo-guj.png) no-repeat 0 15px;
+	height: 110px;
+	display: inline-block;
+	font-size: 0;
+	vertical-align: middle;
+}
+
+#logo:after {
+	content: attr(data-slogan);
+	margin: 0;
+	padding: 10px 0 15px 15px;
+	display: inline-block;
+	color: #fff;
+	font-size: 12px;
+	position: relative;
+	top: 67%;
+}
+
+.main-nav {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.nav-itens {
+	display: inline-block;
+	list-style: none;
+	-webkit-margin-before: 0;
+	-webkit-margin-after: 0;
+	-webkit-margin-start: 0;
+	-webkit-margin-end: 0;
+	-webkit-padding-start: 0;
 }
 
 #header h2 {
