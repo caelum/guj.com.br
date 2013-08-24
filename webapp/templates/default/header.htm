@@ -128,51 +128,11 @@ $().ready(function() {
 	    </div>
 	  </div>
 
-	  <div id="menu">
-	    <ul>
-	      <li class="home">
-	        <a href="${contextPath}/">home</a>
-	      </li>
-		  <li class="guj-respostas">
-	      	<a href="${contextPath}/perguntas">guj respostas</a>
-	      </li>
-		  <li class="guj-respostas-pergunte">
-			<a href="${contextPath}/perguntar">pergunte</a>
-		  </li>
-	      <li class="forum">
-	        <a href="${contextPath}/forums/list.java">f&oacute;rum</a>
-	      </li>
-	      
-	      <li class="noticias">
-	        <a href="${contextPath}/noticias">not&iacute;cias</a>
-	      </li>
-	
-		  <li class="topics">
-	        <a href="${contextPath}/recentTopics/list.java">t&oacute;picos recentes</a>
-	      </li>
-			<!--
-	      <li class="blogs">
-	        <a href="${contextPath}/posts">blogs</a>
-	      </li>
-	      -->
-	    </ul>
-	<form id="cse-search-box" class="busca" action="${contextPath}/search">
-	    <input type="hidden" name="cx" value="partner-pub-9448585618971060:4001950301" />
-	    <input type="hidden" name="cof" value="FORID:10" />
-	    <input type="hidden" name="ie" value="UTF-8" />
-	    <input class="campo_rounded" type="text" name="q" size="31" tabindex="1" />
-	    <input type="image" class="botao" style="border: 0px;" src="${contextPath}/images/guj/botao_ok.gif" tabindex="2">
-	</form>
-	<script type="text/javascript" src="http://www.google.com.br/coop/cse/brand?form=cse-search-box&amp;lang=en"></script>
-	
-	   	<iframe class="facebook-curtir" src="http://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fwww.facebook.com%2FGUJ.com.br&amp;layout=button_count&amp;show_faces=false&amp;width=200&amp;action=like&amp;colorscheme=light&amp;height=21" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
-	  </div>
-
-<div id="submenu">
+<div id="menu">
 	<div class="container1">
 		<div class="container2">
 			<#if !logged && !sso>
-			  GUJ Forum. <a href="${JForumContext.encodeURL("/user/insert")}" style="color: #4382B0;">Crie seu login</a>, 
+			  GUJ Forum. <a href="${JForumContext.encodeURL("/user/insert")}" style="color: #000; font-weight: bold;">Crie seu login</a>, 
 	          ou digite-o para logar no site.
 
 	          <form class="login" action="${contextPath}/jforum.java?module=user&action=validateLogin" method="POST">
@@ -184,23 +144,45 @@ $().ready(function() {
 			</#if>
 			
 			<#if logged>
-				<a id="myprofile" class="mainmenu" href="${JForumContext.encodeURL("/user/edit/${session.userId}")}"><img src="${contextPath}/templates/${templateName}/images/icon_mini_profile.gif" border="0" alt="[Profile]" /> MEUS DADOS</a>&nbsp; 
-				<a id="privatemessages" class="mainmenu" href="${JForumContext.encodeURL("/pm/inbox")}"><img src="${contextPath}/templates/${templateName}/images/icon_mini_message.gif" border="0" alt="[Message]" />
-					MENSAGENS PRIVADAS (${session.privateMessages})
-				</a>&nbsp;
-                <a id="mymessages" class="mainmenu" href="${JForumContext.encodeURL("/posts/listByUser/${session.userId}")}"><img src="${contextPath}/templates/${templateName}/images/icon_mini_message.gif" border="0" alt="Minhas Mensagens" />
-                   MINHAS MENSAGENS
-                </a>&nbsp;
-                <a id="favorites" class="mainmenu" href="${JForumContext.encodeURL("/bookmarks/list/${session.userId}")}"><img src="${contextPath}/templates/${templateName}/images/icon_mini_message.gif" border="0" alt="Favoritos" />
-                   FAVORITOS
-                </a>&nbsp;
-				</span>
+				<ul>
+					<li>
+						<a id="myprofile" class="mainmenu" href="${JForumContext.encodeURL("/user/edit/${session.userId}")}"><img src="${contextPath}/templates/${templateName}/images/icon_mini_profile.gif" border="0" alt="[Profile]" /> MEUS DADOS</a>
+					</li><!-- 
+					 --><li>
+						<a id="privatemessages" class="mainmenu" href="${JForumContext.encodeURL("/pm/inbox")}"><img src="${contextPath}/templates/${templateName}/images/icon_mini_message.gif" border="0" alt="[Message]" />
+							MENSAGENS PRIVADAS (${session.privateMessages})
+						</a>
+					</li><!-- 
+					 --><li>
+		                <a id="mymessages" class="mainmenu" href="${JForumContext.encodeURL("/posts/listByUser/${session.userId}")}"><img src="${contextPath}/templates/${templateName}/images/icon_mini_message.gif" border="0" alt="Minhas Mensagens" />
+		                   MINHAS MENSAGENS
+		                </a>
+	                </li><!-- 
+					 --><li>
+	                	<a id="favorites" class="mainmenu" href="${JForumContext.encodeURL("/bookmarks/list/${session.userId}")}"><img src="${contextPath}/templates/${templateName}/images/icon_mini_message.gif" border="0" alt="Favoritos" />
+	                   FAVORITOS
+	                	</a>
+	                </li>
+				
 
 				<#if !sso>
-					<a id="logout" class="mainmenu" href="${JForumContext.encodeURL("/user/logout")}"><img src="${contextPath}/templates/${templateName}/images/icon_mini_login.gif" border="0" alt="[Login]" /> LOGOUT [${session.username}]</a></span>
+					<li>
+						<a id="logout" class="mainmenu" href="${JForumContext.encodeURL("/user/logout")}"><img src="${contextPath}/templates/${templateName}/images/icon_mini_login.gif" border="0" alt="[Login]" /> LOGOUT [${session.username}]</a>
+					</li>
 				</#if>
-			
+				</ul>
 			</#if>
+			
+			<form id="cse-search-box" class="busca" action="${contextPath}/search">
+			    <input type="hidden" name="cx" value="partner-pub-9448585618971060:4001950301" />
+			    <input type="hidden" name="cof" value="FORID:10" />
+			    <input type="hidden" name="ie" value="UTF-8" />
+			    <input class="campo_rounded" type="text" name="q" size="31" tabindex="1" />
+			    <input type="image" class="botao" style="border: 0px;" src="${contextPath}/images/guj/botao_ok.gif" tabindex="2">
+			</form>
+			<script type="text/javascript" src="http://www.google.com.br/coop/cse/brand?form=cse-search-box&amp;lang=en"></script>
+		
+			<iframe class="facebook-curtir" src="http://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fwww.facebook.com%2FGUJ.com.br&amp;layout=button_count&amp;show_faces=false&amp;width=200&amp;action=like&amp;colorscheme=light&amp;height=21" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
 		</div>
 	</div>
 </div>
