@@ -84,9 +84,9 @@ input.selecionado {
 	padding-top: 0;
 	background: transparent url(../images/guj/novo-logo-guj.png) no-repeat 0 15px;
 	height: 110px;
-	display: inline-block;
+	width: 250px;
 	font-size: 0;
-	vertical-align: middle;
+	float: left;
 }
 
 #logo:after {
@@ -101,11 +101,11 @@ input.selecionado {
 }
 
 .main-nav {
-	display: inline-block;
 	vertical-align: middle;
+	overflow: hidden;
 }
 
-.nav-itens {
+.nav-items {
 	display: inline-block;
 	list-style: none;
 	-webkit-margin-before: 0;
@@ -113,6 +113,58 @@ input.selecionado {
 	-webkit-margin-start: 0;
 	-webkit-margin-end: 0;
 	-webkit-padding-start: 0;
+	width: 100%
+}
+
+.nav-item {
+	display: inline-block;
+	line-height: 110px;
+}
+
+.ask.nav-item {
+	float: right;
+	margin-right: 25px;
+	background: #dc962c;
+	line-height: 80px;
+	padding: 0 1em;
+}
+
+.nav-item .current {
+	background-color: #306691;
+}
+
+.nav-item .button {
+	display: inline-block;
+	border-left: 1px solid #3c5f7b;
+	padding: 0 1.5em;
+	color: #fff;
+	font-size: 1.45em;
+	font-weight: normal;
+}
+
+.nav-item:first-child .button,
+.ask.nav-item .button {
+	border: none;
+}
+
+.nav-item .button:hover {
+	text-decoration: none;
+	background: #2b5b81;
+}
+
+.ask.nav-item .button:hover {
+	background: #dc962c;
+}
+
+.menu-subtitle {
+	font-size: .63em;
+	position: absolute;
+	top: 15px;
+	display: none;
+}
+
+.button:hover .menu-subtitle {
+	display: block;
 }
 
 #header h2 {
@@ -364,6 +416,11 @@ input.selecionado {
 #submenu .container2 {
   background: transparent url(../images/guj/submenu_inferior_direito.gif) no-repeat bottom right;
   padding: 0 15px;
+}
+
+#header .container1 {
+	display: inline-block;
+	width: 100%;
 }
 
 #submenu .container2 ul {

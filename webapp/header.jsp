@@ -56,8 +56,7 @@ $().ready(function() {
     <div class="container1">
     	<div id="headerBanner"></div>
       <div class="container2">
-        <a href="<c:url value="/"/>" id="logo">GUJ</a>
-        <h2>${title}</h2></a>
+        <a href="<c:url value="/"/>" id="logo" data-slogan="${title}">GUJ</a>
       </div>
     </div>
   </div>
