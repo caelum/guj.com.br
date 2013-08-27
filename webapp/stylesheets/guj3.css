@@ -73,31 +73,40 @@ input.selecionado {
   color: #686869;
 }
 
+.container2 {
+	margin: 0 20px;
+}
+
 #header {
   margin: 0;
   padding: 0;
+  height: 110px;
   background-color: #244b69;
 }
 
 #logo {
-	margin: 0 5px;
-	padding-top: 0;
-	background: transparent url(../images/guj/novo-logo-guj.png) no-repeat 0 15px;
-	height: 110px;
-	width: 250px;
-	font-size: 0;
 	float: left;
+	font-size: 0;
+	text-align: center;
+	width: 220px;
+	margin: 9px 0;
+}
+
+#logo:before {
+	content: "";
+	display: inline-block;
+	background:  url(../images/guj/novo-logo-guj.png) no-repeat center center;
+	background-size: 100%;
+	height: 62px;
+	width: 188px
 }
 
 #logo:after {
 	content: attr(data-slogan);
-	margin: 0;
-	padding: 10px 0 15px 15px;
 	display: inline-block;
 	color: #fff;
 	font-size: 12px;
-	position: relative;
-	top: 67%;
+	line-height: 30px;
 }
 
 .main-nav {
@@ -118,14 +127,12 @@ input.selecionado {
 
 .nav-item {
 	display: inline-block;
-	line-height: 110px;
 }
 
 .ask.nav-item {
 	float: right;
-	margin-right: 25px;
 	background: #dc962c;
-	line-height: 80px;
+	height: 80%;
 	padding: 0 1em;
 }
 
@@ -140,6 +147,13 @@ input.selecionado {
 	color: #fff;
 	font-size: 1.45em;
 	font-weight: normal;
+}
+
+.nav-item .button:before {
+	content: "";
+	display: inline-block;
+	height: 100%;
+	vertical-align: middle;
 }
 
 .nav-item:first-child .button,
@@ -159,7 +173,7 @@ input.selecionado {
 .menu-subtitle {
 	font-size: .63em;
 	position: absolute;
-	top: 15px;
+	top: 65px;
 	display: none;
 }
 
@@ -344,10 +358,6 @@ input.selecionado {
 	text-decoration: underline;
 }
 
-#menu .container2 {
-	padding: 0 20px;
-}
-
 #header .container1 {
 	display: inline-block;
 	width: 100%;
@@ -356,6 +366,8 @@ input.selecionado {
 #menu .container2 ul {
   margin: 0;
   padding: 0;
+  display: inline-block;
+  vertical-align: middle;
 }
 
 #menu .container2 li {
@@ -910,14 +922,22 @@ input.selecionado {
 	#content .posts{
 		height:580px;
 	}
-	
+		
+	.menu-rank{
+		display: none;
+	}
 }
+
+@media only screen and (max-width: 980px) {	
+	.menu-unanswered{
+		display: none;
+	}
+}	
 
 @media only screen and (max-width: 880px) {
 	#menu ul li.topics{
 		display:none;
 	}
-	
 }
 
 @media only screen and (max-width: 830px) {
@@ -932,6 +952,40 @@ input.selecionado {
 	
 	.box.facebook{
 		display:none;
+	}
+	
+	.facebook-curtir {
+		display: none;
+	}
+	
+	.nav-item .button {
+		padding: 0 0.73em;
+		font-size: 1.35em;
+	}
+	
+	#logo:after {
+		display: none;
+	}
+	
+	.nav.main-nav {
+		display: inline-block;
+		width: 72%;
+	}
+	
+	#logo {
+		float: none;
+		display: inline-block;
+		vertical-align: middle;
+		width: 25%;
+		margin-right: 1.75%;
+	}
+	
+	#logo:before {
+		width: 100%;
+	}
+	
+	#header {
+		height: 80px;
 	}
 }
 
@@ -955,6 +1009,18 @@ input.selecionado {
 	#menu .home{
 		display:none;
 	}
+	
+	.nav.main-nav {
+		font-size: 9px;
+	}
+	
+	.nav-item .button {
+		padding: 0 0.6em;
+	}
+		
+	.ask.nav-item {
+		padding: 0;
+	}
 }
 
 @media only screen and (max-width: 560px) {
@@ -976,6 +1042,49 @@ input.selecionado {
 
 .chamada-novo-guj p{
 	padding: 0;
+}
+
+@media only screen and (max-width: 450px) {
+
+	.container2 {
+		margin: 0 15px;
+	}
+	
+	#logo {
+		width: 34%;
+		margin-right: 2.75%;
+	}
+	
+	.nav.main-nav {
+		text-align: center;
+		width: 62%;
+	}
+	
+	#header {
+		height: auto;
+	}
+	
+	.nav-item .button:before {
+		display: none;
+	}
+	
+	.button:hover .menu-subtitle{
+		display: none
+	}
+	
+	.main-nav .nav-item, .main-nav .nav-item a {
+		height: auto;
+		line-height: 2em;
+		display: inline-block;
+		width: 100%;
+		border: none;
+	}
+	
+	.piped-nav .nav-item.ask {
+		height: auto;
+		margin-bottom: 0.5em;
+	}
+	
 }
 
 @media only screen and (max-width: 400px) {

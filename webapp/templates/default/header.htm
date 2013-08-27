@@ -96,12 +96,12 @@ $().ready(function() {
 							Perguntas
 						</a>
 					</li><!--
-					--><li class="nav-item">
+					--><li class="nav-item menu-unanswered">
 						<a class="button" href="/sem-respostas">
 							Sem respostas
 						</a>
 					</li><!--
-					--><li class="nav-item">
+					--><li class="nav-item menu-rank">
 						<a class="button" href="/ranking">
 							Usu&aacute;rios
 						</a>
@@ -146,20 +146,20 @@ $().ready(function() {
 			<#if logged>
 				<ul>
 					<li>
-						<a id="myprofile" class="mainmenu" href="${JForumContext.encodeURL("/user/edit/${session.userId}")}"><img src="${contextPath}/templates/${templateName}/images/icon_mini_profile.gif" border="0" alt="[Profile]" /> MEUS DADOS</a>
+						<a id="myprofile" href="${JForumContext.encodeURL("/user/edit/${session.userId}")}"><img src="${contextPath}/templates/${templateName}/images/icon_mini_profile.gif" border="0" alt="[Profile]" /> MEUS DADOS</a>
 					</li><!-- 
 					 --><li>
-						<a id="privatemessages" class="mainmenu" href="${JForumContext.encodeURL("/pm/inbox")}"><img src="${contextPath}/templates/${templateName}/images/icon_mini_message.gif" border="0" alt="[Message]" />
+						<a id="privatemessages" href="${JForumContext.encodeURL("/pm/inbox")}"><img src="${contextPath}/templates/${templateName}/images/icon_mini_message.gif" border="0" alt="[Message]" />
 							MENSAGENS PRIVADAS (${session.privateMessages})
 						</a>
 					</li><!-- 
 					 --><li>
-		                <a id="mymessages" class="mainmenu" href="${JForumContext.encodeURL("/posts/listByUser/${session.userId}")}"><img src="${contextPath}/templates/${templateName}/images/icon_mini_message.gif" border="0" alt="Minhas Mensagens" />
+		                <a id="mymessages" href="${JForumContext.encodeURL("/posts/listByUser/${session.userId}")}"><img src="${contextPath}/templates/${templateName}/images/icon_mini_message.gif" border="0" alt="Minhas Mensagens" />
 		                   MINHAS MENSAGENS
 		                </a>
 	                </li><!-- 
 					 --><li>
-	                	<a id="favorites" class="mainmenu" href="${JForumContext.encodeURL("/bookmarks/list/${session.userId}")}"><img src="${contextPath}/templates/${templateName}/images/icon_mini_message.gif" border="0" alt="Favoritos" />
+	                	<a id="favorites" href="${JForumContext.encodeURL("/bookmarks/list/${session.userId}")}"><img src="${contextPath}/templates/${templateName}/images/icon_mini_message.gif" border="0" alt="Favoritos" />
 	                   FAVORITOS
 	                	</a>
 	                </li>
@@ -167,7 +167,7 @@ $().ready(function() {
 
 				<#if !sso>
 					<li>
-						<a id="logout" class="mainmenu" href="${JForumContext.encodeURL("/user/logout")}"><img src="${contextPath}/templates/${templateName}/images/icon_mini_login.gif" border="0" alt="[Login]" /> LOGOUT [${session.username}]</a>
+						<a id="logout" href="${JForumContext.encodeURL("/user/logout")}"><img src="${contextPath}/templates/${templateName}/images/icon_mini_login.gif" border="0" alt="[Login]" /> LOGOUT [${session.username}]</a>
 					</li>
 				</#if>
 				</ul>
