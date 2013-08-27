@@ -89,7 +89,7 @@ input.selecionado {
 	font-size: 0;
 	text-align: center;
 	width: 220px;
-	margin: 9px 0;
+	margin: 9px 20px 9px 0;
 }
 
 #logo:before {
