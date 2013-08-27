@@ -387,6 +387,7 @@ input.selecionado {
 #menu form.login {
   display: inline;
   padding-left: 15px;
+  white-space: nowrap;
 }
 
 #menu form.login input {
@@ -987,6 +988,10 @@ input.selecionado {
 	#header {
 		height: 80px;
 	}
+	
+	#menu {
+		text-align: center;
+	}
 }
 
 @media only screen and (max-width: 700px) {
@@ -1002,6 +1007,10 @@ input.selecionado {
 	
 	.sponsor-box:first-child{
 		display: none;
+	}
+	
+	#menu form.login {
+		padding: 0;
 	}
 }
 
