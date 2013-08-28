@@ -80,33 +80,18 @@ input.selecionado {
 #header {
   margin: 0;
   padding: 0;
-  height: 110px;
+  height: 75px;
   background-color: #244b69;
 }
 
 #logo {
-	float: left;
 	font-size: 0;
-	text-align: center;
-	width: 220px;
-	margin: 9px 20px 9px 0;
-}
-
-#logo:before {
-	content: "";
-	display: inline-block;
+	float: left;
 	background:  url(../images/guj/novo-logo-guj.png) no-repeat center center;
 	background-size: 100%;
 	height: 62px;
-	width: 188px
-}
-
-#logo:after {
-	content: attr(data-slogan);
-	display: inline-block;
-	color: #fff;
-	font-size: 12px;
-	line-height: 30px;
+	width: 188px;
+	margin: 9px 30px 9px 0;
 }
 
 .main-nav {
@@ -133,7 +118,6 @@ input.selecionado {
 	float: right;
 	background: #dc962c;
 	height: 80%;
-	padding: 0 1em;
 }
 
 .nav-item .current {
@@ -173,7 +157,7 @@ input.selecionado {
 .menu-subtitle {
 	font-size: .63em;
 	position: absolute;
-	top: 65px;
+	top: 45px;
 	display: none;
 }
 
@@ -320,7 +304,7 @@ input.selecionado {
 	background-color: #84bc41;
 	margin: 0;
 	padding: 0;
-	color: #0A3009;
+	color: #fff;
 	overflow: hidden;
 	line-height: 35px;
 	font-size: 13px;
@@ -964,10 +948,6 @@ input.selecionado {
 		font-size: 1.35em;
 	}
 	
-	#logo:after {
-		display: none;
-	}
-	
 	.nav.main-nav {
 		display: inline-block;
 		width: 72%;
@@ -978,15 +958,7 @@ input.selecionado {
 		display: inline-block;
 		vertical-align: middle;
 		width: 25%;
-		margin-right: 1.75%;
-	}
-	
-	#logo:before {
-		width: 100%;
-	}
-	
-	#header {
-		height: 80px;
+		margin: 0 1.75% 0 0;
 	}
 	
 	#menu {

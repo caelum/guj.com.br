@@ -88,7 +88,7 @@ $().ready(function() {
 	<div id="header">
 	    <div class="container1">
 	      <div class="container2">
-	        <a href="${contextPath}/" id="logo" data-slogan="O portal de desenvolvedores do Brasil">GUJ</a>
+	        <a href="${contextPath}/" id="logo">GUJ</a>
 	        <nav class="nav main-nav piped-nav">
 				<ul class="nav-items">
 					<li class="nav-item">
@@ -132,7 +132,7 @@ $().ready(function() {
 	<div class="container1">
 		<div class="container2">
 			<#if !logged && !sso>
-			  GUJ Forum. <a href="${JForumContext.encodeURL("/user/insert")}" style="color: #000; font-weight: bold;">Crie seu login</a>, 
+			  GUJ Forum. <a href="${JForumContext.encodeURL("/user/insert")}" style="color: #21571F; font-weight: bold;">Crie seu login</a>, 
 	          ou digite-o para logar no site.
 
 	          <form class="login" action="${contextPath}/jforum.java?module=user&action=validateLogin" method="POST">
