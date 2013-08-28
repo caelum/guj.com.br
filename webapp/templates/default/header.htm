@@ -137,9 +137,9 @@ $().ready(function() {
 
 	          <form class="login" action="${contextPath}/jforum.java?module=user&action=validateLogin" method="POST">
 	            <input type="hidden" name="returnPath" id="returnPath" value="" />
-	            Usu&aacute;rio: <input class="campo rounded" name="username" size="8" tabindex="3" />
-				Senha: <input class="campo rounded" style="border: 0px;" type="password" size="8" name="password" tabindex="4" />
-	            <input type="image" class="botao" style="border: 0px;" src="${contextPath}/images/guj/botao_entrar.gif" tabindex="5" name="login" value="Login">
+	            Usu&aacute;rio: <input class="campo" name="username" size="8" tabindex="3" />
+				Senha: <input class="campo" style="border: 0px;" type="password" size="8" name="password" tabindex="4" />
+	            <input type="submit" class="botao" tabindex="5" name="login" value="Entrar">
 	          </form>
 			</#if>
 			
@@ -178,7 +178,7 @@ $().ready(function() {
 			    <input type="hidden" name="cof" value="FORID:10" />
 			    <input type="hidden" name="ie" value="UTF-8" />
 			    <input class="campo_rounded" type="text" name="q" size="31" tabindex="1" />
-			    <input type="image" class="botao" style="border: 0px;" src="${contextPath}/images/guj/botao_ok.gif" tabindex="2">
+			    <input type="submit" class="botao" tabindex="2" value="OK">
 			</form>
 			<script type="text/javascript" src="http://www.google.com.br/coop/cse/brand?form=cse-search-box&amp;lang=en"></script>
 		
