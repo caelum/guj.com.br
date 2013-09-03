@@ -113,11 +113,8 @@ input.selecionado {
 .nav-items {
 	display: inline-block;
 	list-style: none;
-	-webkit-margin-before: 0;
-	-webkit-margin-after: 0;
-	-webkit-margin-start: 0;
-	-webkit-margin-end: 0;
-	-webkit-padding-start: 0;
+	margin: 0;
+	padding: 0;
 	width: 100%
 }
 
