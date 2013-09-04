@@ -891,6 +891,11 @@ input.selecionado {
 }
 
 /*Responsive*/
+@media only screen and (max-width: 1250px) {
+	.menu-rank{
+		display:none;
+	}
+}
 
 @media only screen and (max-width: 1200px) {
 	#banner,
@@ -900,6 +905,13 @@ input.selecionado {
 	
 	#content .big-box{
 		height:730px;
+	}
+	
+}
+
+@media only screen and (max-width: 1120px) {
+	.menu-unanswered{
+		display: none;
 	}
 }
 
@@ -911,17 +923,13 @@ input.selecionado {
 	#content .posts{
 		height:580px;
 	}
-		
-	.menu-rank{
+}
+
+@media only screen and (max-width: 960px) {
+	.menu-recent-topics{
 		display: none;
 	}
 }
-
-@media only screen and (max-width: 980px) {	
-	.menu-unanswered{
-		display: none;
-	}
-}	
 
 @media only screen and (max-width: 880px) {
 	#menu ul li.topics{
