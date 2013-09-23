@@ -16,7 +16,6 @@ window.onload = function () {
 </script>
 
 <div id="content">
-<div class="box">
 <b class="spiffy"><b class="spiffy1"><b></b></b><b class="spiffy2"><b></b></b><b class="spiffy3"></b><b class="spiffy4"></b><b class="spiffy5"></b></b>
 	<div class="spiffyfg inner-content">
   <span class="article">
@@ -76,6 +75,5 @@ window.onload = function () {
 	<b class="spiffy"><b class="spiffy5"></b><b class="spiffy4"></b><b class="spiffy3"></b><b class="spiffy2"><b></b></b><b class="spiffy1"><b></b></b></b>
 </div>
 
-</div>
 
 <%@ include file="/footer.jsp" %>

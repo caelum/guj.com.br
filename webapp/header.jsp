@@ -56,49 +56,7 @@ $().ready(function() {
     <div class="container1">
     	<div id="headerBanner"></div>
       <div class="container2">
-        <a href="<c:url value="/"/>" id="logo">GUJ</a>
-        <h2>${title}</h2></a>
+        <a href="<c:url value="/"/>" id="logo" data-slogan="${title}">GUJ</a>
       </div>
     </div>
-  </div>
-
-  <div id="menu">
-    <ul>
-      <li class="home">
-        <a href="<c:url value="/"/>">home</a>
-      </li>
-     <li class="guj-respostas">
-		<a href="<c:url value="/perguntas"/>">guj respostas</a>
-     </li>
-     <li class="guj-respostas-pergunte">
-		<a href="<c:url value="/perguntar"/>">pergunte</a>
-     </li>
-      <li class="forum">
-        <a href="<c:url value="/forums/list.java"/>">f&oacute;rum</a>
-      </li>
-      
-      <li class="noticias">
-        <a href="<c:url value="/noticias"/>">not&iacute;cias</a>
-      </li>
-      
-      <li class="topics">
-        <a href="<c:url value="/recentTopics/list.java"/>">t&oacute;picos recentes</a>
-      </li>
-    	<!--
-      <li class="blogs">
-        <a href="${pageContext.request.contextPath}/posts">blogs</a>
-      </li>
-      -->
-    </ul>
-    
-    <form action="<c:url value="/search"/>" id="cse-search-box" class="busca">
-	    <input type="hidden" name="cx" value="partner-pub-9448585618971060:4001950301" />
-	    <input type="hidden" name="cof" value="FORID:10" />
-	    <input type="hidden" name="ie" value="UTF-8" />
-	    <input class="campo_rounded" type="text" name="q" size="31" tabindex="1" />
-	    <input type="image" class="botao" style="border: 0px;" src="<c:url value="/images/guj/botao_ok.gif"/>" tabindex="2">
-	</form>
-
-<script type="text/javascript" src="http://www.google.com.br/coop/cse/brand?form=cse-search-box&amp;lang=en"></script>
-	<iframe class="facebook-curtir" src="http://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fwww.facebook.com%2FGUJ.com.br&amp;layout=button_count&amp;show_faces=false&amp;width=200&amp;action=like&amp;colorscheme=light&amp;height=21" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
   </div>

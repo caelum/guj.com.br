@@ -1,8 +1,0 @@
-Olá ${user.username}
-
-você está recebendo este e-mail porque registrou-se no ${forumName}.
-Por favor, use o link abaixo para completar seu cadastro:
-
-${url}
-
-Seu username é: ${user.username}
