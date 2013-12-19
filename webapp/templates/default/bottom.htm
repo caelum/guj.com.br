@@ -22,11 +22,11 @@
 			</h2>
 		</div>
 		<ol class="rss-list">
-			<#list brutalNews as news>
+			<#list brutalNews as bnews>
 				<li class="rss-item">
-					<span class="rss-item-date">${news.date?date?string("dd/MM/yyyy")} -</span>
+					<span class="rss-item-date">${bnews.date?date?string("dd/MM/yyyy")} -</span>
 					<h3 class="rss-item-title">
-						<a href="${news.link}">${news.title?html}</a>
+						<a href="${bnews.link}">${bnews.title?html}</a>
 					</h3>
 				</li>
 			</#list>
@@ -82,7 +82,7 @@
 				</ul>
 			</li>
 			<li class="sponsor-box">
-				<a class="footer-logo third-logo" href="http://www.casadocodigo.com.br/">CASA DO CӓDIGO</a>
+				<a class="footer-logo third-logo" href="http://www.casadocodigo.com.br/">CASA DO C��DIGO</a>
 				<ul class="footer-sub-list">
 					<li><a class="footer-link" href="http://www.casadocodigo.com.br">Conhe&ccedil;a tamb&eacute;m os livros da Casa do C&oacute;digo</a></li>
 				</ul>
