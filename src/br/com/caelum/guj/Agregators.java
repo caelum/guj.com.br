@@ -25,7 +25,7 @@ public class Agregators {
 		Config.loadConfigs();
 
 		agregatorsMap.put("infoq", new Agregator("infoq.refresh.interval", "infoq.items", "infoq.url"));
-		agregatorsMap.put("forum", new Agregator("forum.refresh.interval", "forum.items", "forum.url"));
+		agregatorsMap.put("forums", new Agregator("forum.refresh.interval", "forum.items", "forum.url"));
 		agregatorsMap.put("news", new Agregator("news.refresh.interval", "news.items", "news.url"));
 		agregatorsMap.put("brutalQuestions", new Agregator("brutal.refresh.interval", "brutal.items", "brutal.url"));
 		agregatorsMap.put("brutalNews", new Agregator("brutal_news.refresh.interval", "brutal_news.items", "brutal_news.url"));
