@@ -15,7 +15,7 @@ body {
   color: #333333;
 }
 
-#headerBanner {
+.headerBanner {
 	float: right; 
 	padding: 5 10 10 10;
 }

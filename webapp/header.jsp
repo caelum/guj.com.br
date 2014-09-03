@@ -22,21 +22,28 @@
 <title>GUJ - ${title}</title>
 <link href="<c:url value="/stylesheets/guj3.css?20130424"/>" media="screen" rel="stylesheet" type="text/css" />
 
-<script type="text/javascript">var p="http",d="static";if(document.location.protocol=="https:"){p+="s";d="engine";}var z=document.createElement("script");z.type="text/javascript";z.async=true;z.src=p+"://"+d+".adzerk.net/ados.js";var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(z,s);</script>
-<script type="text/javascript">
-	var ados = ados || {};
-	ados.run = ados.run || [];
-	ados.run.push(function() {
-		/* load placement for account: caelum, site: guj, size: 728x90 - Leaderboard*/
-		ados_add_placement(7120, 49043, "headerBanner", 4);
-		/* load placement for account: caelum, site: guj, size: 728x90 - Leaderboard*/
-		ados_add_placement(7120, 49043, "postBanner", 4);
-		/* load placement for account: caelum, site: guj, size: 300x250 - Medium Rectangle*/
-		ados_add_placement(7120, 49043, "medRectangleAd", 5);
-		// para o futuro:
-		//ados_setKeywords('java, hibernate, jsf'); 
-		ados_load();
-	});
+<script type='text/javascript'>
+var googletag = googletag || {};
+googletag.cmd = googletag.cmd || [];
+(function() {
+    var gads = document.createElement('script');
+    gads.async = true;
+    gads.type = 'text/javascript';
+    var useSSL = 'https:' == document.location.protocol;
+    gads.src = (useSSL ? 'https:' : 'http:') + 
+    '//www.googletagservices.com/tag/js/gpt.js';
+    var node = document.getElementsByTagName('script')[0];
+    node.parentNode.insertBefore(gads, node);
+})();
+</script>
+
+<script type='text/javascript'>
+googletag.cmd.push(function() {
+    googletag.defineSlot('/102249611/banner-direito', [300, 250], 'div-gpt-ad-1409592167217-0').addService(googletag.pubads());
+    googletag.defineSlot('/102249611/banner-topo', [728, 90], 'div-gpt-ad-1409775796804-0').addService(googletag.pubads());
+    googletag.pubads().enableSingleRequest();
+    googletag.enableServices();
+});
 </script>
 
 <!--[if IE]>
@@ -54,7 +61,12 @@ $().ready(function() {
 <body>
   <div id="header">
     <div class="container1">
-    	<div id="headerBanner"></div>
+        <!-- banner-topo -->
+        <div class="headerBanner" id='div-gpt-ad-1409779595469-0'>
+            <script type='text/javascript'>
+                googletag.cmd.push(function() { googletag.display('div-gpt-ad-1409779595469-0'); });
+            </script>
+        </div>
       <div class="container2">
         <a href="<c:url value="/"/>" id="logo" data-slogan="${title}">GUJ</a>
       </div>
