@@ -32,15 +32,15 @@ googletag.cmd = googletag.cmd || [];
     var useSSL = 'https:' == document.location.protocol;
     gads.src = (useSSL ? 'https:' : 'http:') + 
     '//www.googletagservices.com/tag/js/gpt.js';
-    var node = document.getElementsByTagName('script')[0];
-    node.parentNode.insertBefore(gads, node);
+var node = document.getElementsByTagName('script')[0];
+node.parentNode.insertBefore(gads, node);
 })();
 </script>
 
 <script type='text/javascript'>
 googletag.cmd.push(function() {
-    googletag.defineSlot('/102249611/banner-direito', [300, 250], 'div-gpt-ad-1409592167217-0').addService(googletag.pubads());
-    googletag.defineSlot('/102249611/banner-topo', [728, 90], 'div-gpt-ad-1409775796804-0').addService(googletag.pubads());
+    googletag.defineSlot('/102249611/banner-direito', [300, 250], 'div-gpt-ad-1412970246027-0').addService(googletag.pubads());
+    googletag.defineSlot('/102249611/banner-topo', [728, 90], 'div-gpt-ad-1412970449997-0').addService(googletag.pubads());
     googletag.pubads().enableSingleRequest();
     googletag.enableServices();
 });
@@ -62,9 +62,9 @@ $().ready(function() {
   <div id="header">
     <div class="container1">
         <!-- banner-topo -->
-        <div class="headerBanner" id='div-gpt-ad-1409779595469-0'>
+        <div id='div-gpt-ad-1412970819903-0' style='width:728px; height:90px;'>
             <script type='text/javascript'>
-                googletag.cmd.push(function() { googletag.display('div-gpt-ad-1409779595469-0'); });
+                googletag.cmd.push(function() { googletag.display('div-gpt-ad-1412970819903-0'); });
             </script>
         </div>
       <div class="container2">

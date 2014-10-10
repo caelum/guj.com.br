@@ -30,30 +30,36 @@
 <meta property="og:type" content="forum">
 <meta property="og:image" content="http://www.guj.com.br/imgs/guj-logo.png">
 
-<script type='text/javascript'>                                                        
-var googletag = googletag || {};                                                       
-googletag.cmd = googletag.cmd || [];                                                   
-(function() {                                                                          
-    var gads = document.createElement('script');                                       
-    gads.async = true;                                                                 
-    gads.type = 'text/javascript';                                                     
-    var useSSL = 'https:' == document.location.protocol;                               
-    gads.src = (useSSL ? 'https:' : 'http:') +                                         
-    '//www.googletagservices.com/tag/js/gpt.js';                                       
-    var node = document.getElementsByTagName('script')[0];                             
-    node.parentNode.insertBefore(gads, node);                                          
-})();                                                                                  
-</script>                                                                              
-                                                                                       
-<script type='text/javascript'>                                                        
-googletag.cmd.push(function() {                                                        
-    googletag.defineSlot('/102249611/banner-direito', [300, 250], 'div-gpt-ad-1409592167217-0').addService(googletag.pubads());
-    googletag.defineSlot('/102249611/banner-topo', [728, 90], 'div-gpt-ad-1409775796804-0').addService(googletag.pubads());
-    googletag.pubads().enableSingleRequest();                                          
-    googletag.enableServices();                                                        
-});                                                                                    
+<script type='text/javascript'>
+var googletag = googletag || {};
+googletag.cmd = googletag.cmd || [];
+(function() {
+    var gads = document.createElement('script');
+    gads.async = true;
+    gads.type = 'text/javascript';
+    var useSSL = 'https:' == document.location.protocol;
+    gads.src = (useSSL ? 'https:' : 'http:') + 
+    '//www.googletagservices.com/tag/js/gpt.js';
+var node = document.getElementsByTagName('script')[0];
+node.parentNode.insertBefore(gads, node);
+})();
 </script>
 
+<script type='text/javascript'>
+googletag.cmd.push(function() {
+googletag.defineSlot('/102249611/banner-direito', [300, 250], 'div-gpt-ad-1412970527453-0').addService(googletag.pubads());
+googletag.pubads().enableSingleRequest();
+googletag.enableServices();
+});
+</script>
+
+<script type='text/javascript'>
+googletag.cmd.push(function() {
+googletag.defineSlot('/102249611/banner-topo', [728, 90], 'div-gpt-ad-1412970819903-0').addService(googletag.pubads());
+googletag.pubads().enableSingleRequest();
+googletag.enableServices();
+});
+</script>
 
 <link href="${contextPath}/stylesheets/guj3.css?${startupTime}" media="screen" rel="stylesheet" type="text/css" />
 <style type="text/css">@import url( ${contextPath}/templates/${templateName}/styles/style.css?${startupTime} );</style>
