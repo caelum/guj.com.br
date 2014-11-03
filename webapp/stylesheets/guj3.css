@@ -277,7 +277,7 @@ input.selecionado {
 .footer-logo {
 	font-size: 0;
 	display: inline-block;
-	background-image: url("http://www.guj.com.br/imgs/footer-sprite.png");
+	background-image: url("http://www.guj.com.br/imgs/custom/footer-sprite.png");
 	background-repeat: no-repeat;
 	vertical-align: top;
 	margin-bottom: 4%;
